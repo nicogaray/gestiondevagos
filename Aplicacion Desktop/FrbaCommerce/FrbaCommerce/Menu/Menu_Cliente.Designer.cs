@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.ABM_Rol
+﻿namespace FrbaCommerce.Menu
 {
-    partial class ABM_Rol
+    partial class Menu_Cliente
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // ABM_Rol
+            // Menu_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 343);
-            this.Name = "ABM_Rol";
-            this.Text = "Rol";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSize = new System.Drawing.Size(401, 262);
+            this.Name = "Menu_Cliente";
+            this.Text = "Cliente - Seleccione una funcionalidad";
             this.ResumeLayout(false);
 
         }

@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaCommerce.ABM_Rol
+namespace FrbaCommerce.Menu
 {
-    public partial class ABM_Rol : Form
+    public partial class Menu_Cliente : Form
     {
-        public ABM_Rol()
+        public Menu_Cliente()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

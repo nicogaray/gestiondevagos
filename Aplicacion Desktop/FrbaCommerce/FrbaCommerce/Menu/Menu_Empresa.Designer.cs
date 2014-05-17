@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.Login
+﻿namespace FrbaCommerce.Menu
 {
-    partial class Form1
+    partial class Menu_Empresa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Menu_Empresa
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(395, 262);
+            this.Name = "Menu_Empresa";
+            this.Text = "Empresa - Seleccione una funcionalidad";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
