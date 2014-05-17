@@ -1,0 +1,8 @@
+Para evitar modificaciones de tamaño en las pantallas:
+
+1) Seleccionar el form al que se le quiere aplicar la modificacion
+2) Cambiar "MaximazeBox" de "True" a "False"
+(considero que puede ser interesante dejar el MinimumSize activo)
+3) Cambiar FormBorderStyle de "Sizeble" a "FixedSingle" 
+(FixedSingle es un estilo de pantalla, dentro de los modelos "Fixed", que son los que tenemos
+que utilizar, podemos elegir otro, como "Fixed3d")

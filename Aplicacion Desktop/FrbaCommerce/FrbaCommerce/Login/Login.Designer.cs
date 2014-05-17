@@ -96,13 +96,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 228);
+            this.ClientSize = new System.Drawing.Size(382, 239);
             this.Controls.Add(this.button_Aceptar);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.textBox_Contrasenia);
             this.Controls.Add(this.textBox_Usuario);
             this.Controls.Add(this.label_Contrasenia);
             this.Controls.Add(this.label_Usuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.Text = "Ingrese al sistema";
             this.Load += new System.EventHandler(this.ABMLogin_Load);

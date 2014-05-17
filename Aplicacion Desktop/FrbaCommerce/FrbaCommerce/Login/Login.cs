@@ -50,7 +50,7 @@ namespace FrbaCommerce.Login
 
             if (resultado == DialogResult.Yes)
             {
-                this.Close();
+               Application.Exit();
             }
            
         }

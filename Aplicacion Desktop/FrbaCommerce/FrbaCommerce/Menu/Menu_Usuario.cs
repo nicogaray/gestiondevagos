@@ -14,44 +14,47 @@ namespace FrbaCommerce.Menu
         public Menu_Usuario()
         {
             InitializeComponent();
-            //inicializo los botones
-            this.button_Administrador.Visible = false;
-            this.button_Cliente.Visible = false;
-            this.button_Empresa.Visible = false;
         }
 
         private void Menu_Usuario_Load(object sender, EventArgs e)
         {
+            // falta consultar a la base si el usuario es administrador
+            if (true)
+            {
+                button_Administrador.Visible = true;
+            }
+
+            // falta consultar a la base si el usuario es cliente
+            if (true)
+            {
+                button_Cliente.Visible = true;
+            }
+
+            // falta consultar a la base si el usuario es empresa
+            if (true)
+            {
+                button_Empresa.Visible = true;
+            }
             
         }
 
         private void button_Administrador_Click(object sender, EventArgs e)
         {
-            // falta consultar a la base si el usuario es administrador
-            if (true)
-            {
-                this.button_Administrador.Visible = true;
-            }
         }
 
         private void button_Cliente_Click(object sender, EventArgs e)
         {
-            // falta consultar a la base si el usuario es cliente
-            if (true)
-            {
-                this.button_Cliente.Visible = false;
-            }
- 
         }
 
         private void button_Empresa_Click(object sender, EventArgs e)
         {
-            // falta consultar a la base si el usuario es empresa
-            if (true)
-            {
-                this.button_Empresa.Visible = true;
-            }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login.Login login = new Login.Login();
+            login.Show();
         }
     }
 }

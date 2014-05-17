@@ -31,6 +31,7 @@
             this.button_Administrador = new System.Windows.Forms.Button();
             this.button_Cliente = new System.Windows.Forms.Button();
             this.button_Empresa = new System.Windows.Forms.Button();
+            this.button_Volver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Administrador
@@ -63,14 +64,27 @@
             this.button_Empresa.UseVisualStyleBackColor = true;
             this.button_Empresa.Click += new System.EventHandler(this.button_Empresa_Click);
             // 
+            // button_Volver
+            // 
+            this.button_Volver.Location = new System.Drawing.Point(288, 261);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(75, 23);
+            this.button_Volver.TabIndex = 3;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Menu_Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 265);
+            this.ClientSize = new System.Drawing.Size(401, 306);
+            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Empresa);
             this.Controls.Add(this.button_Cliente);
             this.Controls.Add(this.button_Administrador);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Menu_Usuario";
             this.Text = "Seleccione el rol ";
             this.Load += new System.EventHandler(this.Menu_Usuario_Load);
@@ -83,5 +97,6 @@
         private System.Windows.Forms.Button button_Administrador;
         private System.Windows.Forms.Button button_Cliente;
         private System.Windows.Forms.Button button_Empresa;
+        private System.Windows.Forms.Button button_Volver;
     }
 }
