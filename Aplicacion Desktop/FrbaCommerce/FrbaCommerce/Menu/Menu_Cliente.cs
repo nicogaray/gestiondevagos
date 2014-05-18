@@ -15,5 +15,12 @@ namespace FrbaCommerce.Menu
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu.Menu_Usuario menu_usuario = new Menu.Menu_Usuario();
+            menu_usuario.Show();
+        }
     }
 }

@@ -40,19 +40,28 @@ namespace FrbaCommerce.Menu
 
         private void button_Administrador_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Menu.Menu_Administrador menu_administrador = new Menu.Menu_Administrador();
+            menu_administrador.Show();
         }
 
         private void button_Cliente_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
+            menu_administrador.Show();
         }
 
         private void button_Empresa_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Menu.Menu_Empresa menu_administrador = new Menu.Menu_Empresa();
+            menu_administrador.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             Login.Login login = new Login.Login();
             login.Show();
         }

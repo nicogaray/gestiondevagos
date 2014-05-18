@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Abm_Cliente
 {
-    public partial class Form1 : Form
+    public partial class Baja : Form
     {
-        public Form1()
+        public Baja()
         {
             InitializeComponent();
         }

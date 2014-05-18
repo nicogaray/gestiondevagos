@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Abm_Rubro
 {
-    public partial class Form1 : Form
+    public partial class Modificacion : Form
     {
-        public Form1()
+        public Modificacion()
         {
             InitializeComponent();
         }

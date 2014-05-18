@@ -83,8 +83,8 @@
             this.Controls.Add(this.button_Empresa);
             this.Controls.Add(this.button_Cliente);
             this.Controls.Add(this.button_Administrador);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Menu_Usuario";
             this.Text = "Seleccione el rol ";
             this.Load += new System.EventHandler(this.Menu_Usuario_Load);

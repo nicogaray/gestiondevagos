@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.ABM_Rol
 {
-    public partial class ABM_Rol : Form
+    public partial class Modificacion : Form
     {
-        public ABM_Rol()
+        public Modificacion()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

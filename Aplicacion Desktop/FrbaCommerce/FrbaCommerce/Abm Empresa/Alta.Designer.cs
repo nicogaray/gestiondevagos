@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.Abm_Visibilidad
+﻿namespace FrbaCommerce.Abm_Empresa
 {
-    partial class Form1
+    partial class Alta
     {
         /// <summary>
         /// Required designer variable.
