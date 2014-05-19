@@ -64,5 +64,28 @@ namespace FrbaCommerce.Abm_Cliente
         {
 
         }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu.Menu_Administrador menu_administrador = new Menu.Menu_Administrador();
+            menu_administrador.Show();
+        }
+
+        //private void Form_Base_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    const string mensaje = "¿Está seguro que desea cerrar el sistema?";
+        //    const string resumen = "Cerrando el sistema";
+
+        //    var resultado = MessageBox.Show(mensaje, resumen,
+        //                         MessageBoxButtons.YesNo,
+        //                         MessageBoxIcon.Question);
+
+
+        //    if (resultado == DialogResult.Yes)
+        //    {
+        //        e.Cancel = false;
+        //    }
+        }
     }
-}
+

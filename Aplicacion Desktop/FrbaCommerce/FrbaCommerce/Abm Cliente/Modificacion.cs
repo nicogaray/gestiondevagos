@@ -25,5 +25,14 @@ namespace FrbaCommerce.Abm_Cliente
         {
 
         }
+
+        private void button_Limpiar_Click(object sender, EventArgs e)
+        {
+            textBox_Apellido.Clear();
+            textBox_Documento.Clear();
+            textBox_Mail.Clear();
+            textBox_Nombre.Clear();
+            comboBox_TipoDocumento.Text = "";
+        }
     }
 }

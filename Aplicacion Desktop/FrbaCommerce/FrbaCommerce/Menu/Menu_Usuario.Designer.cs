@@ -36,12 +36,14 @@
             // 
             // button_Administrador
             // 
+            this.button_Administrador.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_Administrador.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button_Administrador.Location = new System.Drawing.Point(85, 36);
             this.button_Administrador.Name = "button_Administrador";
             this.button_Administrador.Size = new System.Drawing.Size(227, 51);
             this.button_Administrador.TabIndex = 0;
             this.button_Administrador.Text = "Administrador";
-            this.button_Administrador.UseVisualStyleBackColor = true;
+            this.button_Administrador.UseVisualStyleBackColor = false;
             this.button_Administrador.Click += new System.EventHandler(this.button_Administrador_Click);
             // 
             // button_Cliente
@@ -76,8 +78,7 @@
             // 
             // Menu_Usuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(401, 306);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Empresa);

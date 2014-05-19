@@ -15,5 +15,17 @@ namespace FrbaCommerce.Abm_Empresa
         {
             InitializeComponent();
         }
+
+        private void textBox_Mail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Limpiar_Click(object sender, EventArgs e)
+        {
+            textBox_Cuit.Clear();
+            textBox_Mail.Clear();
+            textBox_RazonSocial.Clear();
+        }
     }
 }

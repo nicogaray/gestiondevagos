@@ -6,3 +6,14 @@ Para evitar modificaciones de tamaño en las pantallas:
 3) Cambiar FormBorderStyle de "Sizeble" a "FixedSingle" 
 (FixedSingle es un estilo de pantalla, dentro de los modelos "Fixed", que son los que tenemos
 que utilizar, podemos elegir otro, como "Fixed3d")
+
+
+Dudas: 
+-- Cuales son las funcionalidades de cada usuario?
+-- Ver como modificar el funcionamiento de la "X" 
+-- La segunda pantalla de modificacion es igual a "Alta" pero mostrando los datos guardados
+   La duplicamos?
+-- La pantalla de baja es igual a la de modificacion. La duplicamos?
+-- Los ABM retornan al menu del administrador. Esto no es correcto si la funcionalidad esta en mas de un rol
+   Hay que controlar con que rol se decide trabajar y luego retornar al menu correspondiente segun el rol
+-- Como insertar el listado de funcionaidades en Alta de Rol?

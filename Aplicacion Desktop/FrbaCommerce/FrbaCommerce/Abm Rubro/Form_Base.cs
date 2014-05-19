@@ -54,5 +54,12 @@ namespace FrbaCommerce.Abm_Rubro
             this.panel_Contenedor.Tag = baja;
             baja.Show();
         }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu.Menu_Administrador menu_administrador = new Menu.Menu_Administrador();
+            menu_administrador.Show();
+        }
     }
 }

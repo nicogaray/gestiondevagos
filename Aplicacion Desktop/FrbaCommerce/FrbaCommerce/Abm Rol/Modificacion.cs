@@ -15,5 +15,29 @@ namespace FrbaCommerce.ABM_Rol
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Seleccione el Rol que desea modificar";
+
+        }
+
+        private void dataGridView1_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
+
+        private void button_Buscar_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Haga Click aquí para buscar todos los roles del sistema";
+
+        }
+
+        private void button_Buscar_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
     }
 }

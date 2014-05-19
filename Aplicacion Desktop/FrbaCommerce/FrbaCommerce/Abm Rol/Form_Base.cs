@@ -55,5 +55,12 @@ namespace FrbaCommerce.ABM_Rol
             this.panel_Contenedor.Tag = modificacion;
             modificacion.Show();
         }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu.Menu_Administrador menu_administrador = new Menu.Menu_Administrador();
+            menu_administrador.Show();
+        }
     }
 }

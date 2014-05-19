@@ -32,7 +32,7 @@
             this.label_Contrasenia = new System.Windows.Forms.Label();
             this.textBox_Usuario = new System.Windows.Forms.TextBox();
             this.textBox_Contrasenia = new System.Windows.Forms.TextBox();
-            this.button_Cancelar = new System.Windows.Forms.Button();
+            this.button_Cerrar = new System.Windows.Forms.Button();
             this.button_Aceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -72,15 +72,15 @@
             this.textBox_Contrasenia.TabIndex = 3;
             this.textBox_Contrasenia.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // button_Cancelar
+            // button_Cerrar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(213, 185);
-            this.button_Cancelar.Name = "button_Cancelar";
-            this.button_Cancelar.Size = new System.Drawing.Size(86, 27);
-            this.button_Cancelar.TabIndex = 4;
-            this.button_Cancelar.Text = "Cancelar";
-            this.button_Cancelar.UseVisualStyleBackColor = true;
-            this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
+            this.button_Cerrar.Location = new System.Drawing.Point(213, 185);
+            this.button_Cerrar.Name = "button_Cerrar";
+            this.button_Cerrar.Size = new System.Drawing.Size(86, 27);
+            this.button_Cerrar.TabIndex = 4;
+            this.button_Cerrar.Text = "Cerrar";
+            this.button_Cerrar.UseVisualStyleBackColor = true;
+            this.button_Cerrar.Click += new System.EventHandler(this.button_Cancelar_Click);
             // 
             // button_Aceptar
             // 
@@ -98,7 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 239);
             this.Controls.Add(this.button_Aceptar);
-            this.Controls.Add(this.button_Cancelar);
+            this.Controls.Add(this.button_Cerrar);
             this.Controls.Add(this.textBox_Contrasenia);
             this.Controls.Add(this.textBox_Usuario);
             this.Controls.Add(this.label_Contrasenia);
@@ -119,7 +119,7 @@
         private System.Windows.Forms.Label label_Contrasenia;
         private System.Windows.Forms.TextBox textBox_Usuario;
         private System.Windows.Forms.TextBox textBox_Contrasenia;
-        private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.Button button_Cerrar;
         private System.Windows.Forms.Button button_Aceptar;
     }
 }

@@ -28,373 +28,451 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_Anio = new System.Windows.Forms.TextBox();
+            this.textBox_Mes = new System.Windows.Forms.TextBox();
+            this.textBox_Dia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_Mail = new System.Windows.Forms.TextBox();
+            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
+            this.radioButton_Pas = new System.Windows.Forms.RadioButton();
+            this.radioButton_Ci = new System.Windows.Forms.RadioButton();
+            this.radioButton_Le = new System.Windows.Forms.RadioButton();
+            this.radioButton_Lc = new System.Windows.Forms.RadioButton();
+            this.radioButton_Dni = new System.Windows.Forms.RadioButton();
+            this.textBox_Documento = new System.Windows.Forms.TextBox();
+            this.textBox_Telefono = new System.Windows.Forms.TextBox();
+            this.textBox_Direccion = new System.Windows.Forms.TextBox();
+            this.textBox_Apellido = new System.Windows.Forms.TextBox();
+            this.label_FechaNacimiento = new System.Windows.Forms.Label();
+            this.label_CodigoPostal = new System.Windows.Forms.Label();
+            this.label_Direccion = new System.Windows.Forms.Label();
+            this.label_Telefono = new System.Windows.Forms.Label();
+            this.label_Mail = new System.Windows.Forms.Label();
+            this.label_TipoDocumento = new System.Windows.Forms.Label();
+            this.label_Documento = new System.Windows.Forms.Label();
+            this.label_Apellido = new System.Windows.Forms.Label();
+            this.label_Nombre = new System.Windows.Forms.Label();
+            this.textBox_Nombre = new System.Windows.Forms.TextBox();
+            this.label_Informacion = new System.Windows.Forms.Label();
+            this.label_InfTexto = new System.Windows.Forms.Label();
+            this.button_Guardar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
+            // button_Limpiar
+            // 
+            this.button_Limpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Limpiar.Location = new System.Drawing.Point(425, 59);
+            this.button_Limpiar.Name = "button_Limpiar";
+            this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
+            this.button_Limpiar.TabIndex = 8;
+            this.button_Limpiar.Text = "Limpiar";
+            this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+            this.button_Limpiar.Click += new System.EventHandler(this.button2_Click);
+            this.button_Limpiar.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            // 
             // paner_Alta
             // 
-            this.paner_Alta.Controls.Add(this.textBox10);
-            this.paner_Alta.Controls.Add(this.textBox9);
-            this.paner_Alta.Controls.Add(this.textBox8);
+            this.paner_Alta.Controls.Add(this.textBox_Anio);
+            this.paner_Alta.Controls.Add(this.textBox_Mes);
+            this.paner_Alta.Controls.Add(this.textBox_Dia);
             this.paner_Alta.Controls.Add(this.label11);
             this.paner_Alta.Controls.Add(this.label10);
-            this.paner_Alta.Controls.Add(this.textBox7);
-            this.paner_Alta.Controls.Add(this.textBox6);
-            this.paner_Alta.Controls.Add(this.radioButton5);
-            this.paner_Alta.Controls.Add(this.radioButton4);
-            this.paner_Alta.Controls.Add(this.radioButton3);
-            this.paner_Alta.Controls.Add(this.radioButton2);
-            this.paner_Alta.Controls.Add(this.radioButton1);
-            this.paner_Alta.Controls.Add(this.textBox5);
-            this.paner_Alta.Controls.Add(this.textBox4);
-            this.paner_Alta.Controls.Add(this.textBox3);
-            this.paner_Alta.Controls.Add(this.textBox2);
-            this.paner_Alta.Controls.Add(this.label9);
-            this.paner_Alta.Controls.Add(this.label8);
-            this.paner_Alta.Controls.Add(this.label7);
-            this.paner_Alta.Controls.Add(this.label6);
-            this.paner_Alta.Controls.Add(this.label5);
-            this.paner_Alta.Controls.Add(this.label4);
-            this.paner_Alta.Controls.Add(this.label3);
-            this.paner_Alta.Controls.Add(this.label2);
-            this.paner_Alta.Controls.Add(this.label1);
-            this.paner_Alta.Controls.Add(this.textBox1);
-            this.paner_Alta.Location = new System.Drawing.Point(18, 15);
+            this.paner_Alta.Controls.Add(this.textBox_Mail);
+            this.paner_Alta.Controls.Add(this.textBox_CodigoPostal);
+            this.paner_Alta.Controls.Add(this.radioButton_Pas);
+            this.paner_Alta.Controls.Add(this.radioButton_Ci);
+            this.paner_Alta.Controls.Add(this.radioButton_Le);
+            this.paner_Alta.Controls.Add(this.radioButton_Lc);
+            this.paner_Alta.Controls.Add(this.radioButton_Dni);
+            this.paner_Alta.Controls.Add(this.textBox_Documento);
+            this.paner_Alta.Controls.Add(this.textBox_Telefono);
+            this.paner_Alta.Controls.Add(this.textBox_Direccion);
+            this.paner_Alta.Controls.Add(this.textBox_Apellido);
+            this.paner_Alta.Controls.Add(this.label_FechaNacimiento);
+            this.paner_Alta.Controls.Add(this.label_CodigoPostal);
+            this.paner_Alta.Controls.Add(this.label_Direccion);
+            this.paner_Alta.Controls.Add(this.label_Telefono);
+            this.paner_Alta.Controls.Add(this.label_Mail);
+            this.paner_Alta.Controls.Add(this.label_TipoDocumento);
+            this.paner_Alta.Controls.Add(this.label_Documento);
+            this.paner_Alta.Controls.Add(this.label_Apellido);
+            this.paner_Alta.Controls.Add(this.label_Nombre);
+            this.paner_Alta.Controls.Add(this.textBox_Nombre);
+            this.paner_Alta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.paner_Alta.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.paner_Alta.Location = new System.Drawing.Point(12, 12);
             this.paner_Alta.Name = "paner_Alta";
             this.paner_Alta.Size = new System.Drawing.Size(388, 278);
-            this.paner_Alta.TabIndex = 0;
+            this.paner_Alta.TabIndex = 6;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
-            this.paner_Alta.Enter += new System.EventHandler(this.paner_Alta_Enter);
             // 
-            // textBox1
+            // textBox_Anio
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBox_Anio.Location = new System.Drawing.Point(281, 231);
+            this.textBox_Anio.Name = "textBox_Anio";
+            this.textBox_Anio.Size = new System.Drawing.Size(50, 20);
+            this.textBox_Anio.TabIndex = 25;
+            this.textBox_Anio.MouseLeave += new System.EventHandler(this.textBox_Anio_MouseLeave);
+            this.textBox_Anio.MouseEnter += new System.EventHandler(this.textBox_Anio_MouseEnter);
             // 
-            // label1
+            // textBox_Mes
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.textBox_Mes.Location = new System.Drawing.Point(207, 231);
+            this.textBox_Mes.Name = "textBox_Mes";
+            this.textBox_Mes.Size = new System.Drawing.Size(50, 20);
+            this.textBox_Mes.TabIndex = 24;
+            this.textBox_Mes.MouseLeave += new System.EventHandler(this.textBox_Mes_MouseLeave);
+            this.textBox_Mes.MouseEnter += new System.EventHandler(this.textBox_Mes_MouseEnter);
             // 
-            // label2
+            // textBox_Dia
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Apellido";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 106);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Documento";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 82);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Tipo de documento";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(101, 208);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Mail";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(80, 132);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Telefono";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(75, 158);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Direccion";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(57, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Codigo Postal";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 234);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Fecha de nacimiento";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(133, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(232, 20);
-            this.textBox2.TabIndex = 10;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(133, 155);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(232, 20);
-            this.textBox3.TabIndex = 11;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(133, 129);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(129, 20);
-            this.textBox4.TabIndex = 12;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(133, 103);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(129, 20);
-            this.textBox5.TabIndex = 13;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(133, 80);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 17);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "DNI";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(224, 80);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(38, 17);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "LC";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(268, 80);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(38, 17);
-            this.radioButton3.TabIndex = 16;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "LE";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(183, 80);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(35, 17);
-            this.radioButton4.TabIndex = 17;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "CI";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(312, 80);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(46, 17);
-            this.radioButton5.TabIndex = 18;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "PAS";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(133, 179);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(129, 20);
-            this.textBox6.TabIndex = 19;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(133, 205);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(232, 20);
-            this.textBox7.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(189, 234);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "/";
+            this.textBox_Dia.Location = new System.Drawing.Point(133, 231);
+            this.textBox_Dia.Name = "textBox_Dia";
+            this.textBox_Dia.Size = new System.Drawing.Size(50, 20);
+            this.textBox_Dia.TabIndex = 23;
+            this.textBox_Dia.TextChanged += new System.EventHandler(this.textBox_Dia_TextChanged);
+            this.textBox_Dia.MouseLeave += new System.EventHandler(this.textBox_Dia_MouseLeave);
+            this.textBox_Dia.MouseEnter += new System.EventHandler(this.textBox_Dia_MouseEnter);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label11.Location = new System.Drawing.Point(263, 234);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(12, 13);
             this.label11.TabIndex = 22;
             this.label11.Text = "/";
             // 
-            // textBox8
+            // label10
             // 
-            this.textBox8.Location = new System.Drawing.Point(133, 231);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(50, 20);
-            this.textBox8.TabIndex = 23;
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(189, 234);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 13);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "/";
             // 
-            // textBox9
+            // textBox_Mail
             // 
-            this.textBox9.Location = new System.Drawing.Point(207, 231);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(50, 20);
-            this.textBox9.TabIndex = 24;
+            this.textBox_Mail.Location = new System.Drawing.Point(133, 205);
+            this.textBox_Mail.Name = "textBox_Mail";
+            this.textBox_Mail.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Mail.TabIndex = 20;
             // 
-            // textBox10
+            // textBox_CodigoPostal
             // 
-            this.textBox10.Location = new System.Drawing.Point(281, 231);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(50, 20);
-            this.textBox10.TabIndex = 25;
+            this.textBox_CodigoPostal.Location = new System.Drawing.Point(133, 179);
+            this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
+            this.textBox_CodigoPostal.Size = new System.Drawing.Size(129, 20);
+            this.textBox_CodigoPostal.TabIndex = 19;
             // 
-            // button1
+            // radioButton_Pas
             // 
-            this.button1.Location = new System.Drawing.Point(442, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.radioButton_Pas.AutoSize = true;
+            this.radioButton_Pas.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButton_Pas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radioButton_Pas.Location = new System.Drawing.Point(312, 80);
+            this.radioButton_Pas.Name = "radioButton_Pas";
+            this.radioButton_Pas.Size = new System.Drawing.Size(46, 17);
+            this.radioButton_Pas.TabIndex = 18;
+            this.radioButton_Pas.TabStop = true;
+            this.radioButton_Pas.Text = "PAS";
+            this.radioButton_Pas.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // radioButton_Ci
             // 
-            this.button2.Location = new System.Drawing.Point(442, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.radioButton_Ci.AutoSize = true;
+            this.radioButton_Ci.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButton_Ci.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radioButton_Ci.Location = new System.Drawing.Point(183, 80);
+            this.radioButton_Ci.Name = "radioButton_Ci";
+            this.radioButton_Ci.Size = new System.Drawing.Size(35, 17);
+            this.radioButton_Ci.TabIndex = 17;
+            this.radioButton_Ci.TabStop = true;
+            this.radioButton_Ci.Text = "CI";
+            this.radioButton_Ci.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Le
+            // 
+            this.radioButton_Le.AutoSize = true;
+            this.radioButton_Le.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButton_Le.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radioButton_Le.Location = new System.Drawing.Point(268, 80);
+            this.radioButton_Le.Name = "radioButton_Le";
+            this.radioButton_Le.Size = new System.Drawing.Size(38, 17);
+            this.radioButton_Le.TabIndex = 16;
+            this.radioButton_Le.TabStop = true;
+            this.radioButton_Le.Text = "LE";
+            this.radioButton_Le.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Lc
+            // 
+            this.radioButton_Lc.AutoSize = true;
+            this.radioButton_Lc.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButton_Lc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radioButton_Lc.Location = new System.Drawing.Point(224, 80);
+            this.radioButton_Lc.Name = "radioButton_Lc";
+            this.radioButton_Lc.Size = new System.Drawing.Size(38, 17);
+            this.radioButton_Lc.TabIndex = 15;
+            this.radioButton_Lc.TabStop = true;
+            this.radioButton_Lc.Text = "LC";
+            this.radioButton_Lc.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_Dni
+            // 
+            this.radioButton_Dni.AutoSize = true;
+            this.radioButton_Dni.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButton_Dni.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.radioButton_Dni.Location = new System.Drawing.Point(133, 80);
+            this.radioButton_Dni.Name = "radioButton_Dni";
+            this.radioButton_Dni.Size = new System.Drawing.Size(44, 17);
+            this.radioButton_Dni.TabIndex = 14;
+            this.radioButton_Dni.TabStop = true;
+            this.radioButton_Dni.Text = "DNI";
+            this.radioButton_Dni.UseVisualStyleBackColor = true;
+            // 
+            // textBox_Documento
+            // 
+            this.textBox_Documento.Location = new System.Drawing.Point(133, 103);
+            this.textBox_Documento.Name = "textBox_Documento";
+            this.textBox_Documento.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Documento.TabIndex = 13;
+            this.textBox_Documento.TextChanged += new System.EventHandler(this.textBox_Documento_TextChanged);
+            this.textBox_Documento.MouseLeave += new System.EventHandler(this.textBox_Documento_MouseLeave);
+            this.textBox_Documento.MouseEnter += new System.EventHandler(this.textBox_Documento_MouseEnter);
+            // 
+            // textBox_Telefono
+            // 
+            this.textBox_Telefono.Location = new System.Drawing.Point(133, 129);
+            this.textBox_Telefono.Name = "textBox_Telefono";
+            this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Telefono.TabIndex = 12;
+            this.textBox_Telefono.MouseLeave += new System.EventHandler(this.textBox_Telefono_MouseLeave);
+            this.textBox_Telefono.MouseEnter += new System.EventHandler(this.textBox_Telefono_MouseEnter);
+            // 
+            // textBox_Direccion
+            // 
+            this.textBox_Direccion.Location = new System.Drawing.Point(133, 155);
+            this.textBox_Direccion.Name = "textBox_Direccion";
+            this.textBox_Direccion.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Direccion.TabIndex = 11;
+            this.textBox_Direccion.TextChanged += new System.EventHandler(this.textBox_Direccion_TextChanged);
+            this.textBox_Direccion.MouseLeave += new System.EventHandler(this.textBox_Direccion_MouseLeave);
+            this.textBox_Direccion.MouseEnter += new System.EventHandler(this.textBox_Direccion_MouseEnter);
+            // 
+            // textBox_Apellido
+            // 
+            this.textBox_Apellido.Location = new System.Drawing.Point(133, 54);
+            this.textBox_Apellido.Name = "textBox_Apellido";
+            this.textBox_Apellido.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Apellido.TabIndex = 10;
+            this.textBox_Apellido.MouseLeave += new System.EventHandler(this.textBox_Apellido_MouseLeave);
+            this.textBox_Apellido.MouseEnter += new System.EventHandler(this.textBox_Apellido_MouseEnter);
+            // 
+            // label_FechaNacimiento
+            // 
+            this.label_FechaNacimiento.AutoSize = true;
+            this.label_FechaNacimiento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_FechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_FechaNacimiento.Location = new System.Drawing.Point(23, 234);
+            this.label_FechaNacimiento.Name = "label_FechaNacimiento";
+            this.label_FechaNacimiento.Size = new System.Drawing.Size(106, 13);
+            this.label_FechaNacimiento.TabIndex = 9;
+            this.label_FechaNacimiento.Text = "Fecha de nacimiento";
+            // 
+            // label_CodigoPostal
+            // 
+            this.label_CodigoPostal.AutoSize = true;
+            this.label_CodigoPostal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_CodigoPostal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_CodigoPostal.Location = new System.Drawing.Point(57, 182);
+            this.label_CodigoPostal.Name = "label_CodigoPostal";
+            this.label_CodigoPostal.Size = new System.Drawing.Size(72, 13);
+            this.label_CodigoPostal.TabIndex = 8;
+            this.label_CodigoPostal.Text = "Codigo Postal";
+            // 
+            // label_Direccion
+            // 
+            this.label_Direccion.AutoSize = true;
+            this.label_Direccion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Direccion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Direccion.Location = new System.Drawing.Point(75, 158);
+            this.label_Direccion.Name = "label_Direccion";
+            this.label_Direccion.Size = new System.Drawing.Size(52, 13);
+            this.label_Direccion.TabIndex = 7;
+            this.label_Direccion.Text = "Direccion";
+            // 
+            // label_Telefono
+            // 
+            this.label_Telefono.AutoSize = true;
+            this.label_Telefono.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Telefono.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Telefono.Location = new System.Drawing.Point(80, 132);
+            this.label_Telefono.Name = "label_Telefono";
+            this.label_Telefono.Size = new System.Drawing.Size(49, 13);
+            this.label_Telefono.TabIndex = 6;
+            this.label_Telefono.Text = "Telefono";
+            // 
+            // label_Mail
+            // 
+            this.label_Mail.AutoSize = true;
+            this.label_Mail.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Mail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Mail.Location = new System.Drawing.Point(94, 208);
+            this.label_Mail.Name = "label_Mail";
+            this.label_Mail.Size = new System.Drawing.Size(33, 13);
+            this.label_Mail.TabIndex = 5;
+            this.label_Mail.Text = "EMail";
+            // 
+            // label_TipoDocumento
+            // 
+            this.label_TipoDocumento.AutoSize = true;
+            this.label_TipoDocumento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_TipoDocumento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_TipoDocumento.Location = new System.Drawing.Point(30, 82);
+            this.label_TipoDocumento.Name = "label_TipoDocumento";
+            this.label_TipoDocumento.Size = new System.Drawing.Size(99, 13);
+            this.label_TipoDocumento.TabIndex = 4;
+            this.label_TipoDocumento.Text = "Tipo de documento";
+            // 
+            // label_Documento
+            // 
+            this.label_Documento.AutoSize = true;
+            this.label_Documento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Documento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Documento.Location = new System.Drawing.Point(67, 106);
+            this.label_Documento.Name = "label_Documento";
+            this.label_Documento.Size = new System.Drawing.Size(62, 13);
+            this.label_Documento.TabIndex = 3;
+            this.label_Documento.Text = "Documento";
+            // 
+            // label_Apellido
+            // 
+            this.label_Apellido.AutoSize = true;
+            this.label_Apellido.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Apellido.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Apellido.Location = new System.Drawing.Point(85, 57);
+            this.label_Apellido.Name = "label_Apellido";
+            this.label_Apellido.Size = new System.Drawing.Size(44, 13);
+            this.label_Apellido.TabIndex = 2;
+            this.label_Apellido.Text = "Apellido";
+            // 
+            // label_Nombre
+            // 
+            this.label_Nombre.AutoSize = true;
+            this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Nombre.Location = new System.Drawing.Point(85, 31);
+            this.label_Nombre.Name = "label_Nombre";
+            this.label_Nombre.Size = new System.Drawing.Size(44, 13);
+            this.label_Nombre.TabIndex = 1;
+            this.label_Nombre.Text = "Nombre";
+            this.label_Nombre.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBox_Nombre
+            // 
+            this.textBox_Nombre.Location = new System.Drawing.Point(133, 28);
+            this.textBox_Nombre.Name = "textBox_Nombre";
+            this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Nombre.TabIndex = 0;
+            this.textBox_Nombre.MouseLeave += new System.EventHandler(this.textBox_Nombre_MouseLeave);
+            this.textBox_Nombre.MouseEnter += new System.EventHandler(this.textBox_Nombre_MouseEnter);
+            // 
+            // label_Informacion
+            // 
+            this.label_Informacion.AutoSize = true;
+            this.label_Informacion.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label_Informacion.Location = new System.Drawing.Point(91, 300);
+            this.label_Informacion.Name = "label_Informacion";
+            this.label_Informacion.Size = new System.Drawing.Size(0, 13);
+            this.label_Informacion.TabIndex = 9;
+            // 
+            // label_InfTexto
+            // 
+            this.label_InfTexto.AutoSize = true;
+            this.label_InfTexto.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label_InfTexto.Location = new System.Drawing.Point(22, 299);
+            this.label_InfTexto.Name = "label_InfTexto";
+            this.label_InfTexto.Size = new System.Drawing.Size(65, 13);
+            this.label_InfTexto.TabIndex = 10;
+            this.label_InfTexto.Text = "Informacion:";
+            // 
+            // button_Guardar
+            // 
+            this.button_Guardar.Location = new System.Drawing.Point(425, 30);
+            this.button_Guardar.Name = "button_Guardar";
+            this.button_Guardar.Size = new System.Drawing.Size(75, 23);
+            this.button_Guardar.TabIndex = 11;
+            this.button_Guardar.Text = "Guardar";
+            this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.MouseLeave += new System.EventHandler(this.button_Guardar_MouseLeave);
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
+            this.button_Guardar.MouseEnter += new System.EventHandler(this.button_Guardar_MouseEnter);
             // 
             // Alta
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(558, 309);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(523, 325);
+            this.Controls.Add(this.button_Guardar);
+            this.Controls.Add(this.label_InfTexto);
+            this.Controls.Add(this.label_Informacion);
+            this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.paner_Alta);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Alta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alta";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Alta_Load);
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.GroupBox paner_Alta;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox_Anio;
+        private System.Windows.Forms.TextBox textBox_Mes;
+        private System.Windows.Forms.TextBox textBox_Dia;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-
+        private System.Windows.Forms.TextBox textBox_Mail;
+        private System.Windows.Forms.TextBox textBox_CodigoPostal;
+        private System.Windows.Forms.RadioButton radioButton_Pas;
+        private System.Windows.Forms.RadioButton radioButton_Ci;
+        private System.Windows.Forms.RadioButton radioButton_Le;
+        private System.Windows.Forms.RadioButton radioButton_Lc;
+        private System.Windows.Forms.RadioButton radioButton_Dni;
+        private System.Windows.Forms.TextBox textBox_Documento;
+        private System.Windows.Forms.TextBox textBox_Telefono;
+        private System.Windows.Forms.TextBox textBox_Direccion;
+        private System.Windows.Forms.TextBox textBox_Apellido;
+        private System.Windows.Forms.Label label_FechaNacimiento;
+        private System.Windows.Forms.Label label_CodigoPostal;
+        private System.Windows.Forms.Label label_Direccion;
+        private System.Windows.Forms.Label label_Telefono;
+        private System.Windows.Forms.Label label_Mail;
+        private System.Windows.Forms.Label label_TipoDocumento;
+        private System.Windows.Forms.Label label_Documento;
+        private System.Windows.Forms.Label label_Apellido;
+        private System.Windows.Forms.Label label_Nombre;
+        private System.Windows.Forms.TextBox textBox_Nombre;
+        private System.Windows.Forms.Label label_Informacion;
+        private System.Windows.Forms.Label label_InfTexto;
+        private System.Windows.Forms.Button button_Guardar;
     }
 }

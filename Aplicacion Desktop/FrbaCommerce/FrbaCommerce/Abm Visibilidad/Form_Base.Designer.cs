@@ -32,6 +32,7 @@
             this.button_Modificacion = new System.Windows.Forms.Button();
             this.button_Alta = new System.Windows.Forms.Button();
             this.panel_Contenedor = new System.Windows.Forms.GroupBox();
+            this.button_Volver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Baja
@@ -69,16 +70,27 @@
             this.panel_Contenedor.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.panel_Contenedor.Location = new System.Drawing.Point(110, 12);
             this.panel_Contenedor.Name = "panel_Contenedor";
-            this.panel_Contenedor.Size = new System.Drawing.Size(410, 307);
+            this.panel_Contenedor.Size = new System.Drawing.Size(528, 340);
             this.panel_Contenedor.TabIndex = 6;
             this.panel_Contenedor.TabStop = false;
             this.panel_Contenedor.Text = "Visibilidad";
+            // 
+            // button_Volver
+            // 
+            this.button_Volver.Location = new System.Drawing.Point(12, 329);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(75, 23);
+            this.button_Volver.TabIndex = 9;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // Form_Base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 330);
+            this.ClientSize = new System.Drawing.Size(649, 364);
+            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.panel_Contenedor);
             this.Controls.Add(this.button_Baja);
             this.Controls.Add(this.button_Modificacion);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.Button button_Modificacion;
         private System.Windows.Forms.Button button_Alta;
         private System.Windows.Forms.GroupBox panel_Contenedor;
+        private System.Windows.Forms.Button button_Volver;
     }
 }
