@@ -30,11 +30,7 @@
         {
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
-            this.textBox_Anio = new System.Windows.Forms.TextBox();
-            this.textBox_Mes = new System.Windows.Forms.TextBox();
-            this.textBox_Dia = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePicker_FechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.textBox_Mail = new System.Windows.Forms.TextBox();
             this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
             this.radioButton_Pas = new System.Windows.Forms.RadioButton();
@@ -77,11 +73,7 @@
             // 
             // paner_Alta
             // 
-            this.paner_Alta.Controls.Add(this.textBox_Anio);
-            this.paner_Alta.Controls.Add(this.textBox_Mes);
-            this.paner_Alta.Controls.Add(this.textBox_Dia);
-            this.paner_Alta.Controls.Add(this.label11);
-            this.paner_Alta.Controls.Add(this.label10);
+            this.paner_Alta.Controls.Add(this.dateTimePicker_FechaNacimiento);
             this.paner_Alta.Controls.Add(this.textBox_Mail);
             this.paner_Alta.Controls.Add(this.textBox_CodigoPostal);
             this.paner_Alta.Controls.Add(this.radioButton_Pas);
@@ -112,55 +104,14 @@
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
             // 
-            // textBox_Anio
+            // dateTimePicker_FechaNacimiento
             // 
-            this.textBox_Anio.Location = new System.Drawing.Point(281, 231);
-            this.textBox_Anio.Name = "textBox_Anio";
-            this.textBox_Anio.Size = new System.Drawing.Size(50, 20);
-            this.textBox_Anio.TabIndex = 25;
-            this.textBox_Anio.MouseLeave += new System.EventHandler(this.textBox_Anio_MouseLeave);
-            this.textBox_Anio.MouseEnter += new System.EventHandler(this.textBox_Anio_MouseEnter);
-            // 
-            // textBox_Mes
-            // 
-            this.textBox_Mes.Location = new System.Drawing.Point(207, 231);
-            this.textBox_Mes.Name = "textBox_Mes";
-            this.textBox_Mes.Size = new System.Drawing.Size(50, 20);
-            this.textBox_Mes.TabIndex = 24;
-            this.textBox_Mes.MouseLeave += new System.EventHandler(this.textBox_Mes_MouseLeave);
-            this.textBox_Mes.MouseEnter += new System.EventHandler(this.textBox_Mes_MouseEnter);
-            // 
-            // textBox_Dia
-            // 
-            this.textBox_Dia.Location = new System.Drawing.Point(133, 231);
-            this.textBox_Dia.Name = "textBox_Dia";
-            this.textBox_Dia.Size = new System.Drawing.Size(50, 20);
-            this.textBox_Dia.TabIndex = 23;
-            this.textBox_Dia.TextChanged += new System.EventHandler(this.textBox_Dia_TextChanged);
-            this.textBox_Dia.MouseLeave += new System.EventHandler(this.textBox_Dia_MouseLeave);
-            this.textBox_Dia.MouseEnter += new System.EventHandler(this.textBox_Dia_MouseEnter);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(263, 234);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(12, 13);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "/";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(189, 234);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(12, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "/";
+            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(133, 231);
+            this.dateTimePicker_FechaNacimiento.Name = "dateTimePicker_FechaNacimiento";
+            this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(232, 20);
+            this.dateTimePicker_FechaNacimiento.TabIndex = 21;
+            this.dateTimePicker_FechaNacimiento.MouseLeave += new System.EventHandler(this.dateTimePicker1_MouseLeave);
+            this.dateTimePicker_FechaNacimiento.MouseEnter += new System.EventHandler(this.dateTimePicker1_MouseEnter);
             // 
             // textBox_Mail
             // 
@@ -377,7 +328,6 @@
             this.label_Nombre.Size = new System.Drawing.Size(44, 13);
             this.label_Nombre.TabIndex = 1;
             this.label_Nombre.Text = "Nombre";
-            this.label_Nombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox_Nombre
             // 
@@ -445,11 +395,6 @@
 
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.GroupBox paner_Alta;
-        private System.Windows.Forms.TextBox textBox_Anio;
-        private System.Windows.Forms.TextBox textBox_Mes;
-        private System.Windows.Forms.TextBox textBox_Dia;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_Mail;
         private System.Windows.Forms.TextBox textBox_CodigoPostal;
         private System.Windows.Forms.RadioButton radioButton_Pas;
@@ -474,5 +419,6 @@
         private System.Windows.Forms.Label label_Informacion;
         private System.Windows.Forms.Label label_InfTexto;
         private System.Windows.Forms.Button button_Guardar;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
     }
 }

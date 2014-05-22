@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaCommerce.Abm_Rubro
+namespace FrbaCommerce.Registro_de_Usuario
 {
-    public partial class Alta : Form
+    public partial class Modificacion : Form
     {
-        public Alta()
+        public Modificacion()
         {
             InitializeComponent();
         }

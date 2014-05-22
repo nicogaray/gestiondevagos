@@ -48,9 +48,9 @@ namespace FrbaCommerce.Menu
 
         private void button_ABMRubro_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Abm_Rubro.Form_Base form_base = new Abm_Rubro.Form_Base();
-            form_base.Show();
+            //this.Hide();
+            //Abm_Rubro.Form_Base form_base = new Abm_Rubro.Form_Base();
+            //form_base.Show();
 
         }
 

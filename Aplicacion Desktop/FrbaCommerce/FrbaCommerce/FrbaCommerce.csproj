@@ -52,11 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Cliente\Baja.cs">
+    <Compile Include="Abm Cliente\ListadoSeleccionModificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\Baja.Designer.cs">
-      <DependentUpon>Baja.cs</DependentUpon>
+    <Compile Include="Abm Cliente\ListadoSeleccionModificacion.Designer.cs">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\Modificacion.Designer.cs">
+      <DependentUpon>Modificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Cliente\Alta.cs">
       <SubType>Form</SubType>
@@ -64,11 +70,17 @@
     <Compile Include="Abm Cliente\Alta.Designer.cs">
       <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\Modificacion.cs">
+    <Compile Include="Abm Cliente\Baja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\Modificacion.Designer.cs">
-      <DependentUpon>Modificacion.cs</DependentUpon>
+    <Compile Include="Abm Cliente\Baja.Designer.cs">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\ListadoSeleccionBaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\ListadoSeleccionBaja.Designer.cs">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Cliente\Form_Base.cs">
       <SubType>Form</SubType>
@@ -88,17 +100,29 @@
     <Compile Include="Abm Empresa\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Empresa\Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\Modificacion.Designer.cs">
+      <DependentUpon>Modificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa\ListadoSeleccionModificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\ListadoSeleccionModificacion.Designer.cs">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Empresa\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Empresa\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Empresa\Modificacion.cs">
+    <Compile Include="Abm Empresa\ListadoSeleccionBaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Empresa\Modificacion.Designer.cs">
-      <DependentUpon>Modificacion.cs</DependentUpon>
+    <Compile Include="Abm Empresa\ListadoSeleccionBaja.Designer.cs">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\Alta.cs">
       <SubType>Form</SubType>
@@ -112,11 +136,11 @@
     <Compile Include="Abm Rol\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Form_Base.cs">
+    <Compile Include="Abm Rol\ListadoSeleccionBaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Form_Base.Designer.cs">
-      <DependentUpon>Form_Base.cs</DependentUpon>
+    <Compile Include="Abm Rol\ListadoSeleccionBaja.Designer.cs">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\Modificacion.cs">
       <SubType>Form</SubType>
@@ -124,29 +148,17 @@
     <Compile Include="Abm Rol\Modificacion.Designer.cs">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rubro\Alta.cs">
+    <Compile Include="Abm Rol\ListadoSeleccionModificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rubro\Alta.Designer.cs">
-      <DependentUpon>Alta.cs</DependentUpon>
+    <Compile Include="Abm Rol\ListadoSeleccionModificacion.Designer.cs">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rubro\Baja.cs">
+    <Compile Include="Abm Rol\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rubro\Baja.Designer.cs">
-      <DependentUpon>Baja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Abm Rubro\Form_Base.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Rubro\Form_Base.Designer.cs">
+    <Compile Include="Abm Rol\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Abm Rubro\Modificacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Rubro\Modificacion.Designer.cs">
-      <DependentUpon>Modificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Visibilidad\Alta.cs">
       <SubType>Form</SubType>
@@ -160,17 +172,29 @@
     <Compile Include="Abm Visibilidad\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Visibilidad\Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Visibilidad\Modificacion.Designer.cs">
+      <DependentUpon>Modificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Visibilidad\ListadoSeleccionModificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Visibilidad\ListadoSeleccionModificacion.Designer.cs">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Visibilidad\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Visibilidad\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Visibilidad\Modificacion.cs">
+    <Compile Include="Abm Visibilidad\ListadoSeleccionBaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Visibilidad\Modificacion.Designer.cs">
-      <DependentUpon>Modificacion.cs</DependentUpon>
+    <Compile Include="Abm Visibilidad\ListadoSeleccionBaja.Designer.cs">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar Vendedor\Form1.cs">
       <SubType>Form</SubType>
@@ -252,23 +276,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Abm Cliente\Baja.resx">
-      <DependentUpon>Baja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\Alta.resx">
-      <DependentUpon>Alta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\Form_Base.resx">
-      <DependentUpon>Form_Base.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Cliente\ListadoSeleccionModificacion.resx">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\Alta.resx">
+      <DependentUpon>Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\Baja.resx">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\Form_Base.resx">
+      <DependentUpon>Form_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\ListadoSeleccionBaja.resx">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\Baja.resx">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\ListadoSeleccionBaja.resx">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\ListadoSeleccionModificacion.resx">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
@@ -279,22 +318,16 @@
     <EmbeddedResource Include="Abm Rol\Baja.resx">
       <DependentUpon>Baja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\ListadoSeleccionBaja.resx">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\ListadoSeleccionModificacion.resx">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\Modificacion.resx">
-      <DependentUpon>Modificacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rubro\Alta.resx">
-      <DependentUpon>Alta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rubro\Baja.resx">
-      <DependentUpon>Baja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rubro\Form_Base.resx">
-      <DependentUpon>Form_Base.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rubro\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Alta.resx">
@@ -305,6 +338,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\ListadoSeleccionBaja.resx">
+      <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\ListadoSeleccionModificacion.resx">
+      <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
@@ -329,12 +368,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario\Alta.resx">
+      <DependentUpon>Alta.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -344,12 +384,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Registro de Usuario\Form1.cs">
+    <Compile Include="Registro de Usuario\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro de Usuario\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro de Usuario\Alta.Designer.cs">
+      <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\Modificacion.Designer.cs">
+      <DependentUpon>Modificacion.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abm Rubro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

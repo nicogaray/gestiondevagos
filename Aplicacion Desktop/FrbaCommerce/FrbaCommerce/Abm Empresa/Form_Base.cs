@@ -33,7 +33,7 @@ namespace FrbaCommerce.Abm_Empresa
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Empresa.Baja baja = new Abm_Empresa.Baja();
+            Abm_Empresa.ListadoSeleccionBaja baja = new Abm_Empresa.ListadoSeleccionBaja();
             baja.TopLevel = false;
             baja.FormBorderStyle = FormBorderStyle.None;
             baja.Dock = DockStyle.Fill;
@@ -46,7 +46,7 @@ namespace FrbaCommerce.Abm_Empresa
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Empresa.Modificacion modificacion = new Abm_Empresa.Modificacion();
+            Abm_Empresa.ListadoSeleccionModificacion modificacion = new Abm_Empresa.ListadoSeleccionModificacion();
             modificacion.TopLevel = false;
             modificacion.FormBorderStyle = FormBorderStyle.None;
             modificacion.Dock = DockStyle.Fill;

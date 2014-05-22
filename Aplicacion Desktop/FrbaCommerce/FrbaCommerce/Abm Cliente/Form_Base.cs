@@ -38,7 +38,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Cliente.Baja baja = new Abm_Cliente.Baja();
+            Abm_Cliente.ListadoSeleccionBaja baja = new Abm_Cliente.ListadoSeleccionBaja();
             baja.TopLevel = false;
             baja.FormBorderStyle = FormBorderStyle.None;
             baja.Dock = DockStyle.Fill;
@@ -51,7 +51,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
+            Abm_Cliente.ListadoSeleccionModificacion modificacion = new Abm_Cliente.ListadoSeleccionModificacion();
             modificacion.TopLevel = false;
             modificacion.FormBorderStyle = FormBorderStyle.None;
             modificacion.Dock = DockStyle.Fill;
@@ -70,6 +70,16 @@ namespace FrbaCommerce.Abm_Cliente
             this.Hide();
             Menu.Menu_Administrador menu_administrador = new Menu.Menu_Administrador();
             menu_administrador.Show();
+        }
+
+        private void panel_Contenedor_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         //private void Form_Base_FormClosing(object sender, FormClosingEventArgs e)

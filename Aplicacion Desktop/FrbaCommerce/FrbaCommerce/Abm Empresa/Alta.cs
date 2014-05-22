@@ -23,13 +23,10 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
-            textBox_Anio.Clear();
             textBox_CodigoPostal.Clear();
             textBox_Cuit.Clear();
-            textBox_Dia.Clear();
             textBox_Direccion.Clear();
             textBox_Mail.Clear();
-            textBox_Mes.Clear();
             textBox_RazonSocial.Clear();
             textBox_NombreContacto.Clear();
             textBox_Telefono.Clear();
@@ -56,23 +53,6 @@ namespace FrbaCommerce.Abm_Empresa
         {
             label_Informacion.Text = "Calle Altura Ciudad Provincia";
 
-        }
-
-        private void textBox_Dia_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Dia - Ej: 01";
-
-        }
-
-        private void textBox_Mes_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Mes - Ej: 01";
-
-        }
-
-        private void textBox_Anio_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Año - Ej: 2014";
         }
 
         private void textBox_RazonSocial_MouseLeave(object sender, EventArgs e)
@@ -145,7 +125,7 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void button_Limpiar_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario";
+            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario hasta el momento";
 
         }
 
@@ -162,6 +142,11 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
         private void textBox_RazonSocial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Alta_Load(object sender, EventArgs e)
         {
 
         }

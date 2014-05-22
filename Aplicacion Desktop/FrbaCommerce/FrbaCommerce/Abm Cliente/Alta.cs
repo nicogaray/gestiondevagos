@@ -21,10 +21,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)
@@ -93,60 +90,22 @@ namespace FrbaCommerce.Abm_Cliente
             label_Informacion.Text = "Calle Altura Departamento Ciudad Provincia";
 
         }
-
-        private void textBox_Dia_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_Dia_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Dia - Ej: 01";
-        }
-
-        private void textBox_Dia_MouseLeave(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "";
-
-        }
-
-        private void textBox_Mes_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Mes - Ej: 01";
-
-        }
-
-        private void textBox_Mes_MouseLeave(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "";
-
-        }
-
-        private void textBox_Anio_MouseEnter(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "Año - Ej: 2014";
-
-        }
-
-        private void textBox_Anio_MouseLeave(object sender, EventArgs e)
-        {
-            label_Informacion.Text = "";
-
-        }
+ 
 
         private void button2_Click(object sender, EventArgs e)
         {
 
             textBox_Apellido.Clear();
-            textBox_Anio.Clear();
             textBox_CodigoPostal.Clear();
-            textBox_Dia.Clear();
             textBox_Direccion.Clear();
             textBox_Documento.Clear();
             textBox_Mail.Clear();
-            textBox_Mes.Clear();
             textBox_Nombre.Clear();
             textBox_Telefono.Clear();
+
+            DateTime fecha = DateTime.Now;
+            dateTimePicker_FechaNacimiento.Value = fecha;
+
             radioButton_Ci.Checked = false;
             radioButton_Dni.Checked = false;
             radioButton_Lc.Checked = false;
@@ -157,7 +116,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button2_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario";
+            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario hasta el momento";
 
         }
 
@@ -187,10 +146,22 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Guardar_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Asegurese de haber ingresado los datos correctamente antes de gurdar";
+            label_Informacion.Text = "Asegurese de haber ingresado los datos correctamente antes de guardar";
         }
 
         private void button_Guardar_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
+
+        private void dateTimePicker1_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Seleccione la fecha correspondiente";
+
+        }
+
+        private void dateTimePicker1_MouseLeave(object sender, EventArgs e)
         {
             label_Informacion.Text = "";
 

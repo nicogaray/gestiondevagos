@@ -78,6 +78,7 @@
             this.panel_Contenedor.TabIndex = 0;
             this.panel_Contenedor.TabStop = false;
             this.panel_Contenedor.Text = "Cliente";
+            this.panel_Contenedor.Enter += new System.EventHandler(this.panel_Contenedor_Enter);
             // 
             // button_Volver
             // 

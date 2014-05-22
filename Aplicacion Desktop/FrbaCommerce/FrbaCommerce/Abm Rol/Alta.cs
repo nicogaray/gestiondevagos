@@ -23,13 +23,14 @@ namespace FrbaCommerce.ABM_Rol
 
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Cliente, Empresa o Administrativo";
+            label_Informacion.Text = "Especifique el rol";
 
         }
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
             textBox_Nombre.Clear();
+           dataGridView_ListaFuncionalidades.Rows.Clear();
         }
 
         private void button_Guardar_Click(object sender, EventArgs e)
@@ -51,13 +52,13 @@ namespace FrbaCommerce.ABM_Rol
 
         private void button_Guardar_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Asegurese de haber ingresado los datos correctamente antes de gurdar";
+            label_Informacion.Text = "Asegurese de haber ingresado los datos correctamente antes de guardar";
 
         }
 
         private void button_Limpiar_MouseEnter(object sender, EventArgs e)
         {
-            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario";
+            label_Informacion.Text = "Se borrarán todos los datos ingresados en el formulario hasta el momento";
 
         }
 
@@ -74,6 +75,20 @@ namespace FrbaCommerce.ABM_Rol
         }
 
         private void button_Limpiar_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
+
+      
+        
+        private void dataGridView_ListaFuncionalidades_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Asegurese que el término del campo Funcionalidad sea simple y concreto";
+
+        }
+
+        private void dataGridView_ListaFuncionalidades_MouseLeave(object sender, EventArgs e)
         {
             label_Informacion.Text = "";
 

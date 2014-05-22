@@ -38,7 +38,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Visibilidad.Baja baja = new Abm_Visibilidad.Baja();
+            Abm_Visibilidad.ListadoSeleccionBaja baja = new Abm_Visibilidad.ListadoSeleccionBaja();
             baja.TopLevel = false;
             baja.FormBorderStyle = FormBorderStyle.None;
             baja.Dock = DockStyle.Fill;
@@ -51,7 +51,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            Abm_Visibilidad.Modificacion modificacion = new Abm_Visibilidad.Modificacion();
+            Abm_Visibilidad.ListadoSeleccionModificacion modificacion = new Abm_Visibilidad.ListadoSeleccionModificacion();
             modificacion.TopLevel = false;
             modificacion.FormBorderStyle = FormBorderStyle.None;
             modificacion.Dock = DockStyle.Fill;

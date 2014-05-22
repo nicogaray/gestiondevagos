@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.Abm_Rubro
+﻿namespace FrbaCommerce.Registro_de_Usuario
 {
-    partial class Modificacion
+    partial class Alta
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // Modificacion
+            // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
-            this.Name = "Modificacion";
-            this.Text = "Form3";
+            this.Name = "Alta";
+            this.Text = "Alta Usuario";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }

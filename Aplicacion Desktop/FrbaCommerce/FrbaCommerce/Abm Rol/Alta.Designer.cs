@@ -33,10 +33,14 @@
             this.label_Informacion = new System.Windows.Forms.Label();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
+            this.dataGridView_ListaFuncionalidades = new System.Windows.Forms.DataGridView();
+            this.Funcionalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_ListadoFuncionalidades = new System.Windows.Forms.Label();
             this.label_Nombre = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.paner_Alta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Guardar
@@ -85,6 +89,7 @@
             // 
             // paner_Alta
             // 
+            this.paner_Alta.Controls.Add(this.dataGridView_ListaFuncionalidades);
             this.paner_Alta.Controls.Add(this.label_ListadoFuncionalidades);
             this.paner_Alta.Controls.Add(this.label_Nombre);
             this.paner_Alta.Controls.Add(this.textBox_Nombre);
@@ -96,6 +101,33 @@
             this.paner_Alta.TabIndex = 17;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Rol";
+            // 
+            // dataGridView_ListaFuncionalidades
+            // 
+            this.dataGridView_ListaFuncionalidades.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView_ListaFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_ListaFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Funcionalidad,
+            this.Descripcion});
+            this.dataGridView_ListaFuncionalidades.GridColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(56, 98);
+            this.dataGridView_ListaFuncionalidades.Name = "dataGridView_ListaFuncionalidades";
+            this.dataGridView_ListaFuncionalidades.Size = new System.Drawing.Size(279, 168);
+            this.dataGridView_ListaFuncionalidades.TabIndex = 3;
+            this.dataGridView_ListaFuncionalidades.MouseLeave += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseLeave);
+            this.dataGridView_ListaFuncionalidades.MouseEnter += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseEnter);
+            // 
+            // Funcionalidad
+            // 
+            this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Funcionalidad.HeaderText = "Funcionalidad";
+            this.Funcionalidad.Name = "Funcionalidad";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
             // 
             // label_ListadoFuncionalidades
             // 
@@ -143,6 +175,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +191,8 @@
         private System.Windows.Forms.Label label_ListadoFuncionalidades;
         private System.Windows.Forms.Label label_Nombre;
         private System.Windows.Forms.TextBox textBox_Nombre;
+        private System.Windows.Forms.DataGridView dataGridView_ListaFuncionalidades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Funcionalidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
     }
 }

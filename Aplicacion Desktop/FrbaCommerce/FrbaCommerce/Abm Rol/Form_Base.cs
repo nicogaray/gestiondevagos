@@ -34,7 +34,7 @@ namespace FrbaCommerce.ABM_Rol
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
 
-            ABM_Rol.Baja baja = new ABM_Rol.Baja();
+            Abm_Rol.ListadoSeleccionBaja baja = new Abm_Rol.ListadoSeleccionBaja();
             baja.TopLevel = false;
             baja.FormBorderStyle = FormBorderStyle.None;
             baja.Dock = DockStyle.Fill;
@@ -47,7 +47,7 @@ namespace FrbaCommerce.ABM_Rol
         {
             if (this.panel_Contenedor.Controls.Count > 0)
                 this.panel_Contenedor.Controls.RemoveAt(0);
-            ABM_Rol.Modificacion modificacion = new ABM_Rol.Modificacion();
+            Abm_Rol.ListadoSeleccionModificacion modificacion = new Abm_Rol.ListadoSeleccionModificacion();
             modificacion.TopLevel = false;
             modificacion.FormBorderStyle = FormBorderStyle.None;
             modificacion.Dock = DockStyle.Fill;
