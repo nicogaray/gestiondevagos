@@ -45,6 +45,7 @@ namespace FrbaCommerce.Menu
         {
             this.Hide();
             Registro_de_Usuario.Alta altaUsuario = new Registro_de_Usuario.Alta();
+            altaUsuario.cliente = false;
             altaUsuario.Show();
         }
 

@@ -239,7 +239,7 @@
             this.Controls.Add(this.groupBox_ModificarDatos);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Modificacion";
-            this.Text = "Form2";
+            this.Text = "Modificacion Usuario";
             this.Load += new System.EventHandler(this.Modificacion_Load);
             this.MouseEnter += new System.EventHandler(this.Modificacion_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.Modificacion_MouseLeave);

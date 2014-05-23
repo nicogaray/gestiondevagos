@@ -408,7 +408,7 @@
             this.Controls.Add(this.paner_Alta);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Modificacion";
-            this.Text = "Form2";
+            this.Text = "Modificacion";
             this.Load += new System.EventHandler(this.Modificacion_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();

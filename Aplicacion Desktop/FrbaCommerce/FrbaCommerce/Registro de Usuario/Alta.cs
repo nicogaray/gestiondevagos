@@ -11,6 +11,8 @@ namespace FrbaCommerce.Registro_de_Usuario
 {
     public partial class Alta : Form
     {
+        public bool cliente = false;
+
         public Alta()
         {
             InitializeComponent();
@@ -119,14 +121,14 @@ namespace FrbaCommerce.Registro_de_Usuario
         private void Alta_Load(object sender, EventArgs e)
         {
             textBox_RolAsignado.Enabled = false;
-            // ¡hay que saber si el usuario q ingresa es empresa o cliente
-            if (true)
+
+            if (cliente)
             {
-                textBox_RolAsignado.Text = "Empresa";
+                textBox_RolAsignado.Text = "Cliente";
             }
             else
             {
-                textBox_RolAsignado.Text = "Cliente";
+                textBox_RolAsignado.Text = "Empresa";
 
             }
         }
