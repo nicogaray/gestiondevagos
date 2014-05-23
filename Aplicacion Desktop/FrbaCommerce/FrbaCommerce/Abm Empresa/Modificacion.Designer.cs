@@ -47,9 +47,10 @@
             this.label_Cuit = new System.Windows.Forms.Label();
             this.label_RazonSocial = new System.Windows.Forms.Label();
             this.textBox_RazonSocial = new System.Windows.Forms.TextBox();
-            this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
+            this.button_Volver = new System.Windows.Forms.Button();
+            this.button_Cancelar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -251,19 +252,6 @@
             this.textBox_RazonSocial.MouseLeave += new System.EventHandler(this.textBox_RazonSocial_MouseLeave);
             this.textBox_RazonSocial.MouseEnter += new System.EventHandler(this.textBox_RazonSocial_MouseEnter);
             // 
-            // button_Cancelar
-            // 
-            this.button_Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button_Cancelar.Location = new System.Drawing.Point(413, 106);
-            this.button_Cancelar.Name = "button_Cancelar";
-            this.button_Cancelar.Size = new System.Drawing.Size(88, 31);
-            this.button_Cancelar.TabIndex = 23;
-            this.button_Cancelar.Text = "Cancelar";
-            this.button_Cancelar.UseVisualStyleBackColor = true;
-            this.button_Cancelar.MouseLeave += new System.EventHandler(this.button_Cancelar_MouseLeave);
-            this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
-            this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
-            // 
             // button_Guardar
             // 
             this.button_Guardar.Location = new System.Drawing.Point(413, 10);
@@ -289,11 +277,36 @@
             this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             this.button_Limpiar.MouseEnter += new System.EventHandler(this.button_Limpiar_MouseEnter);
             // 
+            // button_Volver
+            // 
+            this.button_Volver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Volver.Location = new System.Drawing.Point(413, 254);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(88, 31);
+            this.button_Volver.TabIndex = 24;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            // 
+            // button_Cancelar
+            // 
+            this.button_Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Cancelar.Location = new System.Drawing.Point(413, 106);
+            this.button_Cancelar.Name = "button_Cancelar";
+            this.button_Cancelar.Size = new System.Drawing.Size(88, 31);
+            this.button_Cancelar.TabIndex = 23;
+            this.button_Cancelar.Text = "Cancelar";
+            this.button_Cancelar.UseVisualStyleBackColor = true;
+            this.button_Cancelar.MouseLeave += new System.EventHandler(this.button_Cancelar_MouseLeave);
+            this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
+            this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
+            // 
             // Modificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
+            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.button_Limpiar);
@@ -332,8 +345,9 @@
         private System.Windows.Forms.Label label_RazonSocial;
         private System.Windows.Forms.TextBox textBox_RazonSocial;
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
-        private System.Windows.Forms.Button button_Cancelar;
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Limpiar;
+        private System.Windows.Forms.Button button_Volver;
+        private System.Windows.Forms.Button button_Cancelar;
     }
 }

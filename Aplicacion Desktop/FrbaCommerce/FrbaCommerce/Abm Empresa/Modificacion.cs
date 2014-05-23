@@ -11,6 +11,7 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Modificacion : Form
     {
+        public bool desdeModificacionUsuario = false;
         public Modificacion()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace FrbaCommerce.Abm_Empresa
             textBox_Telefono.Clear();
             textBox_NombreContacto.Clear();
             textBox_RazonSocial.Clear();
-            
+
             DateTime fecha = DateTime.Now;
             dateTimePicker_FechaNacimiento.Value = fecha;
         }
@@ -130,7 +131,7 @@ namespace FrbaCommerce.Abm_Empresa
 
         }
 
-    
+
         private void textBox_Direccion_MouseLeave(object sender, EventArgs e)
         {
             label_Informacion.Text = "";
@@ -139,7 +140,25 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void Modificacion_Load(object sender, EventArgs e)
         {
+            if (desdeModificacionUsuario)
+            {
+                button_Cancelar.Hide();
+                button_Volver.Show();
+            }
+            else
+            {
+                button_Volver.Hide();
+            }
+        }
 
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Menu.Menu_Empresa menu_administrador = new Menu.Menu_Empresa();
+            menu_administrador.Show();
         }
     }
 }
+
+       

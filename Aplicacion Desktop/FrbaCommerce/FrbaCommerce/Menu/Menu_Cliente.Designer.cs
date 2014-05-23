@@ -35,6 +35,7 @@
             this.button_Preguntar = new System.Windows.Forms.Button();
             this.button_FacturarPublicacion = new System.Windows.Forms.Button();
             this.button_RegistroUsuario = new System.Windows.Forms.Button();
+            this.button_ModificacionUsuario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
@@ -100,12 +101,24 @@
             this.button_RegistroUsuario.TabIndex = 6;
             this.button_RegistroUsuario.Text = "Registro de usuario";
             this.button_RegistroUsuario.UseVisualStyleBackColor = true;
+            this.button_RegistroUsuario.Click += new System.EventHandler(this.button_RegistroUsuario_Click);
+            // 
+            // button_ModificacionUsuario
+            // 
+            this.button_ModificacionUsuario.Location = new System.Drawing.Point(72, 13);
+            this.button_ModificacionUsuario.Name = "button_ModificacionUsuario";
+            this.button_ModificacionUsuario.Size = new System.Drawing.Size(310, 40);
+            this.button_ModificacionUsuario.TabIndex = 7;
+            this.button_ModificacionUsuario.Text = "Modificacion de usuario";
+            this.button_ModificacionUsuario.UseVisualStyleBackColor = true;
+            this.button_ModificacionUsuario.Click += new System.EventHandler(this.button_ModificacionUsuario_Click);
             // 
             // Menu_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 338);
+            this.Controls.Add(this.button_ModificacionUsuario);
             this.Controls.Add(this.button_RegistroUsuario);
             this.Controls.Add(this.button_FacturarPublicacion);
             this.Controls.Add(this.button_Preguntar);
@@ -117,6 +130,7 @@
             this.MaximizeBox = false;
             this.Name = "Menu_Cliente";
             this.Text = "Cliente - Seleccione una funcionalidad";
+            this.Load += new System.EventHandler(this.Menu_Cliente_Load);
             this.ResumeLayout(false);
 
         }
@@ -130,5 +144,6 @@
         private System.Windows.Forms.Button button_Preguntar;
         private System.Windows.Forms.Button button_FacturarPublicacion;
         private System.Windows.Forms.Button button_RegistroUsuario;
+        private System.Windows.Forms.Button button_ModificacionUsuario;
     }
 }

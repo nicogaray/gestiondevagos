@@ -48,16 +48,9 @@ namespace FrbaCommerce.Menu
         private void button_Cliente_Click(object sender, EventArgs e)
         {
             this.Hide();
-            if (true) //no estan cargados los datos de usuario
-            {
-                Registro_de_Usuario.Alta registro_alta = new Registro_de_Usuario.Alta();
-                registro_alta.Show();
-            }
-            else
-            {
-                Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
-                menu_administrador.Show();
-            }
+            Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
+            menu_administrador.Show();
+            
         }
 
         private void button_Empresa_Click(object sender, EventArgs e)

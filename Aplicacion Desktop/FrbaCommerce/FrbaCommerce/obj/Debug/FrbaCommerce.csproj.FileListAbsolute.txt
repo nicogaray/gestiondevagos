@@ -35,3 +35,4 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Rol.ListadoSeleccionBaja.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Visibilidad.ListadoSeleccionModificacion.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Visibilidad.Modificacion.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Registro_de_Usuario.Modificacion.resources

@@ -56,6 +56,7 @@
             this.label_Nombre = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.button_Cancelar = new System.Windows.Forms.Button();
+            this.button_Volver = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -382,11 +383,23 @@
             this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
             this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
             // 
+            // button_Volver
+            // 
+            this.button_Volver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Volver.Location = new System.Drawing.Point(413, 254);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(88, 31);
+            this.button_Volver.TabIndex = 18;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Modificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
+            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.label_InfTexto);
@@ -434,6 +447,7 @@
         private System.Windows.Forms.TextBox textBox_Nombre;
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
         private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.Button button_Volver;
 
 
     }

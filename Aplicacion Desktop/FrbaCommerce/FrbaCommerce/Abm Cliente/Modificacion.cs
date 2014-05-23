@@ -11,6 +11,8 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Modificacion : Form
     {
+        public bool desdeModificacionUsuario = false;
+
         public Modificacion()
         {
             InitializeComponent();
@@ -134,12 +136,20 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-        private void Modificacion_Load(object sender, EventArgs e)
+        public void Modificacion_Load(object sender, EventArgs e)
         {
-
+            if (desdeModificacionUsuario)
+            {
+                button_Cancelar.Hide();
+                button_Volver.Show();
+            }
+            else
+            {
+                button_Volver.Hide();
+            }
         }
 
-        private void button_Cancelar_Click(object sender, EventArgs e)
+        public void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
             Abm_Cliente.ListadoSeleccionModificacion listado_modificacion = new Abm_Cliente.ListadoSeleccionModificacion();
@@ -180,6 +190,13 @@ namespace FrbaCommerce.Abm_Cliente
         {
             label_Informacion.Text = "";
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
+            menu_administrador.Show();
         }
     }
 }
