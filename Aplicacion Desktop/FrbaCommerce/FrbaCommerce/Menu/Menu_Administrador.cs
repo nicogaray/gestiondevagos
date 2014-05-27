@@ -62,6 +62,13 @@ namespace FrbaCommerce.Menu
 
         }
 
+        private void button_ListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Listado_Estadistico.ListadoEstadistico listado = new Listado_Estadistico.ListadoEstadistico();
+            listado.Show();
+        }
+
       
     }
 }
