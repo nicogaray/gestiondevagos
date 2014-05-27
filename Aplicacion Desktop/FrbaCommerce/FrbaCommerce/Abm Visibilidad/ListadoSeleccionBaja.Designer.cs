@@ -148,6 +148,7 @@
             this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.groupBox_Filtro);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "ListadoSeleccionBaja";
             this.Text = "Form3";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

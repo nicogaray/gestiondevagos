@@ -55,5 +55,13 @@ namespace FrbaCommerce.Menu
             Registro_de_Usuario.Modificacion modUsuario = new Registro_de_Usuario.Modificacion();
             modUsuario.Show();
         }
+
+        private void button_HistorialEmpresa_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Historial_Cliente.Historial historial = new Historial_Cliente.Historial();
+            historial.cliente = false;
+            historial.Show();
+        }
     }
 }

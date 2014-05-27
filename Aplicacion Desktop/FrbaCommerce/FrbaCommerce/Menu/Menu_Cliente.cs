@@ -58,5 +58,14 @@ namespace FrbaCommerce.Menu
             modUsuario.cliente = true;
             modUsuario.Show();
         }
+
+        private void button_HistorialCliente_Click(object sender, EventArgs e)
+        {
+            Historial_Cliente.Historial historial = new Historial_Cliente.Historial();
+            historial.cliente = true;
+            historial.Show();
+            this.Close();
+          
+        }
     }
 }

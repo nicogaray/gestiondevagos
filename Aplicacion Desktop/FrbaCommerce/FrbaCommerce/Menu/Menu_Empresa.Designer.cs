@@ -72,6 +72,7 @@
             this.button_HistorialEmpresa.TabIndex = 3;
             this.button_HistorialEmpresa.Text = "Historial de la Empresa";
             this.button_HistorialEmpresa.UseVisualStyleBackColor = true;
+            this.button_HistorialEmpresa.Click += new System.EventHandler(this.button_HistorialEmpresa_Click);
             // 
             // button_ModificacionUsuario
             // 

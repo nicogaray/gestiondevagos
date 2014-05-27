@@ -74,6 +74,7 @@
             this.button_HistorialCliente.TabIndex = 3;
             this.button_HistorialCliente.Text = "Historial del Cliente";
             this.button_HistorialCliente.UseVisualStyleBackColor = true;
+            this.button_HistorialCliente.Click += new System.EventHandler(this.button_HistorialCliente_Click);
             // 
             // button_Preguntar
             // 
