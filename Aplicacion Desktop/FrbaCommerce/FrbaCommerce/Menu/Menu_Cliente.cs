@@ -67,5 +67,12 @@ namespace FrbaCommerce.Menu
             this.Close();
           
         }
+
+        private void button_CalificarVendedor_Click(object sender, EventArgs e)
+        {
+            Calificar_Vendedor.Calificar_Vendedor calificar = new Calificar_Vendedor.Calificar_Vendedor();
+            calificar.Show();
+            this.Close();
+        }
     }
 }

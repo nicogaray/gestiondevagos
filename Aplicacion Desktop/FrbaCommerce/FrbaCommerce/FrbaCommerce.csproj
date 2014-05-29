@@ -200,11 +200,11 @@
     <Compile Include="Abm Visibilidad\ListadoSeleccionBaja.Designer.cs">
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.cs">
+    <Compile Include="Calificar Vendedor\Calificar_Vendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Calificar Vendedor\Calificar_Vendedor.Designer.cs">
+      <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>
@@ -352,6 +352,9 @@
     <EmbeddedResource Include="Abm Visibilidad\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Calificar Vendedor\Calificar_Vendedor.resx">
+      <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial\Historial.resx">
       <DependentUpon>Historial.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +390,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -409,6 +413,12 @@
     <Compile Include="Registro de Usuario\Modificacion.Designer.cs">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrella.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrella1.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abm Rubro\" />

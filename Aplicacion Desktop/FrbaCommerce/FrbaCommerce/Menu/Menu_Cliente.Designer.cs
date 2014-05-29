@@ -36,11 +36,12 @@
             this.button_FacturarPublicacion = new System.Windows.Forms.Button();
             this.button_RegistroUsuario = new System.Windows.Forms.Button();
             this.button_ModificacionUsuario = new System.Windows.Forms.Button();
+            this.button_CalificarVendedor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
             // 
-            this.button_Volver.Location = new System.Drawing.Point(367, 303);
+            this.button_Volver.Location = new System.Drawing.Point(367, 341);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
             this.button_Volver.TabIndex = 0;
@@ -68,7 +69,7 @@
             // 
             // button_HistorialCliente
             // 
-            this.button_HistorialCliente.Location = new System.Drawing.Point(72, 243);
+            this.button_HistorialCliente.Location = new System.Drawing.Point(72, 289);
             this.button_HistorialCliente.Name = "button_HistorialCliente";
             this.button_HistorialCliente.Size = new System.Drawing.Size(310, 40);
             this.button_HistorialCliente.TabIndex = 3;
@@ -114,11 +115,22 @@
             this.button_ModificacionUsuario.UseVisualStyleBackColor = true;
             this.button_ModificacionUsuario.Click += new System.EventHandler(this.button_ModificacionUsuario_Click);
             // 
+            // button_CalificarVendedor
+            // 
+            this.button_CalificarVendedor.Location = new System.Drawing.Point(72, 243);
+            this.button_CalificarVendedor.Name = "button_CalificarVendedor";
+            this.button_CalificarVendedor.Size = new System.Drawing.Size(310, 40);
+            this.button_CalificarVendedor.TabIndex = 8;
+            this.button_CalificarVendedor.Text = "Calificar al vendedor";
+            this.button_CalificarVendedor.UseVisualStyleBackColor = true;
+            this.button_CalificarVendedor.Click += new System.EventHandler(this.button_CalificarVendedor_Click);
+            // 
             // Menu_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 338);
+            this.ClientSize = new System.Drawing.Size(454, 376);
+            this.Controls.Add(this.button_CalificarVendedor);
             this.Controls.Add(this.button_ModificacionUsuario);
             this.Controls.Add(this.button_RegistroUsuario);
             this.Controls.Add(this.button_FacturarPublicacion);
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Button button_FacturarPublicacion;
         private System.Windows.Forms.Button button_RegistroUsuario;
         private System.Windows.Forms.Button button_ModificacionUsuario;
+        private System.Windows.Forms.Button button_CalificarVendedor;
     }
 }
