@@ -34,6 +34,7 @@ namespace FrbaCommerce.Menu
                 button_HistorialCliente.Enabled = false;
                 button_Ofertar.Enabled = false;
                 button_Preguntar.Enabled = false;
+                button_CalificarVendedor.Enabled = false;
             }
             else
             {

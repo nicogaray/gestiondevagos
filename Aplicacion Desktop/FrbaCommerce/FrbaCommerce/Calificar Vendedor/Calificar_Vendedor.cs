@@ -28,14 +28,14 @@ namespace FrbaCommerce.Calificar_Vendedor
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_Descripcion.SelectedIndex == 0)
+            if (comboBox_Descripcion.SelectedIndex == 6)
             {
-                label_EscribaAqui.Show();
+               // label_EscribaAqui.Show();
                 textBox_EscribaAqui.Show();
             }
             else
             {
-                label_EscribaAqui.Hide();
+               // label_EscribaAqui.Hide();
                 textBox_EscribaAqui.Hide();
             }
 
@@ -45,7 +45,7 @@ namespace FrbaCommerce.Calificar_Vendedor
         {
             comboBox_Descripcion.Text = "";
             textBox_EscribaAqui.Text = "";
-            label_EscribaAqui.Hide();
+            //label_EscribaAqui.Hide();
             textBox_EscribaAqui.Hide();
         }
 
@@ -75,7 +75,7 @@ namespace FrbaCommerce.Calificar_Vendedor
 
         private void Calificar_Vendedor_Load(object sender, EventArgs e)
         {
-            label_EscribaAqui.Hide();
+            //label_EscribaAqui.Hide();
             textBox_EscribaAqui.Hide();
         }
     }

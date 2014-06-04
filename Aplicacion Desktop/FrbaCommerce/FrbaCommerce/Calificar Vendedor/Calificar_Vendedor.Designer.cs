@@ -30,8 +30,8 @@
         {
             this.label_Calificacion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_Buscar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.radioButton_1 = new System.Windows.Forms.RadioButton();
             this.radioButton_5 = new System.Windows.Forms.RadioButton();
             this.radioButton_4 = new System.Windows.Forms.RadioButton();
@@ -58,7 +58,6 @@
             this.label_Descripcion = new System.Windows.Forms.Label();
             this.comboBox_Descripcion = new System.Windows.Forms.ComboBox();
             this.textBox_EscribaAqui = new System.Windows.Forms.TextBox();
-            this.label_EscribaAqui = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -98,14 +97,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione la operacion que desea calificar";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(603, 117);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // button_Buscar
             // 
             this.button_Buscar.Location = new System.Drawing.Point(431, 142);
@@ -114,6 +105,14 @@
             this.button_Buscar.TabIndex = 1;
             this.button_Buscar.Text = "Bucar operaciones disponibles";
             this.button_Buscar.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(603, 117);
+            this.dataGridView1.TabIndex = 0;
             // 
             // radioButton_1
             // 
@@ -356,7 +355,13 @@
             // 
             this.comboBox_Descripcion.FormattingEnabled = true;
             this.comboBox_Descripcion.Items.AddRange(new object[] {
-            "Otro"});
+            "Excelente",
+            "Muy bueno",
+            "Bueno",
+            "Normal",
+            "Malo",
+            "Muy malo",
+            "Otra descripcion"});
             this.comboBox_Descripcion.Location = new System.Drawing.Point(226, 243);
             this.comboBox_Descripcion.Name = "comboBox_Descripcion";
             this.comboBox_Descripcion.Size = new System.Drawing.Size(255, 21);
@@ -370,21 +375,11 @@
             this.textBox_EscribaAqui.Size = new System.Drawing.Size(256, 20);
             this.textBox_EscribaAqui.TabIndex = 30;
             // 
-            // label_EscribaAqui
-            // 
-            this.label_EscribaAqui.AutoSize = true;
-            this.label_EscribaAqui.Location = new System.Drawing.Point(193, 277);
-            this.label_EscribaAqui.Name = "label_EscribaAqui";
-            this.label_EscribaAqui.Size = new System.Drawing.Size(27, 13);
-            this.label_EscribaAqui.TabIndex = 31;
-            this.label_EscribaAqui.Text = "Otro";
-            // 
             // Calificar_Vendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 354);
-            this.Controls.Add(this.label_EscribaAqui);
             this.Controls.Add(this.textBox_EscribaAqui);
             this.Controls.Add(this.comboBox_Descripcion);
             this.Controls.Add(this.label_Descripcion);
@@ -470,6 +465,5 @@
         private System.Windows.Forms.Label label_Descripcion;
         private System.Windows.Forms.ComboBox comboBox_Descripcion;
         private System.Windows.Forms.TextBox textBox_EscribaAqui;
-        private System.Windows.Forms.Label label_EscribaAqui;
     }
 }
