@@ -718,7 +718,6 @@ go
 
 exec LOS_JUS.MIGRAR_EMPRESAS
 go
-
 -----------------------------------------------------
 -------- MIGRACON CLIDENTES  ------------
 
