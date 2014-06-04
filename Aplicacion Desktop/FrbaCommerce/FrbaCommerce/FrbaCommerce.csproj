@@ -92,40 +92,40 @@
     <Compile Include="Abm Cliente\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Alta.cs">
+    <Compile Include="Abm Empresa\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Alta.Designer.cs">
+    <Compile Include="Abm Empresa\Alta.Designer.cs">
       <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Baja.cs">
+    <Compile Include="Abm Empresa\Baja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Baja.Designer.cs">
+    <Compile Include="Abm Empresa\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Modificacion.cs">
+    <Compile Include="Abm Empresa\Modificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Modificacion.Designer.cs">
+    <Compile Include="Abm Empresa\Modificacion.Designer.cs">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\ListadoSeleccionModificacion.cs">
+    <Compile Include="Abm Empresa\ListadoSeleccionModificacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\ListadoSeleccionModificacion.Designer.cs">
+    <Compile Include="Abm Empresa\ListadoSeleccionModificacion.Designer.cs">
       <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Form_Base.cs">
+    <Compile Include="Abm Empresa\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\Form_Base.Designer.cs">
+    <Compile Include="Abm Empresa\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\ListadoSeleccionBaja.cs">
+    <Compile Include="Abm Empresa\ListadoSeleccionBaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rol\Abm Empresa\ListadoSeleccionBaja.Designer.cs">
+    <Compile Include="Abm Empresa\ListadoSeleccionBaja.Designer.cs">
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\Alta.cs">
@@ -206,17 +206,17 @@
     <Compile Include="Calificar Vendedor\Calificar_Vendedor.Designer.cs">
       <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Comprar-Ofertar\Form1.cs">
+    <Compile Include="Comprar-Ofertar\Ofertar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Comprar-Ofertar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Comprar-Ofertar\Ofertar.Designer.cs">
+      <DependentUpon>Ofertar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Comprar-Ofertar\Form2.cs">
+    <Compile Include="Comprar-Ofertar\Comprar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Comprar-Ofertar\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Comprar-Ofertar\Comprar.Designer.cs">
+      <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
     <Compile Include="Editar Publicacion\Form1.cs">
       <SubType>Form</SubType>
@@ -304,22 +304,22 @@
     <EmbeddedResource Include="Abm Cliente\ListadoSeleccionBaja.resx">
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\Alta.resx">
+    <EmbeddedResource Include="Abm Empresa\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\Baja.resx">
+    <EmbeddedResource Include="Abm Empresa\Baja.resx">
       <DependentUpon>Baja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\Form_Base.resx">
+    <EmbeddedResource Include="Abm Empresa\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\ListadoSeleccionBaja.resx">
+    <EmbeddedResource Include="Abm Empresa\ListadoSeleccionBaja.resx">
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\ListadoSeleccionModificacion.resx">
+    <EmbeddedResource Include="Abm Empresa\ListadoSeleccionModificacion.resx">
       <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rol\Abm Empresa\Modificacion.resx">
+    <EmbeddedResource Include="Abm Empresa\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\Alta.resx">
@@ -361,11 +361,23 @@
     <EmbeddedResource Include="Calificar Vendedor\Calificar_Vendedor.resx">
       <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
+    <EmbeddedResource Include="Comprar-Ofertar\Ofertar.resx">
+      <DependentUpon>Ofertar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\Comprar.resx">
+      <DependentUpon>Comprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Comprar-Ofertar\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Facturar Publicaciones\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial\Historial.resx">
       <DependentUpon>Historial.cs</DependentUpon>
