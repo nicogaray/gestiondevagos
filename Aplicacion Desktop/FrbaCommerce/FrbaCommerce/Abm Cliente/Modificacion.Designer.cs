@@ -408,6 +408,7 @@
             this.Controls.Add(this.paner_Alta);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Modificacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion";
             this.Load += new System.EventHandler(this.Modificacion_Load);
             this.paner_Alta.ResumeLayout(false);

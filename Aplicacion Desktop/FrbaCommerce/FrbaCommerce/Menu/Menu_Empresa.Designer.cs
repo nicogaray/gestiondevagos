@@ -108,6 +108,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Menu_Empresa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empresa - Seleccione una funcionalidad";
             this.Load += new System.EventHandler(this.Menu_Empresa_Load);
             this.ResumeLayout(false);

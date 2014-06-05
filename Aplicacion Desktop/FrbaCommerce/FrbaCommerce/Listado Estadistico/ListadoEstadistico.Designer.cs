@@ -242,7 +242,10 @@
             this.ClientSize = new System.Drawing.Size(639, 354);
             this.Controls.Add(this.dataGridView_Resultado);
             this.Controls.Add(this.groupBox_Consultas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ListadoEstadistico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listados Estadísticos";
             this.Load += new System.EventHandler(this.ListadoEstadistico_Load);
             this.groupBox_Consultas.ResumeLayout(false);

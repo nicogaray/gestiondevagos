@@ -199,7 +199,10 @@
             this.Controls.Add(this.groupBox_Informacion);
             this.Controls.Add(this.groupBox_RegistroUsuario);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Alta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Usuario";
             this.Load += new System.EventHandler(this.Alta_Load);
             this.MouseEnter += new System.EventHandler(this.Alta_MouseEnter);

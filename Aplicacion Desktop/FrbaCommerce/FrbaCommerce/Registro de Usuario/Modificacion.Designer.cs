@@ -238,7 +238,10 @@
             this.Controls.Add(this.groupBox_RegistroUsuario);
             this.Controls.Add(this.groupBox_ModificarDatos);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Modificacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Usuario";
             this.Load += new System.EventHandler(this.Modificacion_Load);
             this.MouseEnter += new System.EventHandler(this.Modificacion_MouseEnter);

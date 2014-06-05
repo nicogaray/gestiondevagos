@@ -206,7 +206,10 @@
             this.Controls.Add(this.label_Informacion);
             this.Controls.Add(this.paner_Alta);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Baja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Baja_Load);
             this.paner_Alta.ResumeLayout(false);

@@ -75,5 +75,19 @@ namespace FrbaCommerce.Menu
             calificar.Show();
             this.Close();
         }
+
+        private void button_Comprar_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.Comprar comprar = new Comprar_Ofertar.Comprar();
+            comprar.Show();
+            this.Close();
+        }
+
+        private void button_Ofertar_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.Ofertar ofertar = new Comprar_Ofertar.Ofertar();
+            ofertar.Show();
+            this.Close();
+        }
     }
 }

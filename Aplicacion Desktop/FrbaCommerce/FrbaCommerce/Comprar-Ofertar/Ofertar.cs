@@ -15,5 +15,18 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             InitializeComponent();
         }
+
+        private void button_Limpiar_Click(object sender, EventArgs e)
+        {
+            int i;
+            int s = checkedListBox_Rubro.Items.Count;
+            for (i = 0; i < s; i++)
+            {
+                checkedListBox_Rubro.SetItemChecked(i, false);
+            }
+            checkedListBox_Rubro.ClearSelected();
+
+            textBox_Descripcion.Clear();
+        }
     }
 }

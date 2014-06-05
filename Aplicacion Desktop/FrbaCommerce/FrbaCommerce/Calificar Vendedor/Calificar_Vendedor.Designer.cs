@@ -408,7 +408,10 @@
             this.Controls.Add(this.radioButton_1);
             this.Controls.Add(this.label_Calificacion);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Calificar_Vendedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calificar Vendedor";
             this.Load += new System.EventHandler(this.Calificar_Vendedor_Load);
             this.groupBox1.ResumeLayout(false);

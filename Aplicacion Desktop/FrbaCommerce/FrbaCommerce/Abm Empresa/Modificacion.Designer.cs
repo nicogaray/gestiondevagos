@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.Abm_Empresa
 {
-    partial class Alta
+    partial class Modificacion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_Guardar = new System.Windows.Forms.Button();
             this.label_InfTexto = new System.Windows.Forms.Label();
             this.label_Informacion = new System.Windows.Forms.Label();
-            this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
             this.dateTimePicker_FechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.textBox_Mail = new System.Windows.Forms.TextBox();
@@ -49,20 +47,12 @@
             this.label_Cuit = new System.Windows.Forms.Label();
             this.label_RazonSocial = new System.Windows.Forms.Label();
             this.textBox_RazonSocial = new System.Windows.Forms.TextBox();
+            this.button_Guardar = new System.Windows.Forms.Button();
+            this.button_Limpiar = new System.Windows.Forms.Button();
+            this.button_Volver = new System.Windows.Forms.Button();
+            this.button_Cancelar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_Guardar
-            // 
-            this.button_Guardar.Location = new System.Drawing.Point(425, 25);
-            this.button_Guardar.Name = "button_Guardar";
-            this.button_Guardar.Size = new System.Drawing.Size(75, 23);
-            this.button_Guardar.TabIndex = 16;
-            this.button_Guardar.Text = "Guardar";
-            this.button_Guardar.UseVisualStyleBackColor = true;
-            this.button_Guardar.MouseLeave += new System.EventHandler(this.button_Guardar_MouseLeave);
-            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
-            this.button_Guardar.MouseEnter += new System.EventHandler(this.button_Guardar_MouseEnter);
             // 
             // label_InfTexto
             // 
@@ -71,7 +61,7 @@
             this.label_InfTexto.Location = new System.Drawing.Point(22, 294);
             this.label_InfTexto.Name = "label_InfTexto";
             this.label_InfTexto.Size = new System.Drawing.Size(65, 13);
-            this.label_InfTexto.TabIndex = 15;
+            this.label_InfTexto.TabIndex = 20;
             this.label_InfTexto.Text = "Informacion:";
             // 
             // label_Informacion
@@ -81,20 +71,7 @@
             this.label_Informacion.Location = new System.Drawing.Point(91, 295);
             this.label_Informacion.Name = "label_Informacion";
             this.label_Informacion.Size = new System.Drawing.Size(0, 13);
-            this.label_Informacion.TabIndex = 14;
-            // 
-            // button_Limpiar
-            // 
-            this.button_Limpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button_Limpiar.Location = new System.Drawing.Point(425, 54);
-            this.button_Limpiar.Name = "button_Limpiar";
-            this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
-            this.button_Limpiar.TabIndex = 13;
-            this.button_Limpiar.Text = "Limpiar";
-            this.button_Limpiar.UseVisualStyleBackColor = true;
-            this.button_Limpiar.MouseLeave += new System.EventHandler(this.button_Limpiar_MouseLeave);
-            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
-            this.button_Limpiar.MouseEnter += new System.EventHandler(this.button_Limpiar_MouseEnter);
+            this.label_Informacion.TabIndex = 19;
             // 
             // paner_Alta
             // 
@@ -119,7 +96,7 @@
             this.paner_Alta.Location = new System.Drawing.Point(12, 7);
             this.paner_Alta.Name = "paner_Alta";
             this.paner_Alta.Size = new System.Drawing.Size(388, 278);
-            this.paner_Alta.TabIndex = 12;
+            this.paner_Alta.TabIndex = 17;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos de la Empresa";
             // 
@@ -243,7 +220,6 @@
             this.label_NombreContacto.Size = new System.Drawing.Size(104, 13);
             this.label_NombreContacto.TabIndex = 3;
             this.label_NombreContacto.Text = "Nombre de contacto";
-            this.label_NombreContacto.Click += new System.EventHandler(this.label_Documento_Click);
             // 
             // label_Cuit
             // 
@@ -273,24 +249,77 @@
             this.textBox_RazonSocial.Name = "textBox_RazonSocial";
             this.textBox_RazonSocial.Size = new System.Drawing.Size(232, 20);
             this.textBox_RazonSocial.TabIndex = 0;
-            this.textBox_RazonSocial.TextChanged += new System.EventHandler(this.textBox_RazonSocial_TextChanged);
             this.textBox_RazonSocial.MouseLeave += new System.EventHandler(this.textBox_RazonSocial_MouseLeave);
             this.textBox_RazonSocial.MouseEnter += new System.EventHandler(this.textBox_RazonSocial_MouseEnter);
             // 
-            // Alta
+            // button_Guardar
+            // 
+            this.button_Guardar.Location = new System.Drawing.Point(413, 10);
+            this.button_Guardar.Name = "button_Guardar";
+            this.button_Guardar.Size = new System.Drawing.Size(88, 52);
+            this.button_Guardar.TabIndex = 22;
+            this.button_Guardar.Text = "Guardar modificaciones";
+            this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.MouseLeave += new System.EventHandler(this.button_Guardar_MouseLeave);
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
+            this.button_Guardar.MouseEnter += new System.EventHandler(this.button_Guardar_MouseEnter);
+            // 
+            // button_Limpiar
+            // 
+            this.button_Limpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Limpiar.Location = new System.Drawing.Point(413, 68);
+            this.button_Limpiar.Name = "button_Limpiar";
+            this.button_Limpiar.Size = new System.Drawing.Size(88, 32);
+            this.button_Limpiar.TabIndex = 21;
+            this.button_Limpiar.Text = "Limpiar";
+            this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.MouseLeave += new System.EventHandler(this.button_Limpiar_MouseLeave);
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
+            this.button_Limpiar.MouseEnter += new System.EventHandler(this.button_Limpiar_MouseEnter);
+            // 
+            // button_Volver
+            // 
+            this.button_Volver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Volver.Location = new System.Drawing.Point(413, 254);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(88, 31);
+            this.button_Volver.TabIndex = 24;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            // 
+            // button_Cancelar
+            // 
+            this.button_Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Cancelar.Location = new System.Drawing.Point(413, 106);
+            this.button_Cancelar.Name = "button_Cancelar";
+            this.button_Cancelar.Size = new System.Drawing.Size(88, 31);
+            this.button_Cancelar.TabIndex = 23;
+            this.button_Cancelar.Text = "Cancelar";
+            this.button_Cancelar.UseVisualStyleBackColor = true;
+            this.button_Cancelar.MouseLeave += new System.EventHandler(this.button_Cancelar_MouseLeave);
+            this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
+            this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
+            // 
+            // Modificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
+            this.Controls.Add(this.button_Volver);
+            this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
+            this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.label_InfTexto);
             this.Controls.Add(this.label_Informacion);
-            this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.paner_Alta);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "Alta";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Alta_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "Modificacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modificacion";
+            this.Load += new System.EventHandler(this.Modificacion_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
             this.ResumeLayout(false);
@@ -300,10 +329,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Label label_InfTexto;
         private System.Windows.Forms.Label label_Informacion;
-        private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.GroupBox paner_Alta;
         private System.Windows.Forms.TextBox textBox_Mail;
         private System.Windows.Forms.TextBox textBox_CodigoPostal;
@@ -321,5 +348,9 @@
         private System.Windows.Forms.Label label_RazonSocial;
         private System.Windows.Forms.TextBox textBox_RazonSocial;
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
+        private System.Windows.Forms.Button button_Guardar;
+        private System.Windows.Forms.Button button_Limpiar;
+        private System.Windows.Forms.Button button_Volver;
+        private System.Windows.Forms.Button button_Cancelar;
     }
 }

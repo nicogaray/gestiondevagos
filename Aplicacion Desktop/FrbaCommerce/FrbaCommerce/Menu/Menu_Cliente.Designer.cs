@@ -57,6 +57,7 @@
             this.button_Comprar.TabIndex = 1;
             this.button_Comprar.Text = "Comprar";
             this.button_Comprar.UseVisualStyleBackColor = true;
+            this.button_Comprar.Click += new System.EventHandler(this.button_Comprar_Click);
             // 
             // button_Ofertar
             // 
@@ -66,6 +67,7 @@
             this.button_Ofertar.TabIndex = 2;
             this.button_Ofertar.Text = "Ofertar";
             this.button_Ofertar.UseVisualStyleBackColor = true;
+            this.button_Ofertar.Click += new System.EventHandler(this.button_Ofertar_Click);
             // 
             // button_HistorialCliente
             // 
@@ -142,6 +144,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Menu_Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente - Seleccione una funcionalidad";
             this.Load += new System.EventHandler(this.Menu_Cliente_Load);
             this.ResumeLayout(false);

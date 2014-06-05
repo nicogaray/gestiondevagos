@@ -200,7 +200,10 @@
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.groupBox_Filtro);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ListadoSeleccionBaja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_baja)).EndInit();
             this.groupBox_Filtro.ResumeLayout(false);

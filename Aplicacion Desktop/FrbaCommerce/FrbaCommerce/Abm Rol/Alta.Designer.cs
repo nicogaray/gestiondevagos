@@ -171,7 +171,10 @@
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.paner_Alta);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Alta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
