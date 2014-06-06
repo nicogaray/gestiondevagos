@@ -236,11 +236,23 @@
     <Compile Include="Generar Publicacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.cs">
+    <Compile Include="Gestion de Preguntas\Hacer_Preguntas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Gestion de Preguntas\Hacer_Preguntas.Designer.cs">
+      <DependentUpon>Hacer_Preguntas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Ver_Respestas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Ver_Respestas.Designer.cs">
+      <DependentUpon>Ver_Respestas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Responder_Preguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Responder_Preguntas.Designer.cs">
+      <DependentUpon>Responder_Preguntas.cs</DependentUpon>
     </Compile>
     <Compile Include="Historial\Historial.cs">
       <SubType>Form</SubType>
@@ -376,8 +388,14 @@
     <EmbeddedResource Include="Generar Publicacion\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gestion de Preguntas\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Gestion de Preguntas\Hacer_Preguntas.resx">
+      <DependentUpon>Hacer_Preguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\Responder_Preguntas.resx">
+      <DependentUpon>Responder_Preguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\Ver_Respestas.resx">
+      <DependentUpon>Ver_Respestas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial\Historial.resx">
       <DependentUpon>Historial.cs</DependentUpon>

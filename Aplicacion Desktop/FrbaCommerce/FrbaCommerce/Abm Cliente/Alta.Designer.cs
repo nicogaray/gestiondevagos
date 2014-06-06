@@ -111,6 +111,7 @@
             this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(232, 20);
             this.dateTimePicker_FechaNacimiento.TabIndex = 21;
             this.dateTimePicker_FechaNacimiento.MouseLeave += new System.EventHandler(this.dateTimePicker1_MouseLeave);
+            this.dateTimePicker_FechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePicker_FechaNacimiento_ValueChanged);
             this.dateTimePicker_FechaNacimiento.MouseEnter += new System.EventHandler(this.dateTimePicker1_MouseEnter);
             // 
             // textBox_Mail

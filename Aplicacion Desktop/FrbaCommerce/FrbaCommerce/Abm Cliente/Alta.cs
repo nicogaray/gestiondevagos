@@ -167,6 +167,11 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
+        private void dateTimePicker_FechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
        
 

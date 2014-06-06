@@ -63,5 +63,12 @@ namespace FrbaCommerce.Menu
             historial.cliente = false;
             historial.Show();
         }
+
+        private void button_ResponderPregunta_Click(object sender, EventArgs e)
+        {
+            Gestion_de_Preguntas.Responder_Preguntas responder = new Gestion_de_Preguntas.Responder_Preguntas();
+            responder.Show();
+            this.Close();
+        }
     }
 }

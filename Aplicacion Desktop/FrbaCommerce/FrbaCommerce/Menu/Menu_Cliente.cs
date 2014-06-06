@@ -89,5 +89,14 @@ namespace FrbaCommerce.Menu
             ofertar.Show();
             this.Close();
         }
+
+        private void button_Preguntar_Click(object sender, EventArgs e)
+        {
+            Gestion_de_Preguntas.Ver_Respestas preguntas = new Gestion_de_Preguntas.Ver_Respestas();
+            preguntas.Show();
+            this.Close();
+        }
+
+    
     }
 }

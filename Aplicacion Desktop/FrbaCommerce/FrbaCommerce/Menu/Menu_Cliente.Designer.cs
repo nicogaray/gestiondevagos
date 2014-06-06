@@ -31,12 +31,12 @@
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Comprar = new System.Windows.Forms.Button();
             this.button_Ofertar = new System.Windows.Forms.Button();
-            this.button_HistorialCliente = new System.Windows.Forms.Button();
             this.button_Preguntar = new System.Windows.Forms.Button();
             this.button_FacturarPublicacion = new System.Windows.Forms.Button();
             this.button_RegistroUsuario = new System.Windows.Forms.Button();
             this.button_ModificacionUsuario = new System.Windows.Forms.Button();
             this.button_CalificarVendedor = new System.Windows.Forms.Button();
+            this.button_HistorialCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
@@ -69,24 +69,15 @@
             this.button_Ofertar.UseVisualStyleBackColor = true;
             this.button_Ofertar.Click += new System.EventHandler(this.button_Ofertar_Click);
             // 
-            // button_HistorialCliente
-            // 
-            this.button_HistorialCliente.Location = new System.Drawing.Point(72, 289);
-            this.button_HistorialCliente.Name = "button_HistorialCliente";
-            this.button_HistorialCliente.Size = new System.Drawing.Size(310, 40);
-            this.button_HistorialCliente.TabIndex = 3;
-            this.button_HistorialCliente.Text = "Historial del Cliente";
-            this.button_HistorialCliente.UseVisualStyleBackColor = true;
-            this.button_HistorialCliente.Click += new System.EventHandler(this.button_HistorialCliente_Click);
-            // 
             // button_Preguntar
             // 
             this.button_Preguntar.Location = new System.Drawing.Point(72, 197);
             this.button_Preguntar.Name = "button_Preguntar";
             this.button_Preguntar.Size = new System.Drawing.Size(310, 40);
             this.button_Preguntar.TabIndex = 4;
-            this.button_Preguntar.Text = "Preguntar";
+            this.button_Preguntar.Text = "Ver preguntas y respuestas";
             this.button_Preguntar.UseVisualStyleBackColor = true;
+            this.button_Preguntar.Click += new System.EventHandler(this.button_Preguntar_Click);
             // 
             // button_FacturarPublicacion
             // 
@@ -127,6 +118,16 @@
             this.button_CalificarVendedor.UseVisualStyleBackColor = true;
             this.button_CalificarVendedor.Click += new System.EventHandler(this.button_CalificarVendedor_Click);
             // 
+            // button_HistorialCliente
+            // 
+            this.button_HistorialCliente.Location = new System.Drawing.Point(72, 289);
+            this.button_HistorialCliente.Name = "button_HistorialCliente";
+            this.button_HistorialCliente.Size = new System.Drawing.Size(310, 40);
+            this.button_HistorialCliente.TabIndex = 3;
+            this.button_HistorialCliente.Text = "Historial del Cliente";
+            this.button_HistorialCliente.UseVisualStyleBackColor = true;
+            this.button_HistorialCliente.Click += new System.EventHandler(this.button_HistorialCliente_Click);
+            // 
             // Menu_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,11 +157,11 @@
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Comprar;
         private System.Windows.Forms.Button button_Ofertar;
-        private System.Windows.Forms.Button button_HistorialCliente;
         private System.Windows.Forms.Button button_Preguntar;
         private System.Windows.Forms.Button button_FacturarPublicacion;
         private System.Windows.Forms.Button button_RegistroUsuario;
         private System.Windows.Forms.Button button_ModificacionUsuario;
         private System.Windows.Forms.Button button_CalificarVendedor;
+        private System.Windows.Forms.Button button_HistorialCliente;
     }
 }

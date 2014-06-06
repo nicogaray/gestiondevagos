@@ -61,8 +61,9 @@
             this.button_ResponderPregunta.Name = "button_ResponderPregunta";
             this.button_ResponderPregunta.Size = new System.Drawing.Size(310, 40);
             this.button_ResponderPregunta.TabIndex = 2;
-            this.button_ResponderPregunta.Text = "Responder pregunta";
+            this.button_ResponderPregunta.Text = "Responder preguntas";
             this.button_ResponderPregunta.UseVisualStyleBackColor = true;
+            this.button_ResponderPregunta.Click += new System.EventHandler(this.button_ResponderPregunta_Click);
             // 
             // button_HistorialEmpresa
             // 
