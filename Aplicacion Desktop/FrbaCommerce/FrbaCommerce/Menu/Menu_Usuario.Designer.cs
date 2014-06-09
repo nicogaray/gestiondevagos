@@ -68,6 +68,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.Location = new System.Drawing.Point(288, 261);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -79,6 +80,7 @@
             // Menu_Usuario
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(401, 306);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Empresa);

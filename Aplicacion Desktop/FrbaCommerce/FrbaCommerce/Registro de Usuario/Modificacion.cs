@@ -141,23 +141,34 @@ namespace FrbaCommerce.Registro_de_Usuario
 
         private void button_Volver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
-            menu_administrador.Show();
+            if (cliente)
+            {
+                Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
+                menu_administrador.Show();
+                this.Close();
+
+            }
+            else
+            {
+                Menu.Menu_Empresa menu_empresa = new Menu.Menu_Empresa();
+                menu_empresa.Show();
+                this.Close();
+
+            }
+            
+          
         }
 
         private void button_IrA_Click(object sender, EventArgs e)
         {
             if (cliente)
             {
-                this.Hide();
                 Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
                 modificacion.desdeModificacionUsuario = true;
                 modificacion.Show();
             }
             else
             {
-                this.Hide();
                 Abm_Empresa.Modificacion modificacion = new Abm_Empresa.Modificacion();
                 modificacion.desdeModificacionUsuario = true;
                 modificacion.Show();

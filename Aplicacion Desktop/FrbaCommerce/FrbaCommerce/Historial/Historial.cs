@@ -59,5 +59,10 @@ namespace FrbaCommerce.Historial_Cliente
         {
             
         }
+
+        private void button_HacerConsulta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

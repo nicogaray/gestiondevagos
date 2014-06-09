@@ -279,6 +279,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_Volver.Location = new System.Drawing.Point(413, 254);
             this.button_Volver.Name = "button_Volver";
@@ -303,8 +304,10 @@
             // 
             // Modificacion
             // 
+            this.AcceptButton = this.button_Guardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(513, 315);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Cancelar);

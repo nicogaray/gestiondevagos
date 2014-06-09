@@ -39,6 +39,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.Location = new System.Drawing.Point(367, 300);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -49,6 +50,7 @@
             // 
             // button_ABMRol
             // 
+            this.button_ABMRol.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_ABMRol.Location = new System.Drawing.Point(72, 12);
             this.button_ABMRol.Name = "button_ABMRol";
             this.button_ABMRol.Size = new System.Drawing.Size(310, 40);
@@ -111,6 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(454, 335);
             this.Controls.Add(this.button_ABMRubro);
             this.Controls.Add(this.button_ABMVisibilidad);
@@ -124,6 +127,7 @@
             this.Name = "Menu_Administrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador - Seleccione una funcionalidad";
+            this.Load += new System.EventHandler(this.Menu_Administrador_Load);
             this.ResumeLayout(false);
 
         }

@@ -78,5 +78,12 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
 
         }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            Menu.Menu_Cliente menu_cliente = new Menu.Menu_Cliente();
+            menu_cliente.Show();
+            this.Close();
+        }
     }
 }

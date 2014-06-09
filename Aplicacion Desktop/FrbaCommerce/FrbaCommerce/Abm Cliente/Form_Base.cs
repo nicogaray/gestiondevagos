@@ -18,6 +18,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void Form_Base_Load(object sender, EventArgs e)
         {
+            this.AcceptButton = null;
 
         }
 

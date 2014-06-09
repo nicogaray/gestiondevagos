@@ -200,6 +200,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.Location = new System.Drawing.Point(534, 81);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -237,8 +238,10 @@
             // 
             // ListadoEstadistico
             // 
+            this.AcceptButton = this.button_HacerConsulta;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(639, 354);
             this.Controls.Add(this.dataGridView_Resultado);
             this.Controls.Add(this.groupBox_Consultas);

@@ -51,12 +51,9 @@
             // 
             this.groupBox_Consultas.Controls.Add(this.comboBox_operaciones);
             this.groupBox_Consultas.Controls.Add(this.label_OperacionesRealizadas);
-            this.groupBox_Consultas.Controls.Add(this.button_Volver);
-            this.groupBox_Consultas.Controls.Add(this.button_Limpiar);
-            this.groupBox_Consultas.Controls.Add(this.button_HacerConsulta);
             this.groupBox_Consultas.Location = new System.Drawing.Point(12, 13);
             this.groupBox_Consultas.Name = "groupBox_Consultas";
-            this.groupBox_Consultas.Size = new System.Drawing.Size(615, 88);
+            this.groupBox_Consultas.Size = new System.Drawing.Size(615, 57);
             this.groupBox_Consultas.TabIndex = 2;
             this.groupBox_Consultas.TabStop = false;
             this.groupBox_Consultas.Text = "Consultas";
@@ -81,7 +78,7 @@
             // 
             // button_Volver
             // 
-            this.button_Volver.Location = new System.Drawing.Point(521, 57);
+            this.button_Volver.Location = new System.Drawing.Point(538, 76);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(88, 25);
             this.button_Volver.TabIndex = 2;
@@ -91,7 +88,8 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(427, 57);
+            this.button_Limpiar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_Limpiar.Location = new System.Drawing.Point(444, 76);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(88, 25);
             this.button_Limpiar.TabIndex = 1;
@@ -101,7 +99,7 @@
             // 
             // button_HacerConsulta
             // 
-            this.button_HacerConsulta.Location = new System.Drawing.Point(333, 57);
+            this.button_HacerConsulta.Location = new System.Drawing.Point(350, 76);
             this.button_HacerConsulta.Name = "button_HacerConsulta";
             this.button_HacerConsulta.Size = new System.Drawing.Size(88, 25);
             this.button_HacerConsulta.TabIndex = 0;
@@ -110,11 +108,16 @@
             // 
             // Historial
             // 
+            this.AcceptButton = this.button_HacerConsulta;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(639, 354);
             this.Controls.Add(this.dataGridView_Resultado);
             this.Controls.Add(this.groupBox_Consultas);
+            this.Controls.Add(this.button_Volver);
+            this.Controls.Add(this.button_Limpiar);
+            this.Controls.Add(this.button_HacerConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Historial";
@@ -135,7 +138,7 @@
         private System.Windows.Forms.Label label_OperacionesRealizadas;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Limpiar;
-        private System.Windows.Forms.Button button_HacerConsulta;
         private System.Windows.Forms.ComboBox comboBox_operaciones;
+        private System.Windows.Forms.Button button_HacerConsulta;
     }
 }

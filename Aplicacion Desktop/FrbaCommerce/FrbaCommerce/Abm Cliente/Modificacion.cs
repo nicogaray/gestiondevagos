@@ -195,8 +195,14 @@ namespace FrbaCommerce.Abm_Cliente
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
-            menu_administrador.Show();
+            if (desdeModificacionUsuario)
+            {
+            }
+            else
+            {
+                Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
+                menu_administrador.Show();
+            }
         }
     }
 }

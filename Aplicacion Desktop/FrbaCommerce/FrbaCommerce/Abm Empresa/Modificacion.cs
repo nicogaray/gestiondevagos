@@ -140,6 +140,7 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void Modificacion_Load(object sender, EventArgs e)
         {
+      
             if (desdeModificacionUsuario)
             {
                 button_Cancelar.Hide();
@@ -154,9 +155,16 @@ namespace FrbaCommerce.Abm_Empresa
         private void button_Volver_Click(object sender, EventArgs e)
         {
             this.Hide();
+            if (desdeModificacionUsuario)
+            {
+            }
+            else
+            {
+                Menu.Menu_Empresa menu_administrador = new Menu.Menu_Empresa();
+                menu_administrador.Show();
+            }
 
-            Menu.Menu_Empresa menu_administrador = new Menu.Menu_Empresa();
-            menu_administrador.Show();
+         
         }
     }
 }

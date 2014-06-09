@@ -40,8 +40,8 @@
             this.label_Nombre = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.button_Cancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_Guardar = new System.Windows.Forms.Button();
+            this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +166,7 @@
             // 
             // button_Cancelar
             // 
+            this.button_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_Cancelar.Location = new System.Drawing.Point(413, 108);
             this.button_Cancelar.Name = "button_Cancelar";
@@ -177,39 +178,41 @@
             this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
             this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
             // 
-            // button1
+            // button_Guardar
             // 
-            this.button1.Location = new System.Drawing.Point(413, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 52);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Guardar modificaciones";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            this.button_Guardar.Location = new System.Drawing.Point(413, 12);
+            this.button_Guardar.Name = "button_Guardar";
+            this.button_Guardar.Size = new System.Drawing.Size(88, 52);
+            this.button_Guardar.TabIndex = 28;
+            this.button_Guardar.Text = "Guardar modificaciones";
+            this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.button_Guardar.Click += new System.EventHandler(this.button1_Click);
+            this.button_Guardar.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             // 
-            // button2
+            // button_Limpiar
             // 
-            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(413, 70);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 32);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
+            this.button_Limpiar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Limpiar.Location = new System.Drawing.Point(413, 70);
+            this.button_Limpiar.Name = "button_Limpiar";
+            this.button_Limpiar.Size = new System.Drawing.Size(88, 32);
+            this.button_Limpiar.TabIndex = 27;
+            this.button_Limpiar.Text = "Limpiar";
+            this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+            this.button_Limpiar.Click += new System.EventHandler(this.button2_Click);
+            this.button_Limpiar.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             // 
             // Modificacion
             // 
+            this.AcceptButton = this.button_Guardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Cancelar;
             this.ClientSize = new System.Drawing.Size(513, 315);
             this.Controls.Add(this.button_Cancelar);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_Guardar);
+            this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.label_InfTexto);
             this.Controls.Add(this.label_Informacion);
             this.Controls.Add(this.paner_Alta);
@@ -241,7 +244,7 @@
         private System.Windows.Forms.Label label_Nombre;
         private System.Windows.Forms.TextBox textBox_Nombre;
         private System.Windows.Forms.Button button_Cancelar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_Guardar;
+        private System.Windows.Forms.Button button_Limpiar;
     }
 }

@@ -74,6 +74,7 @@
             // 
             // button_Cerrar
             // 
+            this.button_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cerrar.Location = new System.Drawing.Point(213, 185);
             this.button_Cerrar.Name = "button_Cerrar";
             this.button_Cerrar.Size = new System.Drawing.Size(86, 27);
@@ -94,8 +95,10 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.button_Aceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Cerrar;
             this.ClientSize = new System.Drawing.Size(382, 239);
             this.Controls.Add(this.button_Aceptar);
             this.Controls.Add(this.button_Cerrar);

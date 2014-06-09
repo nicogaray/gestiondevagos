@@ -31,8 +31,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label_Pregunta = new System.Windows.Forms.Label();
             this.textBox_Pregunta = new System.Windows.Forms.TextBox();
+            this.label_Pregunta = new System.Windows.Forms.Label();
             this.label_Informacion = new System.Windows.Forms.Label();
             this.label_Inf = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
@@ -72,6 +72,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Escribir pregunta";
             // 
+            // textBox_Pregunta
+            // 
+            this.textBox_Pregunta.Location = new System.Drawing.Point(110, 36);
+            this.textBox_Pregunta.Name = "textBox_Pregunta";
+            this.textBox_Pregunta.Size = new System.Drawing.Size(420, 20);
+            this.textBox_Pregunta.TabIndex = 1;
+            this.textBox_Pregunta.MouseLeave += new System.EventHandler(this.textBox_Pregunta_MouseLeave);
+            this.textBox_Pregunta.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
+            // 
             // label_Pregunta
             // 
             this.label_Pregunta.AutoSize = true;
@@ -82,15 +91,6 @@
             this.label_Pregunta.Text = "Pregunta";
             this.label_Pregunta.MouseLeave += new System.EventHandler(this.label_Pregunta_MouseLeave);
             this.label_Pregunta.MouseEnter += new System.EventHandler(this.label_Pregunta_MouseEnter);
-            // 
-            // textBox_Pregunta
-            // 
-            this.textBox_Pregunta.Location = new System.Drawing.Point(110, 36);
-            this.textBox_Pregunta.Name = "textBox_Pregunta";
-            this.textBox_Pregunta.Size = new System.Drawing.Size(420, 20);
-            this.textBox_Pregunta.TabIndex = 1;
-            this.textBox_Pregunta.MouseLeave += new System.EventHandler(this.textBox_Pregunta_MouseLeave);
-            this.textBox_Pregunta.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
             // 
             // label_Informacion
             // 
@@ -133,6 +133,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.Location = new System.Drawing.Point(522, 289);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -143,8 +144,10 @@
             // 
             // Hacer_Preguntas
             // 
+            this.AcceptButton = this.button_Guardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(609, 324);
             this.Controls.Add(this.label_Inf);
             this.Controls.Add(this.label_Informacion);

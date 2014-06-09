@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_SigPag = new System.Windows.Forms.Button();
+            this.button_AntPag = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_PagAnt = new System.Windows.Forms.Button();
-            this.button_PagSig = new System.Windows.Forms.Button();
+            this.button_PriPag = new System.Windows.Forms.Button();
+            this.button_UltPag = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_Buscar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
@@ -41,31 +41,32 @@
             this.checkedListBox_Rubro = new System.Windows.Forms.CheckedListBox();
             this.label_Descripcion = new System.Windows.Forms.Label();
             this.label_Rubro = new System.Windows.Forms.Label();
+            this.button_Volver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button2
+            // button_SigPag
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(331, 319);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(29, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = ">";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_SigPag.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.button_SigPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SigPag.Location = new System.Drawing.Point(331, 319);
+            this.button_SigPag.Name = "button_SigPag";
+            this.button_SigPag.Size = new System.Drawing.Size(29, 23);
+            this.button_SigPag.TabIndex = 28;
+            this.button_SigPag.Text = ">";
+            this.button_SigPag.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button_AntPag
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(279, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "<";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_AntPag.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.button_AntPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_AntPag.Location = new System.Drawing.Point(279, 319);
+            this.button_AntPag.Name = "button_AntPag";
+            this.button_AntPag.Size = new System.Drawing.Size(29, 23);
+            this.button_AntPag.TabIndex = 27;
+            this.button_AntPag.Text = "<";
+            this.button_AntPag.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -76,27 +77,27 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "||";
             // 
-            // button_PagAnt
+            // button_PriPag
             // 
-            this.button_PagAnt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button_PagAnt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_PagAnt.Location = new System.Drawing.Point(244, 319);
-            this.button_PagAnt.Name = "button_PagAnt";
-            this.button_PagAnt.Size = new System.Drawing.Size(29, 23);
-            this.button_PagAnt.TabIndex = 25;
-            this.button_PagAnt.Text = "<<";
-            this.button_PagAnt.UseVisualStyleBackColor = true;
+            this.button_PriPag.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.button_PriPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_PriPag.Location = new System.Drawing.Point(244, 319);
+            this.button_PriPag.Name = "button_PriPag";
+            this.button_PriPag.Size = new System.Drawing.Size(29, 23);
+            this.button_PriPag.TabIndex = 25;
+            this.button_PriPag.Text = "<<";
+            this.button_PriPag.UseVisualStyleBackColor = true;
             // 
-            // button_PagSig
+            // button_UltPag
             // 
-            this.button_PagSig.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button_PagSig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_PagSig.Location = new System.Drawing.Point(366, 319);
-            this.button_PagSig.Name = "button_PagSig";
-            this.button_PagSig.Size = new System.Drawing.Size(29, 23);
-            this.button_PagSig.TabIndex = 24;
-            this.button_PagSig.Text = ">>";
-            this.button_PagSig.UseVisualStyleBackColor = true;
+            this.button_UltPag.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.button_UltPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_UltPag.Location = new System.Drawing.Point(366, 319);
+            this.button_UltPag.Name = "button_UltPag";
+            this.button_UltPag.Size = new System.Drawing.Size(29, 23);
+            this.button_UltPag.TabIndex = 24;
+            this.button_UltPag.Text = ">>";
+            this.button_UltPag.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -108,7 +109,7 @@
             // 
             // button_Buscar
             // 
-            this.button_Buscar.Location = new System.Drawing.Point(552, 106);
+            this.button_Buscar.Location = new System.Drawing.Point(390, 106);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(75, 23);
             this.button_Buscar.TabIndex = 22;
@@ -178,16 +179,30 @@
             this.label_Rubro.TabIndex = 0;
             this.label_Rubro.Text = "Rubro";
             // 
+            // button_Volver
+            // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_Volver.Location = new System.Drawing.Point(551, 106);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(75, 23);
+            this.button_Volver.TabIndex = 29;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            // 
             // Ofertar
             // 
+            this.AcceptButton = this.button_Buscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(639, 354);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Volver);
+            this.Controls.Add(this.button_SigPag);
+            this.Controls.Add(this.button_AntPag);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button_PagAnt);
-            this.Controls.Add(this.button_PagSig);
+            this.Controls.Add(this.button_PriPag);
+            this.Controls.Add(this.button_UltPag);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.button_Limpiar);
@@ -207,11 +222,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_SigPag;
+        private System.Windows.Forms.Button button_AntPag;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_PagAnt;
-        private System.Windows.Forms.Button button_PagSig;
+        private System.Windows.Forms.Button button_PriPag;
+        private System.Windows.Forms.Button button_UltPag;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.Button button_Limpiar;
@@ -220,5 +235,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBox_Rubro;
         private System.Windows.Forms.Label label_Descripcion;
         private System.Windows.Forms.Label label_Rubro;
+        private System.Windows.Forms.Button button_Volver;
     }
 }

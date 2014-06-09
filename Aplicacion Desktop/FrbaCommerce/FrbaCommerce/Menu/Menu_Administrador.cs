@@ -69,6 +69,11 @@ namespace FrbaCommerce.Menu
             listado.Show();
         }
 
+        private void Menu_Administrador_Load(object sender, EventArgs e)
+        {
+
+        }
+
       
     }
 }
