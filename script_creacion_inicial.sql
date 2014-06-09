@@ -28,6 +28,15 @@ DROP PROCEDURE LOS_JUS.MIGRAR_EMPRESAS
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_CLIENTES]') AND type in ('P', 'PC'))
 DROP PROCEDURE LOS_JUS.MIGRAR_CLIENTES
 
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_RUBROS]') AND type in ('P', 'PC'))
+DROP PROCEDURE LOS_JUS.MIGRAR_RUBROS
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_VISUALIZACION]') AND type in ('P', 'PC'))
+DROP PROCEDURE LOS_JUS.MIGRAR_VISUALIZACION
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_PUBLICACIONES]') AND type in ('P', 'PC'))
+DROP PROCEDURE LOS_JUS.MIGRAR_PUBLICACIONES
+
 --###########################################################################
 --###########################################################################
 -- DROP FKs 
@@ -434,7 +443,6 @@ CREATE TABLE LOS_JUS.PUBLICACION (
 	PUB_EMPRESA integer,
 	PUB_DESCRIPCION nvarchar(255),
 	PUB_PRECIO numeric(18,0),
-	PUB_PORCENTAJE numeric(18,0),
 	PUB_FECHA_INICIO datetime,
 	PUB_FECHA_FIN datetime,
 	PUB_ESTADO nvarchar(255),
@@ -464,10 +472,9 @@ CREATE TABLE LOS_JUS.PREGUNTA (
 
 CREATE TABLE LOS_JUS.VISUALIZACION ( 
 	VIS_CODIGO numeric(18),
-	VIS_NOMBRE nvarchar(255),
 	VIS_DESCRIPCION nvarchar(255),
-	
-	
+	VIS_PRECIO numeric(18,2),
+	VIS_PORCENTAJE numeric(18,2),
 	primary key (VIS_CODIGO)
 )
 ;
@@ -490,8 +497,8 @@ CREATE TABLE LOS_JUS.PUBLICACIONxVISUALIZACION (
 
 
 CREATE TABLE LOS_JUS.RUBRO ( 
-	RUB_CODIGO integer,
-	RUB_DESCRIPCION nvarchar(255),
+	RUB_CODIGO integer IDENTITY(1,1),
+	RUB_DESCRIPCION varchar(255),
 	primary key (RUB_CODIGO)
 )
 ;
@@ -719,7 +726,7 @@ go
 exec LOS_JUS.MIGRAR_EMPRESAS
 go
 -----------------------------------------------------
--------- MIGRACON CLIDENTES  ------------
+-------- MIGRACON CLIENTES  ------------
 
 CREATE PROCEDURE LOS_JUS.MIGRAR_CLIENTES
 as 
@@ -759,3 +766,184 @@ go
 
 exec LOS_JUS.MIGRAR_CLIENTES
 go
+
+-----------------------------------------------------
+-------- MIGRACON RUBROS  ------------
+
+CREATE PROCEDURE LOS_JUS.MIGRAR_RUBROS
+AS
+DECLARE @rubro_desc VARCHAR(255)
+BEGIN
+	DECLARE cur_rubros CURSOR FOR
+	SELECT DISTINCT [Publicacion_Rubro_Descripcion]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	
+	OPEN cur_rubros
+	FETCH cur_rubros into @rubro_desc
+	WHILE(@@FETCH_STATUS=0)
+	BEGIN
+		INSERT INTO LOS_JUS.RUBRO VALUES(@rubro_desc)	
+		
+		FETCH NEXT FROM cur_rubros INTO @rubro_desc
+	END
+	CLOSE cur_rubros
+	DEALLOCATE cur_rubros
+END
+GO
+
+EXEC LOS_JUS.MIGRAR_RUBROS
+GO
+
+-----------------------------------------------------
+-------- MIGRACON TIPOS DE VISUALIZACION  ------------
+
+CREATE PROCEDURE LOS_JUS.MIGRAR_VISUALIZACION
+AS 
+DECLARE	
+	@id numeric(18,0),
+	@descripcion nvarchar(255),
+	@precio numeric(18,2),
+	@porcenttaje numeric(18,2)
+BEGIN
+	DECLARE cur_visualizacion CURSOR FOR
+	SELECT [Publicacion_Visibilidad_Cod]
+		,[Publicacion_Visibilidad_Desc]
+		,[Publicacion_Visibilidad_Precio]
+		,[Publicacion_Visibilidad_Porcentaje]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	GROUP BY [Publicacion_Visibilidad_Cod]
+		,[Publicacion_Visibilidad_Desc]
+		,[Publicacion_Visibilidad_Precio]
+		,[Publicacion_Visibilidad_Porcentaje]
+	ORDER BY [Publicacion_Visibilidad_Cod] ASC
+
+
+	OPEN cur_visualizacion
+	FETCH cur_visualizacion INTO @id, @descripcion, @precio, @porcenttaje
+	WHILE(@@FETCH_STATUS=0)
+	BEGIN
+		INSERT INTO LOS_JUS.VISUALIZACION VALUES(@id, @descripcion, @precio, @porcenttaje)	
+		
+		FETCH NEXT FROM cur_visualizacion INTO @id, @descripcion, @precio, @porcenttaje
+	END
+	CLOSE cur_visualizacion
+	DEALLOCATE cur_visualizacion
+END
+go
+
+exec LOS_JUS.MIGRAR_VISUALIZACION
+go
+
+-----------------------------------------------------
+-------- MIGRACON PUBLICACIONES ------------
+
+CREATE PROCEDURE LOS_JUS.MIGRAR_PUBLICACIONES
+AS 
+DECLARE	
+	@id numeric(18,0),
+	@cuit_empresa nvarchar(50),
+	@descripcion nvarchar(255),
+	@stock numeric(18,0),
+	@fecha datetime,
+	@fecha_venc datetime,
+	@precio numeric(18,2),
+	@tipo nvarchar(255),
+	@visibilidad numeric(18,2),
+	@estado nvarchar(255),
+	@rubro nvarchar(255),
+	@id_visibilidad numeric(18,2),
+	@id_usuario numeric(18,0),
+	@id_rubro numeric(18,0)
+BEGIN
+	DECLARE cur_pub CURSOR FOR
+	SELECT DISTINCT ([Publicacion_Cod])
+		,[Publ_Empresa_Cuit]
+		,[Publicacion_Descripcion]
+		,[Publicacion_Stock]
+		,[Publicacion_Fecha]
+		,[Publicacion_Fecha_Venc]
+		,[Publicacion_Precio]
+		,[Publicacion_Tipo]
+		,[Publicacion_Visibilidad_Cod]
+		,[Publicacion_Estado]
+		,[Publicacion_Rubro_Descripcion]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	ORDER BY [Publicacion_Cod] ASC
+
+
+	OPEN cur_pub
+	FETCH cur_pub INTO @id,
+		@cuit_empresa,
+		@descripcion,
+		@stock,
+		@fecha,
+		@fecha_venc,
+		@precio,
+		@tipo,
+		@visibilidad,
+		@estado,
+		@rubro
+	WHILE(@@FETCH_STATUS=0)
+	BEGIN
+	
+		INSERT INTO LOS_JUS.PUBLICACION VALUES (
+			@id, 
+			(SELECT LOS_JUS.EMPRESA.EMP_ID 
+			 FROM LOS_JUS.EMPRESA 
+			 WHERE LOS_JUS.EMPRESA.EMP_CUIT LIKE @cuit_empresa), 
+			@descripcion, 
+			@precio, 
+			@fecha, 
+			@fecha_venc, 
+			@estado,
+			1
+		)
+	
+		IF (@tipo LIKE 'Compra Inmediata')
+		BEGIN
+			
+			INSERT INTO LOS_JUS.COMPRA VALUES (
+				@id, --TODO: EVALUAR PK
+				@id,
+				@stock
+			)
+			
+		END
+		ELSE
+		BEGIN
+			INSERT INTO LOS_JUS.SUBASTA VALUES (
+				@id, --TODO: EVALUAR PK
+				@id,
+				@precio
+			)
+		END
+		
+		INSERT INTO LOS_JUS.RUBROxPUBLICACION VALUES (
+			(SELECT LOS_JUS.RUBRO.RUB_CODIGO 
+			 FROM LOS_JUS.RUBRO 
+			 WHERE LOS_JUS.RUBRO.RUB_CODIGO LIKE @rubro),
+			@id
+		)
+		INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION VALUES(@id,@visibilidad,@stock)
+		
+		
+		FETCH NEXT FROM cur_visualizacion INTO @id,
+			@cuit_empresa,
+			@descripcion,
+			@stock,
+			@fecha,
+			@fecha_venc,
+			@precio,
+			@tipo,
+			@visibilidad,
+			@estado,
+			@rubro
+	END
+	CLOSE cur_pub
+	DEALLOCATE cur_pub
+END
+go
+
+exec LOS_JUS.MIGRAR_PUBLICACIONES
+go
+
