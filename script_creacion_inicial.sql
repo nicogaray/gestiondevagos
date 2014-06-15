@@ -921,13 +921,13 @@ BEGIN
 		INSERT INTO LOS_JUS.RUBROxPUBLICACION VALUES (
 			(SELECT LOS_JUS.RUBRO.RUB_CODIGO 
 			 FROM LOS_JUS.RUBRO 
-			 WHERE LOS_JUS.RUBRO.RUB_CODIGO LIKE @rubro),
+			 WHERE LOS_JUS.RUBRO.RUB_DESCRIPCION LIKE @rubro),
 			@id
 		)
 		INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION VALUES(@id,@visibilidad,@stock)
 		
 		
-		FETCH NEXT FROM cur_visualizacion INTO @id,
+		FETCH NEXT FROM cur_pub INTO @id,
 			@cuit_empresa,
 			@descripcion,
 			@stock,
