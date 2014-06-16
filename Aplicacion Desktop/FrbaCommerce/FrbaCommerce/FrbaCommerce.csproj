@@ -200,6 +200,7 @@
     <Compile Include="Abm Visibilidad\ListadoSeleccionBaja.Designer.cs">
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base de Datos\BD_Conexion.cs" />
     <Compile Include="Calificar Vendedor\Calificar_Vendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,6 +461,7 @@
     <None Include="Resources\estrella.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Resources\estrella1.PNG" />
   </ItemGroup>
   <ItemGroup>

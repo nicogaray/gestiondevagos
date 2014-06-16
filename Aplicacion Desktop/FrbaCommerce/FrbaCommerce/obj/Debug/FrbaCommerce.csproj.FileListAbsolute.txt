@@ -47,3 +47,4 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Responder_Preguntas.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Ver_Respestas.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Hacer_Preguntas.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe.config

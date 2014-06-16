@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox_ModificarDatos = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_Datos = new System.Windows.Forms.RichTextBox();
             this.button_IrA = new System.Windows.Forms.Button();
             this.groupBox_Rol = new System.Windows.Forms.GroupBox();
             this.label_RolAsignado = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             // 
             // groupBox_ModificarDatos
             // 
-            this.groupBox_ModificarDatos.Controls.Add(this.richTextBox1);
+            this.groupBox_ModificarDatos.Controls.Add(this.richTextBox_Datos);
             this.groupBox_ModificarDatos.Controls.Add(this.button_IrA);
             this.groupBox_ModificarDatos.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox_ModificarDatos.Location = new System.Drawing.Point(12, 167);
@@ -62,16 +62,17 @@
             this.groupBox_ModificarDatos.TabStop = false;
             this.groupBox_ModificarDatos.Text = "Modificar datos";
             // 
-            // richTextBox1
+            // richTextBox_Datos
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(62, 16);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(305, 30);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Si desea cambiar sus datos personales haga click en el botón \n\"Ir\" para acceder a" +
+            this.richTextBox_Datos.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox_Datos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox_Datos.Location = new System.Drawing.Point(62, 16);
+            this.richTextBox_Datos.Name = "richTextBox_Datos";
+            this.richTextBox_Datos.Size = new System.Drawing.Size(305, 30);
+            this.richTextBox_Datos.TabIndex = 0;
+            this.richTextBox_Datos.Text = "Si desea cambiar sus datos personales haga click en el botón \n\"Ir\" para acceder a" +
                 "l formulario de modificación de usuario";
+            this.richTextBox_Datos.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // button_IrA
             // 
@@ -263,7 +264,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_ModificarDatos;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox_Datos;
         private System.Windows.Forms.Button button_IrA;
         private System.Windows.Forms.GroupBox groupBox_Rol;
         private System.Windows.Forms.Label label_RolAsignado;

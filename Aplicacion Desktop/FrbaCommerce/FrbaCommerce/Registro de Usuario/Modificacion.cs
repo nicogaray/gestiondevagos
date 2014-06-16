@@ -43,6 +43,8 @@ namespace FrbaCommerce.Registro_de_Usuario
 
         private void Modificacion_Load(object sender, EventArgs e)
         {
+            richTextBox_Datos.Enabled = false;
+
             textBox_RolAsignado.Enabled = false;
             if (cliente)
             {
@@ -174,6 +176,11 @@ namespace FrbaCommerce.Registro_de_Usuario
                 modificacion.Show();
             }
         
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+          
         }
 
     }

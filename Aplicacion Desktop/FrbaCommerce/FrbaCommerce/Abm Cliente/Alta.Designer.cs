@@ -136,7 +136,7 @@
             this.radioButton_Pas.Location = new System.Drawing.Point(312, 80);
             this.radioButton_Pas.Name = "radioButton_Pas";
             this.radioButton_Pas.Size = new System.Drawing.Size(46, 17);
-            this.radioButton_Pas.TabIndex = 18;
+            this.radioButton_Pas.TabIndex = 5;
             this.radioButton_Pas.TabStop = true;
             this.radioButton_Pas.Text = "PAS";
             this.radioButton_Pas.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.radioButton_Ci.Location = new System.Drawing.Point(183, 80);
             this.radioButton_Ci.Name = "radioButton_Ci";
             this.radioButton_Ci.Size = new System.Drawing.Size(35, 17);
-            this.radioButton_Ci.TabIndex = 17;
+            this.radioButton_Ci.TabIndex = 2;
             this.radioButton_Ci.TabStop = true;
             this.radioButton_Ci.Text = "CI";
             this.radioButton_Ci.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             this.radioButton_Le.Location = new System.Drawing.Point(268, 80);
             this.radioButton_Le.Name = "radioButton_Le";
             this.radioButton_Le.Size = new System.Drawing.Size(38, 17);
-            this.radioButton_Le.TabIndex = 16;
+            this.radioButton_Le.TabIndex = 4;
             this.radioButton_Le.TabStop = true;
             this.radioButton_Le.Text = "LE";
             this.radioButton_Le.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.radioButton_Lc.Location = new System.Drawing.Point(224, 80);
             this.radioButton_Lc.Name = "radioButton_Lc";
             this.radioButton_Lc.Size = new System.Drawing.Size(38, 17);
-            this.radioButton_Lc.TabIndex = 15;
+            this.radioButton_Lc.TabIndex = 3;
             this.radioButton_Lc.TabStop = true;
             this.radioButton_Lc.Text = "LC";
             this.radioButton_Lc.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.radioButton_Dni.Location = new System.Drawing.Point(133, 80);
             this.radioButton_Dni.Name = "radioButton_Dni";
             this.radioButton_Dni.Size = new System.Drawing.Size(44, 17);
-            this.radioButton_Dni.TabIndex = 14;
+            this.radioButton_Dni.TabIndex = 1;
             this.radioButton_Dni.TabStop = true;
             this.radioButton_Dni.Text = "DNI";
             this.radioButton_Dni.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             this.Name = "Alta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Alta_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
             this.ResumeLayout(false);

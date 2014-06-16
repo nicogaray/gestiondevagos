@@ -30,6 +30,8 @@ namespace FrbaCommerce.Abm_Empresa
             textBox_RazonSocial.Clear();
             textBox_NombreContacto.Clear();
             textBox_Telefono.Clear();
+            DateTime fecha = DateTime.Now;
+            dateTimePicker_FechaNacimiento.Value = fecha;
         }
 
         private void textBox_RazonSocial_MouseEnter(object sender, EventArgs e)

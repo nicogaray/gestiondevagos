@@ -6,23 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Alta : Form
     {
 
+
         public Alta()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
+        
         
 
 
@@ -129,9 +125,42 @@ namespace FrbaCommerce.Abm_Cliente
         }
 
         private void button_Guardar_Click(object sender, EventArgs e)
-        { 
+        {
+            String pNombre = textBox_Nombre.Text;
+            String pApellido = textBox_Apellido.Text;
+            String pDocumento = textBox_Documento.Text;
+            String pTelefono = textBox_Telefono.Text;
+            String pDireccion = textBox_Direccion.Text;
+            String pCodigoPostal = textBox_CodigoPostal.Text;
+            String pMail = textBox_Mail.Text;
+            String pFecha = dateTimePicker_FechaNacimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+            String pTipo = "";
+            if (radioButton_Ci.Checked)
+            {
+                pTipo = "CI";
+            }
+            if (radioButton_Dni.Checked)
+            {
+                pTipo = "CI";
+            }
+            if (radioButton_Lc.Checked)
+            {
+                pTipo = "CI";
+            }
+            if (radioButton_Le.Checked)
+            {
+                pTipo = "CI";
+            }
+            if (radioButton_Pas.Checked)
+            {
+                pTipo = "CI";
+            }
+            
+            
             //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
+            string mensaje_Aceptacion = pTipo;
+                //"Los datos han sido guardados con éxito";
             const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
             const string resumen = "";
 
@@ -170,6 +199,11 @@ namespace FrbaCommerce.Abm_Cliente
         }
 
         private void dateTimePicker_FechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Alta_Load(object sender, EventArgs e)
         {
 
         }

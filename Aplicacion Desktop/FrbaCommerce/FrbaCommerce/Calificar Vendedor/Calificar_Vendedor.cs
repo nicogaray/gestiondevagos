@@ -47,6 +47,13 @@ namespace FrbaCommerce.Calificar_Vendedor
             textBox_EscribaAqui.Text = "";
             //label_EscribaAqui.Hide();
             textBox_EscribaAqui.Hide();
+            radioButton_1.Checked= false;
+            radioButton_2.Checked = false;
+            radioButton_3.Checked = false;
+            radioButton_4.Checked = false;
+            radioButton_5.Checked = false;
+
+
         }
 
         private void button_Volver_Click(object sender, EventArgs e)
