@@ -37,13 +37,17 @@ DROP PROCEDURE LOS_JUS.MIGRAR_VISUALIZACION
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_PUBLICACIONES]') AND type in ('P', 'PC'))
 DROP PROCEDURE LOS_JUS.MIGRAR_PUBLICACIONES
 
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_OPERACIONES]') AND type in ('P', 'PC'))
+DROP PROCEDURE LOS_JUS.MIGRAR_OPERACIONES
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[MIGRAR_FACTURAS]') AND type in ('P', 'PC'))
+DROP PROCEDURE LOS_JUS.MIGRAR_FACTURAS
+
 --###########################################################################
 --###########################################################################
 -- DROP FKs 
 --###########################################################################
 --###########################################################################
-
-
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
@@ -140,6 +144,13 @@ ALTER TABLE LOS_JUS.CALIFICACION DROP CONSTRAINT CAL_OPERACION
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
+	WHERE id = object_id('LOS_JUS.ITEM') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1
+)
+ALTER TABLE LOS_JUS.ITEM DROP CONSTRAINT ITE_FACTURA
+;
+
+IF EXISTS (
+	SELECT * FROM dbo.sysobjects 
 	WHERE id = object_id('LOS_JUS.FACTURACION') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1
 )
 ALTER TABLE LOS_JUS.FACTURACION DROP CONSTRAINT FAC_OPERACION
@@ -180,8 +191,12 @@ IF EXISTS (
 ALTER TABLE LOS_JUS.OPERACION DROP CONSTRAINT OPE_PUBLICACION
 ;
 
-
 GO
+
+--###########################################################################
+--###########################################################################
+-- DROP TABLES
+--###########################################################################
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
@@ -262,6 +277,13 @@ DROP TABLE LOS_JUS.CALIFICACION
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
+	WHERE id = object_id('LOS_JUS.ITEM') AND  OBJECTPROPERTY(id, 'IsUserTable') = 1
+)
+DROP TABLE LOS_JUS.ITEM
+;
+
+IF EXISTS (
+	SELECT * FROM dbo.sysobjects 
 	WHERE id = object_id('LOS_JUS.FACTURACION') AND  OBJECTPROPERTY(id, 'IsUserTable') = 1
 )
 DROP TABLE LOS_JUS.FACTURACION
@@ -281,15 +303,12 @@ IF EXISTS (
 DROP TABLE LOS_JUS.CLIENTE
 ;
 
-
-
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
 	WHERE id = object_id('LOS_JUS.COMPRA') AND  OBJECTPROPERTY(id, 'IsUserTable') = 1
 )
 DROP TABLE LOS_JUS.COMPRA
 ;
-
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
@@ -304,7 +323,6 @@ IF EXISTS (
 )
 DROP TABLE LOS_JUS.PUBLICACION
 ;
-
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
@@ -519,7 +537,7 @@ CREATE TABLE LOS_JUS.RUBROxPUBLICACION (
 
 
 CREATE TABLE LOS_JUS.OPERACION ( 
-	OPE_CODIGO integer,
+	OPE_CODIGO integer IDENTITY(1,1),
 	OPE_PUBLICACION numeric(18,0),
 	OPE_TIPO char,
 	OPE_CLIENTE integer,
@@ -560,6 +578,18 @@ CREATE TABLE LOS_JUS.FACTURACION (
 )
 ;
 
+-----------TABLA ITEM-----------
+
+
+CREATE TABLE LOS_JUS.ITEM( 
+	ITE_CODIGO integer IDENTITY(1,1),
+	ITE_FACTURA numeric(18,0),
+	ITE_MONTO numeric(18,2),
+	ITE_CANTIDAD numeric(18,0),
+	primary key (ITE_CODIGO),
+	foreign key (ITE_FACTURA) references LOS_JUS.FACTURACION
+)
+;
 
 -----------TABLA COMPRA-----------
 
@@ -584,8 +614,12 @@ CREATE TABLE LOS_JUS.SUBASTA (
 	foreign key (SUB_PUBLICACION) references LOS_JUS.PUBLICACION
 )
 ;
+
  
 GO
+
+
+
 
  
 -------- INSERTS ROLES ------------
@@ -942,8 +976,231 @@ BEGIN
 	CLOSE cur_pub
 	DEALLOCATE cur_pub
 END
-go
+GO
 
-exec LOS_JUS.MIGRAR_PUBLICACIONES
-go
+EXEC LOS_JUS.MIGRAR_PUBLICACIONES
+GO
 
+-----------------------------------------------------
+-------- MIGRACON OPERACIONES ------------
+
+CREATE PROCEDURE LOS_JUS.MIGRAR_OPERACIONES
+AS 
+DECLARE	
+	@id numeric(18,0),
+	@tipo nvarchar(255),
+	@dni nvarchar(255),
+	@compra_fecha datetime,
+	@cantidad numeric(18,0),
+	@oferta_fecha datetime,
+	@monto numeric(18,2),
+	@cal_codigo numeric(18,0),
+	@cat_estrellas numeric(18,0),
+	@cal_detalle nvarchar(255),
+	@last_ope_id integer
+BEGIN
+	DECLARE cur_ope CURSOR FOR
+	SELECT [Publicacion_Cod]
+		,[Publicacion_Tipo]
+		,[Cli_Dni]
+		,[Compra_Fecha]
+		,[Compra_Cantidad]
+		,[Oferta_Fecha]
+		,[Oferta_Monto]
+		,[Calificacion_Codigo]
+		,[Calificacion_Cant_Estrellas]
+		,[Calificacion_Descripcion]
+    FROM [GD1C2014].[gd_esquema].[Maestra]
+	WHERE ([Oferta_Fecha] IS NOT NULL AND [Compra_Fecha] IS NULL) 
+		OR ([Oferta_Fecha] IS NULL AND [Compra_Fecha] IS NOT NULL)
+	ORDER BY [Publicacion_Cod] ASC
+
+
+	OPEN cur_ope
+	FETCH cur_ope INTO @id,
+		@tipo,
+		@dni,
+		@compra_fecha,
+		@cantidad,
+		@oferta_fecha,
+		@monto,
+		@cal_codigo,
+		@cat_estrellas,
+		@cal_detalle
+	WHILE(@@FETCH_STATUS=0)
+	BEGIN
+		
+		IF (@tipo LIKE 'Compra Inmediata')
+		BEGIN
+			INSERT INTO LOS_JUS.OPERACION
+				([OPE_PUBLICACION]
+				,[OPE_TIPO]
+				,[OPE_CLIENTE]
+				,[OPE_CANTIDAD]
+				,[OPE_FECHA])
+			VALUES (
+				@id,
+				'C',
+				(SELECT LOS_JUS.CLIENTE.CLI_ID
+				 FROM LOS_JUS.CLIENTE 
+				 WHERE LOS_JUS.CLIENTE.CLI_DNI LIKE @dni),
+				@cantidad,
+				@compra_fecha
+			)
+		END
+		ELSE
+		BEGIN
+			INSERT INTO LOS_JUS.OPERACION 
+				([OPE_PUBLICACION]
+				,[OPE_TIPO]
+				,[OPE_CLIENTE]
+				,[OPE_OFERTA]
+				,[OPE_FECHA])
+			VALUES (
+				@id,
+				'S',
+				(SELECT LOS_JUS.CLIENTE.CLI_ID
+				 FROM LOS_JUS.CLIENTE 
+				 WHERE LOS_JUS.CLIENTE.CLI_DNI LIKE @dni),
+				@monto,
+				@oferta_fecha
+			)
+		END
+		
+		SELECT @last_ope_id = SCOPE_IDENTITY()
+		
+		IF (@cal_codigo IS NOT NULL) 
+		BEGIN
+			INSERT INTO LOS_JUS.CALIFICACION 
+			VALUES (
+				@cal_codigo,
+				@last_ope_id,
+				@cat_estrellas,
+				@cal_detalle
+			)
+		END
+		
+		FETCH NEXT FROM cur_ope INTO @id,
+			@tipo,
+			@dni,
+			@compra_fecha,
+			@cantidad,
+			@oferta_fecha,
+			@monto,
+			@cal_codigo,
+			@cat_estrellas,
+			@cal_detalle
+	END
+	CLOSE cur_ope
+	DEALLOCATE cur_ope
+END
+GO
+
+EXEC LOS_JUS.MIGRAR_OPERACIONES
+GO
+
+
+-----------------------------------------------------
+-------- MIGRACION FACTURAS ------------
+
+CREATE PROCEDURE LOS_JUS.MIGRAR_FACTURAS
+AS 
+DECLARE	
+	@id numeric(18,0),
+	@tipo nvarchar(255),
+	@dni nvarchar(255),
+	@item_fact_monto numeric(18,2),
+	@item_fact_cant numeric(18,0),
+	@factura_nro numeric(18,0),
+	@factura_fecha datetime,
+	@factura_total numeric(18,2),
+	@forma_pago_desc nvarchar(255),
+	@last_fact numeric(18,0),
+	@cli_id integer
+
+BEGIN
+	DECLARE cur_fac CURSOR FOR
+	SELECT [Publicacion_Cod]
+		,[Publicacion_Tipo]
+		,[Cli_Dni]
+		,[Item_Factura_Monto]
+		,[Item_Factura_Cantidad]
+		,[Factura_Nro]
+		,[Factura_Fecha]
+		,[Factura_Total]
+		,[Forma_Pago_Desc]
+    FROM [GD1C2014].[gd_esquema].[Maestra]
+	WHERE [Factura_Nro] IS NOT NULL
+	ORDER BY [Factura_Nro] ASC
+
+
+	OPEN cur_fac
+	FETCH cur_fac INTO @id,
+		@tipo,
+		@dni,
+		@item_fact_monto,
+		@item_fact_cant,
+		@factura_nro,
+		@factura_fecha,
+		@factura_total,
+		@forma_pago_desc
+		
+	SET @last_fact = 0
+		
+	WHILE(@@FETCH_STATUS=0)
+	BEGIN
+		IF (@factura_nro > @last_fact) ---INSERT FACTURA Y PRIMER ITEM
+		BEGIN
+		
+		SELECT @cli_id = CLIENTE.CLI_ID FROM CLIENTE WHERE CLIENTE.CLI_DNI = @dni
+		INSERT INTO LOS_JUS.FACTURACION
+		VALUES (
+			@factura_nro,
+			(SELECT TOP 1 LOS_JUS.OPERACION.OPE_CODIGO
+			 FROM LOS_JUS.OPERACION 
+			 WHERE LOS_JUS.OPERACION.OPE_PUBLICACION = @id AND LOS_JUS.OPERACION.OPE_CLIENTE = @cli_id),
+			@forma_pago_desc,
+			@factura_total,
+			@factura_fecha
+		)
+		
+		INSERT INTO LOS_JUS.ITEM
+		VALUES (
+			@factura_nro,
+			@item_fact_monto,
+			@item_fact_cant
+		)
+		
+		END
+		ELSE ---INSERT ITEM
+		BEGIN
+			INSERT INTO LOS_JUS.ITEM
+			VALUES (
+				@factura_nro,
+				@item_fact_monto,
+				@item_fact_cant
+			)
+		END
+		
+		SELECT @last_fact = @factura_nro
+		
+		FETCH NEXT FROM cur_fac INTO @id,
+		@tipo,
+		@dni,
+		@item_fact_monto,
+		@item_fact_cant,
+		@factura_nro,
+		@factura_fecha,
+		@factura_total,
+		@forma_pago_desc
+		
+		
+		
+	END
+	CLOSE cur_fac
+	DEALLOCATE cur_fac
+END
+GO
+
+EXEC LOS_JUS.MIGRAR_FACTURAS
+GO
