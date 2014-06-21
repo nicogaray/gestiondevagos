@@ -1,0 +1,30 @@
+Aplicacion
+
+- Crear el usuario administrador
+- Que funcionalidades tiene cada rol (ver de hacer una consulta sql en cada menu)
+- Hacer funciones de busqueda para baja y modificacion para los ABMs 
+		* Clientes: buscarClientes(Nombre,Apellido,Email,TipoDocumento,Documento)
+		  devuelve una tabla con todos los datos de los clientes que cumplan con el filtro de busqueda
+		  Los parametros vacios vendran como "NULL".
+		* Empresa: buscarEmpresas(RazonSocial,Cuit,Email)
+		  devuelve una tabla con todos los datos de la empresa que cumplan con el filtro de busqueda
+		  Los parametros vacios vendran como "NULL".
+		* Rubro: buscarRubros(Nombre,PrecioPorPublicitar,PorcentajeDeVentas)
+		  devuelve una tabla con todos los datos de la empresa que cumplan con el filtro de busqueda
+		  Los parametros vacios vendran como "NULL".
+- Hacer funcion de busqueda: buscarVendedores(idCliente)
+			       devuelve tabla con todas las ofertas y compras concluidas por ese cliente y los datos de la empresa que vendio. 
+			       (no son necesarios todos los datos de ambas tablas, solo lo indispensable para que el cliente seleccione al vendedor que quiere calificar)
+- Hacer funcion de busqueda: buscarPublicaciones(Rubros /*lista*/ ,Descripcion)
+			     devuelve una tabla con todos los datos del rubro que cumplan con el filtro de busqueda
+		  	     Los parametros vacios vendran como "NULL".
+- Hacer funcion de busqueda: buscarPreguntasSinResponder(idEmpresa)
+			     devuelve una tabla de las preguntas sin responder que la empresa tiene
+- Hacer funcion de busqueda: verRespuestas(idCliente)
+			     devuelve una tabla con las preguntas que el cliente realizo y las respuestas de estas (solo las preguntas con respuesta)
+- Hacer funcion de busqueda: buscarHistorial(id,operacionRealizada,esRol)
+			     id puede ser de Cliente o Empresa
+			     operacionRealizada es un String, para el cliente="Compras","Ofertas","CalificacionesOtorgadas", para la empresa="Ventas","OfertasRecibidas","CalificacionesRecibidas"
+			     esRol es un String, "Cliente" y "Empresa"
+			     devuelve una tabla con los datos de las operaciones realizadas filtrada por el tipo de operacion
+- Hacer funciones de Listado Estadistico (4); tener en cuanta los campos de filtrado de cada una
