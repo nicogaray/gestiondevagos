@@ -9,7 +9,7 @@ Aplicacion
 		* Empresa: buscarEmpresas(RazonSocial,Cuit,Email)
 		  devuelve una tabla con todos los datos de la empresa que cumplan con el filtro de busqueda
 		  Los parametros vacios vendran como "NULL".
-		* Rubro: buscarRubros(Nombre,PrecioPorPublicitar,PorcentajeDeVentas)
+		* Visibilidad buscarVisibilidad(Nombre,PrecioPorPublicitar,PorcentajeDeVentas)
 		  devuelve una tabla con todos los datos de la empresa que cumplan con el filtro de busqueda
 		  Los parametros vacios vendran como "NULL".
 - Hacer funcion de busqueda: buscarVendedores(idCliente)

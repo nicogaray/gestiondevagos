@@ -77,5 +77,10 @@ namespace FrbaCommerce.Listado_Estadistico
         private void comboBox_TipoListado_SelectedValueChanged(object sender, EventArgs e)
         {
         }
+
+        private void comboBox_Visibilidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

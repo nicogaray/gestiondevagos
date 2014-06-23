@@ -101,6 +101,7 @@
             this.comboBox_Visibilidad.Name = "comboBox_Visibilidad";
             this.comboBox_Visibilidad.Size = new System.Drawing.Size(245, 21);
             this.comboBox_Visibilidad.TabIndex = 15;
+            this.comboBox_Visibilidad.SelectedIndexChanged += new System.EventHandler(this.comboBox_Visibilidad_SelectedIndexChanged);
             // 
             // label_Mes
             // 
