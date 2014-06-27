@@ -11,6 +11,27 @@ namespace FrbaCommerce.Abm_Visibilidad
 {
     public partial class Alta : Form
     {
+        public bool comprobarTipos(String precioPublicitar, String porcentajeVenta)
+        {
+            return ( precioPublicitar.All(char.IsDigit) &&  porcentajeVenta.All(char.IsDigit));
+                   
+        }
+
+        public bool comprobarDatosCompletos(String nombre,String precioPublicitar, String porcentajeVenta)
+        {
+            if (nombre == "" ||
+                precioPublicitar == "" ||
+                porcentajeVenta == "")
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public Alta()
         {
             InitializeComponent();
@@ -23,19 +44,40 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
-            const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
+            String pNombre = textBox_Nombre.Text;
+            String pDescripcion = textBox_Descripcion.Text;
+            String pPrecioPublicitar = textBox_PrecioPublicitar.Text;
+            String pPorcentajeVenta = textBox_PorcentajeVenta.Text;
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarTipos = this.comprobarTipos(pPrecioPublicitar, pPorcentajeVenta);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre,pPrecioPublicitar,pPorcentajeVenta);
             const string resumen = "";
 
-            if (true)
+            if (comprobarTipos && comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos obligatorios vacios, debe ingresar los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
+
+          
+
         }
 
         private void Alta_Load(object sender, EventArgs e)

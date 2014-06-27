@@ -86,6 +86,7 @@
             // textBox_PrecioPublicitar
             // 
             this.textBox_PrecioPublicitar.Location = new System.Drawing.Point(137, 182);
+            this.textBox_PrecioPublicitar.MaxLength = 20;
             this.textBox_PrecioPublicitar.Name = "textBox_PrecioPublicitar";
             this.textBox_PrecioPublicitar.Size = new System.Drawing.Size(129, 20);
             this.textBox_PrecioPublicitar.TabIndex = 13;
@@ -95,6 +96,7 @@
             // textBox_PorcentajeVenta
             // 
             this.textBox_PorcentajeVenta.Location = new System.Drawing.Point(137, 208);
+            this.textBox_PorcentajeVenta.MaxLength = 20;
             this.textBox_PorcentajeVenta.Name = "textBox_PorcentajeVenta";
             this.textBox_PorcentajeVenta.Size = new System.Drawing.Size(129, 20);
             this.textBox_PorcentajeVenta.TabIndex = 12;
@@ -104,6 +106,7 @@
             // textBox_Descripcion
             // 
             this.textBox_Descripcion.Location = new System.Drawing.Point(137, 77);
+            this.textBox_Descripcion.MaxLength = 255;
             this.textBox_Descripcion.Multiline = true;
             this.textBox_Descripcion.Name = "textBox_Descripcion";
             this.textBox_Descripcion.Size = new System.Drawing.Size(232, 99);
@@ -158,6 +161,7 @@
             // textBox_Nombre
             // 
             this.textBox_Nombre.Location = new System.Drawing.Point(137, 51);
+            this.textBox_Nombre.MaxLength = 50;
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;

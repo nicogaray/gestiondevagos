@@ -60,10 +60,10 @@
             this.button_SeleccionarUsuario = new System.Windows.Forms.Button();
             this.label_CrearComo = new System.Windows.Forms.Label();
             this.groupBox_SeleccionarUsuario = new System.Windows.Forms.GroupBox();
-            this.label_Username = new System.Windows.Forms.Label();
-            this.label_IdUsuario = new System.Windows.Forms.Label();
-            this.textBox_Username = new System.Windows.Forms.TextBox();
             this.textBox_IdUsuario = new System.Windows.Forms.TextBox();
+            this.textBox_Username = new System.Windows.Forms.TextBox();
+            this.label_IdUsuario = new System.Windows.Forms.Label();
+            this.label_Username = new System.Windows.Forms.Label();
             this.paner_Alta.SuspendLayout();
             this.groupBox_SeleccionarUsuario.SuspendLayout();
             this.SuspendLayout();
@@ -440,23 +440,27 @@
             this.groupBox_SeleccionarUsuario.Controls.Add(this.label_IdUsuario);
             this.groupBox_SeleccionarUsuario.Controls.Add(this.label_Username);
             this.groupBox_SeleccionarUsuario.Controls.Add(this.button_SeleccionarUsuario);
-            this.groupBox_SeleccionarUsuario.Location = new System.Drawing.Point(381, 103);
+            this.groupBox_SeleccionarUsuario.Location = new System.Drawing.Point(381, 91);
             this.groupBox_SeleccionarUsuario.Name = "groupBox_SeleccionarUsuario";
             this.groupBox_SeleccionarUsuario.Size = new System.Drawing.Size(134, 187);
             this.groupBox_SeleccionarUsuario.TabIndex = 26;
             this.groupBox_SeleccionarUsuario.TabStop = false;
             this.groupBox_SeleccionarUsuario.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label_Username
+            // textBox_IdUsuario
             // 
-            this.label_Username.AutoSize = true;
-            this.label_Username.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_Username.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Username.Location = new System.Drawing.Point(6, 79);
-            this.label_Username.Name = "label_Username";
-            this.label_Username.Size = new System.Drawing.Size(55, 13);
-            this.label_Username.TabIndex = 27;
-            this.label_Username.Text = "Username";
+            this.textBox_IdUsuario.Location = new System.Drawing.Point(9, 155);
+            this.textBox_IdUsuario.Name = "textBox_IdUsuario";
+            this.textBox_IdUsuario.Size = new System.Drawing.Size(119, 20);
+            this.textBox_IdUsuario.TabIndex = 27;
+            // 
+            // textBox_Username
+            // 
+            this.textBox_Username.Location = new System.Drawing.Point(9, 103);
+            this.textBox_Username.Name = "textBox_Username";
+            this.textBox_Username.Size = new System.Drawing.Size(119, 20);
+            this.textBox_Username.TabIndex = 27;
+            this.textBox_Username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label_IdUsuario
             // 
@@ -469,20 +473,16 @@
             this.label_IdUsuario.TabIndex = 28;
             this.label_IdUsuario.Text = "ID de usuario";
             // 
-            // textBox_Username
+            // label_Username
             // 
-            this.textBox_Username.Location = new System.Drawing.Point(9, 103);
-            this.textBox_Username.Name = "textBox_Username";
-            this.textBox_Username.Size = new System.Drawing.Size(119, 20);
-            this.textBox_Username.TabIndex = 27;
-            this.textBox_Username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox_IdUsuario
-            // 
-            this.textBox_IdUsuario.Location = new System.Drawing.Point(9, 155);
-            this.textBox_IdUsuario.Name = "textBox_IdUsuario";
-            this.textBox_IdUsuario.Size = new System.Drawing.Size(119, 20);
-            this.textBox_IdUsuario.TabIndex = 27;
+            this.label_Username.AutoSize = true;
+            this.label_Username.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Username.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Username.Location = new System.Drawing.Point(6, 79);
+            this.label_Username.Name = "label_Username";
+            this.label_Username.Size = new System.Drawing.Size(55, 13);
+            this.label_Username.TabIndex = 27;
+            this.label_Username.Text = "Username";
             // 
             // Alta
             // 

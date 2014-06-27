@@ -28,3 +28,8 @@ Aplicacion
 			     esRol es un String, "Cliente" y "Empresa"
 			     devuelve una tabla con los datos de las operaciones realizadas filtrada por el tipo de operacion
 - Hacer funciones de Listado Estadistico (4); tener en cuanta los campos de filtrado de cada una
+
+
+- DUDAS: es necesario que al cargar un rol se caguen tmb las funcionalidades?
+	 que campos son OBLIGATORIOS de la tabla visibilidad? (CORREGIR: TABLA VISUALIZACION, FALTA CAMPO "NOMBRE")
+	 ver como resolver alta visualizacion: precio y porcentaje pueden llevar comas

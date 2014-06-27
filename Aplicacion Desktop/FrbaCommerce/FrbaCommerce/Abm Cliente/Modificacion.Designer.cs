@@ -132,14 +132,14 @@
             this.paner_Alta.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.paner_Alta.Location = new System.Drawing.Point(12, 7);
             this.paner_Alta.Name = "paner_Alta";
-            this.paner_Alta.Size = new System.Drawing.Size(388, 278);
+            this.paner_Alta.Size = new System.Drawing.Size(358, 257);
             this.paner_Alta.TabIndex = 12;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
             // 
             // dateTimePicker_FechaNacimiento
             // 
-            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(133, 232);
+            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(117, 229);
             this.dateTimePicker_FechaNacimiento.Name = "dateTimePicker_FechaNacimiento";
             this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(231, 20);
             this.dateTimePicker_FechaNacimiento.TabIndex = 21;
@@ -148,14 +148,14 @@
             // 
             // textBox_Mail
             // 
-            this.textBox_Mail.Location = new System.Drawing.Point(133, 205);
+            this.textBox_Mail.Location = new System.Drawing.Point(117, 202);
             this.textBox_Mail.Name = "textBox_Mail";
             this.textBox_Mail.Size = new System.Drawing.Size(232, 20);
             this.textBox_Mail.TabIndex = 20;
             // 
             // textBox_CodigoPostal
             // 
-            this.textBox_CodigoPostal.Location = new System.Drawing.Point(133, 179);
+            this.textBox_CodigoPostal.Location = new System.Drawing.Point(117, 176);
             this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
             this.textBox_CodigoPostal.Size = new System.Drawing.Size(129, 20);
             this.textBox_CodigoPostal.TabIndex = 19;
@@ -165,7 +165,7 @@
             this.radioButton_Pas.AutoSize = true;
             this.radioButton_Pas.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButton_Pas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Pas.Location = new System.Drawing.Point(312, 80);
+            this.radioButton_Pas.Location = new System.Drawing.Point(296, 77);
             this.radioButton_Pas.Name = "radioButton_Pas";
             this.radioButton_Pas.Size = new System.Drawing.Size(46, 17);
             this.radioButton_Pas.TabIndex = 18;
@@ -178,7 +178,7 @@
             this.radioButton_Ci.AutoSize = true;
             this.radioButton_Ci.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButton_Ci.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Ci.Location = new System.Drawing.Point(183, 80);
+            this.radioButton_Ci.Location = new System.Drawing.Point(167, 77);
             this.radioButton_Ci.Name = "radioButton_Ci";
             this.radioButton_Ci.Size = new System.Drawing.Size(35, 17);
             this.radioButton_Ci.TabIndex = 17;
@@ -191,7 +191,7 @@
             this.radioButton_Le.AutoSize = true;
             this.radioButton_Le.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButton_Le.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Le.Location = new System.Drawing.Point(268, 80);
+            this.radioButton_Le.Location = new System.Drawing.Point(252, 77);
             this.radioButton_Le.Name = "radioButton_Le";
             this.radioButton_Le.Size = new System.Drawing.Size(38, 17);
             this.radioButton_Le.TabIndex = 16;
@@ -204,7 +204,7 @@
             this.radioButton_Lc.AutoSize = true;
             this.radioButton_Lc.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButton_Lc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Lc.Location = new System.Drawing.Point(224, 80);
+            this.radioButton_Lc.Location = new System.Drawing.Point(208, 77);
             this.radioButton_Lc.Name = "radioButton_Lc";
             this.radioButton_Lc.Size = new System.Drawing.Size(38, 17);
             this.radioButton_Lc.TabIndex = 15;
@@ -217,7 +217,7 @@
             this.radioButton_Dni.AutoSize = true;
             this.radioButton_Dni.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButton_Dni.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Dni.Location = new System.Drawing.Point(133, 80);
+            this.radioButton_Dni.Location = new System.Drawing.Point(117, 77);
             this.radioButton_Dni.Name = "radioButton_Dni";
             this.radioButton_Dni.Size = new System.Drawing.Size(44, 17);
             this.radioButton_Dni.TabIndex = 14;
@@ -227,7 +227,7 @@
             // 
             // textBox_Documento
             // 
-            this.textBox_Documento.Location = new System.Drawing.Point(133, 103);
+            this.textBox_Documento.Location = new System.Drawing.Point(117, 100);
             this.textBox_Documento.Name = "textBox_Documento";
             this.textBox_Documento.Size = new System.Drawing.Size(129, 20);
             this.textBox_Documento.TabIndex = 13;
@@ -236,7 +236,7 @@
             // 
             // textBox_Telefono
             // 
-            this.textBox_Telefono.Location = new System.Drawing.Point(133, 129);
+            this.textBox_Telefono.Location = new System.Drawing.Point(117, 126);
             this.textBox_Telefono.Name = "textBox_Telefono";
             this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
             this.textBox_Telefono.TabIndex = 12;
@@ -245,7 +245,7 @@
             // 
             // textBox_Direccion
             // 
-            this.textBox_Direccion.Location = new System.Drawing.Point(133, 155);
+            this.textBox_Direccion.Location = new System.Drawing.Point(117, 152);
             this.textBox_Direccion.Name = "textBox_Direccion";
             this.textBox_Direccion.Size = new System.Drawing.Size(232, 20);
             this.textBox_Direccion.TabIndex = 11;
@@ -254,7 +254,7 @@
             // 
             // textBox_Apellido
             // 
-            this.textBox_Apellido.Location = new System.Drawing.Point(133, 54);
+            this.textBox_Apellido.Location = new System.Drawing.Point(117, 51);
             this.textBox_Apellido.Name = "textBox_Apellido";
             this.textBox_Apellido.Size = new System.Drawing.Size(232, 20);
             this.textBox_Apellido.TabIndex = 10;
@@ -266,7 +266,7 @@
             this.label_FechaNacimiento.AutoSize = true;
             this.label_FechaNacimiento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_FechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_FechaNacimiento.Location = new System.Drawing.Point(23, 234);
+            this.label_FechaNacimiento.Location = new System.Drawing.Point(7, 231);
             this.label_FechaNacimiento.Name = "label_FechaNacimiento";
             this.label_FechaNacimiento.Size = new System.Drawing.Size(106, 13);
             this.label_FechaNacimiento.TabIndex = 9;
@@ -277,7 +277,7 @@
             this.label_CodigoPostal.AutoSize = true;
             this.label_CodigoPostal.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_CodigoPostal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_CodigoPostal.Location = new System.Drawing.Point(57, 182);
+            this.label_CodigoPostal.Location = new System.Drawing.Point(41, 179);
             this.label_CodigoPostal.Name = "label_CodigoPostal";
             this.label_CodigoPostal.Size = new System.Drawing.Size(72, 13);
             this.label_CodigoPostal.TabIndex = 8;
@@ -288,7 +288,7 @@
             this.label_Direccion.AutoSize = true;
             this.label_Direccion.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Direccion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Direccion.Location = new System.Drawing.Point(75, 158);
+            this.label_Direccion.Location = new System.Drawing.Point(59, 155);
             this.label_Direccion.Name = "label_Direccion";
             this.label_Direccion.Size = new System.Drawing.Size(52, 13);
             this.label_Direccion.TabIndex = 7;
@@ -299,7 +299,7 @@
             this.label_Telefono.AutoSize = true;
             this.label_Telefono.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Telefono.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Telefono.Location = new System.Drawing.Point(80, 132);
+            this.label_Telefono.Location = new System.Drawing.Point(64, 129);
             this.label_Telefono.Name = "label_Telefono";
             this.label_Telefono.Size = new System.Drawing.Size(49, 13);
             this.label_Telefono.TabIndex = 6;
@@ -310,7 +310,7 @@
             this.label_Mail.AutoSize = true;
             this.label_Mail.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Mail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Mail.Location = new System.Drawing.Point(94, 208);
+            this.label_Mail.Location = new System.Drawing.Point(78, 205);
             this.label_Mail.Name = "label_Mail";
             this.label_Mail.Size = new System.Drawing.Size(33, 13);
             this.label_Mail.TabIndex = 5;
@@ -321,7 +321,7 @@
             this.label_TipoDocumento.AutoSize = true;
             this.label_TipoDocumento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_TipoDocumento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_TipoDocumento.Location = new System.Drawing.Point(30, 82);
+            this.label_TipoDocumento.Location = new System.Drawing.Point(14, 79);
             this.label_TipoDocumento.Name = "label_TipoDocumento";
             this.label_TipoDocumento.Size = new System.Drawing.Size(99, 13);
             this.label_TipoDocumento.TabIndex = 4;
@@ -332,7 +332,7 @@
             this.label_Documento.AutoSize = true;
             this.label_Documento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Documento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Documento.Location = new System.Drawing.Point(67, 106);
+            this.label_Documento.Location = new System.Drawing.Point(51, 103);
             this.label_Documento.Name = "label_Documento";
             this.label_Documento.Size = new System.Drawing.Size(62, 13);
             this.label_Documento.TabIndex = 3;
@@ -343,7 +343,7 @@
             this.label_Apellido.AutoSize = true;
             this.label_Apellido.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Apellido.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Apellido.Location = new System.Drawing.Point(85, 57);
+            this.label_Apellido.Location = new System.Drawing.Point(69, 54);
             this.label_Apellido.Name = "label_Apellido";
             this.label_Apellido.Size = new System.Drawing.Size(44, 13);
             this.label_Apellido.TabIndex = 2;
@@ -354,7 +354,7 @@
             this.label_Nombre.AutoSize = true;
             this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Nombre.Location = new System.Drawing.Point(85, 31);
+            this.label_Nombre.Location = new System.Drawing.Point(69, 28);
             this.label_Nombre.Name = "label_Nombre";
             this.label_Nombre.Size = new System.Drawing.Size(44, 13);
             this.label_Nombre.TabIndex = 1;
@@ -362,7 +362,7 @@
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(133, 28);
+            this.textBox_Nombre.Location = new System.Drawing.Point(117, 25);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;
@@ -387,7 +387,7 @@
             // 
             this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button_Volver.Location = new System.Drawing.Point(413, 254);
+            this.button_Volver.Location = new System.Drawing.Point(413, 276);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(88, 31);
             this.button_Volver.TabIndex = 18;

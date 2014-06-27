@@ -12,11 +12,11 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Alta : Form
     {
-        //Convierto los tipos de datos numeric a numeros
         public bool comprobarTipos(String telefono, String documento)
         {
             return (telefono.All(char.IsDigit) && documento.All(char.IsDigit));
         }
+
         public bool comprobarDatosCompletos(String nombre, String apellido, String tipoDocumento, String documento, String telefono, String direccion, String codigoPostal, String mail,String usuario, String username, String id)
         {
             if (nombre == "" ||

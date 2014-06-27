@@ -11,6 +11,19 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class Hacer_Preguntas : Form
     {
+        public bool comprobarDatosCompletos(String pregunta)
+        {
+            if (pregunta == "")
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public Hacer_Preguntas()
         {
             InitializeComponent();
@@ -35,19 +48,27 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "La pregunta ha sido guardada con éxito";
-            const string mensaje_Rechazo = "La pregunta no pudo ser guardada";
+            String pPregunta = textBox_Pregunta.Text;
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pPregunta);
             const string resumen = "";
 
-            if (true)
+            if (comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void button_Volver_Click(object sender, EventArgs e)
@@ -66,6 +87,11 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         private void label_Pregunta_MouseLeave(object sender, EventArgs e)
         {
             label_Informacion.Text = "";
+
+        }
+
+        private void Hacer_Preguntas_Load(object sender, EventArgs e)
+        {
 
         }
     }

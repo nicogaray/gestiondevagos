@@ -13,6 +13,31 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public bool desdeModificacionUsuario = false;
 
+        public bool comprobarTipos(String telefono, String documento)
+        {
+            return (telefono.All(char.IsDigit) && documento.All(char.IsDigit));
+        }
+
+        public bool comprobarDatosCompletos(String nombre, String apellido, String tipoDocumento, String documento, String telefono, String direccion, String codigoPostal, String mail)
+        {
+            if (nombre == "" ||
+                apellido == "" ||
+                tipoDocumento == "" ||
+                documento == "" ||
+                telefono == "" ||
+                direccion == "" ||
+                codigoPostal == "" ||
+                mail == "" )
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public Modificacion()
         {
             InitializeComponent();
@@ -42,19 +67,74 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
-            const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
+            //Recibo los datos ingresados por el usuario
+            String pNombre = textBox_Nombre.Text;
+            String pApellido = textBox_Apellido.Text;
+            String pDocumento = textBox_Documento.Text;
+            String pTelefono = textBox_Telefono.Text;
+            String pDireccion = textBox_Direccion.Text;
+            String pCodigoPostal = textBox_CodigoPostal.Text;
+            String pMail = textBox_Mail.Text;
+            String pFecha = dateTimePicker_FechaNacimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+            //Recibo lo marcado en el radio button
+            String pTipo = "";
+            if (radioButton_Ci.Checked)
+            {
+                pTipo = radioButton_Ci.Text;
+            }
+            if (radioButton_Dni.Checked)
+            {
+                pTipo = radioButton_Dni.Text;
+            }
+            if (radioButton_Lc.Checked)
+            {
+                pTipo = radioButton_Lc.Text;
+            }
+            if (radioButton_Le.Checked)
+            {
+                pTipo = radioButton_Le.Text;
+            }
+            if (radioButton_Pas.Checked)
+            {
+                pTipo = radioButton_Pas.Text;
+            }
+
+
+
+
+            //int pTelefonoConvertido = Convert.ToInt32(telefono);
+            //int pDocumentoConvertido = Convert.ToInt32(documento);
+
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarTipos = this.comprobarTipos(pTelefono, pDocumento);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pApellido, pTipo, pDocumento, pTelefono, pDireccion, pCodigoPostal, pMail);
             const string resumen = "";
 
-            if (true)
+            if (comprobarTipos && comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
+
+          
         }
 
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)

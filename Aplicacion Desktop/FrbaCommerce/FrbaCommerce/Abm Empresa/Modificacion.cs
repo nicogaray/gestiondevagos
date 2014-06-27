@@ -12,6 +12,31 @@ namespace FrbaCommerce.Abm_Empresa
     public partial class Modificacion : Form
     {
         public bool desdeModificacionUsuario = false;
+
+        public bool comprobarTipos(String telefono)
+        {
+            return (telefono.All(char.IsDigit));
+        }
+
+        public bool comprobarDatosCompletos(String razonSocial, String cuit, String nombreContacto, String telefono, String direccion, String codigoPostal, String mail)
+        {
+            if (razonSocial == "" ||
+                cuit == "" ||
+                nombreContacto == "" ||
+                telefono == "" ||
+                direccion == "" ||
+                codigoPostal == "" ||
+                mail == "")
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public Modificacion()
         {
             InitializeComponent();
@@ -19,17 +44,44 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
-            const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
+            //Recibo los datos ingresados por el usuario
+            String pRazonSocial = textBox_RazonSocial.Text;
+            String pCuit = textBox_Cuit.Text;
+            String pNombreContacto = textBox_NombreContacto.Text;
+            String pTelefono = textBox_Telefono.Text;
+            String pDireccion = textBox_Direccion.Text;
+            String pCodigoPostal = textBox_CodigoPostal.Text;
+            String pMail = textBox_Mail.Text;
+            String pFecha = dateTimePicker_FechaNacimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+            //int pTelefonoConvertido = Convert.ToInt32(telefono);
+
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarTipos = this.comprobarTipos(pTelefono);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pRazonSocial, pCuit, pNombreContacto, pTelefono, pDireccion, pCodigoPostal, pMail);
             const string resumen = "";
 
-            if (true)
+            if (comprobarTipos && comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 

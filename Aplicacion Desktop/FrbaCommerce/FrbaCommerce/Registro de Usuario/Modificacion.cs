@@ -11,6 +11,20 @@ namespace FrbaCommerce.Registro_de_Usuario
 {
     public partial class Modificacion : Form
     {
+        public bool comprobarDatosCompletos(String usuario, String contrasenia)
+        {
+            if (usuario == "" ||
+                contrasenia == "")
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public bool cliente = false;
 
         public Modificacion()
@@ -26,19 +40,28 @@ namespace FrbaCommerce.Registro_de_Usuario
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
-            const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
+            String pUsername = textBox_Username.Text;
+            String pPassword = textBox_Password.Text;
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pUsername, pPassword);
             const string resumen = "";
 
-            if (true)
+            if (comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void Modificacion_Load(object sender, EventArgs e)

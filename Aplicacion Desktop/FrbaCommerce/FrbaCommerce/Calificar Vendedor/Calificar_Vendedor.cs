@@ -11,6 +11,19 @@ namespace FrbaCommerce.Calificar_Vendedor
 {
     public partial class Calificar_Vendedor : Form
     {
+        public bool comprobarDatosCompletos(int calificacion)
+        {
+            if (calificacion == 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
         public Calificar_Vendedor()
         {
             InitializeComponent();
@@ -65,24 +78,55 @@ namespace FrbaCommerce.Calificar_Vendedor
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            //falta ver como avisar los campos afectados en caso de error
-            const string mensaje_Aceptacion = "Los datos han sido guardados con éxito";
-            const string mensaje_Rechazo = "Los datos no pudieron ser guardados";
+            
+            int pCalificacion = 0;
+            if (radioButton_1.Checked)
+            {
+                pCalificacion = 1;
+            }
+            if (radioButton_2.Checked)
+            {
+                pCalificacion = 2;
+            }
+            if (radioButton_3.Checked)
+            {
+                pCalificacion = 3;
+            }
+            if (radioButton_4.Checked)
+            {
+                pCalificacion = 4;
+            }
+            if (radioButton_5.Checked)
+            {
+                pCalificacion = 5;
+            }
+
+            String pDescripcion = comboBox_Descripcion.Text;
+            String pEscribaAqui = textBox_EscribaAqui.Text;
+
+            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pCalificacion);
             const string resumen = "";
 
-            if (true)
+            if (comprobarDatosCompletos)
             {
+                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                if (comprobarDatosCompletos == false)
+                {
+                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                 }
+            
         }
 
         private void Calificar_Vendedor_Load(object sender, EventArgs e)
         {
-            //label_EscribaAqui.Hide();
             textBox_EscribaAqui.Hide();
         }
     }
