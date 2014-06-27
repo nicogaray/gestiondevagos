@@ -30,11 +30,11 @@
         {
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_ABMRol = new System.Windows.Forms.Button();
-            this.button_ABMCliente = new System.Windows.Forms.Button();
-            this.button_ABMEmpresa = new System.Windows.Forms.Button();
             this.button_ListadoEstadistico = new System.Windows.Forms.Button();
             this.button_ABMVisibilidad = new System.Windows.Forms.Button();
             this.button_ABMRubro = new System.Windows.Forms.Button();
+            this.button_ABMCliente = new System.Windows.Forms.Button();
+            this.button_ABMEmpresa = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
@@ -58,26 +58,6 @@
             this.button_ABMRol.Text = "ABM de Rol";
             this.button_ABMRol.UseVisualStyleBackColor = true;
             this.button_ABMRol.Click += new System.EventHandler(this.button_ABMRol_Click);
-            // 
-            // button_ABMCliente
-            // 
-            this.button_ABMCliente.Location = new System.Drawing.Point(72, 58);
-            this.button_ABMCliente.Name = "button_ABMCliente";
-            this.button_ABMCliente.Size = new System.Drawing.Size(310, 40);
-            this.button_ABMCliente.TabIndex = 2;
-            this.button_ABMCliente.Text = "ABM de Cliente";
-            this.button_ABMCliente.UseVisualStyleBackColor = true;
-            this.button_ABMCliente.Click += new System.EventHandler(this.button_ABMCliente_Click);
-            // 
-            // button_ABMEmpresa
-            // 
-            this.button_ABMEmpresa.Location = new System.Drawing.Point(72, 104);
-            this.button_ABMEmpresa.Name = "button_ABMEmpresa";
-            this.button_ABMEmpresa.Size = new System.Drawing.Size(310, 40);
-            this.button_ABMEmpresa.TabIndex = 4;
-            this.button_ABMEmpresa.Text = "ABM de Empresa";
-            this.button_ABMEmpresa.UseVisualStyleBackColor = true;
-            this.button_ABMEmpresa.Click += new System.EventHandler(this.button_ABMEmpresa_Click);
             // 
             // button_ListadoEstadistico
             // 
@@ -109,6 +89,26 @@
             this.button_ABMRubro.UseVisualStyleBackColor = true;
             this.button_ABMRubro.Click += new System.EventHandler(this.button_ABMRubro_Click);
             // 
+            // button_ABMCliente
+            // 
+            this.button_ABMCliente.Location = new System.Drawing.Point(72, 58);
+            this.button_ABMCliente.Name = "button_ABMCliente";
+            this.button_ABMCliente.Size = new System.Drawing.Size(310, 40);
+            this.button_ABMCliente.TabIndex = 2;
+            this.button_ABMCliente.Text = "ABM de Cliente";
+            this.button_ABMCliente.UseVisualStyleBackColor = true;
+            this.button_ABMCliente.Click += new System.EventHandler(this.button_ABMCliente_Click);
+            // 
+            // button_ABMEmpresa
+            // 
+            this.button_ABMEmpresa.Location = new System.Drawing.Point(72, 104);
+            this.button_ABMEmpresa.Name = "button_ABMEmpresa";
+            this.button_ABMEmpresa.Size = new System.Drawing.Size(310, 40);
+            this.button_ABMEmpresa.TabIndex = 4;
+            this.button_ABMEmpresa.Text = "ABM de Empresa";
+            this.button_ABMEmpresa.UseVisualStyleBackColor = true;
+            this.button_ABMEmpresa.Click += new System.EventHandler(this.button_ABMEmpresa_Click);
+            // 
             // Menu_Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,10 +136,10 @@
 
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_ABMRol;
-        private System.Windows.Forms.Button button_ABMCliente;
-        private System.Windows.Forms.Button button_ABMEmpresa;
         private System.Windows.Forms.Button button_ListadoEstadistico;
         private System.Windows.Forms.Button button_ABMVisibilidad;
         private System.Windows.Forms.Button button_ABMRubro;
+        private System.Windows.Forms.Button button_ABMCliente;
+        private System.Windows.Forms.Button button_ABMEmpresa;
     }
 }

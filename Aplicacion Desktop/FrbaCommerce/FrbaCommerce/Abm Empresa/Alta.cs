@@ -233,6 +233,12 @@ namespace FrbaCommerce.Abm_Empresa
 
         }
 
+        private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
+        {
+            Abm_Empresa.SeleccionUsuario seleccion = new Abm_Empresa.SeleccionUsuario();
+            seleccion.Show();
+        }
+
 
     
 

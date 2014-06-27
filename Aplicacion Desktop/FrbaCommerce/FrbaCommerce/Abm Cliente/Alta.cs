@@ -286,7 +286,8 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
         {
-
+            Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
+            seleccion.Show();
         }
 
         private void radioButton_UsuarioExistente_CheckedChanged(object sender, EventArgs e)

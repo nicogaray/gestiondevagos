@@ -352,6 +352,7 @@
             this.button_SeleccionarUsuario.TabIndex = 24;
             this.button_SeleccionarUsuario.Text = "Seleccionar usuario";
             this.button_SeleccionarUsuario.UseVisualStyleBackColor = true;
+            this.button_SeleccionarUsuario.Click += new System.EventHandler(this.button_SeleccionarUsuario_Click);
             // 
             // label_CrearComo
             // 

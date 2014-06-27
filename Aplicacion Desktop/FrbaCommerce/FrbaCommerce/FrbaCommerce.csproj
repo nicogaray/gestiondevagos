@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abm Cliente\SeleccionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\SeleccionUsuario.Designer.cs">
+      <DependentUpon>SeleccionUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Cliente\ListadoSeleccionModificacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="Abm Empresa\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa\SeleccionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\SeleccionUsuario.Designer.cs">
+      <DependentUpon>SeleccionUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Empresa\Modificacion.cs">
       <SubType>Form</SubType>
@@ -299,6 +311,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Abm Cliente\SeleccionUsuario.resx">
+      <DependentUpon>SeleccionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\ListadoSeleccionModificacion.resx">
       <DependentUpon>ListadoSeleccionModificacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\SeleccionUsuario.resx">
+      <DependentUpon>SeleccionUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
