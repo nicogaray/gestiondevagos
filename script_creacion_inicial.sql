@@ -339,7 +339,7 @@ DROP TABLE LOS_JUS.USUARIO
 ;
 
 GO
-
+/*
 IF EXISTS ( SELECT  *
                 FROM    sys.schemas
                 WHERE   name = 'LOS_JUS' ) 
@@ -350,7 +350,7 @@ IF NOT EXISTS ( SELECT  *
                 FROM    sys.schemas
                 WHERE   name = 'LOS_JUS' ) 
     EXEC('CREATE SCHEMA [LOS_JUS] AUTHORIZATION [gd]');
-GO
+GO*/
 --###########################################################################
 --###########################################################################
 -- CREACION DE TABLAS 
@@ -427,10 +427,11 @@ CREATE TABLE LOS_JUS.CLIENTE (
 	CLI_NOMBRE nvarchar(255),
 	CLI_APELLIDO nvarchar(255),
 	CLI_DNI numeric(18,0),
-	CLI_TIPO_DNI char,
+	CLI_TIPO_DNI varchar(3) DEFAULT 'DNI',
 	CLI_FECHA_NACIMIENTO datetime,
 	CLI_CUIL nvarchar(50),
 	CLI_OPERACIONES_SIN_CALIFICAR integer,
+	CLI_HABILITADO integer DEFAULT 1,
 	primary key (CLI_ID),
 	foreign key (CLI_ID) references LOS_JUS.USUARIO
 )
@@ -447,6 +448,7 @@ CREATE TABLE LOS_JUS.EMPRESA (
 	EMP_FECHA_CREACION datetime,
 	EMP_PUBLICIDADES_GRATIS integer,
 	EMP_CALIFICACION integer,
+	EMP_HABILITADO integer DEFAULT 1,
 	primary key (EMP_ID),
 	foreign key (EMP_ID) references LOS_JUS.USUARIO
 )
@@ -747,7 +749,7 @@ BEGIN
 	fetch cur_empresa into @id, @razonsocial, @username, @fechaCreacion
 	WHILE(@@FETCH_STATUS=0)
 	BEGIN
-		insert into LOS_JUS.EMPRESA values(@id,@razonsocial, @username, @contacto, @fechaCreacion, @publiGratis, @calificacion)	
+		insert into LOS_JUS.EMPRESA values(@id,@razonsocial, @username, @contacto, @fechaCreacion, @publiGratis, @calificacion, 1)	
 		
 		fetch next from cur_empresa into @id, @razonsocial, @username, @fechaCreacion
 	END
@@ -774,7 +776,7 @@ declare
 	@cuil nvarchar(50),
 	@operaciones int
 BEGIN
-	set @tipodni='D'
+	set @tipodni='DNI'
 	set @cuil='0-00000000-0'
 	set @operaciones=0
 
@@ -788,7 +790,7 @@ BEGIN
 	fetch cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
 	WHILE(@@FETCH_STATUS=0)
 	BEGIN
-		insert into LOS_JUS.CLIENTE values(@id,@nombre, @apellido, @dni, @tipodni, @fechanacimiento, @cuil, @operaciones)	
+		insert into LOS_JUS.CLIENTE values(@id,@nombre, @apellido, @dni, @tipodni, @fechanacimiento, @cuil, @operaciones, 1)	
 		
 		fetch next from cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
 	END
@@ -806,22 +808,11 @@ go
 
 CREATE PROCEDURE LOS_JUS.MIGRAR_RUBROS
 AS
-DECLARE @rubro_desc VARCHAR(255)
 BEGIN
-	DECLARE cur_rubros CURSOR FOR
-	SELECT DISTINCT [Publicacion_Rubro_Descripcion]
-	FROM [GD1C2014].[gd_esquema].[Maestra]
-	
-	OPEN cur_rubros
-	FETCH cur_rubros into @rubro_desc
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		INSERT INTO LOS_JUS.RUBRO VALUES(@rubro_desc)	
-		
-		FETCH NEXT FROM cur_rubros INTO @rubro_desc
-	END
-	CLOSE cur_rubros
-	DEALLOCATE cur_rubros
+
+	INSERT INTO LOS_JUS.RUBRO (RUB_DESCRIPCION) 
+		SELECT DISTINCT [Publicacion_Rubro_Descripcion]
+		FROM [GD1C2014].[gd_esquema].[Maestra]	
 END
 GO
 
@@ -833,35 +824,18 @@ GO
 
 CREATE PROCEDURE LOS_JUS.MIGRAR_VISUALIZACION
 AS 
-DECLARE	
-	@id numeric(18,0),
-	@descripcion nvarchar(255),
-	@precio numeric(18,2),
-	@porcenttaje numeric(18,2)
 BEGIN
-	DECLARE cur_visualizacion CURSOR FOR
-	SELECT [Publicacion_Visibilidad_Cod]
-		,[Publicacion_Visibilidad_Desc]
-		,[Publicacion_Visibilidad_Precio]
-		,[Publicacion_Visibilidad_Porcentaje]
-	FROM [GD1C2014].[gd_esquema].[Maestra]
-	GROUP BY [Publicacion_Visibilidad_Cod]
-		,[Publicacion_Visibilidad_Desc]
-		,[Publicacion_Visibilidad_Precio]
-		,[Publicacion_Visibilidad_Porcentaje]
-	ORDER BY [Publicacion_Visibilidad_Cod] ASC
-
-
-	OPEN cur_visualizacion
-	FETCH cur_visualizacion INTO @id, @descripcion, @precio, @porcenttaje
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		INSERT INTO LOS_JUS.VISUALIZACION VALUES(@id, @descripcion, @precio, @porcenttaje)	
-		
-		FETCH NEXT FROM cur_visualizacion INTO @id, @descripcion, @precio, @porcenttaje
-	END
-	CLOSE cur_visualizacion
-	DEALLOCATE cur_visualizacion
+	INSERT INTO LOS_JUS.VISUALIZACION (VIS_CODIGO, VIS_DESCRIPCION, VIS_PRECIO, VIS_PORCENTAJE)
+		SELECT [Publicacion_Visibilidad_Cod]
+			,[Publicacion_Visibilidad_Desc]
+			,[Publicacion_Visibilidad_Precio]
+			,[Publicacion_Visibilidad_Porcentaje]
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		GROUP BY [Publicacion_Visibilidad_Cod]
+			,[Publicacion_Visibilidad_Desc]
+			,[Publicacion_Visibilidad_Precio]
+			,[Publicacion_Visibilidad_Porcentaje]
+		ORDER BY [Publicacion_Visibilidad_Cod] ASC	
 END
 go
 
@@ -873,108 +847,53 @@ go
 
 CREATE PROCEDURE LOS_JUS.MIGRAR_PUBLICACIONES
 AS 
-DECLARE	
-	@id numeric(18,0),
-	@cuit_empresa nvarchar(50),
-	@descripcion nvarchar(255),
-	@stock numeric(18,0),
-	@fecha datetime,
-	@fecha_venc datetime,
-	@precio numeric(18,2),
-	@tipo nvarchar(255),
-	@visibilidad numeric(18,2),
-	@estado nvarchar(255),
-	@rubro nvarchar(255),
-	@id_visibilidad numeric(18,2),
-	@id_usuario numeric(18,0),
-	@id_rubro numeric(18,0)
 BEGIN
-	DECLARE cur_pub CURSOR FOR
+	INSERT INTO LOS_JUS.PUBLICACION 
+	(PUB_CODIGO, PUB_EMPRESA, PUB_DESCRIPCION, PUB_PRECIO, PUB_FECHA_INICIO, PUB_FECHA_FIN, PUB_ESTADO, PUB_HABILITACION_PREGUNTAS)
 	SELECT DISTINCT ([Publicacion_Cod])
-		,[Publ_Empresa_Cuit]
+		,(SELECT LOS_JUS.EMPRESA.EMP_ID 
+		FROM LOS_JUS.EMPRESA 
+		WHERE LOS_JUS.EMPRESA.EMP_CUIT LIKE [Publ_Empresa_Cuit])
 		,[Publicacion_Descripcion]
-		,[Publicacion_Stock]
+		,[Publicacion_Precio]
 		,[Publicacion_Fecha]
 		,[Publicacion_Fecha_Venc]
-		,[Publicacion_Precio]
-		,[Publicacion_Tipo]
-		,[Publicacion_Visibilidad_Cod]
 		,[Publicacion_Estado]
-		,[Publicacion_Rubro_Descripcion]
+		,1
 	FROM [GD1C2014].[gd_esquema].[Maestra]
 	ORDER BY [Publicacion_Cod] ASC
 
-
-	OPEN cur_pub
-	FETCH cur_pub INTO @id,
-		@cuit_empresa,
-		@descripcion,
-		@stock,
-		@fecha,
-		@fecha_venc,
-		@precio,
-		@tipo,
-		@visibilidad,
-		@estado,
-		@rubro
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
+	INSERT INTO LOS_JUS.COMPRA (COM_CODIGO, COM_PUBLICACION, COM_STOCK) 
+	SELECT DISTINCT ([Publicacion_Cod]) AS CodigoCompra 
+		,[Publicacion_Cod]
+		,[Publicacion_Stock]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	WHERE [Publicacion_Tipo] LIKE 'Compra Inmediata'
+	ORDER BY [Publicacion_Cod] ASC
 	
-		INSERT INTO LOS_JUS.PUBLICACION VALUES (
-			@id, 
-			(SELECT LOS_JUS.EMPRESA.EMP_ID 
-			 FROM LOS_JUS.EMPRESA 
-			 WHERE LOS_JUS.EMPRESA.EMP_CUIT LIKE @cuit_empresa), 
-			@descripcion, 
-			@precio, 
-			@fecha, 
-			@fecha_venc, 
-			@estado,
-			1
-		)
+	INSERT INTO LOS_JUS.SUBASTA (SUB_CODIGO, SUB_PUBLICACION, SUB_VALOR_INICIAL)
+	SELECT DISTINCT ([Publicacion_Cod]) AS CodigoCompra 
+		,[Publicacion_Cod]
+		,[Publicacion_Precio]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	WHERE [Publicacion_Tipo] LIKE 'Subasta'
+	ORDER BY [Publicacion_Cod] ASC
 	
-		IF (@tipo LIKE 'Compra Inmediata')
-		BEGIN
-			
-			INSERT INTO LOS_JUS.COMPRA VALUES (
-				@id, --TODO: EVALUAR PK
-				@id,
-				@stock
-			)
-			
-		END
-		ELSE
-		BEGIN
-			INSERT INTO LOS_JUS.SUBASTA VALUES (
-				@id, --TODO: EVALUAR PK
-				@id,
-				@precio
-			)
-		END
+	INSERT INTO LOS_JUS.RUBROxPUBLICACION (RUBPUB_PUBLICACION, RUBPUB_RUBRO)
+	SELECT DISTINCT ([Publicacion_Cod])
+		,(SELECT LOS_JUS.RUBRO.RUB_CODIGO 
+		 FROM LOS_JUS.RUBRO 
+		 WHERE LOS_JUS.RUBRO.RUB_DESCRIPCION LIKE [Publicacion_Rubro_Descripcion])
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	ORDER BY [Publicacion_Cod] ASC
+	
+	INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION (PUBVIS_PUBLICACION, PUBVIS_VISUALIZACION, PUBVIS_CANTIDAD_TIPO) 
+	SELECT DISTINCT ([Publicacion_Cod])
+		,[Publicacion_Visibilidad_Cod]
+		,[Publicacion_Stock]
+	FROM [GD1C2014].[gd_esquema].[Maestra]
+	ORDER BY [Publicacion_Cod] ASC
 		
-		INSERT INTO LOS_JUS.RUBROxPUBLICACION VALUES (
-			(SELECT LOS_JUS.RUBRO.RUB_CODIGO 
-			 FROM LOS_JUS.RUBRO 
-			 WHERE LOS_JUS.RUBRO.RUB_DESCRIPCION LIKE @rubro),
-			@id
-		)
-		INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION VALUES(@id,@visibilidad,@stock)
-		
-		
-		FETCH NEXT FROM cur_pub INTO @id,
-			@cuit_empresa,
-			@descripcion,
-			@stock,
-			@fecha,
-			@fecha_venc,
-			@precio,
-			@tipo,
-			@visibilidad,
-			@estado,
-			@rubro
-	END
-	CLOSE cur_pub
-	DEALLOCATE cur_pub
 END
 GO
 
