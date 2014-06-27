@@ -372,6 +372,7 @@
             // textBox_EscribaAqui
             // 
             this.textBox_EscribaAqui.Location = new System.Drawing.Point(226, 274);
+            this.textBox_EscribaAqui.MaxLength = 255;
             this.textBox_EscribaAqui.Name = "textBox_EscribaAqui";
             this.textBox_EscribaAqui.Size = new System.Drawing.Size(256, 20);
             this.textBox_EscribaAqui.TabIndex = 30;

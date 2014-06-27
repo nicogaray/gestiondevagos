@@ -149,6 +149,7 @@
             // textBox_Mail
             // 
             this.textBox_Mail.Location = new System.Drawing.Point(117, 202);
+            this.textBox_Mail.MaxLength = 255;
             this.textBox_Mail.Name = "textBox_Mail";
             this.textBox_Mail.Size = new System.Drawing.Size(232, 20);
             this.textBox_Mail.TabIndex = 20;
@@ -156,6 +157,7 @@
             // textBox_CodigoPostal
             // 
             this.textBox_CodigoPostal.Location = new System.Drawing.Point(117, 176);
+            this.textBox_CodigoPostal.MaxLength = 50;
             this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
             this.textBox_CodigoPostal.Size = new System.Drawing.Size(129, 20);
             this.textBox_CodigoPostal.TabIndex = 19;
@@ -228,6 +230,7 @@
             // textBox_Documento
             // 
             this.textBox_Documento.Location = new System.Drawing.Point(117, 100);
+            this.textBox_Documento.MaxLength = 18;
             this.textBox_Documento.Name = "textBox_Documento";
             this.textBox_Documento.Size = new System.Drawing.Size(129, 20);
             this.textBox_Documento.TabIndex = 13;
@@ -237,6 +240,7 @@
             // textBox_Telefono
             // 
             this.textBox_Telefono.Location = new System.Drawing.Point(117, 126);
+            this.textBox_Telefono.MaxLength = 18;
             this.textBox_Telefono.Name = "textBox_Telefono";
             this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
             this.textBox_Telefono.TabIndex = 12;
@@ -246,6 +250,7 @@
             // textBox_Direccion
             // 
             this.textBox_Direccion.Location = new System.Drawing.Point(117, 152);
+            this.textBox_Direccion.MaxLength = 255;
             this.textBox_Direccion.Name = "textBox_Direccion";
             this.textBox_Direccion.Size = new System.Drawing.Size(232, 20);
             this.textBox_Direccion.TabIndex = 11;
@@ -255,6 +260,7 @@
             // textBox_Apellido
             // 
             this.textBox_Apellido.Location = new System.Drawing.Point(117, 51);
+            this.textBox_Apellido.MaxLength = 255;
             this.textBox_Apellido.Name = "textBox_Apellido";
             this.textBox_Apellido.Size = new System.Drawing.Size(232, 20);
             this.textBox_Apellido.TabIndex = 10;
@@ -363,6 +369,7 @@
             // textBox_Nombre
             // 
             this.textBox_Nombre.Location = new System.Drawing.Point(117, 25);
+            this.textBox_Nombre.MaxLength = 255;
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;

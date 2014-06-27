@@ -75,6 +75,7 @@
             // textBox_Pregunta
             // 
             this.textBox_Pregunta.Location = new System.Drawing.Point(110, 36);
+            this.textBox_Pregunta.MaxLength = 255;
             this.textBox_Pregunta.Name = "textBox_Pregunta";
             this.textBox_Pregunta.Size = new System.Drawing.Size(420, 20);
             this.textBox_Pregunta.TabIndex = 1;

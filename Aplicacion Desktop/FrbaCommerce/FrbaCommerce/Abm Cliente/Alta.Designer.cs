@@ -208,6 +208,7 @@
             // textBox_Documento
             // 
             this.textBox_Documento.Location = new System.Drawing.Point(120, 91);
+            this.textBox_Documento.MaxLength = 18;
             this.textBox_Documento.Name = "textBox_Documento";
             this.textBox_Documento.Size = new System.Drawing.Size(129, 20);
             this.textBox_Documento.TabIndex = 13;
@@ -218,6 +219,7 @@
             // textBox_Telefono
             // 
             this.textBox_Telefono.Location = new System.Drawing.Point(120, 117);
+            this.textBox_Telefono.MaxLength = 18;
             this.textBox_Telefono.Name = "textBox_Telefono";
             this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
             this.textBox_Telefono.TabIndex = 12;
@@ -347,7 +349,7 @@
             // textBox_Nombre
             // 
             this.textBox_Nombre.Location = new System.Drawing.Point(120, 16);
-            this.textBox_Nombre.MaxLength = 10;
+            this.textBox_Nombre.MaxLength = 255;
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;

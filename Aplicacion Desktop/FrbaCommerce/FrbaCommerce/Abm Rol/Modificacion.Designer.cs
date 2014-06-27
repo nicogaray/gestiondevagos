@@ -130,6 +130,7 @@
             // textBox_Nombre
             // 
             this.textBox_Nombre.Location = new System.Drawing.Point(103, 39);
+            this.textBox_Nombre.MaxLength = 15;
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;
@@ -138,6 +139,7 @@
             // 
             // button_Cancelar
             // 
+            this.button_Cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button_Cancelar.Location = new System.Drawing.Point(413, 103);
             this.button_Cancelar.Name = "button_Cancelar";

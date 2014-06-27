@@ -31,5 +31,7 @@ Aplicacion
 
 
 - DUDAS: es necesario que al cargar un rol se caguen tmb las funcionalidades?
-	 que campos son OBLIGATORIOS de la tabla visibilidad? (CORREGIR: TABLA VISUALIZACION, FALTA CAMPO "NOMBRE")
+	 que campos son OBLIGATORIOS de la tabla visibilidad? (CORREGIR: TABLA VISUALIZACION, FALTA CAMPO "NOMBRE", nvarchar(50))
 	 ver como resolver alta visualizacion: precio y porcentaje pueden llevar comas
+	 CORREGIR: TABLA PREGUNTA NO TIENE CAMPO "PREGUNTA", NVARCHAR 255
+	 VER: cuantos caracteres puede tener usuario y contraseña con el hash de seguridad 

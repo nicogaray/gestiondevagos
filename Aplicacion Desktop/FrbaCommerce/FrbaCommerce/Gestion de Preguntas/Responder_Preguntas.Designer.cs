@@ -57,6 +57,7 @@
             // textBox_Respuesta
             // 
             this.textBox_Respuesta.Location = new System.Drawing.Point(181, 42);
+            this.textBox_Respuesta.MaxLength = 255;
             this.textBox_Respuesta.Multiline = true;
             this.textBox_Respuesta.Name = "textBox_Respuesta";
             this.textBox_Respuesta.Size = new System.Drawing.Size(306, 47);
