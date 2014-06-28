@@ -112,13 +112,13 @@ namespace FrbaCommerce.Abm_Rol
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Rol.ListadoSeleccionModificacion listado_modificacion = new Abm_Rol.ListadoSeleccionModificacion();
-            listado_modificacion.Show();
         }
 
         private void button_Limpiar_Click_1(object sender, EventArgs e)
         {
             textBox_Nombre.Clear();
+            textBox_Descripcion.Clear();
+            textBox_Funcionalidad.Clear();
             dataGridView_ListaFuncionalidades.Rows.Clear();
 
         }
@@ -162,6 +162,40 @@ namespace FrbaCommerce.Abm_Rol
         {
             label_Informacion.Text = "";
 
+        }
+
+        private void button_Agregar_Click(object sender, EventArgs e)
+        {
+            String pFuncionalidad = textBox_Funcionalidad.Text;
+            String pDescripcion = textBox_Descripcion.Text;
+
+            if (pFuncionalidad == "" || pDescripcion == "")
+            {
+                MessageBox.Show("Hay campos vacios. Los datos no se pueden agregar.\nComplete todos los campos e intente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+                dataGridView_ListaFuncionalidades.Rows.Add(pFuncionalidad, pDescripcion);
+                textBox_Descripcion.Clear();
+                textBox_Funcionalidad.Clear();
+            }
+            
+
+            
+        }
+
+        private void dataGridView_ListaFuncionalidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                if (dataGridView_ListaFuncionalidades.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+                    dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+                }
+               
+            }
         }
     }
 }
