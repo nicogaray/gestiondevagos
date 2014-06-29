@@ -396,11 +396,6 @@ CREATE TABLE LOS_JUS.USUARIO (
 	USU_USERNAME varchar(50) NOT NULL UNIQUE,
 	USU_PASSWORD varchar(100) NOT NULL,
 	USU_INTENTOS integer DEFAULT 0,
-	USU_HABILITADO integer,
-	USU_MAIL nvarchar(255) NOT NULL UNIQUE,
-	USU_TELEFONO numeric(18,0),
-	USU_DIRECCION varchar(255),
-	USU_COD_POSTAL nvarchar(50),
 	primary key (USU_ID)
 )
 ;
@@ -430,6 +425,10 @@ CREATE TABLE LOS_JUS.CLIENTE (
 	CLI_TIPO_DNI varchar(3) DEFAULT 'DNI',
 	CLI_FECHA_NACIMIENTO datetime,
 	CLI_CUIL nvarchar(50),
+	CLI_MAIL nvarchar(255) NOT NULL UNIQUE,
+	CLI_TELEFONO numeric(18,0),
+	CLI_DIRECCION varchar(255),
+	CLI_COD_POSTAL nvarchar(50),
 	CLI_OPERACIONES_SIN_CALIFICAR integer,
 	CLI_HABILITADO integer DEFAULT 1,
 	primary key (CLI_ID),
@@ -446,6 +445,10 @@ CREATE TABLE LOS_JUS.EMPRESA (
 	EMP_CUIT nvarchar(50),
 	EMP_CONTACTO varchar(255),
 	EMP_FECHA_CREACION datetime,
+	EMP_MAIL nvarchar(255) NOT NULL UNIQUE,
+	EMP_TELEFONO numeric(18,0),
+	EMP_DIRECCION varchar(255),
+	EMP_COD_POSTAL nvarchar(50),
 	EMP_PUBLICIDADES_GRATIS integer,
 	EMP_CALIFICACION integer,
 	EMP_HABILITADO integer DEFAULT 1,
@@ -640,42 +643,59 @@ GO
 -------- MIGRACON CLIENTES EN USUARIOS------------
 -- password= gd2014  
 CREATE PROCEDURE LOS_JUS.MIGRAR_USUARIOS_cli
-as 
-declare	
-	@username varchar(50),
-	@password varchar(100),
-	@intentos int,
-	@habilitado int,
-	@mail nvarchar(255),
-	@telefono numeric(18,0),
-	@direccion varchar(255),
-	@cod_postal nvarchar(50)
+AS
+DECLARE	
+	@password varchar(100)
 BEGIN
 	set @password='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-	set @habilitado=1
-	set @intentos=0
-	set @telefono=44444444
-	declare cur_usuarios cursor for
-	SELECT DISTINCT [Cli_Dni]
-      ,[Cli_Mail]
-      ,[Cli_Dom_Calle] + ' ' + Cast([Cli_Nro_Calle] as VARCHAR) 
-      + ' Piso ' + Cast([Cli_Piso] as VARCHAR) + ' Dpto ' + [Cli_Depto]
-      ,[Cli_Cod_Postal]
-    FROM [GD1C2014].[gd_esquema].[Maestra]
-	WHERE [Cli_Dni] IS NOT NULL
-	OPEN cur_usuarios
-	fetch cur_usuarios into @username, @mail, @direccion, @cod_postal
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		insert into LOS_JUS.USUARIO values(@username,@password, @intentos, @habilitado, @mail,@telefono, 
-		@direccion, @cod_postal)	
-		insert into LOS_JUS.ROLxUSUARIO values( 'Cliente', @@IDENTITY)
-		fetch next from cur_usuarios into @username, @mail, @direccion, @cod_postal	
-	END
-	close cur_usuarios
-	deallocate cur_usuarios
+	
+	INSERT INTO LOS_JUS.USUARIO 
+		(USU_USERNAME
+		,USU_PASSWORD
+		,USU_INTENTOS) 
+		SELECT DISTINCT [Cli_Dni]
+		  ,@password
+		  ,0
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Cli_Dni] IS NOT NULL
+		
+	INSERT INTO LOS_JUS.CLIENTE
+		(CLI_DNI
+		,CLI_ID
+		,CLI_NOMBRE
+		,CLI_APELLIDO
+		,CLI_TIPO_DNI
+		,CLI_FECHA_NACIMIENTO
+		,CLI_CUIL
+		,CLI_MAIL
+		,CLI_TELEFONO
+		,CLI_DIRECCION
+		,CLI_COD_POSTAL
+		,CLI_OPERACIONES_SIN_CALIFICAR
+		,CLI_HABILITADO)
+		SELECT DISTINCT
+			[Cli_Dni],
+			(SELECT USU_ID FROM LOS_JUS.USUARIO WHERE USU_USERNAME = [Cli_Dni]),
+			[Cli_Nombre],
+			[Cli_Apeliido],
+			'DNI',
+			[Cli_Fecha_Nac],
+			'0-00000000-0',
+			[Cli_Mail],
+			44444444,
+			[Cli_Dom_Calle] + ' ' + Cast([Cli_Nro_Calle] as VARCHAR) + ' Piso ' + Cast([Cli_Piso] as VARCHAR) + ' Dpto ' + [Cli_Depto],
+			[Cli_Cod_Postal],
+			0,
+			1
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Cli_Dni] IS NOT NULL
+		
+	INSERT INTO LOS_JUS.ROLxUSUARIO 
+		(ROLUSU_ROL, ROLUSU_USUARIO)
+		SELECT 'Cliente', CLI_ID FROM LOS_JUS.CLIENTE
+	
 END
-go
+GO
 
 exec LOS_JUS.MIGRAR_USUARIOS_cli
 go 
@@ -683,125 +703,141 @@ go
 -------- MIGRACON EMPRESAS EN USUARIOS ------------
 -- password= gd2014  
 CREATE PROCEDURE LOS_JUS.MIGRAR_USUARIOS_emp
-as 
-declare	
-	@username varchar(50),
-	@password varchar(100),
-	@intentos int,
-	@habilitado int,
-	@mail nvarchar(255),
-	@telefono numeric(18,0),
-	@direccion varchar(255),
-	@cod_postal nvarchar(50)
+AS 
+DECLARE	
+	@password varchar(100)
 BEGIN
 	set @password='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-	set @habilitado=1
-	set @intentos=0
-	set @telefono=44444444
-	declare cur_usuarios cursor for
-	select distinct Publ_Empresa_Cuit, Publ_Empresa_Mail, Publ_Empresa_Dom_Calle + ' ' + Cast(Publ_Empresa_Nro_Calle as VARCHAR) 
-      + ' Piso ' +  ' Dpto ' + Publ_Empresa_Depto, Publ_Empresa_Cod_Postal
-	from gd_esquema.Maestra
-	where Publ_Empresa_Cuit is not null
-	OPEN cur_usuarios
-	fetch cur_usuarios into @username, @mail, @direccion, @cod_postal
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		insert into LOS_JUS.USUARIO values(@username,@password, @intentos, @habilitado, @mail,@telefono, 
-		@direccion, @cod_postal)	
-		insert into LOS_JUS.ROLxUSUARIO values( 'Empresa', @@IDENTITY)
-		fetch next from cur_usuarios into @username, @mail, @direccion, @cod_postal	
-	END
-	close cur_usuarios
-	deallocate cur_usuarios
-END
-go
+	
+	INSERT INTO LOS_JUS.USUARIO 
+		(USU_USERNAME
+		,USU_PASSWORD
+		,USU_INTENTOS) 
+		SELECT DISTINCT [Publ_Empresa_Cuit]
+		  ,@password
+		  ,0
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Publ_Empresa_Cuit] IS NOT NULL
+		
+	INSERT INTO LOS_JUS.EMPRESA
+		(EMP_CUIT
+		,EMP_ID
+		,EMP_RAZON_SOCIAL
+		,EMP_CONTACTO
+		,EMP_FECHA_CREACION
+		,EMP_MAIL
+		,EMP_TELEFONO
+		,EMP_DIRECCION
+		,EMP_COD_POSTAL
+		,EMP_PUBLICIDADES_GRATIS
+		,EMP_HABILITADO)
+		SELECT DISTINCT
+			[Publ_Empresa_Cuit],
+			(SELECT USU_ID FROM LOS_JUS.USUARIO WHERE USU_USERNAME = [Publ_Empresa_Cuit]),
+			[Publ_Empresa_Razon_Social],
+			'Director',
+			[Publ_Empresa_Fecha_Creacion],
+			[Publ_Empresa_Mail],
+			44444444,
+			[Publ_Empresa_Dom_Calle] + ' ' + Cast([Publ_Empresa_Nro_Calle] as VARCHAR) + ' Piso ' +  ' Dpto ' + [Publ_Empresa_Depto], 
+			[Publ_Empresa_Cod_Postal],
+			0,
+			1
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Publ_Empresa_Cuit] IS NOT NULL
+		
+	INSERT INTO LOS_JUS.ROLxUSUARIO 
+		(ROLUSU_ROL, ROLUSU_USUARIO)
+		SELECT 'Empresa', EMP_ID FROM LOS_JUS.EMPRESA
 
-exec LOS_JUS.MIGRAR_USUARIOS_emp
-go
+END
+GO
+
+EXEC LOS_JUS.MIGRAR_USUARIOS_emp
+GO
 
 ---------------------------------------------------------------
 -------- MIGRACON EMPRESAS  ------------
  
-CREATE PROCEDURE LOS_JUS.MIGRAR_EMPRESAS
-as 
-declare	
-	@id int,
-	@razonsocial nvarchar(255),
-	@username nvarchar(50),
-	@contacto nvarchar(255),
-	@fechaCreacion datetime,
-	@publiGratis int,
-	@calificacion int
-BEGIN
-	set @contacto='Director'
-	set @publiGratis=0
-	set @calificacion=0
+--CREATE PROCEDURE LOS_JUS.MIGRAR_EMPRESAS
+--as 
+--declare	
+--	@id int,
+--	@razonsocial nvarchar(255),
+--	@username nvarchar(50),
+--	@contacto nvarchar(255),
+--	@fechaCreacion datetime,
+--	@publiGratis int,
+--	@calificacion int
+--BEGIN
+--	set @contacto='Director'
+--	set @publiGratis=0
+--	set @calificacion=0
+--
+--	declare cur_empresa cursor for
+--	
+--	select  distinct o.USU_ID,
+--	m.Publ_Empresa_Razon_Social, o.USU_USERNAME, m.Publ_Empresa_Fecha_Creacion
+--	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = m.Publ_Empresa_Cuit
+--
+--
+--	OPEN cur_empresa
+--	fetch cur_empresa into @id, @razonsocial, @username, @fechaCreacion
+--	WHILE(@@FETCH_STATUS=0)
+--	BEGIN
+--		insert into LOS_JUS.EMPRESA values(@id,@razonsocial, @username, @contacto, @fechaCreacion, @publiGratis, @calificacion, 1)	
+--		
+--		fetch next from cur_empresa into @id, @razonsocial, @username, @fechaCreacion
+--	END
+--	close cur_empresa
+--	deallocate cur_empresa
+--END
+--go
 
-	declare cur_empresa cursor for
-	
-	select  distinct o.USU_ID,
-	m.Publ_Empresa_Razon_Social, o.USU_USERNAME, m.Publ_Empresa_Fecha_Creacion
-	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = m.Publ_Empresa_Cuit
 
-
-	OPEN cur_empresa
-	fetch cur_empresa into @id, @razonsocial, @username, @fechaCreacion
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		insert into LOS_JUS.EMPRESA values(@id,@razonsocial, @username, @contacto, @fechaCreacion, @publiGratis, @calificacion, 1)	
-		
-		fetch next from cur_empresa into @id, @razonsocial, @username, @fechaCreacion
-	END
-	close cur_empresa
-	deallocate cur_empresa
-END
-go
-
-
-exec LOS_JUS.MIGRAR_EMPRESAS
-go
+--exec LOS_JUS.MIGRAR_EMPRESAS
+--go
 -----------------------------------------------------
 -------- MIGRACON CLIENTES  ------------
 
-CREATE PROCEDURE LOS_JUS.MIGRAR_CLIENTES
-as 
-declare	
-	@id int,
-	@nombre nvarchar(255),
-	@apellido nvarchar(50),
-	@dni numeric(18,0),
-	@tipodni char(1),
-	@fechanacimiento nvarchar(50),
-	@cuil nvarchar(50),
-	@operaciones int
-BEGIN
-	set @tipodni='DNI'
-	set @cuil='0-00000000-0'
-	set @operaciones=0
+--CREATE PROCEDURE LOS_JUS.MIGRAR_CLIENTES
+--as 
+--declare	
+--	@id int,
+--	@nombre nvarchar(255),
+--	@apellido nvarchar(50),
+--	@dni numeric(18,0),
+--	@tipodni char(1),
+--	@fechanacimiento nvarchar(50),
+--	@cuil nvarchar(50),
+--	@operaciones int
+--BEGIN
+--	set @tipodni='DNI'
+--	set @cuil='0-00000000-0'
+--	set @operaciones=0
+--
+--	declare cur_cliente cursor for
+--	
+--	select  distinct o.USU_ID,
+--	M.Cli_Nombre, m.Cli_Apeliido, m.Cli_Dni, m.Cli_Fecha_Nac
+--	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = Cast(m.Cli_Dni as varchar(50))
+--
+--	OPEN cur_cliente
+--	fetch cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
+--	WHILE(@@FETCH_STATUS=0)
+--	BEGIN
+--		insert into LOS_JUS.CLIENTE values(@id,@nombre, @apellido, @dni, @tipodni, @fechanacimiento, @cuil, @operaciones, 1)	
+--		
+--		fetch next from cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
+--	END
+--	close cur_cliente
+--	deallocate cur_cliente
+--END
+--go
 
-	declare cur_cliente cursor for
-	
-	select  distinct o.USU_ID,
-	M.Cli_Nombre, m.Cli_Apeliido, m.Cli_Dni, m.Cli_Fecha_Nac
-	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = Cast(m.Cli_Dni as varchar(50))
 
-	OPEN cur_cliente
-	fetch cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		insert into LOS_JUS.CLIENTE values(@id,@nombre, @apellido, @dni, @tipodni, @fechanacimiento, @cuil, @operaciones, 1)	
-		
-		fetch next from cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
-	END
-	close cur_cliente
-	deallocate cur_cliente
-END
-go
-
-
-exec LOS_JUS.MIGRAR_CLIENTES
-go
+--exec LOS_JUS.MIGRAR_CLIENTES
+--go
 
 -----------------------------------------------------
 -------- MIGRACON RUBROS  ------------
@@ -905,113 +941,53 @@ GO
 
 CREATE PROCEDURE LOS_JUS.MIGRAR_OPERACIONES
 AS 
-DECLARE	
-	@id numeric(18,0),
-	@tipo nvarchar(255),
-	@dni nvarchar(255),
-	@compra_fecha datetime,
-	@cantidad numeric(18,0),
-	@oferta_fecha datetime,
-	@monto numeric(18,2),
-	@cal_codigo numeric(18,0),
-	@cat_estrellas numeric(18,0),
-	@cal_detalle nvarchar(255),
-	@last_ope_id integer
 BEGIN
-	DECLARE cur_ope CURSOR FOR
-	SELECT [Publicacion_Cod]
-		,[Publicacion_Tipo]
-		,[Cli_Dni]
-		,[Compra_Fecha]
-		,[Compra_Cantidad]
-		,[Oferta_Fecha]
-		,[Oferta_Monto]
-		,[Calificacion_Codigo]
-		,[Calificacion_Cant_Estrellas]
-		,[Calificacion_Descripcion]
-    FROM [GD1C2014].[gd_esquema].[Maestra]
-	WHERE ([Oferta_Fecha] IS NOT NULL AND [Compra_Fecha] IS NULL) 
-		OR ([Oferta_Fecha] IS NULL AND [Compra_Fecha] IS NOT NULL)
-	ORDER BY [Publicacion_Cod] ASC
 
+	INSERT INTO LOS_JUS.OPERACION
+			([OPE_PUBLICACION]
+			,[OPE_TIPO]
+			,[OPE_CLIENTE]
+			,[OPE_CANTIDAD]
+			,[OPE_FECHA])
+		SELECT DISTINCT [Publicacion_Cod]
+			,'C'
+			,CLI.CLI_ID
+			,[Compra_Cantidad]
+			,[Compra_Fecha]
+		FROM [GD1C2014].[gd_esquema].[Maestra] LEFT JOIN LOS_JUS.CLIENTE CLI ON [GD1C2014].[gd_esquema].[Maestra].[Cli_Dni] = CLI.CLI_DNI
+		WHERE [Oferta_Fecha] IS NULL AND [Compra_Fecha] IS NOT NULL
+			AND [Publicacion_Tipo] LIKE 'Compra Inmediata' AND [Calificacion_Codigo] IS NULL
+		ORDER BY [Publicacion_Cod] ASC
 
-	OPEN cur_ope
-	FETCH cur_ope INTO @id,
-		@tipo,
-		@dni,
-		@compra_fecha,
-		@cantidad,
-		@oferta_fecha,
-		@monto,
-		@cal_codigo,
-		@cat_estrellas,
-		@cal_detalle
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		
-		IF (@tipo LIKE 'Compra Inmediata')
-		BEGIN
-			INSERT INTO LOS_JUS.OPERACION
-				([OPE_PUBLICACION]
-				,[OPE_TIPO]
-				,[OPE_CLIENTE]
-				,[OPE_CANTIDAD]
-				,[OPE_FECHA])
-			VALUES (
-				@id,
-				'C',
-				(SELECT LOS_JUS.CLIENTE.CLI_ID
-				 FROM LOS_JUS.CLIENTE 
-				 WHERE LOS_JUS.CLIENTE.CLI_DNI LIKE @dni),
-				@cantidad,
-				@compra_fecha
-			)
-		END
-		ELSE
-		BEGIN
-			INSERT INTO LOS_JUS.OPERACION 
-				([OPE_PUBLICACION]
-				,[OPE_TIPO]
-				,[OPE_CLIENTE]
-				,[OPE_OFERTA]
-				,[OPE_FECHA])
-			VALUES (
-				@id,
-				'S',
-				(SELECT LOS_JUS.CLIENTE.CLI_ID
-				 FROM LOS_JUS.CLIENTE 
-				 WHERE LOS_JUS.CLIENTE.CLI_DNI LIKE @dni),
-				@monto,
-				@oferta_fecha
-			)
-		END
-		
-		SELECT @last_ope_id = SCOPE_IDENTITY()
-		
-		IF (@cal_codigo IS NOT NULL) 
-		BEGIN
-			INSERT INTO LOS_JUS.CALIFICACION 
-			VALUES (
-				@cal_codigo,
-				@last_ope_id,
-				@cat_estrellas,
-				@cal_detalle
-			)
-		END
-		
-		FETCH NEXT FROM cur_ope INTO @id,
-			@tipo,
-			@dni,
-			@compra_fecha,
-			@cantidad,
-			@oferta_fecha,
-			@monto,
-			@cal_codigo,
-			@cat_estrellas,
-			@cal_detalle
-	END
-	CLOSE cur_ope
-	DEALLOCATE cur_ope
+	INSERT INTO LOS_JUS.OPERACION 
+		([OPE_PUBLICACION]
+		,[OPE_TIPO]
+		,[OPE_CLIENTE]
+		,[OPE_OFERTA]
+		,[OPE_FECHA])
+		SELECT [Publicacion_Cod]
+			,'S'
+			,CLI.CLI_ID
+			,[Oferta_Monto]
+			,[Oferta_Fecha]
+		FROM [GD1C2014].[gd_esquema].[Maestra] LEFT JOIN LOS_JUS.CLIENTE CLI ON [GD1C2014].[gd_esquema].[Maestra].[Cli_Dni] = CLI.CLI_DNI
+		WHERE [Oferta_Fecha] IS NOT NULL AND [Compra_Fecha] IS NULL
+			AND [Publicacion_Tipo] LIKE 'Subasta' AND [Calificacion_Codigo] IS NULL
+		ORDER BY [Publicacion_Cod] ASC
+
+	INSERT INTO LOS_JUS.CALIFICACION 
+		(CAL_CODIGO
+		,CAL_OPERACION
+		,CAL_ESTRELLAS
+		,CAL_DETALLE)
+		SELECT [Calificacion_Codigo] 
+			,(SELECT TOP 1 OPE_CODIGO FROM LOS_JUS.OPERACION WHERE OPE_PUBLICACION = [Publicacion_Cod] AND OPE_FECHA = [Compra_Fecha] and CLI.CLI_ID = OPE_CLIENTE)
+			,[Calificacion_Cant_Estrellas]
+			,[Calificacion_Descripcion]
+		FROM [GD1C2014].[gd_esquema].[Maestra] JOIN LOS_JUS.CLIENTE CLI ON [GD1C2014].[gd_esquema].[Maestra].[Cli_Dni] = CLI.CLI_DNI
+		WHERE [Calificacion_Codigo] IS NOT NULL
+		ORDER BY  [Calificacion_Codigo] ASC
+			
 END
 GO
 
@@ -1022,104 +998,112 @@ GO
 -----------------------------------------------------
 -------- MIGRACION FACTURAS ------------
 
-CREATE PROCEDURE LOS_JUS.MIGRAR_FACTURAS
-AS 
-DECLARE	
-	@id numeric(18,0),
-	@tipo nvarchar(255),
-	@dni nvarchar(255),
-	@item_fact_monto numeric(18,2),
-	@item_fact_cant numeric(18,0),
-	@factura_nro numeric(18,0),
-	@factura_fecha datetime,
-	@factura_total numeric(18,2),
-	@forma_pago_desc nvarchar(255),
-	@last_fact numeric(18,0),
-	@cli_id integer
-
-BEGIN
-	DECLARE cur_fac CURSOR FOR
-	SELECT [Publicacion_Cod]
-		,[Publicacion_Tipo]
-		,[Cli_Dni]
-		,[Item_Factura_Monto]
-		,[Item_Factura_Cantidad]
-		,[Factura_Nro]
-		,[Factura_Fecha]
-		,[Factura_Total]
-		,[Forma_Pago_Desc]
-    FROM [GD1C2014].[gd_esquema].[Maestra]
-	WHERE [Factura_Nro] IS NOT NULL
-	ORDER BY [Factura_Nro] ASC
 
 
-	OPEN cur_fac
-	FETCH cur_fac INTO @id,
-		@tipo,
-		@dni,
-		@item_fact_monto,
-		@item_fact_cant,
-		@factura_nro,
-		@factura_fecha,
-		@factura_total,
-		@forma_pago_desc
-		
-	SET @last_fact = 0
-		
-	WHILE(@@FETCH_STATUS=0)
-	BEGIN
-		IF (@factura_nro > @last_fact) ---INSERT FACTURA Y PRIMER ITEM
-		BEGIN
-		
-		SELECT @cli_id = CLIENTE.CLI_ID FROM CLIENTE WHERE CLIENTE.CLI_DNI = @dni
-		INSERT INTO LOS_JUS.FACTURACION
-		VALUES (
-			@factura_nro,
-			(SELECT TOP 1 LOS_JUS.OPERACION.OPE_CODIGO
-			 FROM LOS_JUS.OPERACION 
-			 WHERE LOS_JUS.OPERACION.OPE_PUBLICACION = @id AND LOS_JUS.OPERACION.OPE_CLIENTE = @cli_id),
-			@forma_pago_desc,
-			@factura_total,
-			@factura_fecha
-		)
-		
-		INSERT INTO LOS_JUS.ITEM
-		VALUES (
-			@factura_nro,
-			@item_fact_monto,
-			@item_fact_cant
-		)
-		
-		END
-		ELSE ---INSERT ITEM
-		BEGIN
-			INSERT INTO LOS_JUS.ITEM
-			VALUES (
-				@factura_nro,
-				@item_fact_monto,
-				@item_fact_cant
-			)
-		END
-		
-		SELECT @last_fact = @factura_nro
-		
-		FETCH NEXT FROM cur_fac INTO @id,
-		@tipo,
-		@dni,
-		@item_fact_monto,
-		@item_fact_cant,
-		@factura_nro,
-		@factura_fecha,
-		@factura_total,
-		@forma_pago_desc
-		
-		
-		
-	END
-	CLOSE cur_fac
-	DEALLOCATE cur_fac
-END
+--EXEC LOS_JUS.MIGRAR_FACTURAS
+--GO
+
+
+------- FUNCION BUSCAR CLIENTES -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarClientes]'))
+DROP FUNCTION LOS_JUS.buscarClientes
 GO
 
-EXEC LOS_JUS.MIGRAR_FACTURAS
+CREATE FUNCTION LOS_JUS.buscarClientes 
+(
+@nombre nvarchar(255) = NULL,
+@apellido nvarchar(255) = NULL,
+@email nvarchar(255) = NULL,
+@tipo varchar(3) = 'DNI',
+@dni numeric(18,0) = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT C.*
+	FROM LOS_JUS.CLIENTE C 
+	WHERE 
+	C.CLI_NOMBRE LIKE '%' + ISNULL(@nombre, C.CLI_NOMBRE) + '%' 
+	AND C.CLI_APELLIDO LIKE '%' + ISNULL(@apellido, C.CLI_APELLIDO) + '%'
+	AND C.CLI_MAIL LIKE '%' + ISNULL(@email, C.CLI_MAIL) + '%'
+	AND C.CLI_TIPO_DNI LIKE @tipo
+	AND C.CLI_DNI = ISNULL(@dni, C.CLI_DNI)
+	AND C.CLI_HABILITADO = 1
+)
 GO
+
+------- FUNCION BUSCAR EMPRESAS -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarEmpresas]'))
+DROP FUNCTION LOS_JUS.buscarEmpresas
+GO
+
+CREATE FUNCTION LOS_JUS.buscarEmpresas 
+(
+@razon nvarchar(255) = NULL,
+@cuit nvarchar(50) = NULL,
+@email nvarchar(255) = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT E.*
+	FROM LOS_JUS.EMPRESA E
+	WHERE 
+	E.EMP_RAZON_SOCIAL LIKE '%' + ISNULL(@razon, E.EMP_RAZON_SOCIAL) + '%' 
+	AND E.EMP_MAIL LIKE '%' + ISNULL(@email, E.EMP_MAIL) + '%'
+	AND E.EMP_CUIT = ISNULL(@cuit, E.EMP_CUIT)
+	AND E.EMP_HABILITADO = 1
+)
+GO
+
+------ FUNCION BUSCAR VISIBILIDADES -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarVisibilidad]'))
+DROP FUNCTION LOS_JUS.buscarVisibilidad
+GO
+
+CREATE FUNCTION LOS_JUS.buscarVisibilidad 
+(
+@descripcion nvarchar(255) = NULL,
+@precio numeric(18,2) = NULL,
+@porcentaje numeric(18,2) = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT *
+	FROM LOS_JUS.VISUALIZACION V
+	WHERE 
+	V.VIS_DESCRIPCION LIKE '%' + ISNULL(@descripcion, V.VIS_DESCRIPCION) + '%' 
+	AND V.VIS_PRECIO = ISNULL(@precio, V.VIS_PRECIO)
+	AND V.VIS_PORCENTAJE = ISNULL(@porcentaje, V.VIS_PORCENTAJE)
+	--AND E.EMP_HABILITADO = 1
+)
+GO
+
+------- FUNCION BUSCAR VENDEDORES -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarVendedores]'))
+DROP FUNCTION LOS_JUS.buscarVendedores
+GO
+
+CREATE FUNCTION LOS_JUS.buscarVendedores 
+(
+@idCliente integer = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT E.*, O.*, C.*
+	FROM ((LOS_JUS.PUBLICACION P INNER JOIN LOS_JUS.OPERACION O ON P.PUB_CODIGO = O.OPE_PUBLICACION)
+	LEFT JOIN LOS_JUS.CALIFICACION C ON O.OPE_CODIGO = C.CAL_OPERACION)
+	INNER JOIN LOS_JUS.EMPRESA E ON P.PUB_EMPRESA = E.EMP_ID
+	WHERE 
+	O.OPE_CLIENTE = ISNULL (@idCliente, O.OPE_CLIENTE)
+	AND C.CAL_CODIGO IS NULL
+)
+GO
+
+--SELECT * FROM LOS_JUS.buscarClientes(NULL,NULL,NULL,'DNI',NULL);
+--SELECT * FROM LOS_JUS.buscarEmpresas(NULL,NULL,NULL);
+--SELECT * FROM LOS_JUS.buscarVisibilidad(NULL,NULL,NULL);
+--SELECT * FROM LOS_JUS.buscarVendedores(25);
+
