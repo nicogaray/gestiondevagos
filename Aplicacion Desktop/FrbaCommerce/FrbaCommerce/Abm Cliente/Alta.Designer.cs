@@ -39,7 +39,6 @@
             this.radioButton_Lc = new System.Windows.Forms.RadioButton();
             this.radioButton_Dni = new System.Windows.Forms.RadioButton();
             this.textBox_Documento = new System.Windows.Forms.TextBox();
-            this.textBox_Telefono = new System.Windows.Forms.TextBox();
             this.textBox_Direccion = new System.Windows.Forms.TextBox();
             this.textBox_Apellido = new System.Windows.Forms.TextBox();
             this.label_FechaNacimiento = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.label_Apellido = new System.Windows.Forms.Label();
             this.label_Nombre = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
+            this.textBox_Telefono = new System.Windows.Forms.TextBox();
             this.label_Informacion = new System.Windows.Forms.Label();
             this.label_InfTexto = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
@@ -216,16 +216,6 @@
             this.textBox_Documento.MouseLeave += new System.EventHandler(this.textBox_Documento_MouseLeave);
             this.textBox_Documento.MouseEnter += new System.EventHandler(this.textBox_Documento_MouseEnter);
             // 
-            // textBox_Telefono
-            // 
-            this.textBox_Telefono.Location = new System.Drawing.Point(120, 117);
-            this.textBox_Telefono.MaxLength = 18;
-            this.textBox_Telefono.Name = "textBox_Telefono";
-            this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
-            this.textBox_Telefono.TabIndex = 12;
-            this.textBox_Telefono.MouseLeave += new System.EventHandler(this.textBox_Telefono_MouseLeave);
-            this.textBox_Telefono.MouseEnter += new System.EventHandler(this.textBox_Telefono_MouseEnter);
-            // 
             // textBox_Direccion
             // 
             this.textBox_Direccion.Location = new System.Drawing.Point(120, 143);
@@ -355,6 +345,16 @@
             this.textBox_Nombre.TabIndex = 0;
             this.textBox_Nombre.MouseLeave += new System.EventHandler(this.textBox_Nombre_MouseLeave);
             this.textBox_Nombre.MouseEnter += new System.EventHandler(this.textBox_Nombre_MouseEnter);
+            // 
+            // textBox_Telefono
+            // 
+            this.textBox_Telefono.Location = new System.Drawing.Point(120, 117);
+            this.textBox_Telefono.MaxLength = 18;
+            this.textBox_Telefono.Name = "textBox_Telefono";
+            this.textBox_Telefono.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Telefono.TabIndex = 12;
+            this.textBox_Telefono.MouseLeave += new System.EventHandler(this.textBox_Telefono_MouseLeave);
+            this.textBox_Telefono.MouseEnter += new System.EventHandler(this.textBox_Telefono_MouseEnter);
             // 
             // label_Informacion
             // 

@@ -35,4 +35,18 @@ Aplicacion
 	 ver como resolver alta visualizacion: precio y porcentaje pueden llevar comas
 	 CORREGIR: TABLA PREGUNTA NO TIENE CAMPO "PREGUNTA", NVARCHAR 255
 	 VER: cuantos caracteres puede tener usuario y contraseña con el hash de seguridad
-	 CORREGIR: en tabla funcionalidad hay que poner campos funcionalidad y descripcion. 
+	 CORREGIR: en tabla funcionalidad hay que poner campos funcionalidad y descripcion.
+	 CORREGIR: tabla cliente, campo cuil NO OBLIGATORIO (con default 0), campo operaciones sin calificar default 0
+	 CORREGIR: tabla usuario, campo habilitado default 1, contraseña default, username default
+
+- IMPORtante: puse en la consulta SQL para cliente los datos en el siguiente orden:
+							1) pNombre
+                                                        2) pApellido
+                                                        3) pDocumento
+                                                        4) pTipo
+                                                        5) pFecha
+                                                        6) pMail
+                                                        7) pTelefono
+                                                        8) pDireccion
+                                                        9) pCodigoPostal
+	      Si existiese algun cambio en el orden por favor AVISAR.
