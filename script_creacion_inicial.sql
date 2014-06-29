@@ -998,10 +998,35 @@ GO
 -----------------------------------------------------
 -------- MIGRACION FACTURAS ------------
 
+CREATE PROCEDURE LOS_JUS.MIGRAR_FACTURAS
+AS 
+BEGIN
 
+	INSERT INTO LOS_JUS.FACTURACION ([FAC_NUMERO],[FAC_OPERACION],[FAC_FECHA],[FAC_TOTAL],FAC_FORMA_PAGO)
+		SELECT DISTINCT [Factura_Nro]
+			,(SELECT TOP 1 LOS_JUS.OPERACION.OPE_CODIGO
+				 FROM LOS_JUS.OPERACION 
+				 WHERE LOS_JUS.OPERACION.OPE_PUBLICACION = [Publicacion_Cod])
+			,[Factura_Fecha]
+			,[Factura_Total]
+			,[Forma_Pago_Desc]
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Factura_Nro] IS NOT NULL
+		ORDER BY [Factura_Nro] ASC
+	
+	INSERT INTO LOS_JUS.ITEM (ITE_FACTURA,ITE_MONTO,ITE_CANTIDAD)
+		SELECT [Factura_Nro]
+			,[Item_Factura_Monto]
+			,[Item_Factura_Cantidad]
+		FROM [GD1C2014].[gd_esquema].[Maestra]
+		WHERE [Factura_Nro] IS NOT NULL
+		ORDER BY [Factura_Nro] ASC
+		
+END
+GO
 
---EXEC LOS_JUS.MIGRAR_FACTURAS
---GO
+EXEC LOS_JUS.MIGRAR_FACTURAS
+GO
 
 
 ------- FUNCION BUSCAR CLIENTES -------
