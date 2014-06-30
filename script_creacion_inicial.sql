@@ -424,12 +424,12 @@ CREATE TABLE LOS_JUS.CLIENTE (
 	CLI_DNI numeric(18,0),
 	CLI_TIPO_DNI varchar(3) DEFAULT 'DNI',
 	CLI_FECHA_NACIMIENTO datetime,
-	CLI_CUIL nvarchar(50),
+	CLI_CUIL nvarchar(50) default 0,
 	CLI_MAIL nvarchar(255) NOT NULL UNIQUE,
 	CLI_TELEFONO numeric(18,0),
 	CLI_DIRECCION varchar(255),
 	CLI_COD_POSTAL nvarchar(50),
-	CLI_OPERACIONES_SIN_CALIFICAR integer,
+	CLI_OPERACIONES_SIN_CALIFICAR integer default 0,
 	CLI_HABILITADO integer DEFAULT 1,
 	primary key (CLI_ID),
 	foreign key (CLI_ID) references LOS_JUS.USUARIO
@@ -479,10 +479,11 @@ CREATE TABLE LOS_JUS.PUBLICACION (
 
 
 CREATE TABLE LOS_JUS.PREGUNTA ( 
-	PRE_CODIGO integer,
+	PRE_CODIGO integer identity(1,1),
 	PRE_PUBLICACION numeric(18,0),
 	PRE_CLIENTE integer,
-	PRE_RESPUESTA varchar(255),
+	PRE_PREGUNTA nvarchar(255),
+	PRE_RESPUESTA nvarchar(255),
 	PRE_FECHA_RESPUESTA datetime,
 	primary key (PRE_CODIGO),
 	foreign key (PRE_PUBLICACION) references LOS_JUS.PUBLICACION,
@@ -495,7 +496,7 @@ CREATE TABLE LOS_JUS.PREGUNTA (
 
 CREATE TABLE LOS_JUS.VISUALIZACION ( 
 	VIS_CODIGO numeric(18),
-	VIS_DESCRIPCION nvarchar(255),
+	VIS_NOMBRE nvarchar(50),
 	VIS_PRECIO numeric(18,2),
 	VIS_PORCENTAJE numeric(18,2),
 	primary key (VIS_CODIGO)
@@ -756,88 +757,6 @@ GO
 EXEC LOS_JUS.MIGRAR_USUARIOS_emp
 GO
 
----------------------------------------------------------------
--------- MIGRACON EMPRESAS  ------------
- 
---CREATE PROCEDURE LOS_JUS.MIGRAR_EMPRESAS
---as 
---declare	
---	@id int,
---	@razonsocial nvarchar(255),
---	@username nvarchar(50),
---	@contacto nvarchar(255),
---	@fechaCreacion datetime,
---	@publiGratis int,
---	@calificacion int
---BEGIN
---	set @contacto='Director'
---	set @publiGratis=0
---	set @calificacion=0
---
---	declare cur_empresa cursor for
---	
---	select  distinct o.USU_ID,
---	m.Publ_Empresa_Razon_Social, o.USU_USERNAME, m.Publ_Empresa_Fecha_Creacion
---	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = m.Publ_Empresa_Cuit
---
---
---	OPEN cur_empresa
---	fetch cur_empresa into @id, @razonsocial, @username, @fechaCreacion
---	WHILE(@@FETCH_STATUS=0)
---	BEGIN
---		insert into LOS_JUS.EMPRESA values(@id,@razonsocial, @username, @contacto, @fechaCreacion, @publiGratis, @calificacion, 1)	
---		
---		fetch next from cur_empresa into @id, @razonsocial, @username, @fechaCreacion
---	END
---	close cur_empresa
---	deallocate cur_empresa
---END
---go
-
-
---exec LOS_JUS.MIGRAR_EMPRESAS
---go
------------------------------------------------------
--------- MIGRACON CLIENTES  ------------
-
---CREATE PROCEDURE LOS_JUS.MIGRAR_CLIENTES
---as 
---declare	
---	@id int,
---	@nombre nvarchar(255),
---	@apellido nvarchar(50),
---	@dni numeric(18,0),
---	@tipodni char(1),
---	@fechanacimiento nvarchar(50),
---	@cuil nvarchar(50),
---	@operaciones int
---BEGIN
---	set @tipodni='DNI'
---	set @cuil='0-00000000-0'
---	set @operaciones=0
---
---	declare cur_cliente cursor for
---	
---	select  distinct o.USU_ID,
---	M.Cli_Nombre, m.Cli_Apeliido, m.Cli_Dni, m.Cli_Fecha_Nac
---	from LOS_JUS.USUARIO o,gd_esquema.Maestra m where o.USU_USERNAME = Cast(m.Cli_Dni as varchar(50))
---
---	OPEN cur_cliente
---	fetch cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
---	WHILE(@@FETCH_STATUS=0)
---	BEGIN
---		insert into LOS_JUS.CLIENTE values(@id,@nombre, @apellido, @dni, @tipodni, @fechanacimiento, @cuil, @operaciones, 1)	
---		
---		fetch next from cur_cliente into @id, @nombre, @apellido, @dni, @fechanacimiento
---	END
---	close cur_cliente
---	deallocate cur_cliente
---END
---go
-
-
---exec LOS_JUS.MIGRAR_CLIENTES
---go
 
 -----------------------------------------------------
 -------- MIGRACON RUBROS  ------------
@@ -861,7 +780,7 @@ GO
 CREATE PROCEDURE LOS_JUS.MIGRAR_VISUALIZACION
 AS 
 BEGIN
-	INSERT INTO LOS_JUS.VISUALIZACION (VIS_CODIGO, VIS_DESCRIPCION, VIS_PRECIO, VIS_PORCENTAJE)
+	INSERT INTO LOS_JUS.VISUALIZACION (VIS_CODIGO, VIS_NOMBRE, VIS_PRECIO, VIS_PORCENTAJE)
 		SELECT [Publicacion_Visibilidad_Cod]
 			,[Publicacion_Visibilidad_Desc]
 			,[Publicacion_Visibilidad_Precio]
@@ -1088,7 +1007,7 @@ GO
 
 CREATE FUNCTION LOS_JUS.buscarVisibilidad 
 (
-@descripcion nvarchar(255) = NULL,
+@descripcion nvarchar(50) = NULL,
 @precio numeric(18,2) = NULL,
 @porcentaje numeric(18,2) = NULL
 )
@@ -1098,7 +1017,7 @@ RETURN (
 	SELECT *
 	FROM LOS_JUS.VISUALIZACION V
 	WHERE 
-	V.VIS_DESCRIPCION LIKE '%' + ISNULL(@descripcion, V.VIS_DESCRIPCION) + '%' 
+	V.VIS_NOMBRE LIKE '%' + ISNULL(@descripcion, V.VIS_NOMBRE) + '%' 
 	AND V.VIS_PRECIO = ISNULL(@precio, V.VIS_PRECIO)
 	AND V.VIS_PORCENTAJE = ISNULL(@porcentaje, V.VIS_PORCENTAJE)
 	--AND E.EMP_HABILITADO = 1
@@ -1127,8 +1046,52 @@ RETURN (
 )
 GO
 
+
+------- FUNCION BUSCAR PREGUNTAS SIN RESPONDER -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarPreguntasSinResponder]'))
+DROP FUNCTION LOS_JUS.buscarVendedores
+GO
+
+CREATE FUNCTION LOS_JUS.buscarPreguntasSinResponder
+(
+@idEmpresa integer = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT PRE.*
+	FROM (LOS_JUS.PUBLICACION P INNER JOIN LOS_JUS.PREGUNTA PRE ON P.PUB_CODIGO = PRE.PRE_PUBLICACION)
+	INNER JOIN LOS_JUS.EMPRESA E ON P.PUB_EMPRESA = E.EMP_ID
+	WHERE 
+	E.EMP_ID = ISNULL (@idEmpresa, E.EMP_ID)
+	AND PRE.PRE_RESPUESTA IS NULL
+)
+GO
+
+------- FUNCION BUSCAR PREGUNTAS CON RESOUESTAS -------
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[verRespuestas]'))
+DROP FUNCTION LOS_JUS.buscarVendedores
+GO
+
+CREATE FUNCTION LOS_JUS.verRespuestas
+(
+@idCliente integer = NULL
+)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT PRE.*
+	FROM LOS_JUS.PREGUNTA PRE 
+	WHERE 
+	PRE.PRE_CLIENTE = ISNULL (@idCliente, PRE.PRE_CLIENTE)
+	AND PRE.PRE_RESPUESTA IS NOT NULL
+)
+GO
+
+
 --SELECT * FROM LOS_JUS.buscarClientes(NULL,NULL,NULL,'DNI',NULL);
 --SELECT * FROM LOS_JUS.buscarEmpresas(NULL,NULL,NULL);
 --SELECT * FROM LOS_JUS.buscarVisibilidad(NULL,NULL,NULL);
 --SELECT * FROM LOS_JUS.buscarVendedores(25);
+
 
