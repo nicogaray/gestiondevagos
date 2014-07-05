@@ -73,10 +73,31 @@
             this.checkedListBox_Rubro.CheckOnClick = true;
             this.checkedListBox_Rubro.FormattingEnabled = true;
             this.checkedListBox_Rubro.Items.AddRange(new object[] {
-            "Rubro1",
-            "Rubro2",
-            "Rubro3",
-            "Rubro4"});
+            "Industrias y Oficinas",
+            "Música, Películas y Series",
+            "Electrónica, Audio y Video",
+            "Otras categorías",
+            "Antigüedades",
+            "Accesorios para Vehículos",
+            "Arte y Artesanías",
+            "Computación",
+            "Hogar, Muebles y Jardín",
+            "Joyas y Relojes",
+            "Libros, Revistas y Comics",
+            "Entradas para Eventos",
+            "Coleccionables y Hobbies",
+            "Deportes y Fitness",
+            "Instrumentos Musicales",
+            "Bebés",
+            "Celulares y Teléfonos",
+            "Juegos y Juguetes",
+            "Cámaras y Accesorios",
+            "Ropa y Accesorios",
+            "Animales y Mascotas",
+            "Delicatessen y Vinos",
+            "Salud y Belleza",
+            "Electrodomésticos y Aires Ac.",
+            "Consolas y Videojuegos"});
             this.checkedListBox_Rubro.Location = new System.Drawing.Point(178, 14);
             this.checkedListBox_Rubro.Name = "checkedListBox_Rubro";
             this.checkedListBox_Rubro.Size = new System.Drawing.Size(188, 32);

@@ -12,7 +12,6 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Alta : Form
     {
-        public Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
     
         public bool comprobarTipos(String telefono, String documento)
         {
@@ -323,15 +322,9 @@ namespace FrbaCommerce.Abm_Cliente
             textBox_IdUsuario.Enabled = false;
             textBox_Username.Enabled = false;
 
-
-            GetOtherFormTextBox();
-
-            
+                       
         }
-        private void GetOtherFormTextBox()
-        {
-            textBox_IdUsuario.Text = seleccion.pIdUsuarioSeleccionado;
-        }
+      
         private void groupBox1_Enter(object sender, EventArgs e)
         {
         }
@@ -343,6 +336,10 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
         {
+            Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
+
+            seleccion.MdiParent = this;
+
             seleccion.Show();
 
         }
@@ -361,6 +358,11 @@ namespace FrbaCommerce.Abm_Cliente
         {
           
             
+        }
+
+        public void textBox_IdUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
        
