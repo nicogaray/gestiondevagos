@@ -963,7 +963,6 @@ CREATE FUNCTION LOS_JUS.buscarClientes
 )
 RETURNS TABLE
 AS
-
 RETURN (
 	SELECT C.*
 	FROM LOS_JUS.CLIENTE C 
@@ -972,11 +971,9 @@ RETURN (
 	AND C.CLI_APELLIDO LIKE '%' + ISNULL(@apellido, C.CLI_APELLIDO) + '%'
 	AND C.CLI_MAIL LIKE '%' + ISNULL(@email, C.CLI_MAIL) + '%'
 	AND C.CLI_TIPO_DNI LIKE @tipo
-	AND C.CLI_DNI = ISNULL(CASE WHEN @dni = -1 THEN NULL ELSE @dni END , C.CLI_DNI)
+	AND C.CLI_DNI = ISNULL(@dni, C.CLI_DNI)
 	AND C.CLI_HABILITADO = 1
-	
 )
-
 GO
 
 ------- FUNCION BUSCAR EMPRESAS -------
@@ -1052,7 +1049,7 @@ GO
 
 ------- FUNCION BUSCAR PREGUNTAS SIN RESPONDER -------
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarPreguntasSinResponder]'))
-DROP FUNCTION LOS_JUS.buscarVendedores
+DROP FUNCTION LOS_JUS.buscarPreguntasSinResponder
 GO
 
 CREATE FUNCTION LOS_JUS.buscarPreguntasSinResponder
@@ -1073,7 +1070,7 @@ GO
 
 ------- FUNCION BUSCAR PREGUNTAS CON RESOUESTAS -------
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[verRespuestas]'))
-DROP FUNCTION LOS_JUS.buscarVendedores
+DROP FUNCTION LOS_JUS.verRespuestas
 GO
 
 CREATE FUNCTION LOS_JUS.verRespuestas

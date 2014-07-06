@@ -13,7 +13,7 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class SeleccionUsuario : Form
     {
-        public String pIdUsuarioSeleccionado = "";
+        public string ReturnId { get; set; }
 
         public SeleccionUsuario()
         {
@@ -34,12 +34,10 @@ namespace FrbaCommerce.Abm_Cliente
                     String pIdUsuarioSeleccionado = "";
                     int i = e.RowIndex;
                     pIdUsuarioSeleccionado = dataGridView1[0, i].Value.ToString();
-                    
-                    
-                    this.Hide();
-                        
                 
-
+                    this.ReturnId = pIdUsuarioSeleccionado;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
 
             }
@@ -70,7 +68,7 @@ namespace FrbaCommerce.Abm_Cliente
 
                    dataGridView1.Rows.Add(pId, pRazonSocial, pCuit, pContacto);
 
-
+                   
 
                }
 

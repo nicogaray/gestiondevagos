@@ -12,7 +12,7 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Alta : Form
     {
-    
+             
         public bool comprobarTipos(String telefono, String documento)
         {
             return (telefono.All(char.IsDigit) && documento.All(char.IsDigit));
@@ -319,11 +319,9 @@ namespace FrbaCommerce.Abm_Cliente
         private void Alta_Load(object sender, EventArgs e)
         {
             groupBox_SeleccionarUsuario.Hide();
-            textBox_IdUsuario.Enabled = false;
-            textBox_Username.Enabled = false;
-
-                       
+                  
         }
+       
       
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -336,14 +334,39 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
         {
-            Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
+            //    Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
 
-            seleccion.MdiParent = this;
+            using (var form = new Abm_Cliente.SeleccionUsuario())
+            {
 
-            seleccion.Show();
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string val = form.ReturnId;
 
+                    this.textBox_IdUsuario.Text = val;
+
+                }
+            }
+
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                String IdSeleccionado = this.textBox_IdUsuario.Text;
+                Int32 pIdSeleccionadoConvertido = Convert.ToInt32(IdSeleccionado);
+
+                SqlCommand ObtenerUsername = new SqlCommand(string.Format("SELECT USU_USERNAME FROM LOS_JUS.USUARIO WHERE USU_ID = '{0}'",pIdSeleccionadoConvertido),Conexion);
+                SqlDataReader reader = ObtenerUsername.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    String pUsernameSeleccionado = reader.GetString(0);
+
+                    textBox_Username.Text = pUsernameSeleccionado;
+                }
+
+            }
         }
-
         private void radioButton_UsuarioExistente_CheckedChanged(object sender, EventArgs e)
         {
             groupBox_SeleccionarUsuario.Show();
@@ -362,8 +385,9 @@ namespace FrbaCommerce.Abm_Cliente
 
         public void textBox_IdUsuario_TextChanged(object sender, EventArgs e)
         {
-
         }
+
+       
 
        
        

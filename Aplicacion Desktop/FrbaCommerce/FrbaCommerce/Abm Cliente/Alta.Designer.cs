@@ -453,6 +453,7 @@
             // 
             this.textBox_IdUsuario.Location = new System.Drawing.Point(9, 155);
             this.textBox_IdUsuario.Name = "textBox_IdUsuario";
+            this.textBox_IdUsuario.ReadOnly = true;
             this.textBox_IdUsuario.Size = new System.Drawing.Size(119, 20);
             this.textBox_IdUsuario.TabIndex = 27;
             this.textBox_IdUsuario.TextChanged += new System.EventHandler(this.textBox_IdUsuario_TextChanged);
@@ -461,6 +462,7 @@
             // 
             this.textBox_Username.Location = new System.Drawing.Point(9, 103);
             this.textBox_Username.Name = "textBox_Username";
+            this.textBox_Username.ReadOnly = true;
             this.textBox_Username.Size = new System.Drawing.Size(119, 20);
             this.textBox_Username.TabIndex = 27;
             this.textBox_Username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

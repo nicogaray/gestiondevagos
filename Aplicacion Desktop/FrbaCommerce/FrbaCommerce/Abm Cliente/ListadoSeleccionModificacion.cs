@@ -13,6 +13,7 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class ListadoSeleccionModificacion : Form
     {
+        
         public ListadoSeleccionModificacion()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace FrbaCommerce.Abm_Cliente
             textBox_Mail.Clear();
             textBox_Nombre.Clear();
             comboBox_TipoDocumento.Text = "";
+            dataGridView_Modificacion.Rows.Clear();
         }
 
         private void button_Buscar_Click(object sender, EventArgs e)
@@ -83,22 +85,37 @@ namespace FrbaCommerce.Abm_Cliente
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
-                SqlCommand cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}')",
-                                                               pNombre,pApellido,pEmail,pTipo,pDocumentoConvertido),Conexion);
-
+                SqlCommand cmd = null;
+                if (pDocumentoConvertido == -1)
+                {
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null)",
+                                                                   pNombre, pApellido, pEmail, pTipo), Conexion);
+                }
+                else
+                {
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}')",
+                                                                      pNombre, pApellido, pEmail, pTipo,pDocumentoConvertido), Conexion);
+                }
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                    }
+                    else 
+                    {
+                        MessageBox.Show("No existen datos que coincidan con los filtros de busqueda seleccionados", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                         while (reader.Read())
                         {
                             
                             Int32 pColumna0 = reader.GetInt32(0); //CLI_ID
                             String pColumna1 = reader.GetString(1);//CLI_NOMBRE
                             String pColumna2 = reader.GetString(2);//CLI_APELLIDO
-                            Int64 pColumna3 = reader.GetInt64(3);//CLI_DNI
+                            Decimal pColumna3 = reader.GetDecimal(3);//CLI_DNI
                             String pColumna4 = reader.GetString(4);//CLI_TIPO_DNI
                             DateTime pColumna5 = reader.GetDateTime(5);//CLI_FECHA
                             String pColumna6 = reader.GetString(6);//CLI_MAIL
-                            Int64 pColumna7 = reader.GetInt64(7);//CLI_TELEFONO
+                            Decimal pColumna7 = reader.GetDecimal(7);//CLI_TELEFONO
                             String pColumna8 = reader.GetString(8);//CLI_DIRECCION
                             String pColumna9 = reader.GetString(9);//CLI_COD_POSTAL
 
@@ -115,8 +132,8 @@ namespace FrbaCommerce.Abm_Cliente
         {
             if (e.ColumnIndex == 10)
             {
-//               (Alta)Parent.textBox_IdUsuario.Text = "";
-
+                
+                this.Close();
             }
         }
     }
