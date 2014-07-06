@@ -22,7 +22,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Aceptar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -67,9 +67,6 @@ namespace FrbaCommerce.Abm_Cliente
                    pContacto = reader.GetString(3);
 
                    dataGridView1.Rows.Add(pId, pRazonSocial, pCuit, pContacto);
-
-                   
-
                }
 
            }
