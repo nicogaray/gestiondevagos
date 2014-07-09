@@ -16,7 +16,7 @@ Aplicacion
 			       devuelve tabla con todas las ofertas y compras concluidas por ese cliente y los datos de la empresa que vendio. 
 			       (no son necesarios todos los datos de ambas tablas, solo lo indispensable para que el cliente seleccione al vendedor que quiere calificar)
 - Hacer funcion de busqueda: buscarPublicaciones(Rubros /*lista*/ ,Descripcion)
-			     devuelve una tabla con todos los datos del rubro que cumplan con el filtro de busqueda
+			     devuelve una tabla con todos los datos de las publicaciones que cumplan con el filtro de busqueda
 		  	     Los parametros vacios vendran como "NULL".
 - Hacer funcion de busqueda: buscarPreguntasSinResponder(idEmpresa)
 			     devuelve una tabla de las preguntas sin responder que la empresa tiene
@@ -28,6 +28,25 @@ Aplicacion
 			     esRol es un String, "Cliente" y "Empresa"
 			     devuelve una tabla con los datos de las operaciones realizadas filtrada por el tipo de operacion
 - Hacer funciones de Listado Estadistico (4); tener en cuanta los campos de filtrado de cada una
+
+	-estadistica1(año (varchar(4)), mes(varchar(2)), trim_año (varchar(4)), trim(numeric(18,0)), visualizacion (numeric(18,0)))
+
+		SELECT * FROM LOS_JUS.estadisticas1(NULL,NULL,2013,1,NULL);
+
+
+	-estadistica2(año (varchar(4)), trim(numeric(18,0)))
+	
+		SELECT * FROM LOS_JUS.estadisticas2(2013,1);
+
+
+	-estadistica3(año (varchar(4)), trim(numeric(18,0)))
+	
+		SELECT * FROM LOS_JUS.estadisticas3(2013,1);
+
+
+	-estadistica4(año (varchar(4)), trim(numeric(18,0)))
+		
+		SELECT * FROM LOS_JUS.estadisticas4(2013,1);
 
 
 - DUDAS: es necesario que al cargar un rol se caguen tmb las funcionalidades?
