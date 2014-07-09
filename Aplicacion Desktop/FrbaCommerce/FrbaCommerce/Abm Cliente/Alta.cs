@@ -28,7 +28,9 @@ namespace FrbaCommerce.Abm_Cliente
                 direccion == "" ||
                 codigoPostal == "" ||
                 mail == "" ||
-                usuario == "" )
+                usuario == "" ||
+                (usuario == "Existente" && id == ""))
+                                     
             {
                 return false;
             }
@@ -200,8 +202,8 @@ namespace FrbaCommerce.Abm_Cliente
                 pUsuario = "Existente";
             }
 
-            String pUsername = label_Username.Text;
-            String pIdUsuario = label_IdUsuario.Text;
+            String pUsername = textBox_Username.Text;
+            String pIdUsuario = textBox_IdUsuario.Text;
 
             Int32 pId = 0;
             
@@ -334,7 +336,6 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
         {
-            //    Abm_Cliente.SeleccionUsuario seleccion = new Abm_Cliente.SeleccionUsuario();
 
             using (var form = new Abm_Cliente.SeleccionUsuario())
             {

@@ -50,3 +50,5 @@ Aplicacion
                                                         8) pDireccion
                                                         9) pCodigoPostal
 	      Si existiese algun cambio en el orden por favor AVISAR.
+
+- DATO PASADO POR GUILLE: http://stackoverflow.com/questions/5233502/c-sharp-return-value-from-form

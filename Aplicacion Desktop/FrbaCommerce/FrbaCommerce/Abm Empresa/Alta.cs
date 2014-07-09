@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Empresa
 {
@@ -25,7 +26,8 @@ namespace FrbaCommerce.Abm_Empresa
                 direccion == "" ||
                 codigoPostal == "" ||
                 mail == "" ||
-                usuario == "")
+                usuario == "" ||
+               (usuario == "Existente" && id == ""))
             {
                 return false;
             }
@@ -148,8 +150,8 @@ namespace FrbaCommerce.Abm_Empresa
                 pUsuario = "Existente";
             }
 
-            String pUsername = label_Username.Text;
-            String pIdUsuario = label_IdUsuario.Text;
+            String pUsername = textBox_Username.Text;
+            String pIdUsuario = textBox_IdUsuario.Text;
 
 
             //int pTelefonoConvertido = Convert.ToInt32(telefono);
@@ -216,8 +218,7 @@ namespace FrbaCommerce.Abm_Empresa
         private void Alta_Load(object sender, EventArgs e)
         {
             groupBox_SeleccionarUsuario.Hide();
-            textBox_IdUsuario.Enabled = false;
-            textBox_Username.Enabled = false;
+            
 
         }
 
@@ -235,8 +236,45 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void button_SeleccionarUsuario_Click(object sender, EventArgs e)
         {
-            Abm_Empresa.SeleccionUsuario seleccion = new Abm_Empresa.SeleccionUsuario();
-            seleccion.Show();
+
+            using (var form = new Abm_Empresa.SeleccionUsuario())
+            {
+
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string val = form.ReturnId;
+
+                    this.textBox_IdUsuario.Text = val;
+
+                }
+            }
+
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                String IdSeleccionado = this.textBox_IdUsuario.Text;
+               // Int32 pIdSeleccionadoConvertido = Convert.ToInt32(IdSeleccionado);
+                Int16 pIdSeleccionadoConvertido = Convert.ToInt16(IdSeleccionado);
+
+
+                SqlCommand ObtenerUsername = new SqlCommand(string.Format("SELECT USU_USERNAME FROM LOS_JUS.USUARIO WHERE USU_ID = '{0}'", pIdSeleccionadoConvertido), Conexion);
+                SqlDataReader reader = ObtenerUsername.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    String pUsernameSeleccionado = reader.GetString(0);
+
+                    textBox_Username.Text = pUsernameSeleccionado;
+                }
+
+            }
+
+        }
+
+        private void groupBox_SeleccionarUsuario_Enter(object sender, EventArgs e)
+        {
+
         }
 
 
