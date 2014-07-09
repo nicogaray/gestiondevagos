@@ -32,7 +32,7 @@ namespace FrbaCommerce.Abm_Cliente
                 if (dataGridView1.RowCount != 0)
                 {
                     String pIdUsuarioSeleccionado = "";
-                    int i = e.RowIndex;
+                        int i = e.RowIndex;
                     pIdUsuarioSeleccionado = dataGridView1[0, i].Value.ToString();
                 
                     this.ReturnId = pIdUsuarioSeleccionado;

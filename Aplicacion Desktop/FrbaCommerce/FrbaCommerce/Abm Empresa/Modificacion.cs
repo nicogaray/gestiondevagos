@@ -6,12 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Modificacion : Form
     {
         public bool desdeModificacionUsuario = false;
+
+        public String razonSocialSeleccionada;
+        public String cuitSeleccionado;
+        public String contactoSeleccionado;
+        public String telefonoSeleccionado;
+        public String direccionSeleccionada;
+        public String codigoPostalSeleccionado;
+        public String mailSeleccionado;
+        public DateTime fechaCreacionSeleccionada;
 
         public bool comprobarTipos(String telefono)
         {
@@ -66,6 +76,8 @@ namespace FrbaCommerce.Abm_Empresa
             {
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                this.Close();
             }
             else
             {
@@ -81,6 +93,7 @@ namespace FrbaCommerce.Abm_Empresa
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
 
             }
         }
@@ -102,8 +115,7 @@ namespace FrbaCommerce.Abm_Empresa
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Empresa.ListadoSeleccionModificacion listado_modificacion = new Abm_Empresa.ListadoSeleccionModificacion();
-            listado_modificacion.Show();
+            
         }
 
         private void button_Guardar_MouseEnter(object sender, EventArgs e)
@@ -202,6 +214,20 @@ namespace FrbaCommerce.Abm_Empresa
             {
                 button_Volver.Hide();
             }
+
+            textBox_CodigoPostal.Text = codigoPostalSeleccionado;
+            textBox_Cuit.Text = cuitSeleccionado;
+            textBox_Direccion.Text = direccionSeleccionada;
+            textBox_Mail.Text = mailSeleccionado;
+            textBox_NombreContacto.Text = contactoSeleccionado;
+            textBox_RazonSocial.Text = razonSocialSeleccionada;
+            textBox_Telefono.Text = telefonoSeleccionado;
+            dateTimePicker_FechaNacimiento.Value = fechaCreacionSeleccionada;
+
+
+
+
+
         }
 
         private void button_Volver_Click(object sender, EventArgs e)

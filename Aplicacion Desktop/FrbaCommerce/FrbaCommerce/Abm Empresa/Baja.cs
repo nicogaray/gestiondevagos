@@ -6,11 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Baja : Form
     {
+        public String razonSocialSeleccionada;
+        public String cuitSeleccionado;
+        public String contactoSeleccionado;
+        public String telefonoSeleccionado;
+        public String direccionSeleccionada;
+        public String codigoPostalSeleccionado;
+        public String mailSeleccionado;
+        public DateTime fechaCreacionSeleccionada;
+
         public Baja()
         {
             InitializeComponent();
@@ -28,20 +38,25 @@ namespace FrbaCommerce.Abm_Empresa
 
             if (resultado == DialogResult.Yes)
             {
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    //FALTA sentencia SQL para eliminar empresa
+                    //SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS. INTO Usuario () Values ()"), Conexion);
+                }
+
                 const string mensaje2 = "La Empresa ha sido eliminada con éxito";
                 const string resumen2 = "";
 
                 MessageBox.Show(mensaje2, resumen2, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                this.Close();
             }
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Empresa.ListadoSeleccionBaja listado_baja = new Abm_Empresa.ListadoSeleccionBaja();
-            listado_baja.Show();
-
+            
         }
 
         private void textBox_Anio_MouseEnter(object sender, EventArgs e)
@@ -58,19 +73,15 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void Baja_Load(object sender, EventArgs e)
         {
-            //falta hacer la consulta sql para traer los datos que van en cada control
-
-            textBox_CodigoPostal.Text = "";
-            textBox_Cuit.Text = "";
-            textBox_Direccion.Text = "";
-            textBox_Mail.Text = "";
-            textBox_NombreContacto.Text = "";
-            textBox_RazonSocial.Text = "";
-            textBox_Telefono.Text = "";
-
-            //seleccionar la fecha que corresponda
-            DateTime fecha = DateTime.Now;
-            dateTimePicker_FechaNacimiento.Value = fecha;
+            
+            textBox_CodigoPostal.Text = codigoPostalSeleccionado;
+            textBox_Cuit.Text = cuitSeleccionado;
+            textBox_Direccion.Text = direccionSeleccionada;
+            textBox_Mail.Text = mailSeleccionado;
+            textBox_NombreContacto.Text = contactoSeleccionado;
+            textBox_RazonSocial.Text = razonSocialSeleccionada;
+            textBox_Telefono.Text = telefonoSeleccionado;
+            dateTimePicker_FechaNacimiento.Value = fechaCreacionSeleccionada;
 
             textBox_CodigoPostal.Enabled = false;
             textBox_Cuit.Enabled = false;

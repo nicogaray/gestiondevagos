@@ -13,6 +13,18 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public bool desdeModificacionUsuario = false;
 
+        //creo variables locales para mostrar los valores
+        public String nombreSeleccionado = "";
+        public String apellidoSeleccionado = "";
+        public String documentoSeleccionado;
+        public String tipoDocumentoSeleccionado = "";
+        public DateTime fechaSeleccionada;
+        public String mailSeleccionado = "";
+        public String direccionSeleccionada = "";
+        public String codigoPostalSeleccionado = "";
+        public String telefonoSeleccionado;
+
+
         public bool comprobarTipos(String telefono, String documento)
         {
             return (telefono.All(char.IsDigit) && documento.All(char.IsDigit));
@@ -116,6 +128,8 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                this.Close();
             }
             else
             {
@@ -227,13 +241,46 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 button_Volver.Hide();
             }
+
+            //imprimo en pantalla los valores seleccionados
+
+            textBox_Nombre.Text = nombreSeleccionado;
+            textBox_Apellido.Text = apellidoSeleccionado;
+
+            // selecciono el radio button correcto
+            if (tipoDocumentoSeleccionado == "CI")
+            {
+                radioButton_Ci.Select();
+            }
+            if (tipoDocumentoSeleccionado == "DNI")
+            {
+                radioButton_Dni.Select();
+            }
+            if (tipoDocumentoSeleccionado == "LC")
+            {
+                radioButton_Lc.Select();
+            }
+            if (tipoDocumentoSeleccionado == "LE")
+            {
+                radioButton_Le.Select();
+            }
+            if (tipoDocumentoSeleccionado == "PAS")
+            {
+                radioButton_Pas.Select();
+            }
+
+            textBox_Documento.Text = Convert.ToString(documentoSeleccionado);
+            textBox_Telefono.Text = Convert.ToString(telefonoSeleccionado);
+            textBox_Direccion.Text = direccionSeleccionada;
+            textBox_CodigoPostal.Text = codigoPostalSeleccionado;
+            textBox_Mail.Text = mailSeleccionado;
+            dateTimePicker_FechaNacimiento.Value = fechaSeleccionada;
+
         }
 
         public void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Cliente.ListadoSeleccionModificacion listado_modificacion = new Abm_Cliente.ListadoSeleccionModificacion();
-            listado_modificacion.Show();
         }
 
         private void button_Guardar_MouseEnter(object sender, EventArgs e)

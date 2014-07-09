@@ -122,8 +122,10 @@ namespace FrbaCommerce.Abm_Cliente
                             dataGridView_Modificacion.Rows.Add(pColumna0,pColumna1,pColumna2,pColumna3,pColumna4,pColumna5,pColumna6,pColumna7,pColumna8,pColumna9);
 
 
-    
+                            
                 }
+
+
 
             }
         }
@@ -132,8 +134,33 @@ namespace FrbaCommerce.Abm_Cliente
         {
             if (e.ColumnIndex == 10)
             {
-                
-                this.Close();
+                if (dataGridView_Modificacion.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+
+                    Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
+                    modificacion.nombreSeleccionado = dataGridView_Modificacion[1, i].Value.ToString();
+                    modificacion.apellidoSeleccionado = dataGridView_Modificacion[2, i].Value.ToString();
+                    modificacion.documentoSeleccionado = dataGridView_Modificacion[3, i].Value.ToString();
+                    modificacion.tipoDocumentoSeleccionado = dataGridView_Modificacion[4, i].Value.ToString();
+                    String fecha1 = dataGridView_Modificacion[5, i].Value.ToString();
+                    modificacion.fechaSeleccionada = Convert.ToDateTime(fecha1);
+                    modificacion.mailSeleccionado = dataGridView_Modificacion[6, i].Value.ToString();
+                    modificacion.telefonoSeleccionado = dataGridView_Modificacion[7, i].Value.ToString();
+                    modificacion.direccionSeleccionada = dataGridView_Modificacion[8, i].Value.ToString();
+                    modificacion.codigoPostalSeleccionado = dataGridView_Modificacion[9, i].Value.ToString();
+                    modificacion.Show();
+
+                    textBox_Apellido.Clear();
+                    textBox_Documento.Clear();
+                    textBox_Mail.Clear();
+                    textBox_Nombre.Clear();
+                    comboBox_TipoDocumento.Text = "";
+                    dataGridView_Modificacion.Rows.Clear();
+
+
+
+                }
             }
         }
     }

@@ -6,11 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Baja : Form
     {
+        //creo variables locales para mostrar los valores
+        public String nombreSeleccionado = "";
+        public String apellidoSeleccionado = "";
+        public String documentoSeleccionado;
+        public String tipoDocumentoSeleccionado = "";
+        public DateTime fechaSeleccionada;
+        public String mailSeleccionado = "";
+        public String direccionSeleccionada = "";
+        public String codigoPostalSeleccionado = "";
+        public String telefonoSeleccionado;
+        
         public Baja()
         {
             InitializeComponent();
@@ -28,10 +40,18 @@ namespace FrbaCommerce.Abm_Cliente
 
             if (resultado == DialogResult.Yes)
             {
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    //FALTA sentencia SQL para eliminar cliente
+                    //SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS. INTO Usuario () Values ()"), Conexion);
+                 }
+
                 const string mensaje2 = "El cliente ha sido eliminado con éxito";
                 const string resumen2 = "";
 
                 MessageBox.Show(mensaje2, resumen2,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                this.Close();
 
             }
 
@@ -58,26 +78,46 @@ namespace FrbaCommerce.Abm_Cliente
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Cliente.ListadoSeleccionBaja listado_baja = new Abm_Cliente.ListadoSeleccionBaja();
-            listado_baja.Show();
+           
         }
 
         private void Baja_Load(object sender, EventArgs e)
         {
-            //falta hacer la consulta sql para traer los datos que van en cada control
-            textBox_Nombre.Text = "";
-            textBox_Apellido.Text = "";
-            textBox_CodigoPostal.Text = "";
-            textBox_Direccion.Text = "";
-            textBox_Documento.Text = "";
-            textBox_Mail.Text = "";
-            textBox_Telefono.Text = "";
-            //marcar el tipo de documento que corresponda
-            radioButton_Ci.Select();
-            //seleccionar la fecha que corresponda
-            DateTime fecha = DateTime.Now;
-            dateTimePicker_FechaNacimiento.Value = fecha;
+            //imprimo en pantalla los valores seleccionados
 
+            textBox_Nombre.Text = nombreSeleccionado;
+            textBox_Apellido.Text = apellidoSeleccionado;
+
+            // selecciono el radio button correcto
+            if (tipoDocumentoSeleccionado == "CI")
+            {
+                radioButton_Ci.Select();
+            }
+            if (tipoDocumentoSeleccionado == "DNI")
+            {
+                radioButton_Dni.Select();
+            }
+            if (tipoDocumentoSeleccionado == "LC")
+            {
+                radioButton_Lc.Select();
+            }
+            if (tipoDocumentoSeleccionado == "LE")
+            {
+                radioButton_Le.Select();
+            }
+            if (tipoDocumentoSeleccionado == "PAS")
+            {
+                radioButton_Pas.Select();
+            }
+
+            textBox_Documento.Text = Convert.ToString(documentoSeleccionado);
+            textBox_Telefono.Text = Convert.ToString(telefonoSeleccionado);
+            textBox_Direccion.Text = direccionSeleccionada;
+            textBox_CodigoPostal.Text = codigoPostalSeleccionado;
+            textBox_Mail.Text = mailSeleccionado;
+            dateTimePicker_FechaNacimiento.Value = fechaSeleccionada;
+
+            
             textBox_Nombre.Enabled = false;
             textBox_Nombre.Enabled = false;
             textBox_Apellido.Enabled = false;
