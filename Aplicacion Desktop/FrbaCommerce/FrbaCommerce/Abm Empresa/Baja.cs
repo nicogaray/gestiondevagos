@@ -12,6 +12,7 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Baja : Form
     {
+        public Int32 idSeleccionado;
         public String razonSocialSeleccionada;
         public String cuitSeleccionado;
         public String contactoSeleccionado;
@@ -42,7 +43,7 @@ namespace FrbaCommerce.Abm_Empresa
                 using (Conexion)
                 {
                     //FALTA sentencia SQL para eliminar empresa
-                    //SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS. INTO Usuario () Values ()"), Conexion);
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.EMPRESA SET EMP_HABILITADO = 0 WHERE EMP_ID = '{0}'",idSeleccionado), Conexion);
                 }
 
                 const string mensaje2 = "La Empresa ha sido eliminada con éxito";

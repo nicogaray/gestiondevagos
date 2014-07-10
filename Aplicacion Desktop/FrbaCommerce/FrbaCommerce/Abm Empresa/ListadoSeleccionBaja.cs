@@ -100,6 +100,8 @@ namespace FrbaCommerce.Abm_Empresa
                 {
                     int i = e.RowIndex;
                     Abm_Empresa.Baja baja = new Abm_Empresa.Baja();
+                    String id = dataGridView_baja[0, i].Value.ToString();
+                    baja.idSeleccionado = Convert.ToInt32(id);
                     baja.razonSocialSeleccionada = dataGridView_baja[1, i].Value.ToString();
                     baja.cuitSeleccionado = dataGridView_baja[2, i].Value.ToString();
                     baja.contactoSeleccionado = dataGridView_baja[3, i].Value.ToString();

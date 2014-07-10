@@ -13,6 +13,7 @@ namespace FrbaCommerce.Abm_Cliente
     public partial class Baja : Form
     {
         //creo variables locales para mostrar los valores
+        public Int32 idSeleccionado = 0;
         public String nombreSeleccionado = "";
         public String apellidoSeleccionado = "";
         public String documentoSeleccionado;
@@ -44,7 +45,7 @@ namespace FrbaCommerce.Abm_Cliente
                 using (Conexion)
                 {
                     //FALTA sentencia SQL para eliminar cliente
-                    //SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS. INTO Usuario () Values ()"), Conexion);
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET CLI_HABILITADO = 0 WHERE CLI_ID = '{0}' ", idSeleccionado), Conexion);
                  }
 
                 const string mensaje2 = "El cliente ha sido eliminado con éxito";

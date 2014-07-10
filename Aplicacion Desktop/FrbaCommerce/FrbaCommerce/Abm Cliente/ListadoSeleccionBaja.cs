@@ -86,12 +86,12 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlCommand cmd = null;
                 if (pDocumentoConvertido == -1)
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null)",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null WHERE CLI_HABILITADO != 0)",
                                                                    pNombre, pApellido, pEmail, pTipo), Conexion);
                 }
                 else
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}')",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}' WHERE CLI_HABILITADO != 0)",
                                                                       pNombre, pApellido, pEmail, pTipo, pDocumentoConvertido), Conexion);
                 }
 
@@ -136,6 +136,8 @@ namespace FrbaCommerce.Abm_Cliente
                     int i = e.RowIndex;
 
                     Abm_Cliente.Baja baja = new Abm_Cliente.Baja();
+                    String id = dataGridView_baja[0, i].Value.ToString();
+                    baja.idSeleccionado = Convert.ToInt32(id);
                     baja.nombreSeleccionado = dataGridView_baja[1, i].Value.ToString();
                     baja.apellidoSeleccionado = dataGridView_baja[2, i].Value.ToString();
                     baja.documentoSeleccionado = dataGridView_baja[3, i].Value.ToString();
