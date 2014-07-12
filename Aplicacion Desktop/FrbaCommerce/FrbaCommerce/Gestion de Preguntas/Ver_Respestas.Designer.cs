@@ -31,6 +31,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_Volver = new System.Windows.Forms.Button();
+            this.FechaRespuestas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +50,13 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FechaRespuestas,
+            this.Pregunta,
+            this.Respuesta});
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(583, 256);
@@ -64,6 +73,27 @@
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
+            // FechaRespuestas
+            // 
+            this.FechaRespuestas.HeaderText = "Fecha de Respuesta";
+            this.FechaRespuestas.Name = "FechaRespuestas";
+            this.FechaRespuestas.ReadOnly = true;
+            this.FechaRespuestas.Width = 120;
+            // 
+            // Pregunta
+            // 
+            this.Pregunta.HeaderText = "Pregunta";
+            this.Pregunta.Name = "Pregunta";
+            this.Pregunta.ReadOnly = true;
+            this.Pregunta.Width = 75;
+            // 
+            // Respuesta
+            // 
+            this.Respuesta.HeaderText = "Respuesta";
+            this.Respuesta.Name = "Respuesta";
+            this.Respuesta.ReadOnly = true;
+            this.Respuesta.Width = 83;
+            // 
             // Ver_Respestas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -77,6 +107,7 @@
             this.Name = "Ver_Respestas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver respuestas";
+            this.Load += new System.EventHandler(this.Ver_Respestas_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -88,5 +119,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_Volver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaRespuestas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pregunta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Respuesta;
     }
 }

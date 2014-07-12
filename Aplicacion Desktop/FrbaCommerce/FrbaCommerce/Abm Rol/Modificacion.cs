@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Rol
 {
     public partial class Modificacion : Form
     {
+        public String nombreSeleccionado = "";
+
         public bool comprobarDatosCompletos(String nombre)
         {
             if (nombre == "")
@@ -117,8 +120,6 @@ namespace FrbaCommerce.Abm_Rol
         private void button_Limpiar_Click_1(object sender, EventArgs e)
         {
             textBox_Nombre.Clear();
-            textBox_Descripcion.Clear();
-            textBox_Funcionalidad.Clear();
             dataGridView_ListaFuncionalidades.Rows.Clear();
 
         }
@@ -131,7 +132,25 @@ namespace FrbaCommerce.Abm_Rol
 
         private void Modificacion_Load(object sender, EventArgs e)
         {
+            textBox_Nombre.Text = nombreSeleccionado;
+            //falta fun_descripcion!
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT FUN_FUNCIONALIDAD FROM LOS_JUS.ROL JOIN LOS_JUS.ROLxFUNCIONALIDADES ON ROLFUN_ROL=ROL_NOMBRE JOIN LOS_JUS.FUNCIONALIDADES ON ROLFUN_FUNCIONALIDADES=FUN_FUNCIONALIDAD WHERE ROL_NOMBRE = '{0}'", nombreSeleccionado), Conexion);
 
+                SqlDataReader reader = ObtenerIds.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    String pColumna0 = reader.GetString(0);
+
+
+                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0);
+                }
+                
+                
+            }
         }
 
         private void button_Limpiar_MouseEnter_1(object sender, EventArgs e)
@@ -166,22 +185,7 @@ namespace FrbaCommerce.Abm_Rol
 
         private void button_Agregar_Click(object sender, EventArgs e)
         {
-            String pFuncionalidad = textBox_Funcionalidad.Text;
-            String pDescripcion = textBox_Descripcion.Text;
-
-            if (pFuncionalidad == "" || pDescripcion == "")
-            {
-                MessageBox.Show("Hay campos vacios. Los datos no se pueden agregar.\nComplete todos los campos e intente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else
-            {
-                dataGridView_ListaFuncionalidades.Rows.Add(pFuncionalidad, pDescripcion);
-                textBox_Descripcion.Clear();
-                textBox_Funcionalidad.Clear();
-            }
             
-
             
         }
 
@@ -192,6 +196,29 @@ namespace FrbaCommerce.Abm_Rol
                 if (dataGridView_ListaFuncionalidades.RowCount != 0)
                 {
                     int i = e.RowIndex;
+
+                    using (var form = new Abm_Rol.ModificarFuncionalidad())
+                    {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        bool val = form.ReturnId;
+                        string funcionalidad = form.ReturnFunc;
+                        string descripcion = form.ReturnDesc;
+
+                        if (val)
+                        {
+                            dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+                        }
+                        else
+                        {
+                            dataGridView_ListaFuncionalidades[0,i].Value = funcionalidad;
+                            dataGridView_ListaFuncionalidades[1,i].Value = descripcion;
+
+                        }
+                    }
+                }
+            
                     dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
                 }
                

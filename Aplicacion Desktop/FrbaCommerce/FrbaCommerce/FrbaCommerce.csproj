@@ -152,6 +152,12 @@
     <Compile Include="Abm Rol\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Rol\ModificarFuncionalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rol\ModificarFuncionalidad.Designer.cs">
+      <DependentUpon>ModificarFuncionalidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Rol\ListadoSeleccionBaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,11 +219,17 @@
       <DependentUpon>ListadoSeleccionBaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Base de Datos\BD_Conexion.cs" />
-    <Compile Include="Calificar Vendedor\Calificar_Vendedor.cs">
+    <Compile Include="Calificar Vendedor\ListaOperacionesSeleccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calificar Vendedor\Calificar_Vendedor.Designer.cs">
-      <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
+    <Compile Include="Calificar Vendedor\ListaOperacionesSeleccion.Designer.cs">
+      <DependentUpon>ListaOperacionesSeleccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calificar Vendedor\Calificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calificar Vendedor\Calificacion.Designer.cs">
+      <DependentUpon>Calificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Comprar-Ofertar\Ofertar.cs">
       <SubType>Form</SubType>
@@ -253,6 +265,12 @@
     </Compile>
     <Compile Include="Generar Publicacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Respuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Respuesta.Designer.cs">
+      <DependentUpon>Respuesta.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion de Preguntas\Hacer_Preguntas.cs">
       <SubType>Form</SubType>
@@ -358,6 +376,9 @@
     <EmbeddedResource Include="Abm Empresa\SeleccionUsuario.resx">
       <DependentUpon>SeleccionUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\ModificarFuncionalidad.resx">
+      <DependentUpon>ModificarFuncionalidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,8 +415,11 @@
     <EmbeddedResource Include="Abm Visibilidad\Modificacion.resx">
       <DependentUpon>Modificacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calificar Vendedor\Calificar_Vendedor.resx">
-      <DependentUpon>Calificar_Vendedor.cs</DependentUpon>
+    <EmbeddedResource Include="Calificar Vendedor\Calificacion.resx">
+      <DependentUpon>Calificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calificar Vendedor\ListaOperacionesSeleccion.resx">
+      <DependentUpon>ListaOperacionesSeleccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Ofertar.resx">
       <DependentUpon>Ofertar.cs</DependentUpon>
@@ -411,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\Respuesta.resx">
+      <DependentUpon>Respuesta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gestion de Preguntas\Hacer_Preguntas.resx">
       <DependentUpon>Hacer_Preguntas.cs</DependentUpon>

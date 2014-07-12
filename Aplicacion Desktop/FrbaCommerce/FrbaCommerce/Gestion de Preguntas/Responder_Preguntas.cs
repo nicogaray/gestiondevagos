@@ -6,23 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class Responder_Preguntas : Form
     {
-        public bool comprobarDatosCompletos(String respuesta)
-        {
-            if (respuesta == "")
-            {
-                return false;
-            }
 
-            else
-            {
-                return true;
-            }
-        }
 
         public Responder_Preguntas()
         {
@@ -31,20 +21,16 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Responder_Preguntas_Load(object sender, EventArgs e)
         {
-            DateTime fecha = DateTime.Now;
-            string fechaString = fecha.ToShortDateString();
-            textBox_Fecha.Text = fechaString;
-            textBox_Fecha.Enabled = false;
+
         }
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
-            textBox_Respuesta.Text = "";
 
         }
 
@@ -57,29 +43,58 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            String pRespuesta = textBox_Respuesta.Text;
-            String pFecha = textBox_Fecha.Text;
-
-            //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
-            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pRespuesta);
-            const string resumen = "";
-
-            if (comprobarDatosCompletos)
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
             {
-                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            else
-            {
-                if (comprobarDatosCompletos == false)
+
+                //IMPORTANTE: FALTA OBTENER EL ID DE LA EMPRESA DE LA SESION, USO EJEMPLO DE PRUEBA: 1
+                SqlCommand cmd = null;
+                cmd = new SqlCommand(string.Format("SELECT PRE_CODIGO,PRE_PREGUNTA From LOS_JUS.buscarPreguntasSinResponder('{0}')",
+                                                                  29), Conexion);
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
 
-                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Int32 pColumna0 = reader.GetInt32(0);//PRE_CODIGO
+                    Int32 pColumna1 = reader.GetInt32(1);//PRE_PREGUNTA
+
+
+                    dataGridView1.Rows.Add(pColumna0, pColumna1);
+
                 }
             }
 
 
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2)
+            {
+                if (dataGridView1.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+                    using (var form = new Gestion_de_Preguntas.Respuesta())
+                    {
+                        //veo si en la ventana respuesta se guardo el valor y luego elimino esta fila de la tabla
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            bool val = form.ReturnId;
+                            if (val)
+                            {
+                                dataGridView1.Rows.RemoveAt(i);
+                            }
+                            else
+                            {
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

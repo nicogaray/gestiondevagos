@@ -71,7 +71,7 @@ namespace FrbaCommerce.Menu
 
         private void button_CalificarVendedor_Click(object sender, EventArgs e)
         {
-            Calificar_Vendedor.Calificar_Vendedor calificar = new Calificar_Vendedor.Calificar_Vendedor();
+            Calificar_Vendedor.ListaOperacionesSeleccion calificar = new Calificar_Vendedor.ListaOperacionesSeleccion();
             calificar.Show();
             this.Close();
         }
@@ -94,7 +94,7 @@ namespace FrbaCommerce.Menu
         {
             Gestion_de_Preguntas.Ver_Respestas preguntas = new Gestion_de_Preguntas.Ver_Respestas();
             preguntas.Show();
-            this.Close();
+            
         }
 
     

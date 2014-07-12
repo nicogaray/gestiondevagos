@@ -38,7 +38,6 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Registro_de_Usuario.Modificacion.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Listado_Estadistico.ListadoEstadistico.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Historial_Cliente.Historial.resources
-C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.Calificar_Vendedor.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Comprar_Ofertar.Ofertar.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Comprar_Ofertar.Comprar.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Form1.resources
@@ -50,3 +49,7 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe.config
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Cliente.SeleccionUsuario.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Empresa.SeleccionUsuario.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.Calificacion.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.ListaOperacionesSeleccion.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Respuesta.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Rol.ModificarFuncionalidad.resources

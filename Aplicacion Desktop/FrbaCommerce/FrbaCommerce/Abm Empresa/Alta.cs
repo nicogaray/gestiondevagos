@@ -277,6 +277,11 @@ namespace FrbaCommerce.Abm_Empresa
 
         }
 
+        private void textBox_Username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     
 

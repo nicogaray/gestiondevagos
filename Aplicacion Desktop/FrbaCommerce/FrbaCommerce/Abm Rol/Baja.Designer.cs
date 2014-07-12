@@ -79,15 +79,17 @@
             // 
             // dataGridView_ListaFuncionalidades
             // 
+            this.dataGridView_ListaFuncionalidades.AllowUserToAddRows = false;
+            this.dataGridView_ListaFuncionalidades.AllowUserToDeleteRows = false;
+            this.dataGridView_ListaFuncionalidades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView_ListaFuncionalidades.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView_ListaFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_ListaFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Funcionalidad,
             this.Descripcion});
             this.dataGridView_ListaFuncionalidades.GridColor = System.Drawing.SystemColors.ControlText;
-            this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(56, 98);
+            this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(6, 89);
             this.dataGridView_ListaFuncionalidades.Name = "dataGridView_ListaFuncionalidades";
-            this.dataGridView_ListaFuncionalidades.Size = new System.Drawing.Size(279, 168);
+            this.dataGridView_ListaFuncionalidades.Size = new System.Drawing.Size(376, 183);
             this.dataGridView_ListaFuncionalidades.TabIndex = 3;
             this.dataGridView_ListaFuncionalidades.MouseLeave += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseLeave);
             this.dataGridView_ListaFuncionalidades.MouseEnter += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseEnter);
@@ -109,7 +111,7 @@
             this.label_ListadoFuncionalidades.AutoSize = true;
             this.label_ListadoFuncionalidades.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_ListadoFuncionalidades.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_ListadoFuncionalidades.Location = new System.Drawing.Point(53, 73);
+            this.label_ListadoFuncionalidades.Location = new System.Drawing.Point(53, 55);
             this.label_ListadoFuncionalidades.Name = "label_ListadoFuncionalidades";
             this.label_ListadoFuncionalidades.Size = new System.Drawing.Size(133, 13);
             this.label_ListadoFuncionalidades.TabIndex = 2;
@@ -122,7 +124,7 @@
             this.label_Nombre.AutoSize = true;
             this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Nombre.Location = new System.Drawing.Point(53, 42);
+            this.label_Nombre.Location = new System.Drawing.Point(53, 22);
             this.label_Nombre.Name = "label_Nombre";
             this.label_Nombre.Size = new System.Drawing.Size(44, 13);
             this.label_Nombre.TabIndex = 1;
@@ -132,7 +134,7 @@
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(103, 39);
+            this.textBox_Nombre.Location = new System.Drawing.Point(103, 19);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;

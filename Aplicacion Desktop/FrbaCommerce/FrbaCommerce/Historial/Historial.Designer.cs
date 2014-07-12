@@ -78,6 +78,7 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Volver.Location = new System.Drawing.Point(538, 76);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(88, 25);
@@ -105,6 +106,7 @@
             this.button_HacerConsulta.TabIndex = 0;
             this.button_HacerConsulta.Text = "Hacer consulta";
             this.button_HacerConsulta.UseVisualStyleBackColor = true;
+            this.button_HacerConsulta.Click += new System.EventHandler(this.button_HacerConsulta_Click_1);
             // 
             // Historial
             // 

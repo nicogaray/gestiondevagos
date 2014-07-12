@@ -86,12 +86,12 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlCommand cmd = null;
                 if (pDocumentoConvertido == -1)
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null WHERE CLI_HABILITADO != 0)",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null) WHERE CLI_HABILITADO != 0",
                                                                    pNombre, pApellido, pEmail, pTipo), Conexion);
                 }
                 else
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}' WHERE CLI_HABILITADO != 0)",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}') WHERE CLI_HABILITADO != 0",
                                                                       pNombre, pApellido, pEmail, pTipo, pDocumentoConvertido), Conexion);
                 }
 

@@ -43,10 +43,26 @@
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_HacerConsulta = new System.Windows.Forms.Button();
             this.dataGridView_Resultado = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Resultado2 = new System.Windows.Forms.DataGridView();
+            this.CampoEstadistico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CampoEstadistico2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_Consultas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Mes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Anio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Resultado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Resultado2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_Consultas
@@ -70,6 +86,7 @@
             this.groupBox_Consultas.TabIndex = 0;
             this.groupBox_Consultas.TabStop = false;
             this.groupBox_Consultas.Text = "Consultas";
+            this.groupBox_Consultas.Enter += new System.EventHandler(this.groupBox_Consultas_Enter);
             // 
             // numericUpDown_Mes
             // 
@@ -97,6 +114,12 @@
             // comboBox_Visibilidad
             // 
             this.comboBox_Visibilidad.FormattingEnabled = true;
+            this.comboBox_Visibilidad.Items.AddRange(new object[] {
+            "Platino",
+            "Oro",
+            "Plata",
+            "Bronce",
+            "Gratis"});
             this.comboBox_Visibilidad.Location = new System.Drawing.Point(140, 56);
             this.comboBox_Visibilidad.Name = "comboBox_Visibilidad";
             this.comboBox_Visibilidad.Size = new System.Drawing.Size(245, 21);
@@ -228,14 +251,141 @@
             this.button_HacerConsulta.TabIndex = 0;
             this.button_HacerConsulta.Text = "Hacer consulta";
             this.button_HacerConsulta.UseVisualStyleBackColor = true;
+            this.button_HacerConsulta.Click += new System.EventHandler(this.button_HacerConsulta_Click);
             // 
             // dataGridView_Resultado
             // 
-            this.dataGridView_Resultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Resultado.AllowUserToAddRows = false;
+            this.dataGridView_Resultado.AllowUserToDeleteRows = false;
+            this.dataGridView_Resultado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView_Resultado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CampoEstadistico,
+            this.Id,
+            this.RazonSocial,
+            this.Cuit,
+            this.Contacto,
+            this.FechaCreacion,
+            this.Email});
             this.dataGridView_Resultado.Location = new System.Drawing.Point(12, 136);
             this.dataGridView_Resultado.Name = "dataGridView_Resultado";
             this.dataGridView_Resultado.Size = new System.Drawing.Size(614, 205);
             this.dataGridView_Resultado.TabIndex = 1;
+            // 
+            // dataGridView_Resultado2
+            // 
+            this.dataGridView_Resultado2.AllowUserToAddRows = false;
+            this.dataGridView_Resultado2.AllowUserToDeleteRows = false;
+            this.dataGridView_Resultado2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView_Resultado2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CampoEstadistico2,
+            this.Id2,
+            this.Nombre,
+            this.Apellido,
+            this.Documento,
+            this.FechaNacimiento,
+            this.Email2});
+            this.dataGridView_Resultado2.Location = new System.Drawing.Point(12, 136);
+            this.dataGridView_Resultado2.Name = "dataGridView_Resultado2";
+            this.dataGridView_Resultado2.Size = new System.Drawing.Size(614, 205);
+            this.dataGridView_Resultado2.TabIndex = 2;
+            // 
+            // CampoEstadistico
+            // 
+            this.CampoEstadistico.HeaderText = "Campo Estadistico";
+            this.CampoEstadistico.Name = "CampoEstadistico";
+            this.CampoEstadistico.ReadOnly = true;
+            this.CampoEstadistico.Width = 119;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 41;
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.HeaderText = "Razon Social";
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.ReadOnly = true;
+            this.RazonSocial.Width = 95;
+            // 
+            // Cuit
+            // 
+            this.Cuit.HeaderText = "Cuit";
+            this.Cuit.Name = "Cuit";
+            this.Cuit.ReadOnly = true;
+            this.Cuit.Width = 50;
+            // 
+            // Contacto
+            // 
+            this.Contacto.HeaderText = "Contacto";
+            this.Contacto.Name = "Contacto";
+            this.Contacto.ReadOnly = true;
+            this.Contacto.Width = 75;
+            // 
+            // FechaCreacion
+            // 
+            this.FechaCreacion.HeaderText = "Fecha Creacion";
+            this.FechaCreacion.Name = "FechaCreacion";
+            this.FechaCreacion.ReadOnly = true;
+            this.FechaCreacion.Width = 107;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 57;
+            // 
+            // CampoEstadistico2
+            // 
+            this.CampoEstadistico2.HeaderText = "Campo Estadistico";
+            this.CampoEstadistico2.Name = "CampoEstadistico2";
+            this.CampoEstadistico2.ReadOnly = true;
+            this.CampoEstadistico2.Width = 119;
+            // 
+            // Id2
+            // 
+            this.Id2.HeaderText = "Id";
+            this.Id2.Name = "Id2";
+            this.Id2.ReadOnly = true;
+            this.Id2.Width = 41;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 69;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 69;
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "Documento";
+            this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
+            this.Documento.Width = 87;
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.HeaderText = "Fecha Nacimientp";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
+            this.FechaNacimiento.Width = 118;
+            // 
+            // Email2
+            // 
+            this.Email2.HeaderText = "Email";
+            this.Email2.Name = "Email2";
+            this.Email2.ReadOnly = true;
+            this.Email2.Width = 57;
             // 
             // ListadoEstadistico
             // 
@@ -244,6 +394,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(639, 354);
+            this.Controls.Add(this.dataGridView_Resultado2);
             this.Controls.Add(this.dataGridView_Resultado);
             this.Controls.Add(this.groupBox_Consultas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -257,6 +408,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Mes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Anio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Resultado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Resultado2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,5 +430,20 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_Mes;
         private System.Windows.Forms.ComboBox comboBox_Visibilidad;
         private System.Windows.Forms.Label label_Mes;
+        private System.Windows.Forms.DataGridView dataGridView_Resultado2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CampoEstadistico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cuit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contacto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CampoEstadistico2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email2;
     }
 }

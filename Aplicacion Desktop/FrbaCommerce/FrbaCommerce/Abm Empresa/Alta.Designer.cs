@@ -323,6 +323,7 @@
             this.textBox_Username.ReadOnly = true;
             this.textBox_Username.Size = new System.Drawing.Size(110, 20);
             this.textBox_Username.TabIndex = 27;
+            this.textBox_Username.TextChanged += new System.EventHandler(this.textBox_Username_TextChanged);
             // 
             // label_IdUsuario
             // 

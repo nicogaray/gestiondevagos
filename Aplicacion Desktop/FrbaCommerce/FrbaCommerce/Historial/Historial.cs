@@ -64,5 +64,16 @@ namespace FrbaCommerce.Historial_Cliente
         {
 
         }
+
+        private void button_HacerConsulta_Click_1(object sender, EventArgs e)
+        {
+            if (cliente)
+            {
+                
+            }
+            else
+            {
+            }
+        }
     }
 }

@@ -6,11 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.ABM_Rol
 {
     public partial class Baja : Form
     {
+        public bool ReturnId { get; set; }
+
+        public String nombreSeleccionado = "";
+
         public Baja()
         {
             InitializeComponent();
@@ -33,20 +38,41 @@ namespace FrbaCommerce.ABM_Rol
 
                 MessageBox.Show(mensaje2, resumen2, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                this.ReturnId = true;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Rol.ListadoSeleccionBaja listado_baja = new Abm_Rol.ListadoSeleccionBaja();
-            listado_baja.Show();
+            
         }
 
         private void Baja_Load(object sender, EventArgs e)
         {
             textBox_Nombre.Enabled = false;
             dataGridView_ListaFuncionalidades.Enabled = false;
+
+            textBox_Nombre.Text = nombreSeleccionado;
+
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                //falta campo descripcion funcionalidades
+                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT FUN_FUNCIONALIDAD FROM LOS_JUS.ROL JOIN LOS_JUS.ROLxFUNCIONALIDADES ON ROLFUN_ROL=ROL_NOMBRE JOIN LOS_JUS.FUNCIONALIDADES ON ROLFUN_FUNCIONALIDADES=FUN_FUNCIONALIDAD WHERE ROL_NOMBRE = '{0}'", nombreSeleccionado), Conexion);
+
+                SqlDataReader reader = ObtenerIds.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    String pColumna0 = reader.GetString(0);
+
+
+                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0);
+                }
+            }
         }
 
         private void dataGridView_ListaFuncionalidades_MouseEnter(object sender, EventArgs e)

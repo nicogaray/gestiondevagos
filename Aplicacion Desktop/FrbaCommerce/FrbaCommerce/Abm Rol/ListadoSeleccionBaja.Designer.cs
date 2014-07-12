@@ -29,31 +29,30 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_Buscar = new System.Windows.Forms.Button();
             this.groupBox_Filtro = new System.Windows.Forms.GroupBox();
             this.label_Informacion = new System.Windows.Forms.Label();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox_Filtro.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 5);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Rol,
+            this.Eliminar});
+            this.dataGridView1.Location = new System.Drawing.Point(68, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(498, 218);
+            this.dataGridView1.Size = new System.Drawing.Size(376, 212);
             this.dataGridView1.TabIndex = 17;
             this.dataGridView1.MouseLeave += new System.EventHandler(this.dataGridView1_MouseLeave);
             this.dataGridView1.MouseEnter += new System.EventHandler(this.dataGridView1_MouseEnter);
-            // 
-            // button_Buscar
-            // 
-            this.button_Buscar.Location = new System.Drawing.Point(426, 229);
-            this.button_Buscar.Name = "button_Buscar";
-            this.button_Buscar.Size = new System.Drawing.Size(75, 23);
-            this.button_Buscar.TabIndex = 16;
-            this.button_Buscar.Text = "Buscar";
-            this.button_Buscar.UseVisualStyleBackColor = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox_Filtro
             // 
@@ -74,14 +73,25 @@
             this.label_Informacion.Size = new System.Drawing.Size(0, 13);
             this.label_Informacion.TabIndex = 0;
             // 
+            // Rol
+            // 
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            this.Rol.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseColumnTextForButtonValue = true;
+            // 
             // ListadoSeleccionBaja
             // 
-            this.AcceptButton = this.button_Buscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.groupBox_Filtro);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -100,8 +110,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.GroupBox groupBox_Filtro;
         private System.Windows.Forms.Label label_Informacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }
