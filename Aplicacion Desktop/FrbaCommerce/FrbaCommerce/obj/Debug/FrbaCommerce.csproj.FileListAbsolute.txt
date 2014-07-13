@@ -40,9 +40,7 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Historial_Cliente.Historial.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Comprar_Ofertar.Ofertar.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Comprar_Ofertar.Comprar.resources
-C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Form1.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Facturar_Publicaciones.Form1.resources
-C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.Form1.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Responder_Preguntas.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Ver_Respestas.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Hacer_Preguntas.resources
@@ -53,3 +51,9 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.ListaOperacionesSeleccion.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.Respuesta.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Abm_Rol.ModificarFuncionalidad.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.Compra_Inmediata.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.Form_Base.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.Subasta.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Activa.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Borrador.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Form_Base.resources

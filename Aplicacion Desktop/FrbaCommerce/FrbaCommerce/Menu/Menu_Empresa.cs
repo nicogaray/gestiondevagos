@@ -70,5 +70,21 @@ namespace FrbaCommerce.Menu
             responder.Show();
             this.Close();
         }
+
+        private void button_Publicar_Click(object sender, EventArgs e)
+        {
+            Generar_Publicacion.Form_Base publicacion = new Generar_Publicacion.Form_Base();
+            publicacion.Show();
+            this.Close();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Editar_Publicacion.Form_Base publicacion = new Editar_Publicacion.Form_Base();
+            publicacion.Show();
+            this.Close();
+
+        }
     }
 }

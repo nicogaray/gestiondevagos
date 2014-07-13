@@ -88,6 +88,7 @@
             this.button_FacturarPublicacion.TabIndex = 5;
             this.button_FacturarPublicacion.Text = "Facturar publicacion";
             this.button_FacturarPublicacion.UseVisualStyleBackColor = true;
+            this.button_FacturarPublicacion.Click += new System.EventHandler(this.button_FacturarPublicacion_Click);
             // 
             // button_RegistroUsuario
             // 

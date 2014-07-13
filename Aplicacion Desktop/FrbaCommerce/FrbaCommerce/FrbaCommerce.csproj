@@ -243,11 +243,23 @@
     <Compile Include="Comprar-Ofertar\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editar Publicacion\Form1.cs">
+    <Compile Include="Editar Publicacion\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Editar Publicacion\Form_Base.Designer.cs">
+      <DependentUpon>Form_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\Borrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\Borrador.Designer.cs">
+      <DependentUpon>Borrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\Activa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\Activa.Designer.cs">
+      <DependentUpon>Activa.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
@@ -260,11 +272,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD1C2014DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicacion\Form1.cs">
+    <Compile Include="Generar Publicacion\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Generar Publicacion\Form_Base.Designer.cs">
+      <DependentUpon>Form_Base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicacion\Compra_Inmediata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\Compra_Inmediata.Designer.cs">
+      <DependentUpon>Compra_Inmediata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicacion\Subasta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\Subasta.Designer.cs">
+      <DependentUpon>Subasta.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion de Preguntas\Respuesta.cs">
       <SubType>Form</SubType>
@@ -427,14 +451,26 @@
     <EmbeddedResource Include="Comprar-Ofertar\Comprar.resx">
       <DependentUpon>Comprar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editar Publicacion\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Editar Publicacion\Activa.resx">
+      <DependentUpon>Activa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Borrador.resx">
+      <DependentUpon>Borrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Form_Base.resx">
+      <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar Publicaciones\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Publicacion\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Publicacion\Compra_Inmediata.resx">
+      <DependentUpon>Compra_Inmediata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\Form_Base.resx">
+      <DependentUpon>Form_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\Subasta.resx">
+      <DependentUpon>Subasta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gestion de Preguntas\Respuesta.resx">
       <DependentUpon>Respuesta.cs</DependentUpon>

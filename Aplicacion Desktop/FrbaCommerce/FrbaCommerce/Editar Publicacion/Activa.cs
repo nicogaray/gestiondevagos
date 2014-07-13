@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaCommerce.Facturar_Publicaciones
+namespace FrbaCommerce.Editar_Publicacion
 {
-    public partial class Form1 : Form
+    public partial class Activa : Form
     {
-        public Form1()
+        public Activa()
         {
             InitializeComponent();
         }

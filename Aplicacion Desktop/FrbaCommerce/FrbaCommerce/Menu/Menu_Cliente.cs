@@ -94,7 +94,17 @@ namespace FrbaCommerce.Menu
         {
             Gestion_de_Preguntas.Ver_Respestas preguntas = new Gestion_de_Preguntas.Ver_Respestas();
             preguntas.Show();
+
             
+        }
+
+        private void button_FacturarPublicacion_Click(object sender, EventArgs e)
+        {
+            Facturar_Publicaciones.Facturar facturar = new Facturar_Publicaciones.Facturar();
+            facturar.Show();
+            this.Close();
+
+
         }
 
     

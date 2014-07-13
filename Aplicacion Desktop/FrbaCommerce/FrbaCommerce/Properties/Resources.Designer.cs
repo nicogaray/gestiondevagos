@@ -73,5 +73,33 @@ namespace FrbaCommerce.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap payment_method_american_express_card_48 {
+            get {
+                object obj = ResourceManager.GetObject("payment_method_american_express_card-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap payment_method_card_visa_32 {
+            get {
+                object obj = ResourceManager.GetObject("payment_method_card_visa-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap payment_method_card_visa_48 {
+            get {
+                object obj = ResourceManager.GetObject("payment_method_card_visa-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap payment_method_master_card_48 {
+            get {
+                object obj = ResourceManager.GetObject("payment_method_master_card-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Generar_Publicacion
 {
-    public partial class Form1 : Form
+    public partial class Subasta : Form
     {
-        public Form1()
+        public Subasta()
         {
             InitializeComponent();
         }

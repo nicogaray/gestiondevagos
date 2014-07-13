@@ -34,12 +34,13 @@
             this.button_HistorialEmpresa = new System.Windows.Forms.Button();
             this.button_ModificacionUsuario = new System.Windows.Forms.Button();
             this.button_RegistroUsuario = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
             // 
             this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Volver.Location = new System.Drawing.Point(367, 207);
+            this.button_Volver.Location = new System.Drawing.Point(367, 242);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
             this.button_Volver.TabIndex = 0;
@@ -53,12 +54,13 @@
             this.button_Publicar.Name = "button_Publicar";
             this.button_Publicar.Size = new System.Drawing.Size(310, 40);
             this.button_Publicar.TabIndex = 1;
-            this.button_Publicar.Text = "Publicar";
+            this.button_Publicar.Text = "Generar Publicacion";
             this.button_Publicar.UseVisualStyleBackColor = true;
+            this.button_Publicar.Click += new System.EventHandler(this.button_Publicar_Click);
             // 
             // button_ResponderPregunta
             // 
-            this.button_ResponderPregunta.Location = new System.Drawing.Point(72, 104);
+            this.button_ResponderPregunta.Location = new System.Drawing.Point(72, 147);
             this.button_ResponderPregunta.Name = "button_ResponderPregunta";
             this.button_ResponderPregunta.Size = new System.Drawing.Size(310, 40);
             this.button_ResponderPregunta.TabIndex = 2;
@@ -68,7 +70,7 @@
             // 
             // button_HistorialEmpresa
             // 
-            this.button_HistorialEmpresa.Location = new System.Drawing.Point(72, 150);
+            this.button_HistorialEmpresa.Location = new System.Drawing.Point(72, 193);
             this.button_HistorialEmpresa.Name = "button_HistorialEmpresa";
             this.button_HistorialEmpresa.Size = new System.Drawing.Size(310, 40);
             this.button_HistorialEmpresa.TabIndex = 3;
@@ -96,12 +98,23 @@
             this.button_RegistroUsuario.UseVisualStyleBackColor = true;
             this.button_RegistroUsuario.Click += new System.EventHandler(this.button_RegistroUsuario_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(72, 104);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(310, 40);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Editar Publicacion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Menu_Empresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
-            this.ClientSize = new System.Drawing.Size(454, 242);
+            this.ClientSize = new System.Drawing.Size(454, 277);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_ModificacionUsuario);
             this.Controls.Add(this.button_HistorialEmpresa);
             this.Controls.Add(this.button_ResponderPregunta);
@@ -126,5 +139,6 @@
         private System.Windows.Forms.Button button_HistorialEmpresa;
         private System.Windows.Forms.Button button_ModificacionUsuario;
         private System.Windows.Forms.Button button_RegistroUsuario;
+        private System.Windows.Forms.Button button1;
     }
 }
