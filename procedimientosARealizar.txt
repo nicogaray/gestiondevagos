@@ -27,6 +27,41 @@ Aplicacion
 			     operacionRealizada es un String, para el cliente="Compras","Ofertas","CalificacionesOtorgadas", para la empresa="Ventas","OfertasRecibidas","CalificacionesRecibidas"
 			     esRol es un String, "Cliente" y "Empresa"
 			     devuelve una tabla con los datos de las operaciones realizadas filtrada por el tipo de operacion
+				 
+	para esto cree 6 funciones separadas xq me canse de pelear para hacerlo todo en uno
+	
+	-------clientes--------
+	
+	-buscarHistorialCompraCliente(@id numeric(18,0))
+	
+		SELECT * FROM LOS_JUS.buscarHistorialCompraCliente(2);
+	
+	-buscarHistorialOfertaCliente(@id numeric(18,0))
+	
+		SELECT * FROM LOS_JUS.buscarHistorialOfertaCliente(2);
+		
+	-buscarHistorialCalificacionesCliente(@id numeric(18,0), @tipo varchar(10))  @tipo 'Otorgadas' o 'Recibidas'
+	
+		SELECT * FROM LOS_JUS.buscarHistorialCalificacionesCliente(2,'Otorgadas');
+		SELECT * FROM LOS_JUS.buscarHistorialCalificacionesCliente(2,'Recibidas');
+		
+		
+	-------empresas--------
+
+	-buscarHistorialCompraEmpresa(@id numeric(18,0))
+	
+		SELECT * FROM LOS_JUS.buscarHistorialCompraEmpresa(45);
+	
+	-buscarHistorialOfertaEmpresa(@id numeric(18,0))
+	
+		SELECT * FROM LOS_JUS.buscarHistorialOfertaEmpresa(45);
+		
+	-buscarHistorialCalificacionesEmpresa(@id numeric(18,0), @tipo varchar(10))  @tipo 'Otorgadas' o 'Recibidas'
+	
+		SELECT * FROM LOS_JUS.buscarHistorialCalificacionesEmpresa(45,'Otorgadas');
+		SELECT * FROM LOS_JUS.buscarHistorialCalificacionesEmpresa(45,'Recibidas');		
+
+				 
 - Hacer funciones de Listado Estadistico (4); tener en cuanta los campos de filtrado de cada una
 
 	-estadistica1(año (varchar(4)), mes(varchar(2)), trim_año (varchar(4)), trim(numeric(18,0)), visualizacion (numeric(18,0)))
