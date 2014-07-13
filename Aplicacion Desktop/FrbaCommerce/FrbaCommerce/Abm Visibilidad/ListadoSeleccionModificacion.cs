@@ -68,18 +68,18 @@ namespace FrbaCommerce.Abm_Visibilidad
             {
                 Decimal pPrecioConvertido = 0;
 
-                if (pPrecio != "0")
-                {
+                //if (pPrecio != "0")
+                //{
                     pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
-                }
+                //}
 
                 Decimal pPorcentajeConvertido = 0;
 
-                if (pPorcentaje != "0")
-                {
+                //if (pPorcentaje != "0")
+                //{
                     pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
 
-                }
+               // }
 
 
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
@@ -155,22 +155,22 @@ namespace FrbaCommerce.Abm_Visibilidad
                     int i = e.RowIndex;
 
                     string precio = dataGridView1[3, i].Value.ToString();
-                    string[] parts = precio.Split('.'); 
-                    int precioEntero = int.Parse(parts[0]);
-                    int precioDecimal = int.Parse(parts[1]);
+                    string[] parts1 = precio.Split(','); 
+                    string precioEntero = int.Parse(parts1[0]).ToString();
+                    string precioDecimal = int.Parse(parts1[1]).ToString();
 
-                    string porcentaje = dataGridView1[2, i].Value.ToString();
-                    string[] parts2 = precio.Split('.'); 
-                    int porcentajeEntero = int.Parse(parts2[0]);
-                    int porcentajeDecimal = int.Parse(parts2[1]);
+                    string porcentaje = dataGridView1[4, i].Value.ToString();
+                    string[] parts2 = porcentaje.Split(',');
+                    string porcentajeEntero = int.Parse(parts2[0]).ToString();
+                    string porcentajeDecimal = int.Parse(parts2[1]).ToString();
                     
                     Abm_Visibilidad.Modificacion modificacion = new Abm_Visibilidad.Modificacion();
                     modificacion.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
-                    modificacion.precioSeleccionado = Convert.ToString(porcentajeEntero);
-                    modificacion.porcentajeSeleccionado = Convert.ToString(porcentajeDecimal);
-                    modificacion.decimalPrecioSeleccionado = Convert.ToString(precioDecimal);
-                    modificacion.decimalPorcentajeSeleccionado = Convert.ToString(porcentajeDecimal);
-                    
+                    modificacion.precioSeleccionado = precioEntero;
+                    modificacion.porcentajeSeleccionado = porcentajeEntero;
+                    modificacion.decimalPrecioSeleccionado = precioDecimal;
+                    modificacion.decimalPorcentajeSeleccionado = porcentajeDecimal;
+                    modificacion.Show();
 
                 }
             }

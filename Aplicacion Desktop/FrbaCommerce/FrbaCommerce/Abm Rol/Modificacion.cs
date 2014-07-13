@@ -98,6 +98,7 @@ namespace FrbaCommerce.Abm_Rol
             {
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                this.Close();
             }
             else
             {
@@ -199,6 +200,12 @@ namespace FrbaCommerce.Abm_Rol
 
                     using (var form = new Abm_Rol.ModificarFuncionalidad())
                     {
+                        form.funcionalidadSeleccionada = dataGridView_ListaFuncionalidades[0, i].Value.ToString();
+                        if (dataGridView_ListaFuncionalidades[1, i].Value != null)
+                        {
+                            form.descripcionSeleccionada = dataGridView_ListaFuncionalidades[1, i].Value.ToString();
+                        }
+
                     var result = form.ShowDialog();
                     if (result == DialogResult.OK)
                     {
@@ -210,16 +217,17 @@ namespace FrbaCommerce.Abm_Rol
                         {
                             dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
                         }
-                        else
+                        if (val != true)
                         {
                             dataGridView_ListaFuncionalidades[0,i].Value = funcionalidad;
                             dataGridView_ListaFuncionalidades[1,i].Value = descripcion;
+                            //dataGridView_ListaFuncionalidades.Refresh();
 
                         }
                     }
                 }
             
-                    dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+                    //dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
                 }
                
             }

@@ -61,7 +61,7 @@ namespace FrbaCommerce.Abm_Rol
                     using (var form = new ABM_Rol.Baja())
                     {
                         //veo si en la ventana calificacion se guardo el valor y luego elimino esta fila de la tabla
-                        form.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
+                        form.nombreSeleccionado = dataGridView1[0, i].Value.ToString();
                         var result = form.ShowDialog();
                         if (result == DialogResult.OK)
                         {

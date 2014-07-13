@@ -60,7 +60,6 @@ namespace FrbaCommerce.ABM_Rol
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
-                //falta campo descripcion funcionalidades
                 SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT FUN_FUNCIONALIDAD FROM LOS_JUS.ROL JOIN LOS_JUS.ROLxFUNCIONALIDADES ON ROLFUN_ROL=ROL_NOMBRE JOIN LOS_JUS.FUNCIONALIDADES ON ROLFUN_FUNCIONALIDADES=FUN_FUNCIONALIDAD WHERE ROL_NOMBRE = '{0}'", nombreSeleccionado), Conexion);
 
                 SqlDataReader reader = ObtenerIds.ExecuteReader();
@@ -108,6 +107,11 @@ namespace FrbaCommerce.ABM_Rol
         private void button_Cancelar_MouseLeave(object sender, EventArgs e)
         {
             label_Informacion.Text = "";
+
+        }
+
+        private void dataGridView_ListaFuncionalidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

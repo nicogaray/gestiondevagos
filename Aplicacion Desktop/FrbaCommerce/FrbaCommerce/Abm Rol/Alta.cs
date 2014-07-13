@@ -64,14 +64,14 @@ namespace FrbaCommerce.ABM_Rol
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre);
             const string resumen = "";
 
-            if (comprobarDatosCompletos)
+            if (comprobarDatosCompletos && dataGridView_ListaFuncionalidades.RowCount>0)
             {
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                if (comprobarDatosCompletos == false)
+                if (comprobarDatosCompletos == false || dataGridView_ListaFuncionalidades.RowCount < 1)
                 {
                     const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
 
@@ -130,7 +130,7 @@ namespace FrbaCommerce.ABM_Rol
             String pFuncionalidad = textBox_Funcionalidad.Text;
             String pDescripcion = textBox_Descripcion.Text;
 
-            if (pFuncionalidad == "" || pDescripcion == "")
+            if (pFuncionalidad == "")
             {
                 MessageBox.Show("Hay campos vacios. Los datos no se pueden agregar.\nComplete todos los campos e intente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -156,6 +156,11 @@ namespace FrbaCommerce.ABM_Rol
                 }
 
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

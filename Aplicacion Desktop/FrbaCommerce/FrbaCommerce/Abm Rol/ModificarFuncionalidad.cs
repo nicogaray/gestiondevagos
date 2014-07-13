@@ -15,6 +15,8 @@ namespace FrbaCommerce.Abm_Rol
         public String ReturnFunc { get; set; }
         public String ReturnDesc { get; set; }
 
+        public String funcionalidadSeleccionada = "";
+        public String descripcionSeleccionada = "";
 
         public ModificarFuncionalidad()
         {
@@ -26,7 +28,7 @@ namespace FrbaCommerce.Abm_Rol
             String pFuncionalidad = textBox_Funcionalidad.Text;
             String pDescripcion = textBox_Descripcion.Text;
 
-            if (pFuncionalidad == "" || pDescripcion == "")
+            if (pFuncionalidad == "")
             {
                 MessageBox.Show("Hay campos vacios. Los datos no se pueden agregar.\nComplete todos los campos e intente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -53,6 +55,12 @@ namespace FrbaCommerce.Abm_Rol
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ModificarFuncionalidad_Load(object sender, EventArgs e)
+        {
+            textBox_Funcionalidad.Text = funcionalidadSeleccionada;
+            textBox_Descripcion.Text = descripcionSeleccionada;
         }
     }
 }

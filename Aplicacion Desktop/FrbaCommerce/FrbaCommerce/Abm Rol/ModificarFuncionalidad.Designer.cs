@@ -138,6 +138,7 @@
             this.Name = "ModificarFuncionalidad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar";
+            this.Load += new System.EventHandler(this.ModificarFuncionalidad_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

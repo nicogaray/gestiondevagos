@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.label_InfTexto = new System.Windows.Forms.Label();
             this.label_Informacion = new System.Windows.Forms.Label();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
-            this.dataGridView_ListaFuncionalidades = new System.Windows.Forms.DataGridView();
-            this.label_Nombre = new System.Windows.Forms.Label();
-            this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_Agregar = new System.Windows.Forms.Button();
             this.textBox_Funcionalidad = new System.Windows.Forms.TextBox();
             this.textBox_Descripcion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label_Funcionalidad = new System.Windows.Forms.Label();
+            this.dataGridView_ListaFuncionalidades = new System.Windows.Forms.DataGridView();
             this.Funcionalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Elimnar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label_Nombre = new System.Windows.Forms.Label();
+            this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.paner_Alta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Guardar
@@ -111,47 +111,6 @@
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Rol";
             // 
-            // dataGridView_ListaFuncionalidades
-            // 
-            this.dataGridView_ListaFuncionalidades.AllowUserToAddRows = false;
-            this.dataGridView_ListaFuncionalidades.AllowUserToDeleteRows = false;
-            this.dataGridView_ListaFuncionalidades.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView_ListaFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_ListaFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Funcionalidad,
-            this.Descripcion,
-            this.Elimnar});
-            this.dataGridView_ListaFuncionalidades.GridColor = System.Drawing.SystemColors.ControlText;
-            this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(6, 158);
-            this.dataGridView_ListaFuncionalidades.Name = "dataGridView_ListaFuncionalidades";
-            this.dataGridView_ListaFuncionalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_ListaFuncionalidades.Size = new System.Drawing.Size(376, 114);
-            this.dataGridView_ListaFuncionalidades.TabIndex = 3;
-            this.dataGridView_ListaFuncionalidades.MouseLeave += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseLeave);
-            this.dataGridView_ListaFuncionalidades.MouseEnter += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseEnter);
-            this.dataGridView_ListaFuncionalidades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_ListaFuncionalidades_CellContentClick);
-            // 
-            // label_Nombre
-            // 
-            this.label_Nombre.AutoSize = true;
-            this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Nombre.Location = new System.Drawing.Point(53, 21);
-            this.label_Nombre.Name = "label_Nombre";
-            this.label_Nombre.Size = new System.Drawing.Size(44, 13);
-            this.label_Nombre.TabIndex = 1;
-            this.label_Nombre.Text = "Nombre";
-            // 
-            // textBox_Nombre
-            // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(103, 18);
-            this.textBox_Nombre.MaxLength = 15;
-            this.textBox_Nombre.Name = "textBox_Nombre";
-            this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
-            this.textBox_Nombre.TabIndex = 0;
-            this.textBox_Nombre.MouseLeave += new System.EventHandler(this.textBox_Nombre_MouseLeave);
-            this.textBox_Nombre.MouseEnter += new System.EventHandler(this.textBox_Nombre_MouseEnter);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button_Agregar);
@@ -166,6 +125,7 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar Funcionalidad";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // button_Agregar
             // 
@@ -216,11 +176,31 @@
             this.label_Funcionalidad.TabIndex = 4;
             this.label_Funcionalidad.Text = "Funcionalidad";
             // 
+            // dataGridView_ListaFuncionalidades
+            // 
+            this.dataGridView_ListaFuncionalidades.AllowUserToAddRows = false;
+            this.dataGridView_ListaFuncionalidades.AllowUserToDeleteRows = false;
+            this.dataGridView_ListaFuncionalidades.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView_ListaFuncionalidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_ListaFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Funcionalidad,
+            this.Descripcion,
+            this.Elimnar});
+            this.dataGridView_ListaFuncionalidades.GridColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(6, 158);
+            this.dataGridView_ListaFuncionalidades.Name = "dataGridView_ListaFuncionalidades";
+            this.dataGridView_ListaFuncionalidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView_ListaFuncionalidades.Size = new System.Drawing.Size(376, 114);
+            this.dataGridView_ListaFuncionalidades.TabIndex = 3;
+            this.dataGridView_ListaFuncionalidades.MouseLeave += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseLeave);
+            this.dataGridView_ListaFuncionalidades.MouseEnter += new System.EventHandler(this.dataGridView_ListaFuncionalidades_MouseEnter);
+            this.dataGridView_ListaFuncionalidades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_ListaFuncionalidades_CellContentClick);
+            // 
             // Funcionalidad
             // 
             this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.Funcionalidad.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.Funcionalidad.DefaultCellStyle = dataGridViewCellStyle1;
             this.Funcionalidad.HeaderText = "Funcionalidad";
             this.Funcionalidad.Name = "Funcionalidad";
             this.Funcionalidad.ReadOnly = true;
@@ -228,8 +208,8 @@
             // Descripcion
             // 
             this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle2;
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
@@ -240,6 +220,27 @@
             this.Elimnar.Name = "Elimnar";
             this.Elimnar.Text = "Eliminar Fila";
             this.Elimnar.UseColumnTextForButtonValue = true;
+            // 
+            // label_Nombre
+            // 
+            this.label_Nombre.AutoSize = true;
+            this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Nombre.Location = new System.Drawing.Point(53, 21);
+            this.label_Nombre.Name = "label_Nombre";
+            this.label_Nombre.Size = new System.Drawing.Size(44, 13);
+            this.label_Nombre.TabIndex = 1;
+            this.label_Nombre.Text = "Nombre";
+            // 
+            // textBox_Nombre
+            // 
+            this.textBox_Nombre.Location = new System.Drawing.Point(103, 18);
+            this.textBox_Nombre.MaxLength = 15;
+            this.textBox_Nombre.Name = "textBox_Nombre";
+            this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Nombre.TabIndex = 0;
+            this.textBox_Nombre.MouseLeave += new System.EventHandler(this.textBox_Nombre_MouseLeave);
+            this.textBox_Nombre.MouseEnter += new System.EventHandler(this.textBox_Nombre_MouseEnter);
             // 
             // Alta
             // 
@@ -260,9 +261,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
