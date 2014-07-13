@@ -11,6 +11,14 @@ namespace FrbaCommerce.Abm_Visibilidad
 {
     public partial class Modificacion : Form
     {
+        public String nombreSeleccionado = "";
+        public String descripcionSeleccionada = "";
+        public String precioSeleccionado = "";
+        public String porcentajeSeleccionado = "";
+        public String decimalPrecioSeleccionado = "";
+        public String decimalPorcentajeSeleccionado = "";
+
+
         public bool comprobarTipos(String precioPublicitar, String porcentajeVenta, String decimalPrecio, String decimalPorcentaje)
         {
             return (precioPublicitar.All(char.IsDigit) && porcentajeVenta.All(char.IsDigit) && decimalPrecio.All(char.IsDigit) && decimalPorcentaje.All(char.IsDigit));
@@ -191,7 +199,12 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void Modificacion_Load(object sender, EventArgs e)
         {
-
+            textBox_Nombre.Text = nombreSeleccionado;
+            textBox_Descripcion.Text = descripcionSeleccionada;
+            textBox_Porcentaje.Text = porcentajeSeleccionado;
+            textBox1_precio.Text = precioSeleccionado;
+            textBox_decimalPrecio.Text = decimalPrecioSeleccionado;
+            textBox_decimalPorcentaje.Text = decimalPorcentajeSeleccionado;
         }
 
         private void textBox1_precio_MouseEnter(object sender, EventArgs e)

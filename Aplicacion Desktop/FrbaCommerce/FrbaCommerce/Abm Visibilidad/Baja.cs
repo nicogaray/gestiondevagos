@@ -47,8 +47,6 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
             textBox_Descripcion.Enabled = false;
             textBox_Nombre.Enabled = false;
-            textBox_PorcentajeVenta.Enabled = false;
-            textBox_PrecioPublicitar.Enabled = false;
         }
 
         private void textBox_PrecioPublicitar_MouseEnter(object sender, EventArgs e)
