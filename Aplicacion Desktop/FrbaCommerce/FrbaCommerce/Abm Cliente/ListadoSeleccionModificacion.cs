@@ -163,5 +163,10 @@ namespace FrbaCommerce.Abm_Cliente
                 }
             }
         }
+
+        private void ListadoSeleccionModificacion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

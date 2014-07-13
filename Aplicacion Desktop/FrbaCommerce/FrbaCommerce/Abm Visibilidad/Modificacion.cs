@@ -11,10 +11,10 @@ namespace FrbaCommerce.Abm_Visibilidad
 {
     public partial class Modificacion : Form
     {
-         public bool comprobarTipos(String precioPublicitar, String porcentajeVenta)
+        public bool comprobarTipos(String precioPublicitar, String porcentajeVenta, String decimalPrecio, String decimalPorcentaje)
         {
-            return ( precioPublicitar.All(char.IsDigit) &&  porcentajeVenta.All(char.IsDigit));
-                   
+            return (precioPublicitar.All(char.IsDigit) && porcentajeVenta.All(char.IsDigit) && decimalPrecio.All(char.IsDigit) && decimalPorcentaje.All(char.IsDigit));
+
         }
 
          public bool comprobarDatosCompletos(String nombre, String precioPublicitar, String porcentajeVenta)
@@ -40,18 +40,32 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String pDecimalPorcentaje = textBox_decimalPorcentaje.Text;
+            String pDecimalPrecio = textBox_decimalPrecio.Text;
+            String pPorcentaje = "0";
+            pPorcentaje = textBox_Porcentaje.Text;
+            String pPrecio = "0";
+            pPrecio = textBox1_precio.Text;
+
+            String pPorcentajeFinal = pPorcentaje + ',' + pDecimalPorcentaje;
+            String pPrecioFinal = pPrecio + ',' + pDecimalPrecio;
+
+
             String pNombre = textBox_Nombre.Text;
             String pDescripcion = textBox_Descripcion.Text;
-            String pPrecioPublicitar = textBox_PrecioPublicitar.Text;
-            String pPorcentajeVenta = textBox_PorcentajeVenta.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
-            bool comprobarTipos = this.comprobarTipos(pPrecioPublicitar, pPorcentajeVenta);
-            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pPrecioPublicitar, pPorcentajeVenta);
+            bool comprobarTipos = this.comprobarTipos(pPrecio, pPorcentaje, pDecimalPrecio, pDecimalPorcentaje);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pPrecio, pPorcentaje);
             const string resumen = "";
+
 
             if (comprobarTipos && comprobarDatosCompletos)
             {
+
+                Decimal pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
+                Decimal pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
@@ -59,7 +73,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             {
                 if (comprobarDatosCompletos == false)
                 {
-                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+                    const string mensaje_Rechazo = "Hay campos obligatorios vacios, debe ingresar los datos requeridos.\nLos datos no pudieron ser guardados.";
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -71,14 +85,17 @@ namespace FrbaCommerce.Abm_Visibilidad
                 }
 
             }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             textBox_Descripcion.Clear();
             textBox_Nombre.Clear();
-            textBox_PorcentajeVenta.Clear();
-            textBox_PrecioPublicitar.Clear();
+            textBox_Porcentaje.Clear();
+            textBox1_precio.Clear();
+            textBox_decimalPorcentaje.Text = "00";
+            textBox_decimalPrecio.Text = "00";
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
@@ -175,6 +192,53 @@ namespace FrbaCommerce.Abm_Visibilidad
         private void Modificacion_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_precio_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Solo se aceptan valores numericos";
+
+        }
+
+        private void textBox_Porcentaje_MouseEnter(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "Solo se aceptan valores numericos";
+
+        }
+
+        private void textBox1_precio_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
+
+        private void textBox_Porcentaje_MouseLeave(object sender, EventArgs e)
+        {
+            label_Informacion.Text = "";
+
+        }
+
+        private void textBox_decimalPrecio_Click(object sender, EventArgs e)
+        {
+            textBox_decimalPrecio.Text = "";
+
+        }
+
+        private void textBox_decimalPrecio_Leave(object sender, EventArgs e)
+        {
+            if (textBox_decimalPrecio.Text == "")
+            {
+                textBox_decimalPrecio.Text = "00";
+            }
+        }
+
+        private void textBox_decimalPorcentaje_Leave(object sender, EventArgs e)
+        {
+
+            if (textBox_decimalPorcentaje.Text == "")
+            {
+                textBox_decimalPorcentaje.Text = "00";
+            }
         }
     }
 }
