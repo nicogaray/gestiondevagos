@@ -159,6 +159,8 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
+           
+            
             //Recibo los datos ingresados por el usuario
             String pNombre = textBox_Nombre.Text;
             String pApellido = textBox_Apellido.Text;
@@ -247,22 +249,47 @@ namespace FrbaCommerce.Abm_Cliente
 
                         String pRetorno = Convert.ToString(retorno);
                         
-                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente (cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
                                             pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
 
-
-                        string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                        MessageBox.Show(pRetorno, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     }
                     if (pUsuario == "Existente")
                     {
+                        pId = Convert.ToInt32(textBox_IdUsuario.Text);
+
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+                        pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+
+
                     }
 
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    textBox_Apellido.Clear();
+                    textBox_CodigoPostal.Clear();
+                    textBox_Direccion.Clear();
+                    textBox_Documento.Clear();
+                    textBox_Mail.Clear();
+                    textBox_Nombre.Clear();
+                    textBox_Telefono.Clear();
 
+                    DateTime fecha = DateTime.Now;
+                    dateTimePicker_FechaNacimiento.Value = fecha;
 
+                    radioButton_Ci.Checked = false;
+                    radioButton_Dni.Checked = false;
+                    radioButton_Lc.Checked = false;
+                    radioButton_Le.Checked = false;
+                    radioButton_Pas.Checked = false;
+                    radioButton_UsuarioExistente.Checked = false;
+                    radioButton_UsuarioNuevo.Checked = false;
 
-
+                    groupBox_SeleccionarUsuario.Hide();
+                    textBox_Username.Clear();
+                    textBox_IdUsuario.Clear();
+            
+            
                 }
 
   
