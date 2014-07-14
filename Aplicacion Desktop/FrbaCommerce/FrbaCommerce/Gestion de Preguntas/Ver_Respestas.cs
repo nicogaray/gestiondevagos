@@ -64,5 +64,10 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                 }
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

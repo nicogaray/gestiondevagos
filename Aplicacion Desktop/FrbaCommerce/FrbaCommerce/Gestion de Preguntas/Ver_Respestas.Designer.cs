@@ -30,10 +30,10 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_Volver = new System.Windows.Forms.Button();
             this.FechaRespuestas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Respuesta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_Volver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -61,24 +61,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(583, 256);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button_Volver
-            // 
-            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Volver.Location = new System.Drawing.Point(532, 299);
-            this.button_Volver.Name = "button_Volver";
-            this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 1;
-            this.button_Volver.Text = "Volver";
-            this.button_Volver.UseVisualStyleBackColor = true;
-            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FechaRespuestas
             // 
             this.FechaRespuestas.HeaderText = "Fecha de Respuesta";
             this.FechaRespuestas.Name = "FechaRespuestas";
             this.FechaRespuestas.ReadOnly = true;
-            this.FechaRespuestas.Width = 120;
+            this.FechaRespuestas.Width = 131;
             // 
             // Pregunta
             // 
@@ -93,6 +83,17 @@
             this.Respuesta.Name = "Respuesta";
             this.Respuesta.ReadOnly = true;
             this.Respuesta.Width = 83;
+            // 
+            // button_Volver
+            // 
+            this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_Volver.Location = new System.Drawing.Point(532, 299);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(75, 23);
+            this.button_Volver.TabIndex = 1;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // Ver_Respestas
             // 

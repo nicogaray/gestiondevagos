@@ -139,6 +139,7 @@ namespace FrbaCommerce.Abm_Cliente
                     int i = e.RowIndex;
 
                     Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
+                    modificacion.idSeleccionado = Convert.ToInt32(dataGridView_Modificacion[0, i].Value.ToString());
                     modificacion.nombreSeleccionado = dataGridView_Modificacion[1, i].Value.ToString();
                     modificacion.apellidoSeleccionado = dataGridView_Modificacion[2, i].Value.ToString();
                     modificacion.documentoSeleccionado = dataGridView_Modificacion[3, i].Value.ToString();

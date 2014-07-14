@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Cliente
 {
@@ -14,6 +15,7 @@ namespace FrbaCommerce.Abm_Cliente
         public bool desdeModificacionUsuario = false;
 
         //creo variables locales para mostrar los valores
+        public Int32 idSeleccionado = -1;
         public String nombreSeleccionado = "";
         public String apellidoSeleccionado = "";
         public String documentoSeleccionado;
@@ -115,8 +117,6 @@ namespace FrbaCommerce.Abm_Cliente
 
 
 
-            //int pTelefonoConvertido = Convert.ToInt32(telefono);
-            //int pDocumentoConvertido = Convert.ToInt32(documento);
 
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
@@ -126,11 +126,44 @@ namespace FrbaCommerce.Abm_Cliente
 
             if (comprobarTipos && comprobarDatosCompletos)
             {
-                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //Defino variables y convierto datos
+                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+                Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
+                DateTime pFechaConvertida = Convert.ToDateTime(pFecha);
 
-                this.Close();
-            }
+
+                //inserto los datos en la DB
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                    {
+
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET cli_id= '{0}', cli_nombre ='{1}',cli_apellido ='{2}',cli_dni='{3}',cli_tipo_dni='{4}',cli_fecha_nacimiento='{5}',cli_email='{6}',cli_telefono='{7}',cli_direccion='{8}',cli_cod_postal='{9}' WHERE ID_CLIENTE = '{10}'",
+                        idSeleccionado, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,idSeleccionado), Conexion);
+
+                    }
+
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    textBox_Apellido.Clear();
+                    textBox_CodigoPostal.Clear();
+                    textBox_Direccion.Clear();
+                    textBox_Documento.Clear();
+                    textBox_Mail.Clear();
+                    textBox_Nombre.Clear();
+                    textBox_Telefono.Clear();
+
+                    DateTime fecha = DateTime.Now;
+                    dateTimePicker_FechaNacimiento.Value = fecha;
+
+                    radioButton_Ci.Checked = false;
+                    radioButton_Dni.Checked = false;
+                    radioButton_Lc.Checked = false;
+                    radioButton_Le.Checked = false;
+                    radioButton_Pas.Checked = false;
+
+                    this.Close();
+                }
+            
             else
             {
                 if (comprobarDatosCompletos == false)
@@ -148,8 +181,8 @@ namespace FrbaCommerce.Abm_Cliente
 
             }
 
-          
         }
+
 
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)
         {
