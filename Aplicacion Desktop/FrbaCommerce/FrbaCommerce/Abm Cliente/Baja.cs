@@ -12,8 +12,11 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Baja : Form
     {
+        public bool ReturnId { get; set; }
+
+
         //creo variables locales para mostrar los valores
-        public Int32 idSeleccionado = 0;
+        public Int32 idSeleccionado = -1;
         public String nombreSeleccionado = "";
         public String apellidoSeleccionado = "";
         public String documentoSeleccionado;
@@ -41,17 +44,19 @@ namespace FrbaCommerce.Abm_Cliente
 
             if (resultado == DialogResult.Yes)
             {
+
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
                 {
-                    //FALTA sentencia SQL para eliminar cliente
-                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET CLI_HABILITADO = 0 WHERE CLI_ID = '{0}' ", idSeleccionado), Conexion);
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET CLI_ELIMINADO = 0 WHERE CLI_ID = '{0}' ", idSeleccionado), Conexion);
                  }
 
                 const string mensaje2 = "El cliente ha sido eliminado con éxito";
                 const string resumen2 = "";
 
                 MessageBox.Show(mensaje2, resumen2,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                this.ReturnId = true;
+                this.DialogResult = DialogResult.OK;
                 this.Close();
 
             }

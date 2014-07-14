@@ -31,6 +31,15 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
+
+            textBox_Apellido.Clear();
+            textBox_Documento.Clear();
+            textBox_Mail.Clear();
+            textBox_Nombre.Clear();
+            comboBox_TipoDocumento.Text = "";
+            dataGridView_Modificacion.Rows.Clear();
+            
+            
             String pNombre = null;
             if (textBox_Nombre.Text != "")
             {
@@ -120,9 +129,7 @@ namespace FrbaCommerce.Abm_Cliente
                             String pColumna9 = reader.GetString(9);//CLI_COD_POSTAL
 
                             dataGridView_Modificacion.Rows.Add(pColumna0,pColumna1,pColumna2,pColumna3,pColumna4,pColumna5,pColumna6,pColumna7,pColumna8,pColumna9);
-
-
-                            
+     
                 }
 
 
@@ -152,13 +159,6 @@ namespace FrbaCommerce.Abm_Cliente
                     modificacion.codigoPostalSeleccionado = dataGridView_Modificacion[9, i].Value.ToString();
                     modificacion.Show();
 
-                    textBox_Apellido.Clear();
-                    textBox_Documento.Clear();
-                    textBox_Mail.Clear();
-                    textBox_Nombre.Clear();
-                    comboBox_TipoDocumento.Text = "";
-                    dataGridView_Modificacion.Rows.Clear();
-
 
 
                 }
@@ -167,6 +167,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void ListadoSeleccionModificacion_Load(object sender, EventArgs e)
         {
+            dataGridView_Modificacion.Refresh();
 
         }
     }

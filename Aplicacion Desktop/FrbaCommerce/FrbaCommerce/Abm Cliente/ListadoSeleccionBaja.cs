@@ -29,6 +29,15 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
+
+            textBox_Apellido.Clear();
+            textBox_Documento.Clear();
+            textBox_Mail.Clear();
+            textBox_Nombre.Clear();
+            comboBox_TipoDocumento.Text = "";
+            dataGridView_baja.Rows.Clear();
+
+            
             String pNombre = null;
             if (textBox_Nombre.Text != "")
             {
@@ -134,31 +143,40 @@ namespace FrbaCommerce.Abm_Cliente
                 if (dataGridView_baja.RowCount != 0)
                 {
                     int i = e.RowIndex;
+                    using (var baja = new Abm_Cliente.Baja())
+                    {
 
-                    Abm_Cliente.Baja baja = new Abm_Cliente.Baja();
-                    String id = dataGridView_baja[0, i].Value.ToString();
-                    baja.idSeleccionado = Convert.ToInt32(id);
-                    baja.nombreSeleccionado = dataGridView_baja[1, i].Value.ToString();
-                    baja.apellidoSeleccionado = dataGridView_baja[2, i].Value.ToString();
-                    baja.documentoSeleccionado = dataGridView_baja[3, i].Value.ToString();
-                    baja.tipoDocumentoSeleccionado = dataGridView_baja[4, i].Value.ToString();
-                    String fecha1 = dataGridView_baja[5, i].Value.ToString();
-                    baja.fechaSeleccionada = Convert.ToDateTime(fecha1);
-                    baja.mailSeleccionado = dataGridView_baja[6, i].Value.ToString();
-                    baja.telefonoSeleccionado = dataGridView_baja[7, i].Value.ToString();
-                    baja.direccionSeleccionada = dataGridView_baja[8, i].Value.ToString();
-                    baja.codigoPostalSeleccionado = dataGridView_baja[9, i].Value.ToString();
-                    baja.Show();
+                        String fecha1 = dataGridView_baja[5, i].Value.ToString();
+                        baja.fechaSeleccionada = Convert.ToDateTime(fecha1);
+                        baja.mailSeleccionado = dataGridView_baja[6, i].Value.ToString(); 
+                        String id = dataGridView_baja[0, i].Value.ToString();
+                        baja.idSeleccionado = Convert.ToInt32(id);
+                        baja.nombreSeleccionado = dataGridView_baja[1, i].Value.ToString();
+                        baja.apellidoSeleccionado = dataGridView_baja[2, i].Value.ToString();
+                        baja.documentoSeleccionado = dataGridView_baja[3, i].Value.ToString();
+                        baja.tipoDocumentoSeleccionado = dataGridView_baja[4, i].Value.ToString();
+                        baja.telefonoSeleccionado = dataGridView_baja[7, i].Value.ToString();
+                        baja.direccionSeleccionada = dataGridView_baja[8, i].Value.ToString();
+                        baja.codigoPostalSeleccionado = dataGridView_baja[9, i].Value.ToString();
 
-                    textBox_Apellido.Clear();
-                    textBox_Documento.Clear();
-                    textBox_Mail.Clear();
-                    textBox_Nombre.Clear();
-                    comboBox_TipoDocumento.Text = "";
-                    dataGridView_baja.Rows.Clear();
+                        //veo si en la ventana calificacion se guardo el valor y luego elimino esta fila de la tabla
+                        var result = baja.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                            baja.Show();
+                            bool val = baja.ReturnId;
+                            if (val)
+                            {
+                                dataGridView_baja.Rows.RemoveAt(i);
+                            }
+                            else
+                            {
+                            }
+                        }
 
 
-
+                    }
                 }
             }
         }

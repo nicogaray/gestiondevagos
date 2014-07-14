@@ -12,7 +12,7 @@ namespace FrbaCommerce.Listado_Estadistico
 {
     public partial class ListadoEstadistico : Form
     {
-        public bool comprobarDatosCompletos(String año, int trimestre, String mes, int visibilidad, int tipoListado)
+        public bool comprobarDatosCompletos(String año, Decimal trimestre, String mes, int visibilidad, int tipoListado)
         {
             if ((tipoListado == 0 && (mes == "" || visibilidad == -1) ||
                  tipoListado == -1 || año =="" || 
@@ -134,7 +134,7 @@ namespace FrbaCommerce.Listado_Estadistico
             pTipoListado = comboBox_TipoListado.SelectedIndex;
             String pMes = null;
             pMes = Convert.ToString(numericUpDown_Mes.Value);
-            String pAnio = "";
+            String pAnio = null;
             pAnio = Convert.ToString(numericUpDown_Anio.Value);
             int pVisibilidad = -1;
             if (comboBox_Visibilidad.SelectedIndex == 0)
@@ -158,7 +158,7 @@ namespace FrbaCommerce.Listado_Estadistico
                 pVisibilidad = 10006;
             }
 
-            int pTrimestre = -1;
+            Decimal pTrimestre = -1;
             if (comboBox_Trimestre.SelectedIndex == 0)
             {
                 pTrimestre = 1;

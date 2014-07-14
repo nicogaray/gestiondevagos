@@ -128,7 +128,7 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 //Defino variables y convierto datos
                 Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
-                Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
+                Int64 pDocumentoConvertido = Convert.ToInt64(pDocumento);
                 DateTime pFechaConvertida = Convert.ToDateTime(pFecha);
 
 
