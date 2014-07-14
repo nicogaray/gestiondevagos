@@ -218,13 +218,10 @@ namespace FrbaCommerce.Abm_Cliente
            if(comprobarTipos && comprobarDatosCompletos)           
             {
                //Defino variables y convierto datos
-                Int32 pTelefonoConvertido = Convert.ToInt32(pTelefono);
+                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
                 Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
-                
-                int resultado = 0;
-                int resultado2 = 0;
-                int resultado3 = 0;
-
+                DateTime pFechaConvertida = Convert.ToDateTime(pFecha);
+               
 
                 //inserto los datos en la DB
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
@@ -233,42 +230,42 @@ namespace FrbaCommerce.Abm_Cliente
                     // veo si el usuario es nuevo y en ese caso, inserto un nuevo usuario. Obtengo el id de ese usuario creado
                     if (pUsuario == "Nuevo")
                     {
-                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO Usuario () Values ()"), Conexion);
-                        resultado = InsertarUsuario.ExecuteNonQuery(); 
 
-                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM usuario ORDER BY usu_id desc"), Conexion);
-                        resultado = ObtenerIdUsuario.ExecuteNonQuery();
+                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion);
 
                         SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
                         while (reader.Read())
                         {
-                            pId = reader.GetInt16(0);
+                           Int32 pIdAnterior = reader.GetInt32(0);
+                           pId = pIdAnterior + 1;
+
                         }
+                        reader.Close();
+
+                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values('{0}','{1}')",pId,pId), Conexion);
+                        int retorno = InsertarUsuario.ExecuteNonQuery();
+
+                        String pRetorno = Convert.ToString(retorno);
+                        
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente (cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+                                            pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+
+
+                        string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                        MessageBox.Show(pRetorno, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
                     }
-                    // falta ver como obtener el id si el usuario es existente
-                }
+                    if (pUsuario == "Existente")
+                    {
+                    }
 
-               //falta convertir fecha
-                    SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO Cliente (cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", 
-                                                                pId,pNombre,pApellido,pDocumentoConvertido,pTipo,pFecha,pMail,pTelefonoConvertido,pDireccion,pCodigoPostal),Conexion);
-                    resultado3 = InsertarCliente.ExecuteNonQuery(); 
 
-                    
 
-                       
-                
-               if (resultado > 1 && resultado2 > 1 && resultado3 > 1)
-                {
-                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    const string mensaje_Rechazo = "Error en la base de datos";
 
-                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
+
+  
             }
             else
             {
