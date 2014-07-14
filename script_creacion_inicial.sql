@@ -1637,6 +1637,7 @@ GO
 --SELECT * FROM LOS_JUS.buscarHistorialOfertaEmpresa(45);
 --SELECT * FROM LOS_JUS.buscarHistorialCalificacionesEmpresa(45,'Otorgadas');
 --SELECT * FROM LOS_JUS.buscarHistorialCalificacionesEmpresa(45,'Recibidas');
+--SELECT CAL_COUNT,CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL From LOS_JUS.estadisticas4(2013,1)
 
 
 
