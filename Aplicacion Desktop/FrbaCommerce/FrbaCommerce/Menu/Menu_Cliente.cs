@@ -100,9 +100,9 @@ namespace FrbaCommerce.Menu
 
         private void button_FacturarPublicacion_Click(object sender, EventArgs e)
         {
-            Facturar_Publicaciones.Facturar facturar = new Facturar_Publicaciones.Facturar();
-            facturar.Show();
-            this.Close();
+            //Facturar_Publicaciones.Facturar facturar = new Facturar_Publicaciones.Facturar();
+            //facturar.Show();
+            //this.Close();
 
 
         }

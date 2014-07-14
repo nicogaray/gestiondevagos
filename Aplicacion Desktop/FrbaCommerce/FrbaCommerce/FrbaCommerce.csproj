@@ -261,12 +261,6 @@
     <Compile Include="Editar Publicacion\Activa.Designer.cs">
       <DependentUpon>Activa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facturar Publicaciones\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Facturar Publicaciones\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="GD1C2014DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -460,9 +454,6 @@
     <EmbeddedResource Include="Editar Publicacion\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturar Publicaciones\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Compra_Inmediata.resx">
       <DependentUpon>Compra_Inmediata.cs</DependentUpon>
     </EmbeddedResource>
@@ -559,10 +550,10 @@
     <None Include="GD1C2014DataSet.xss">
       <DependentUpon>GD1C2014DataSet.xsd</DependentUpon>
     </None>
-    <None Include="Resources\estrella1.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abm Rubro\" />
+    <Folder Include="Facturar Publicaciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
