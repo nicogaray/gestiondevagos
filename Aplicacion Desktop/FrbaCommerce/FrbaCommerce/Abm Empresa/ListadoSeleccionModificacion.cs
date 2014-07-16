@@ -32,6 +32,8 @@ namespace FrbaCommerce.Abm_Empresa
                 {
                     int i = e.RowIndex;
                     Abm_Empresa.Modificacion modificar = new Abm_Empresa.Modificacion();
+                    String pId = dataGridView_modificar[0, i].Value.ToString();
+                    modificar.idSeleccionado = Convert.ToInt32(pId);
                     modificar.razonSocialSeleccionada = dataGridView_modificar[1, i].Value.ToString();
                     modificar.cuitSeleccionado = dataGridView_modificar[2, i].Value.ToString();
                     modificar.contactoSeleccionado = dataGridView_modificar[3, i].Value.ToString();

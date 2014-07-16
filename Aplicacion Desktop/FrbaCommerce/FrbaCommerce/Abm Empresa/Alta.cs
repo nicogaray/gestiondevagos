@@ -131,6 +131,7 @@ namespace FrbaCommerce.Abm_Empresa
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             //Recibo los datos ingresados por el usuario
+          
             String pRazonSocial = textBox_RazonSocial.Text;
             String pCuit = textBox_Cuit.Text;
             String pNombreContacto = textBox_NombreContacto.Text;
@@ -154,6 +155,9 @@ namespace FrbaCommerce.Abm_Empresa
             String pIdUsuario = textBox_IdUsuario.Text;
 
 
+            Int32 pId = 0;
+            
+
             //int pTelefonoConvertido = Convert.ToInt32(telefono);
 
 
@@ -164,8 +168,77 @@ namespace FrbaCommerce.Abm_Empresa
 
             if (comprobarTipos && comprobarDatosCompletos)
             {
-                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //Defino variables y convierto datos
+                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+
+                //inserto los datos en la DB
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    // veo si el usuario es nuevo y en ese caso, inserto un nuevo usuario. Obtengo el id de ese usuario creado
+                    if (pUsuario == "Nuevo")
+                    {
+
+                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion);
+
+                        SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Int32 pIdAnterior = reader.GetInt32(0);
+                            pId = pIdAnterior + 1;
+
+                        }
+                        reader.Close();
+                        try
+                        {
+                            SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')", pId, pId), Conexion);
+                            int retorno = InsertarUsuario.ExecuteNonQuery();
+
+                            String pRetorno = Convert.ToString(retorno);
+
+
+                            SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Empresa(emp_id,emp_razon_social,emp_cuit,emp_contacto,emp_fecha_creacion,emp_mail,emp_telefono,emp_direccion,emp_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",
+                                                pId, pRazonSocial, pCuit,pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                            int retorno2 = InsertarCliente.ExecuteNonQuery();
+                        }
+                        catch { MessageBox.Show("Algunos datos ingresados ya se encuentran repetidos en la base de datos", resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk); };
+
+
+                    }
+                    if (pUsuario == "Existente")
+                    {
+                        pId = Convert.ToInt32(textBox_IdUsuario.Text);
+
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.EMPRESAemp_id,emp_razon_social,emp_cuit,emp_contacto,emp_fecha_creacion,emp_mail,emp_telefono,emp_direccion,emp_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",
+                        pId, pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+
+
+                    }
+
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+
+                    textBox_CodigoPostal.Clear();
+                    textBox_Cuit.Clear();
+                    textBox_Direccion.Clear();
+                    textBox_Mail.Clear();
+                    textBox_RazonSocial.Clear();
+                    textBox_NombreContacto.Clear();
+                    textBox_Telefono.Clear();
+                    DateTime fecha = DateTime.Now;
+                    dateTimePicker_FechaNacimiento.Value = fecha;
+
+                    groupBox_SeleccionarUsuario.Hide();
+                    textBox_Username.Clear();
+                    textBox_IdUsuario.Clear();
+
+
+                }
+
+  
+
+
             }
             else
             {

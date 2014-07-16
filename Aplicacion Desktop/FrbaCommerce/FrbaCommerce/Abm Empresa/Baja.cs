@@ -29,7 +29,7 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void button_Borrar_Click(object sender, EventArgs e)
         {
-            const string mensaje = "¿Está seguro que desea eliminar a la Empresa del sistema?";
+             const string mensaje = "¿Está seguro que desea eliminar a la Empresa del sistema?";
             const string resumen = "Eliminando Empresa";
 
             var resultado = MessageBox.Show(mensaje, resumen,
@@ -43,7 +43,8 @@ namespace FrbaCommerce.Abm_Empresa
                 using (Conexion)
                 {
                     //FALTA sentencia SQL para eliminar empresa
-                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.EMPRESA SET EMP_HABILITADO = 0 WHERE EMP_ID = '{0}'",idSeleccionado), Conexion);
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.EMPRESA SET EMP_ELIMINADO = 1 WHERE EMP_ID = '{0}'",idSeleccionado), Conexion);
+                    int resul = EliminarUsuario.ExecuteNonQuery();
                 }
 
                 const string mensaje2 = "La Empresa ha sido eliminada con éxito";

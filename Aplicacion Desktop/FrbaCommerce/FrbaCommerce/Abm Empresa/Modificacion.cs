@@ -14,13 +14,14 @@ namespace FrbaCommerce.Abm_Empresa
     {
         public bool desdeModificacionUsuario = false;
 
-        public String razonSocialSeleccionada;
-        public String cuitSeleccionado;
-        public String contactoSeleccionado;
-        public String telefonoSeleccionado;
-        public String direccionSeleccionada;
-        public String codigoPostalSeleccionado;
-        public String mailSeleccionado;
+        public Int32 idSeleccionado = -1;
+        public String razonSocialSeleccionada = "";
+        public String cuitSeleccionado = "";
+        public String contactoSeleccionado= "";
+        public String telefonoSeleccionado= "";
+        public String direccionSeleccionada = "";
+        public String codigoPostalSeleccionado = "";
+        public String mailSeleccionado = "";
         public DateTime fechaCreacionSeleccionada;
 
         public bool comprobarTipos(String telefono)
@@ -74,8 +75,31 @@ namespace FrbaCommerce.Abm_Empresa
 
             if (comprobarTipos && comprobarDatosCompletos)
             {
+                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+
+                //inserto los datos en la DB
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+
+                    SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.EMPRESA SET emp_id ='{0}',emp_razon_social ='{1}',emp_cuit='{2}',emp_contacto='{3}',emp_fecha_creacion='{4}',emp_mail='{5}',emp_telefono='{6}',emp_direccion='{7}',emp_cod_postal='{8}' WHERE emp_id = '{9}'",
+                    idSeleccionado,pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal, idSeleccionado), Conexion);
+                    int resultado = InsertarCliente.ExecuteNonQuery();
+                }
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                textBox_Cuit.Clear();
+                textBox_CodigoPostal.Clear();
+                textBox_Direccion.Clear();
+                textBox_Mail.Clear();
+                textBox_Telefono.Clear();
+                textBox_NombreContacto.Clear();
+                textBox_RazonSocial.Clear();
+
+                DateTime fecha = DateTime.Now;
+                dateTimePicker_FechaNacimiento.Value = fecha;
 
                 this.Close();
             }
