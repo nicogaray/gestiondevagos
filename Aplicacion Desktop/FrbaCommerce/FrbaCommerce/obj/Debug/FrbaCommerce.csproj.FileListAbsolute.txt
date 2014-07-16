@@ -56,3 +56,4 @@ C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCo
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Activa.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Borrador.resources
 C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.Form_Base.resources
+C:\Users\Administrador\Documents\GitHub\gestiondevagos\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Facturar_Publicaciones.FacturarPublicaciones.resources

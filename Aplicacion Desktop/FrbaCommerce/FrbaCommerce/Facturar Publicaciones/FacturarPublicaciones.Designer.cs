@@ -35,18 +35,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton_Efectivo = new System.Windows.Forms.RadioButton();
+            this.radioButton_Tarjeta = new System.Windows.Forms.RadioButton();
+            this.groupBox_tarjeta = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_numeroTarjeta = new System.Windows.Forms.TextBox();
             this.textBox_NombreTitular = new System.Windows.Forms.TextBox();
             this.textBox_CodigoSeguridad = new System.Windows.Forms.TextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -54,10 +51,13 @@
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
+            this.radioButton_MASTERCARD = new System.Windows.Forms.RadioButton();
+            this.radioButton_VISA = new System.Windows.Forms.RadioButton();
+            this.radioButton_AMEX = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox_tarjeta.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Aceptar
@@ -106,9 +106,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.groupBox_tarjeta);
+            this.groupBox2.Controls.Add(this.radioButton_Tarjeta);
+            this.groupBox2.Controls.Add(this.radioButton_Efectivo);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 207);
             this.groupBox2.Name = "groupBox2";
@@ -125,45 +125,48 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Forma de Pago";
             // 
-            // radioButton1
+            // radioButton_Efectivo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(93, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(64, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Efectivo";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton_Efectivo.AutoSize = true;
+            this.radioButton_Efectivo.Location = new System.Drawing.Point(93, 19);
+            this.radioButton_Efectivo.Name = "radioButton_Efectivo";
+            this.radioButton_Efectivo.Size = new System.Drawing.Size(64, 17);
+            this.radioButton_Efectivo.TabIndex = 1;
+            this.radioButton_Efectivo.TabStop = true;
+            this.radioButton_Efectivo.Text = "Efectivo";
+            this.radioButton_Efectivo.UseVisualStyleBackColor = true;
+            this.radioButton_Efectivo.CheckedChanged += new System.EventHandler(this.radioButton_Efectivo_CheckedChanged);
             // 
-            // radioButton2
+            // radioButton_Tarjeta
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(163, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(109, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Tarjeta de Credito";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton_Tarjeta.AutoSize = true;
+            this.radioButton_Tarjeta.Location = new System.Drawing.Point(163, 19);
+            this.radioButton_Tarjeta.Name = "radioButton_Tarjeta";
+            this.radioButton_Tarjeta.Size = new System.Drawing.Size(109, 17);
+            this.radioButton_Tarjeta.TabIndex = 2;
+            this.radioButton_Tarjeta.TabStop = true;
+            this.radioButton_Tarjeta.Text = "Tarjeta de Credito";
+            this.radioButton_Tarjeta.UseVisualStyleBackColor = true;
+            this.radioButton_Tarjeta.CheckedChanged += new System.EventHandler(this.radioButton_Tarjeta_CheckedChanged);
             // 
-            // groupBox3
+            // groupBox_tarjeta
             // 
-            this.groupBox3.Controls.Add(this.radioButton3);
-            this.groupBox3.Controls.Add(this.radioButton4);
-            this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.textBox_CodigoSeguridad);
-            this.groupBox3.Controls.Add(this.textBox_NombreTitular);
-            this.groupBox3.Controls.Add(this.textBox_numeroTarjeta);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(6, 42);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 149);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Datos de tarjeta";
+            this.groupBox_tarjeta.Controls.Add(this.radioButton_MASTERCARD);
+            this.groupBox_tarjeta.Controls.Add(this.radioButton_VISA);
+            this.groupBox_tarjeta.Controls.Add(this.radioButton_AMEX);
+            this.groupBox_tarjeta.Controls.Add(this.textBox_CodigoSeguridad);
+            this.groupBox_tarjeta.Controls.Add(this.textBox_NombreTitular);
+            this.groupBox_tarjeta.Controls.Add(this.textBox_numeroTarjeta);
+            this.groupBox_tarjeta.Controls.Add(this.label5);
+            this.groupBox_tarjeta.Controls.Add(this.label4);
+            this.groupBox_tarjeta.Controls.Add(this.label3);
+            this.groupBox_tarjeta.Location = new System.Drawing.Point(6, 42);
+            this.groupBox_tarjeta.Name = "groupBox_tarjeta";
+            this.groupBox_tarjeta.Size = new System.Drawing.Size(441, 149);
+            this.groupBox_tarjeta.TabIndex = 3;
+            this.groupBox_tarjeta.TabStop = false;
+            this.groupBox_tarjeta.Text = "Datos de tarjeta";
+            this.groupBox_tarjeta.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label3
             // 
@@ -213,39 +216,6 @@
             this.textBox_CodigoSeguridad.Size = new System.Drawing.Size(67, 20);
             this.textBox_CodigoSeguridad.TabIndex = 5;
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(256, 31);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(64, 17);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Efectivo";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(171, 31);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(64, 17);
-            this.radioButton4.TabIndex = 5;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Efectivo";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(82, 31);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(64, 17);
-            this.radioButton5.TabIndex = 6;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Efectivo";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -286,6 +256,7 @@
             this.button_Volver.TabIndex = 8;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // button_Guardar
             // 
@@ -304,6 +275,40 @@
             this.button_Limpiar.TabIndex = 10;
             this.button_Limpiar.Text = "Limpiar";
             this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
+            // 
+            // radioButton_MASTERCARD
+            // 
+            this.radioButton_MASTERCARD.AutoSize = true;
+            this.radioButton_MASTERCARD.Image = global::FrbaCommerce.Properties.Resources.payment_method_master_card_481;
+            this.radioButton_MASTERCARD.Location = new System.Drawing.Point(187, 24);
+            this.radioButton_MASTERCARD.Name = "radioButton_MASTERCARD";
+            this.radioButton_MASTERCARD.Size = new System.Drawing.Size(62, 30);
+            this.radioButton_MASTERCARD.TabIndex = 4;
+            this.radioButton_MASTERCARD.TabStop = true;
+            this.radioButton_MASTERCARD.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_VISA
+            // 
+            this.radioButton_VISA.AutoSize = true;
+            this.radioButton_VISA.Image = global::FrbaCommerce.Properties.Resources.payment_method_card_visa_481;
+            this.radioButton_VISA.Location = new System.Drawing.Point(80, 24);
+            this.radioButton_VISA.Name = "radioButton_VISA";
+            this.radioButton_VISA.Size = new System.Drawing.Size(62, 30);
+            this.radioButton_VISA.TabIndex = 5;
+            this.radioButton_VISA.TabStop = true;
+            this.radioButton_VISA.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_AMEX
+            // 
+            this.radioButton_AMEX.AutoSize = true;
+            this.radioButton_AMEX.Image = global::FrbaCommerce.Properties.Resources.payment_method_american_express_card_48;
+            this.radioButton_AMEX.Location = new System.Drawing.Point(299, 24);
+            this.radioButton_AMEX.Name = "radioButton_AMEX";
+            this.radioButton_AMEX.Size = new System.Drawing.Size(62, 30);
+            this.radioButton_AMEX.TabIndex = 6;
+            this.radioButton_AMEX.TabStop = true;
+            this.radioButton_AMEX.UseVisualStyleBackColor = true;
             // 
             // FacturarPublicaciones
             // 
@@ -327,12 +332,13 @@
             this.Name = "FacturarPublicaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturar";
+            this.Load += new System.EventHandler(this.FacturarPublicaciones_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox_tarjeta.ResumeLayout(false);
+            this.groupBox_tarjeta.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,17 +352,17 @@
         private System.Windows.Forms.TextBox textBox_cantidadARendir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox_tarjeta;
         private System.Windows.Forms.TextBox textBox_numeroTarjeta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton_Tarjeta;
+        private System.Windows.Forms.RadioButton radioButton_Efectivo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton_MASTERCARD;
+        private System.Windows.Forms.RadioButton radioButton_VISA;
+        private System.Windows.Forms.RadioButton radioButton_AMEX;
         private System.Windows.Forms.TextBox textBox_CodigoSeguridad;
         private System.Windows.Forms.TextBox textBox_NombreTitular;
         private System.Windows.Forms.Label label6;

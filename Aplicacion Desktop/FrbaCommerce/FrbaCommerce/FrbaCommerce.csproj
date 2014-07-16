@@ -561,6 +561,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\payment_method_american_express_card-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment_method_card_visa-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment_method_master_card-481.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Abm Rubro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
