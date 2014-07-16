@@ -46,9 +46,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 28);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(585, 101);
+            this.groupBox1.Size = new System.Drawing.Size(585, 152);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Publicacion";
@@ -58,8 +58,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(573, 76);
+            this.dataGridView1.Size = new System.Drawing.Size(573, 127);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox2
             // 
@@ -79,6 +80,7 @@
             this.textBox_Pregunta.Name = "textBox_Pregunta";
             this.textBox_Pregunta.Size = new System.Drawing.Size(420, 20);
             this.textBox_Pregunta.TabIndex = 1;
+            this.textBox_Pregunta.TextChanged += new System.EventHandler(this.textBox_Pregunta_TextChanged);
             this.textBox_Pregunta.MouseLeave += new System.EventHandler(this.textBox_Pregunta_MouseLeave);
             this.textBox_Pregunta.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
             // 

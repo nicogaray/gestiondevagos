@@ -32,6 +32,8 @@
             this.button_Buscar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pregunta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Responder = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -44,6 +46,8 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
+            this.CodigoPublicacion,
+            this.CodigoCliente,
             this.Pregunta,
             this.Responder});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
@@ -79,6 +83,20 @@
             this.Codigo.Name = "Codigo";
             this.Codigo.ReadOnly = true;
             this.Codigo.Width = 65;
+            // 
+            // CodigoPublicacion
+            // 
+            this.CodigoPublicacion.HeaderText = "Codigo de Publicacion";
+            this.CodigoPublicacion.Name = "CodigoPublicacion";
+            this.CodigoPublicacion.ReadOnly = true;
+            this.CodigoPublicacion.Width = 138;
+            // 
+            // CodigoCliente
+            // 
+            this.CodigoCliente.HeaderText = "Codigo de Cliente";
+            this.CodigoCliente.Name = "CodigoCliente";
+            this.CodigoCliente.ReadOnly = true;
+            this.CodigoCliente.Width = 115;
             // 
             // Pregunta
             // 
@@ -122,6 +140,8 @@
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPublicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pregunta;
         private System.Windows.Forms.DataGridViewButtonColumn Responder;
     }

@@ -67,6 +67,7 @@
             this.textBox_Fecha.Name = "textBox_Fecha";
             this.textBox_Fecha.Size = new System.Drawing.Size(74, 20);
             this.textBox_Fecha.TabIndex = 2;
+            this.textBox_Fecha.TextChanged += new System.EventHandler(this.textBox_Fecha_TextChanged);
             // 
             // label_Respuesta
             // 

@@ -94,5 +94,15 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox_Pregunta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

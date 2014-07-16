@@ -49,19 +49,31 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
                 //IMPORTANTE: FALTA OBTENER EL ID DE LA EMPRESA DE LA SESION, USO EJEMPLO DE PRUEBA: 1
                 SqlCommand cmd = null;
-                cmd = new SqlCommand(string.Format("SELECT PRE_CODIGO,PRE_PREGUNTA From LOS_JUS.buscarPreguntasSinResponder('{0}')",
+                cmd = new SqlCommand(string.Format("SELECT PRE_CODIGO,PRE_PUBLICACION, PRE_CLIENTE, PRE_PREGUNTA From LOS_JUS.buscarPreguntasSinResponder('{0}')",
                                                                   29), Conexion);
 
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                }
+                else
+                {
+                    MessageBox.Show("Actualmente no hay ninguna pregunta para responder", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+
+                }
+
                 while (reader.Read())
                 {
 
                     Int32 pColumna0 = reader.GetInt32(0);//PRE_CODIGO
-                    Int32 pColumna1 = reader.GetInt32(1);//PRE_PREGUNTA
+                    Decimal pColumna1 = reader.GetDecimal(1);//PRE_PUBLICACION
+                    Int32 pColumna2 = reader.GetInt32(2);//PRE_CLIENTE
+                    Int32 pColumna3 = reader.GetInt32(3);//PRE_PREGUNTA
 
 
-                    dataGridView1.Rows.Add(pColumna0, pColumna1);
+                    dataGridView1.Rows.Add(pColumna0, pColumna1,pColumna2,pColumna3);
 
                 }
             }
@@ -79,6 +91,11 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                     int i = e.RowIndex;
                     using (var form = new Gestion_de_Preguntas.Respuesta())
                     {
+
+                        form.codigoPreguntaSeleccionada = Convert.ToInt32(dataGridView1[0, i].Value.ToString());
+                        form.codigoPublicacionSeleccionado = Convert.ToDecimal(dataGridView1[1, i].Value.ToString());
+                        form.codigoClienteSeleccionado = Convert.ToInt32(dataGridView1[2, i].Value.ToString());
+
                         //veo si en la ventana respuesta se guardo el valor y luego elimino esta fila de la tabla
                         var result = form.ShowDialog();
                         if (result == DialogResult.OK)
