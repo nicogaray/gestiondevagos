@@ -66,7 +66,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

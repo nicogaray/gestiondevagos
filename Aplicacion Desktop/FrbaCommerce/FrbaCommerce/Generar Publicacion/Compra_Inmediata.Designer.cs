@@ -30,6 +30,10 @@
         {
             this.label_Descripcion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton_No = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.radioButton_Si = new System.Windows.Forms.RadioButton();
             this.dateTimePicker_FechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label_FechaVencimiento = new System.Windows.Forms.Label();
@@ -37,23 +41,20 @@
             this.radioButton_Borrador = new System.Windows.Forms.RadioButton();
             this.radioButton_Activa = new System.Windows.Forms.RadioButton();
             this.label_Estado = new System.Windows.Forms.Label();
-            this.radioButton_No = new System.Windows.Forms.RadioButton();
-            this.radioButton_Si = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.comboBox_Visibilidad = new System.Windows.Forms.ComboBox();
             this.label_Visibilidad = new System.Windows.Forms.Label();
             this.checkedListBox_Rubro = new System.Windows.Forms.CheckedListBox();
             this.label_Rubro = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_precio = new System.Windows.Forms.TextBox();
             this.label_Precio = new System.Windows.Forms.Label();
             this.dateTimePicker_FechaVencimiento = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_cantidad = new System.Windows.Forms.TextBox();
             this.label_Cantidad = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_descripcion = new System.Windows.Forms.TextBox();
             this.button_Limpiar = new System.Windows.Forms.Button();
-            this.button_Volver = new System.Windows.Forms.Button();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_Descripcion
@@ -67,6 +68,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.dateTimePicker_FechaInicio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label_FechaVencimiento);
@@ -74,20 +76,18 @@
             this.groupBox1.Controls.Add(this.radioButton_Borrador);
             this.groupBox1.Controls.Add(this.radioButton_Activa);
             this.groupBox1.Controls.Add(this.label_Estado);
-            this.groupBox1.Controls.Add(this.radioButton_No);
-            this.groupBox1.Controls.Add(this.radioButton_Si);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.comboBox_Visibilidad);
             this.groupBox1.Controls.Add(this.label_Visibilidad);
             this.groupBox1.Controls.Add(this.checkedListBox_Rubro);
             this.groupBox1.Controls.Add(this.label_Rubro);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox_precio);
             this.groupBox1.Controls.Add(this.label_Precio);
             this.groupBox1.Controls.Add(this.dateTimePicker_FechaVencimiento);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox_cantidad);
             this.groupBox1.Controls.Add(this.label_Cantidad);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBox_descripcion);
             this.groupBox1.Controls.Add(this.label_Descripcion);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(489, 262);
@@ -95,9 +95,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Generar Compra Inmediata";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton_No);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.radioButton_Si);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox2.Location = new System.Drawing.Point(6, 224);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(477, 31);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            // 
+            // radioButton_No
+            // 
+            this.radioButton_No.AutoSize = true;
+            this.radioButton_No.Location = new System.Drawing.Point(287, 8);
+            this.radioButton_No.Name = "radioButton_No";
+            this.radioButton_No.Size = new System.Drawing.Size(39, 17);
+            this.radioButton_No.TabIndex = 15;
+            this.radioButton_No.TabStop = true;
+            this.radioButton_No.Text = "No";
+            this.radioButton_No.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(150, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Permitir preguntas";
+            // 
+            // radioButton_Si
+            // 
+            this.radioButton_Si.AutoSize = true;
+            this.radioButton_Si.Location = new System.Drawing.Point(247, 8);
+            this.radioButton_Si.Name = "radioButton_Si";
+            this.radioButton_Si.Size = new System.Drawing.Size(34, 17);
+            this.radioButton_Si.TabIndex = 14;
+            this.radioButton_Si.TabStop = true;
+            this.radioButton_Si.Text = "Si";
+            this.radioButton_Si.UseVisualStyleBackColor = true;
+            // 
             // dateTimePicker_FechaInicio
             // 
-            this.dateTimePicker_FechaInicio.Location = new System.Drawing.Point(44, 213);
+            this.dateTimePicker_FechaInicio.Location = new System.Drawing.Point(42, 185);
             this.dateTimePicker_FechaInicio.Name = "dateTimePicker_FechaInicio";
             this.dateTimePicker_FechaInicio.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_FechaInicio.TabIndex = 23;
@@ -106,7 +149,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 236);
+            this.label1.Location = new System.Drawing.Point(39, 208);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 22;
@@ -115,7 +158,7 @@
             // label_FechaVencimiento
             // 
             this.label_FechaVencimiento.AutoSize = true;
-            this.label_FechaVencimiento.Location = new System.Drawing.Point(245, 236);
+            this.label_FechaVencimiento.Location = new System.Drawing.Point(243, 208);
             this.label_FechaVencimiento.Name = "label_FechaVencimiento";
             this.label_FechaVencimiento.Size = new System.Drawing.Size(98, 13);
             this.label_FechaVencimiento.TabIndex = 21;
@@ -162,37 +205,6 @@
             this.label_Estado.Size = new System.Drawing.Size(112, 13);
             this.label_Estado.TabIndex = 16;
             this.label_Estado.Text = "Estado de publicacion";
-            // 
-            // radioButton_No
-            // 
-            this.radioButton_No.AutoSize = true;
-            this.radioButton_No.Location = new System.Drawing.Point(227, 185);
-            this.radioButton_No.Name = "radioButton_No";
-            this.radioButton_No.Size = new System.Drawing.Size(39, 17);
-            this.radioButton_No.TabIndex = 15;
-            this.radioButton_No.TabStop = true;
-            this.radioButton_No.Text = "No";
-            this.radioButton_No.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_Si
-            // 
-            this.radioButton_Si.AutoSize = true;
-            this.radioButton_Si.Location = new System.Drawing.Point(187, 185);
-            this.radioButton_Si.Name = "radioButton_Si";
-            this.radioButton_Si.Size = new System.Drawing.Size(34, 17);
-            this.radioButton_Si.TabIndex = 14;
-            this.radioButton_Si.TabStop = true;
-            this.radioButton_Si.Text = "Si";
-            this.radioButton_Si.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(90, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Permitir preguntas";
             // 
             // comboBox_Visibilidad
             // 
@@ -262,12 +274,14 @@
             this.label_Rubro.TabIndex = 9;
             this.label_Rubro.Text = "Rubro";
             // 
-            // textBox3
+            // textBox_precio
             // 
-            this.textBox3.Location = new System.Drawing.Point(187, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(65, 20);
-            this.textBox3.TabIndex = 8;
+            this.textBox_precio.Location = new System.Drawing.Point(187, 71);
+            this.textBox_precio.MaxLength = 18;
+            this.textBox_precio.Name = "textBox_precio";
+            this.textBox_precio.Size = new System.Drawing.Size(65, 20);
+            this.textBox_precio.TabIndex = 8;
+            this.textBox_precio.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label_Precio
             // 
@@ -280,17 +294,18 @@
             // 
             // dateTimePicker_FechaVencimiento
             // 
-            this.dateTimePicker_FechaVencimiento.Location = new System.Drawing.Point(248, 213);
+            this.dateTimePicker_FechaVencimiento.Location = new System.Drawing.Point(246, 185);
             this.dateTimePicker_FechaVencimiento.Name = "dateTimePicker_FechaVencimiento";
             this.dateTimePicker_FechaVencimiento.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_FechaVencimiento.TabIndex = 5;
             // 
-            // textBox2
+            // textBox_cantidad
             // 
-            this.textBox2.Location = new System.Drawing.Point(187, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(65, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBox_cantidad.Location = new System.Drawing.Point(187, 45);
+            this.textBox_cantidad.MaxLength = 18;
+            this.textBox_cantidad.Name = "textBox_cantidad";
+            this.textBox_cantidad.Size = new System.Drawing.Size(65, 20);
+            this.textBox_cantidad.TabIndex = 3;
             // 
             // label_Cantidad
             // 
@@ -301,42 +316,35 @@
             this.label_Cantidad.TabIndex = 2;
             this.label_Cantidad.Text = "Cantidad";
             // 
-            // textBox1
+            // textBox_descripcion
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBox_descripcion.Location = new System.Drawing.Point(187, 19);
+            this.textBox_descripcion.MaxLength = 255;
+            this.textBox_descripcion.Name = "textBox_descripcion";
+            this.textBox_descripcion.Size = new System.Drawing.Size(231, 20);
+            this.textBox_descripcion.TabIndex = 1;
             // 
             // button_Limpiar
             // 
             this.button_Limpiar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Limpiar.Location = new System.Drawing.Point(345, 280);
+            this.button_Limpiar.Location = new System.Drawing.Point(426, 280);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.button_Limpiar.TabIndex = 2;
             this.button_Limpiar.Text = "Limpiar";
             this.button_Limpiar.UseVisualStyleBackColor = true;
-            // 
-            // button_Volver
-            // 
-            this.button_Volver.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Volver.Location = new System.Drawing.Point(426, 280);
-            this.button_Volver.Name = "button_Volver";
-            this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 3;
-            this.button_Volver.Text = "Volver";
-            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             // 
             // button_Guardar
             // 
             this.button_Guardar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Guardar.Location = new System.Drawing.Point(264, 280);
+            this.button_Guardar.Location = new System.Drawing.Point(345, 280);
             this.button_Guardar.Name = "button_Guardar";
             this.button_Guardar.Size = new System.Drawing.Size(75, 23);
             this.button_Guardar.TabIndex = 4;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // Compra_Inmediata
             // 
@@ -344,7 +352,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
             this.Controls.Add(this.button_Guardar);
-            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -353,6 +360,8 @@
             this.Text = "Compra Inmediata";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -361,14 +370,13 @@
 
         private System.Windows.Forms.Label label_Descripcion;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_cantidad;
         private System.Windows.Forms.Label label_Cantidad;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_descripcion;
         private System.Windows.Forms.Button button_Limpiar;
-        private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaVencimiento;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_precio;
         private System.Windows.Forms.Label label_Precio;
         private System.Windows.Forms.RadioButton radioButton_No;
         private System.Windows.Forms.RadioButton radioButton_Si;
@@ -384,6 +392,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaInicio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_FechaVencimiento;
+        private System.Windows.Forms.GroupBox groupBox2;
 
     }
 }
