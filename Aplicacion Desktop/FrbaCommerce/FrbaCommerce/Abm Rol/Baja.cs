@@ -23,6 +23,7 @@ namespace FrbaCommerce.ABM_Rol
 
         private void button_Borrar_Click(object sender, EventArgs e)
         {
+            
             const string mensaje = "¿Está seguro que desea eliminar al Rol del sistema?";
             const string resumen = "Eliminando Rol";
 
@@ -30,9 +31,15 @@ namespace FrbaCommerce.ABM_Rol
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
 
-
             if (resultado == DialogResult.Yes)
             {
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.rol SET rol_eliminado = 1 WHERE rol_nombre = '{0}' ", nombreSeleccionado), Conexion);
+                    int retorno = EliminarUsuario.ExecuteNonQuery();
+                }
+
                 const string mensaje2 = "El Rol ha sido eliminado con éxito";
                 const string resumen2 = "";
 

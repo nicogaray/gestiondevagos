@@ -64,31 +64,38 @@ namespace FrbaCommerce.ABM_Rol
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
                 {
-                    SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Rol(rol_nombre) Values ('{0}')", pNombre), Conexion);
-                    int retorno = InsertarRol.ExecuteNonQuery();
-
-                    
-                    SqlCommand InsertarFuncionalidades = new SqlCommand("INSERT INTO LOS_JUS.Funcionalidades(fun_funcionalidad,fun_descripcion) Values (@funcionalidad,@descripcion)", Conexion);
-
-                    SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
-
-
-                    foreach(DataGridViewRow row in dataGridView_ListaFuncionalidades.Rows)
+                    try
                     {
-                        InsertarFuncionalidades.Parameters.Clear();
-                        InsertarFuncionalidadesXRol.Parameters.Clear();
-                        InsertarFuncionalidades.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
-                        InsertarFuncionalidades.Parameters.AddWithValue("@descripcion", Convert.ToString(row.Cells["Descripcion"].Value));
-                        int resultado1 = InsertarFuncionalidades.ExecuteNonQuery();
+                        SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Rol(rol_nombre) Values ('{0}')", pNombre), Conexion);
+                        int retorno = InsertarRol.ExecuteNonQuery();
 
-                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@nombre", pNombre);
-                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
-                        int resultado2 = InsertarFuncionalidadesXRol.ExecuteNonQuery();
+
+                        SqlCommand InsertarFuncionalidades = new SqlCommand("INSERT INTO LOS_JUS.Funcionalidades(fun_funcionalidad,fun_descripcion) Values (@funcionalidad,@descripcion)", Conexion);
+
+                        SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
+
+
+                        foreach (DataGridViewRow row in dataGridView_ListaFuncionalidades.Rows)
+                        {
+                            InsertarFuncionalidades.Parameters.Clear();
+                            InsertarFuncionalidadesXRol.Parameters.Clear();
+                            InsertarFuncionalidades.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                            InsertarFuncionalidades.Parameters.AddWithValue("@descripcion", Convert.ToString(row.Cells["Descripcion"].Value));
+                            int resultado1 = InsertarFuncionalidades.ExecuteNonQuery();
+
+                            InsertarFuncionalidadesXRol.Parameters.AddWithValue("@nombre", pNombre);
+                            InsertarFuncionalidadesXRol.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                            int resultado2 = InsertarFuncionalidadesXRol.ExecuteNonQuery();
+                        }
+
+                        string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                        MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
-                    
-                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
+                    catch
+                    {
+                        MessageBox.Show("Ha ingresado campos claves repetidos.Los datos no pudieron ser guardados", "", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                   }
                 
             }
             else

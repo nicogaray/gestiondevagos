@@ -36,7 +36,7 @@ namespace FrbaCommerce.Abm_Rol
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
-                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT ROL_NOMBRE FROM LOS_JUS.ROL"), Conexion);
+                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT ROL_NOMBRE FROM LOS_JUS.ROL where rol_eliminado <> 1 and rol_habilitado <> 0"), Conexion);
 
                 SqlDataReader reader = ObtenerIds.ExecuteReader();
                 while (reader.Read())

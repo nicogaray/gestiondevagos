@@ -96,9 +96,51 @@ namespace FrbaCommerce.Abm_Rol
 
             if (comprobarDatosCompletos)
             {
-                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                this.Close();
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    SqlCommand updateFuncionalidades = new SqlCommand(string.Format("update LOS_JUS.funcionalidades set fun_eliminado=1 where fun_funcionalidad in (select fun_funcionalidad from los_jus.funcionalidades f join LOS_JUS.ROLxFUNCIONALIDADES r on f.fun_funcionalidad=r.rolfun_funcionalidades where rolfun_rol = '{0}')", nombreSeleccionado), Conexion);
+                    int retorno6 = updateFuncionalidades.ExecuteNonQuery();
+
+
+                    SqlCommand eliminarFuncionalidadesXRol = new SqlCommand(string.Format("delete from LOS_JUS.ROLxFUNCIONALIDADES where rolfun_rol='{0}'", nombreSeleccionado), Conexion);
+                    int retorno3 = eliminarFuncionalidadesXRol.ExecuteNonQuery();
+
+                    SqlCommand eliminarRol = new SqlCommand(string.Format("delete from LOS_JUS.Rol where rol_nombre='{0}'", nombreSeleccionado), Conexion);
+                    int retorno4 = eliminarRol.ExecuteNonQuery();
+
+                    SqlCommand eliminarFuncionalidades = new SqlCommand(string.Format("delete from LOS_JUS.funcionalidades where fun_eliminado=1 "), Conexion);
+                    int retorno5 = eliminarFuncionalidades.ExecuteNonQuery();
+
+                    SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Rol(rol_nombre) Values ('{0}')", pNombre), Conexion);
+                    int retorno = InsertarRol.ExecuteNonQuery();
+
+
+                    SqlCommand InsertarFuncionalidades = new SqlCommand("INSERT INTO LOS_JUS.Funcionalidades(fun_funcionalidad,fun_descripcion) Values (@funcionalidad,@descripcion)", Conexion);
+
+                    SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
+
+
+                    foreach (DataGridViewRow row in dataGridView_ListaFuncionalidades.Rows)
+                    {
+                        InsertarFuncionalidades.Parameters.Clear();
+                        InsertarFuncionalidadesXRol.Parameters.Clear();
+                        InsertarFuncionalidades.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                        InsertarFuncionalidades.Parameters.AddWithValue("@descripcion", Convert.ToString(row.Cells["Descripcion"].Value));
+                        int resultado1 = InsertarFuncionalidades.ExecuteNonQuery();
+
+                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@nombre", pNombre);
+                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                        int resultado2 = InsertarFuncionalidadesXRol.ExecuteNonQuery();
+                    }
+
+
+
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    this.Close();
+
+                }
             }
             else
             {
@@ -138,16 +180,17 @@ namespace FrbaCommerce.Abm_Rol
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
-                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT FUN_FUNCIONALIDAD FROM LOS_JUS.ROL JOIN LOS_JUS.ROLxFUNCIONALIDADES ON ROLFUN_ROL=ROL_NOMBRE JOIN LOS_JUS.FUNCIONALIDADES ON ROLFUN_FUNCIONALIDADES=FUN_FUNCIONALIDAD WHERE ROL_NOMBRE = '{0}'", nombreSeleccionado), Conexion);
+                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT FUN_FUNCIONALIDAD,fun_descripcion FROM LOS_JUS.ROL JOIN LOS_JUS.ROLxFUNCIONALIDADES ON ROLFUN_ROL=ROL_NOMBRE JOIN LOS_JUS.FUNCIONALIDADES ON ROLFUN_FUNCIONALIDADES=FUN_FUNCIONALIDAD WHERE ROL_NOMBRE = '{0}'", nombreSeleccionado), Conexion);
 
                 SqlDataReader reader = ObtenerIds.ExecuteReader();
                 while (reader.Read())
                 {
 
                     String pColumna0 = reader.GetString(0);
+                    String pColumna1 = reader.GetString(1);
 
 
-                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0);
+                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0,pColumna1);
                 }
                 
                 
