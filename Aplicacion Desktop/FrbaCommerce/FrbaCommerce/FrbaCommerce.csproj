@@ -261,6 +261,12 @@
     <Compile Include="Editar Publicacion\Activa.Designer.cs">
       <DependentUpon>Activa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Facturar Publicaciones\FacturarPublicaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar Publicaciones\FacturarPublicaciones.Designer.cs">
+      <DependentUpon>FacturarPublicaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="GD1C2014DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -454,6 +460,9 @@
     <EmbeddedResource Include="Editar Publicacion\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Facturar Publicaciones\FacturarPublicaciones.resx">
+      <DependentUpon>FacturarPublicaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Compra_Inmediata.resx">
       <DependentUpon>Compra_Inmediata.cs</DependentUpon>
     </EmbeddedResource>
@@ -553,7 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abm Rubro\" />
-    <Folder Include="Facturar Publicaciones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
