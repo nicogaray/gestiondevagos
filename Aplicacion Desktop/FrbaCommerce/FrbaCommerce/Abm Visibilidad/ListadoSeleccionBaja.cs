@@ -23,5 +23,10 @@ namespace FrbaCommerce.Abm_Visibilidad
             textBox_RazonSocial.Clear();
 
         }
+
+        private void textBox_PrecioPublicitar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

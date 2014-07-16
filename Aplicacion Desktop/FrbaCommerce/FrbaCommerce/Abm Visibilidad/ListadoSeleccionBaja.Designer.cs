@@ -91,6 +91,7 @@
             this.textBox_PrecioPublicitar.Name = "textBox_PrecioPublicitar";
             this.textBox_PrecioPublicitar.Size = new System.Drawing.Size(129, 20);
             this.textBox_PrecioPublicitar.TabIndex = 17;
+            this.textBox_PrecioPublicitar.TextChanged += new System.EventHandler(this.textBox_PrecioPublicitar_TextChanged);
             // 
             // textBox_PorcentajeVenta
             // 
