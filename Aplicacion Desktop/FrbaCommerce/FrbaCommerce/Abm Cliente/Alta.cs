@@ -222,7 +222,6 @@ namespace FrbaCommerce.Abm_Cliente
                //Defino variables y convierto datos
                 Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
                 Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
-                DateTime pFechaConvertida = Convert.ToDateTime(pFecha);
                
 
                 //inserto los datos en la DB
@@ -243,23 +242,27 @@ namespace FrbaCommerce.Abm_Cliente
 
                         }
                         reader.Close();
-
-                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values('{0}','{1}')",pId,pId), Conexion);
+                        try
+                        {
+                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')",pId,pId), Conexion);
                         int retorno = InsertarUsuario.ExecuteNonQuery();
 
                         String pRetorno = Convert.ToString(retorno);
-                        
-                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                                            pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
 
+                     
+                            SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+                                                pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                            int retorno2 = InsertarCliente.ExecuteNonQuery();}
+                        catch { MessageBox.Show("Algunos datos ingresados ya se encuentran repetidos en la base de datos", resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk); };
 
+                          
                     }
                     if (pUsuario == "Existente")
                     {
                         pId = Convert.ToInt32(textBox_IdUsuario.Text);
 
-                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_email,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+                        pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
 
 
                     }

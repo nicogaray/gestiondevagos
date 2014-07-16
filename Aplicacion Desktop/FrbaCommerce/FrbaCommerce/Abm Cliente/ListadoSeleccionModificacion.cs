@@ -133,7 +133,6 @@ namespace FrbaCommerce.Abm_Cliente
                 }
 
 
-
             }
         }
 
@@ -159,6 +158,7 @@ namespace FrbaCommerce.Abm_Cliente
                     modificacion.codigoPostalSeleccionado = dataGridView_Modificacion[9, i].Value.ToString();
                     modificacion.Show();
 
+                    dataGridView_Modificacion.Rows.Clear();
 
 
                 }
@@ -167,7 +167,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void ListadoSeleccionModificacion_Load(object sender, EventArgs e)
         {
-            dataGridView_Modificacion.Refresh();
+          
 
         }
     }

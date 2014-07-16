@@ -129,7 +129,6 @@ namespace FrbaCommerce.Abm_Cliente
                 //Defino variables y convierto datos
                 Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
                 Int64 pDocumentoConvertido = Convert.ToInt64(pDocumento);
-                DateTime pFechaConvertida = Convert.ToDateTime(pFecha);
 
 
                 //inserto los datos en la DB
@@ -137,9 +136,9 @@ namespace FrbaCommerce.Abm_Cliente
                 using (Conexion)
                     {
 
-                        SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET cli_id= '{0}', cli_nombre ='{1}',cli_apellido ='{2}',cli_dni='{3}',cli_tipo_dni='{4}',cli_fecha_nacimiento='{5}',cli_email='{6}',cli_telefono='{7}',cli_direccion='{8}',cli_cod_postal='{9}' WHERE ID_CLIENTE = '{10}'",
-                        idSeleccionado, pNombre, pApellido, pDocumentoConvertido, pTipo, pFechaConvertida, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,idSeleccionado), Conexion);
-
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET cli_nombre ='{0}',cli_apellido ='{1}',cli_dni='{2}',cli_tipo_dni='{3}',cli_fecha_nacimiento='{4}',cli_mail='{5}',cli_telefono='{6}',cli_direccion='{7}',cli_cod_postal='{8}' WHERE cli_id = '{9}'",
+                        pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,idSeleccionado), Conexion);
+                        int resultado = InsertarCliente.ExecuteNonQuery();
                     }
 
                     string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";

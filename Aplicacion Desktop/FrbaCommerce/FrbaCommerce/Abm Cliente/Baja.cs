@@ -48,8 +48,9 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
                 {
-                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET CLI_ELIMINADO = 0 WHERE CLI_ID = '{0}' ", idSeleccionado), Conexion);
-                 }
+                    SqlCommand EliminarUsuario = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET CLI_ELIMINADO = 1 WHERE CLI_ID = '{0}' ", idSeleccionado), Conexion);
+                    int retorno = EliminarUsuario.ExecuteNonQuery(); 
+                }
 
                 const string mensaje2 = "El cliente ha sido eliminado con éxito";
                 const string resumen2 = "";
