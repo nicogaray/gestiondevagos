@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Calificar_Vendedor
 {
     public partial class Calificacion : Form
     {
+        public Decimal pOperacionCodigo;
+
         public bool ReturnId { get; set; }
 
         public bool comprobarDatosCompletos(int calificacion)
@@ -55,8 +58,10 @@ namespace FrbaCommerce.Calificar_Vendedor
                 pCalificacion = 5;
             }
 
-            String pDescripcion = comboBox_Descripcion.Text;
-            String pEscribaAqui = textBox_EscribaAqui.Text;
+            String pDescripcion = null;
+                pDescripcion= comboBox_Descripcion.Text;
+            String pEscribaAqui = null;
+            pEscribaAqui = textBox_EscribaAqui.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pCalificacion);
@@ -64,6 +69,24 @@ namespace FrbaCommerce.Calificar_Vendedor
 
             if (comprobarDatosCompletos)
             {
+                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                 using (Conexion)
+                 {
+                     if (pEscribaAqui == "")
+                     {
+                         SqlCommand InsertarCalificacion1 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_codigo, cal_operacion,cal_detalle,cal_estrellas) Values ('{0}','{1}','{2}','{3}')",
+                                                                     4, pOperacionCodigo, pDescripcion, pCalificacion), Conexion);
+                         int retorno2 = InsertarCalificacion1.ExecuteNonQuery();
+                     }
+                     if (pEscribaAqui != "")
+                     {
+                         SqlCommand InsertarCalificacion2 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_codigo, cal_operacion,cal_detalle,cal_estrellas) Values ('{0}','{1}','{2}','{3}')",
+                                               5,pOperacionCodigo, pEscribaAqui, pCalificacion), Conexion);
+                         int retorno3 = InsertarCalificacion2.ExecuteNonQuery();
+
+                     }
+                 }
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 
@@ -118,6 +141,11 @@ namespace FrbaCommerce.Calificar_Vendedor
         private void Calificacion_Load(object sender, EventArgs e)
         {
             textBox_EscribaAqui.Hide();
+
+        }
+
+        private void radioButton_1_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

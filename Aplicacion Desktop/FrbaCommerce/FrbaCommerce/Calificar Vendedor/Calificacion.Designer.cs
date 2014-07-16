@@ -303,6 +303,7 @@
             this.radioButton_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton_1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.radioButton_1.UseVisualStyleBackColor = true;
+            this.radioButton_1.CheckedChanged += new System.EventHandler(this.radioButton_1_CheckedChanged);
             // 
             // label_Calificacion
             // 

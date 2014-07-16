@@ -40,10 +40,10 @@ namespace FrbaCommerce.Calificar_Vendedor
             using (Conexion)
             {
 
-                //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 1
+                //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 2
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT emp_razon_social,emp_cuit,emp_contacto,emp_mail,ope_codigo,ope_tipo,ope_fecha From LOS_JUS.buscarVendedores('{0}')",
-                                                                  1), Conexion);
+                                                                  2), Conexion);
 
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -93,6 +93,9 @@ namespace FrbaCommerce.Calificar_Vendedor
                     int i = e.RowIndex;
                     using (var form = new Calificar_Vendedor.Calificacion())
                     {
+
+                        form.pOperacionCodigo = Convert.ToDecimal(dataGridView1[4, i].Value.ToString());
+
                         //veo si en la ventana calificacion se guardo el valor y luego elimino esta fila de la tabla
                         var result = form.ShowDialog();
                         if (result == DialogResult.OK)
