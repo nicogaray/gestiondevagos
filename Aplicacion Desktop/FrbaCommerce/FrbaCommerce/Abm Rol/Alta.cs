@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.ABM_Rol
 {
@@ -51,13 +52,7 @@ namespace FrbaCommerce.ABM_Rol
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             
-            //int l = dataGridView_ListaFuncionalidades.RowCount;
-            //for (int i = 1; i < l; i++)
-            //{
-            //    String pFuncionalidad = dataGridView_ListaFuncionalidades[1, i].Value.ToString();
-            //    MessageBox.Show(pFuncionalidad, "", MessageBoxButtons.OK);
-            //}
-
+       
             String pNombre = textBox_Nombre.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
@@ -66,8 +61,35 @@ namespace FrbaCommerce.ABM_Rol
 
             if (comprobarDatosCompletos && dataGridView_ListaFuncionalidades.RowCount>0)
             {
-                string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
-                MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Rol(rol_nombre) Values ('{0}')", pNombre), Conexion);
+                    int retorno = InsertarRol.ExecuteNonQuery();
+
+                    
+                    SqlCommand InsertarFuncionalidades = new SqlCommand("INSERT INTO LOS_JUS.Funcionalidades(fun_funcionalidad,fun_descripcion) Values (@funcionalidad,@descripcion)", Conexion);
+
+                    SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
+
+
+                    foreach(DataGridViewRow row in dataGridView_ListaFuncionalidades.Rows)
+                    {
+                        InsertarFuncionalidades.Parameters.Clear();
+                        InsertarFuncionalidadesXRol.Parameters.Clear();
+                        InsertarFuncionalidades.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                        InsertarFuncionalidades.Parameters.AddWithValue("@descripcion", Convert.ToString(row.Cells["Descripcion"].Value));
+                        int resultado1 = InsertarFuncionalidades.ExecuteNonQuery();
+
+                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@nombre", pNombre);
+                        InsertarFuncionalidadesXRol.Parameters.AddWithValue("@funcionalidad", Convert.ToString(row.Cells["Funcionalidad"].Value));
+                        int resultado2 = InsertarFuncionalidadesXRol.ExecuteNonQuery();
+                    }
+                    
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                
             }
             else
             {
@@ -156,6 +178,11 @@ namespace FrbaCommerce.ABM_Rol
                 }
 
             }
+
+
+
+
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
