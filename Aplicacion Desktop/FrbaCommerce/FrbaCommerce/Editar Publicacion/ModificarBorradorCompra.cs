@@ -12,7 +12,7 @@ namespace FrbaCommerce.Editar_Publicacion
 {
     public partial class ModificarBorradorCompra : Form
     {
-        public String pPublicacionCodigo;
+        public String pPublicacionCodigoSeleccionado;
         public String pDescripcionSeleccionada;
         public String pCantidadSeleccionada;
         public String pPrecioSeleccionado;
@@ -84,19 +84,48 @@ namespace FrbaCommerce.Editar_Publicacion
             using (Conexion)
             {
                 // veo si el usuario es nuevo y en ese caso, inserto un nuevo usuario. Obtengo el id de ese usuario creado
-                
 
-                    SqlCommand ObtenerRubrosPublicacion = new SqlCommand(string.Format("SELECT rub_descripcion FROM LOS_JUS.rubro join LOS_JUS.RUBROxPUBLICACION on rub_codigo=RUBPUB_RUBRO where RUBPUB_PUBLICACION = '{0}'",pPublicacionCodigo), Conexion);
+
+                SqlCommand ObtenerRubrosPublicacion = new SqlCommand(string.Format("SELECT rub_descripcion FROM LOS_JUS.rubro join LOS_JUS.RUBROxPUBLICACION on rub_codigo=RUBPUB_RUBRO where RUBPUB_PUBLICACION = '{0}'", pPublicacionCodigoSeleccionado), Conexion);
 
                     SqlDataReader reader = ObtenerRubrosPublicacion.ExecuteReader();
                     while (reader.Read())
                     {
                         String rubro = reader.GetString(0);
 
-                        
+
+                        for (int i = 0; i < checkedListBox_Rubro.Items.Count; i++)
+                        {
+                            if ((string)checkedListBox_Rubro.Items[i] == rubro)
+                            {
+                                checkedListBox_Rubro.SetItemChecked(i, true);
+                            }
+                        }
                     }
                     reader.Close();
-                
+
+                    SqlCommand ObtenerVisibilidadPublicacion = new SqlCommand(string.Format("SELECT vis_nombre FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion where pubvis_publicacion=", pPublicacionCodigoSeleccionado), Conexion);
+
+                    SqlDataReader reader2 = ObtenerVisibilidadPublicacion.ExecuteReader();
+                    while (reader2.Read())
+                    {
+
+                        String visibilidad = reader2.GetString(0);
+
+                        for (int i = 0; i < comboBox_Visibilidad.Items.Count; i++)
+                        {
+                            if ((string)comboBox_Visibilidad.Items[i] == visibilidad )
+                            {
+                                comboBox_Visibilidad.SelectedIndex = i;
+                                    
+                            }
+                        }
+
+                    }
+
+
+
+
             }
 
 
@@ -175,8 +204,6 @@ namespace FrbaCommerce.Editar_Publicacion
                 pEstadoPublicacion = "Pausada";
             }
 
-
-
             if (radioButton_Si.Checked)
             {
                 pPermitirPreguntas = 1;
@@ -214,30 +241,18 @@ namespace FrbaCommerce.Editar_Publicacion
                     Decimal pPublicacionCodigo = -1;
 
 
-                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
-                                                                    35, pDescripcion, pPrecioConvertido, pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas), Conexion);
+                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("update LOS_JUS.publicacion SET pub_descripcion = '{0}',pub_precio = '{1}',pub_fecha_inicio = '{2}',pub_fecha_fin = '{3}',pub_estado = '{4}',pub_habilitacion_preguntas = '{5}' WHERE PUB_CODIGO = '{6}'",
+                                                                    pDescripcion, pPrecioConvertido, pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas, pPublicacionCodigoSeleccionado), Conexion);
                     int retorno = InsertarPublicacion.ExecuteNonQuery();
 
-                    SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT top 1 pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);
 
-                    SqlDataReader reader = ObtenerPublicacionCodigo.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        pPublicacionCodigo = reader.GetDecimal(0);
-
-                    }
-                    reader.Close();
-
-
-
-
-                    SqlCommand InsertarCompra = new SqlCommand(string.Format("INSERT INTO LOS_JUS.COMPRA(COM_CODIGO,COM_PUBLICACION,COM_STOCK) Values ('{0}','{1}','{2}')",
-                                                                    pPublicacionCodigo, pPublicacionCodigo, pCantidadConvertida), Conexion);
+                    SqlCommand InsertarCompra = new SqlCommand(string.Format("UPDATE LOS_JUS.COMPRA SET COM_CODIGO= '{0}',COM_PUBLICACION '{1}',COM_STOCK = '{2}' WHERE PUB_CODIGO = '{3}'",
+                                                                    pPublicacionCodigoSeleccionado, pPublicacionCodigoSeleccionado, pCantidadConvertida, pPublicacionCodigoSeleccionado), Conexion);
                     int retorno2 = InsertarCompra.ExecuteNonQuery();
 
 
-                    SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION(PUBVIS_PUBLICACION,PUBVIS_VISUALIZACION) Values ('{0}','{1}')",
-                                                                    pPublicacionCodigo, pVisibilidadCodigo), Conexion);
+                    SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.PUBLICACIONxVISUALIZACION SET PUBVIS_PUBLICACION = '{0}', PUBVIS_VISUALIZACION = '{1}' WHERE PUB_CODIGO = '{2}'",
+                                                                    pPublicacionCodigoSeleccionado, pVisibilidadCodigo), Conexion);
                     int retorno3 = InsertarVisualizacionXPublicacion.ExecuteNonQuery();
 
                     SqlCommand ObtenerRubroCodigo = null;
@@ -262,14 +277,21 @@ namespace FrbaCommerce.Editar_Publicacion
                             reader2.Close();
 
 
-                            SqlCommand InsertarRubro = new SqlCommand(string.Format("INSERT INTO LOS_JUS.RUBROxPUBLICACION(RUBPUB_RUBRO,RUBPUB_PUBLICACION) Values ('{0}','{1}')",
+                            SqlCommand InsertarRubro = new SqlCommand(string.Format("UPDATE LOS_JUS.RUBROxPUBLICACION SET RUBPUB_RUBRO= '{0}' WHERE RUBPUB_PUBLICACION = '{1}'",
                                                                         pRubroCodigo, pPublicacionCodigo), Conexion);
                             retorno4 = InsertarRubro.ExecuteNonQuery();
 
 
                         }
 
+
+
                     }
+
+
+                    this.ReturnId = true;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
 
 
                     string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
@@ -326,6 +348,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
+            
             textBox_descripcion.Clear();
             textBox_cantidad.Clear();
             textBox_precio.Clear();

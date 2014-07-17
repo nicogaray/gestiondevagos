@@ -30,7 +30,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
                 //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 52165955
                 SqlCommand cmd = null;
-                cmd = new SqlCommand(string.Format("SELECT pub_codigo,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_habilitacion_preguntas,com_stock,sub_cant_lote From LOS_JUS.publicacionesActivas('{0}')",
+                cmd = new SqlCommand(string.Format("SELECT pub_codigo,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_habilitacion_preguntas,com_stock,sub_cant_lote,sub_codigo From LOS_JUS.publicacionesActivas('{0}')",
                                                                   52165955), Conexion);
 
 
@@ -57,21 +57,25 @@ namespace FrbaCommerce.Editar_Publicacion
                     Int32 pColumna6 = reader.GetInt32(6);//pub_habilitacion_preguntas
                     Decimal pColumna7 = reader.GetDecimal(7);//com_stock
                     Decimal pColumna8 = reader.GetDecimal(8);//sub_cant_lote                
+                    Decimal pColumna9 = reader.GetDecimal(9);//sub_codigo                
 
 
-                    dataGridView2.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4, pColumna5, pColumna6, pColumna7, pColumna8);
-
+                    dataGridView2.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4, pColumna5, pColumna6, pColumna7, pColumna8,pColumna9);
                 }
             }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 8)
+            if (e.ColumnIndex == 10)
             {
                 if (dataGridView2.RowCount != 0)
                 {
                     int i = e.RowIndex;
+
+                    String convertirCodigo = dataGridView2[9, i].Value.ToString();
+                    if (convertirCodigo == null) 
+                    {
                     using (var form = new Editar_Publicacion.ModificarBorradorCompra())
                     {
                         form.pDescripcionSeleccionada = dataGridView2[2, i].Value.ToString();
@@ -80,7 +84,7 @@ namespace FrbaCommerce.Editar_Publicacion
                         form.pFechaFinSeleccionada = dataGridView2[5, i].Value.ToString();
                         form.pHabilitarPreguntasSeleccionado = dataGridView2[6, i].Value.ToString();
                         form.pCantidadSeleccionada = dataGridView2[7, i].Value.ToString();
-                        form.pPublicacionCodigo = dataGridView2[0, i].Value.ToString();
+                        form.pPublicacionCodigoSeleccionado = dataGridView2[0, i].Value.ToString();
 
                         //veo si en la ventana calificacion se guardo el valor y luego elimino esta fila de la tabla
                         var result = form.ShowDialog();
@@ -95,8 +99,39 @@ namespace FrbaCommerce.Editar_Publicacion
                             {
                             }
                         }
-                        Editar_Publicacion.ModificarActiva activa = new Editar_Publicacion.ModificarActiva();
-                        activa.Show();
+
+                    }
+                    }
+                    else
+
+                    {
+
+                    using (var form = new Editar_Publicacion.ModificarBorradorSubasta())
+                    {
+                        form.pDescripcionSeleccionada = dataGridView2[2, i].Value.ToString();
+                        form.pPrecioSeleccionado = dataGridView2[3, i].Value.ToString();
+                        form.pFechaInicioSeleccionda = dataGridView2[4, i].Value.ToString();
+                        form.pFechaFinSeleccionada = dataGridView2[5, i].Value.ToString();
+                        form.pHabilitarPreguntasSeleccionado = dataGridView2[6, i].Value.ToString();
+                        form.pCantidadSeleccionada = dataGridView2[7, i].Value.ToString();
+                        form.pPublicacionCodigoSeleccionado = dataGridView2[0, i].Value.ToString();
+
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            bool val = form.ReturnId;
+                            if (val)
+                            {
+                                dataGridView2.Rows.RemoveAt(i);
+                            }
+                            else
+                            {
+                            }
+                        }
+
+
+
+                    }
 
                     }
                 }

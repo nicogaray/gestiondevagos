@@ -39,6 +39,7 @@
             this.HabilitacionPreguntas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadLote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             this.HabilitacionPreguntas,
             this.Stock,
             this.CantidadLote,
+            this.SubCodigo,
             this.Modificar});
             this.dataGridView2.Location = new System.Drawing.Point(12, 12);
             this.dataGridView2.Name = "dataGridView2";
@@ -137,6 +139,13 @@
             this.CantidadLote.ReadOnly = true;
             this.CantidadLote.Width = 158;
             // 
+            // SubCodigo
+            // 
+            this.SubCodigo.HeaderText = "Subasta Codigo";
+            this.SubCodigo.Name = "SubCodigo";
+            this.SubCodigo.ReadOnly = true;
+            this.SubCodigo.Width = 107;
+            // 
             // Modificar
             // 
             this.Modificar.HeaderText = "Modificar";
@@ -173,6 +182,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HabilitacionPreguntas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantidadLote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubCodigo;
         private System.Windows.Forms.DataGridViewButtonColumn Modificar;
 
     }

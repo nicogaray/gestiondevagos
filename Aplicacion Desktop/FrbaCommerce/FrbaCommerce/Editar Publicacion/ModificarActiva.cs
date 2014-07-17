@@ -89,7 +89,6 @@ namespace FrbaCommerce.Editar_Publicacion
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
                 {
-                    Decimal pPublicacionCodigo = -1;
 
 
                     SqlCommand InsertarPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.publicacion SET pub_descripcion='{0}',pub_estado='{1}' WHERE '{2}'",
