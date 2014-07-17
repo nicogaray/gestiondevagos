@@ -76,7 +76,7 @@ namespace FrbaCommerce.Editar_Publicacion
                     {
 
                         form.descripcionSeleccionada = dataGridView2[2, i].Value.ToString();
-                        form.cantidadSeleccionada =dataGridView2[7, i].Value.ToString();
+                        form.cantidadSeleccionada = dataGridView2[7, i].Value.ToString();
                         form.publicacionCodigoSeleccionado = dataGridView2[0, i].Value.ToString();
 
 
@@ -87,7 +87,7 @@ namespace FrbaCommerce.Editar_Publicacion
                             bool val = form.ReturnId;
                             if (val)
                             {
-                                dataGridView1.Rows.RemoveAt(i);
+                                dataGridView2.Rows.RemoveAt(i);
                             }
                             else
                             {
@@ -98,6 +98,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
                     }
                 }
+            }
         }
     }
 }

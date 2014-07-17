@@ -49,13 +49,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_montoTotal = new System.Windows.Forms.TextBox();
+            this.textBox_comisiones = new System.Windows.Forms.TextBox();
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_fecha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_Numero = new System.Windows.Forms.TextBox();
+            this.CodigoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OperacionOferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OperacionCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -64,12 +77,13 @@
             // 
             // button_Aceptar
             // 
-            this.button_Aceptar.Location = new System.Drawing.Point(274, 13);
+            this.button_Aceptar.Location = new System.Drawing.Point(259, 13);
             this.button_Aceptar.Name = "button_Aceptar";
             this.button_Aceptar.Size = new System.Drawing.Size(75, 23);
             this.button_Aceptar.TabIndex = 0;
             this.button_Aceptar.Text = "Aceptar";
             this.button_Aceptar.UseVisualStyleBackColor = true;
+            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
             // 
             // groupBox1
             // 
@@ -83,11 +97,24 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoOperacion,
+            this.CodigoPublicacion,
+            this.Descripcion,
+            this.TipoOperacion,
+            this.OperacionOferta,
+            this.OperacionCantidad,
+            this.Fecha,
+            this.Precio,
+            this.Comision});
             this.dataGridView1.Location = new System.Drawing.Point(7, 19);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(602, 130);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBox_cantidadARendir
             // 
@@ -96,6 +123,7 @@
             this.textBox_cantidadARendir.Name = "textBox_cantidadARendir";
             this.textBox_cantidadARendir.Size = new System.Drawing.Size(58, 20);
             this.textBox_cantidadARendir.TabIndex = 2;
+            this.textBox_cantidadARendir.TextChanged += new System.EventHandler(this.textBox_cantidadARendir_TextChanged);
             // 
             // label1
             // 
@@ -254,34 +282,34 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(507, 252);
+            this.label6.Location = new System.Drawing.Point(492, 252);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Monto a Pagar";
+            this.label6.Text = "Monto Total a Pagar";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(516, 318);
+            this.label7.Location = new System.Drawing.Point(516, 300);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 5;
             this.label7.Text = "Comisiones";
             // 
-            // textBox1
+            // textBox_montoTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(495, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.textBox_montoTotal.Location = new System.Drawing.Point(495, 268);
+            this.textBox_montoTotal.Name = "textBox_montoTotal";
+            this.textBox_montoTotal.Size = new System.Drawing.Size(100, 20);
+            this.textBox_montoTotal.TabIndex = 6;
             // 
-            // textBox2
+            // textBox_comisiones
             // 
-            this.textBox2.Location = new System.Drawing.Point(495, 334);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.textBox_comisiones.Location = new System.Drawing.Point(495, 316);
+            this.textBox_comisiones.Name = "textBox_comisiones";
+            this.textBox_comisiones.Size = new System.Drawing.Size(100, 20);
+            this.textBox_comisiones.TabIndex = 7;
             // 
             // button_Volver
             // 
@@ -301,6 +329,7 @@
             this.button_Guardar.TabIndex = 9;
             this.button_Guardar.Text = "Aceptar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Limpiar
             // 
@@ -312,34 +341,134 @@
             this.button_Limpiar.UseVisualStyleBackColor = true;
             this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             // 
-            // textBox3
+            // textBox_fecha
             // 
-            this.textBox3.Location = new System.Drawing.Point(527, 15);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
+            this.textBox_fecha.Location = new System.Drawing.Point(552, 15);
+            this.textBox_fecha.Name = "textBox_fecha";
+            this.textBox_fecha.Size = new System.Drawing.Size(75, 20);
+            this.textBox_fecha.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(484, 18);
+            this.label8.Location = new System.Drawing.Point(509, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 7;
             this.label8.Text = "Fecha";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(495, 368);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(491, 352);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(107, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Porcentaje del monto";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(412, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Numero";
+            // 
+            // textBox_Numero
+            // 
+            this.textBox_Numero.Location = new System.Drawing.Point(462, 15);
+            this.textBox_Numero.Name = "textBox_Numero";
+            this.textBox_Numero.Size = new System.Drawing.Size(41, 20);
+            this.textBox_Numero.TabIndex = 15;
+            // 
+            // CodigoOperacion
+            // 
+            this.CodigoOperacion.HeaderText = "Codigo de Operacion";
+            this.CodigoOperacion.Name = "CodigoOperacion";
+            this.CodigoOperacion.ReadOnly = true;
+            this.CodigoOperacion.Width = 132;
+            // 
+            // CodigoPublicacion
+            // 
+            this.CodigoPublicacion.HeaderText = "Codigo de Publicacion";
+            this.CodigoPublicacion.Name = "CodigoPublicacion";
+            this.CodigoPublicacion.ReadOnly = true;
+            this.CodigoPublicacion.Width = 138;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 88;
+            // 
+            // TipoOperacion
+            // 
+            this.TipoOperacion.HeaderText = "Tipo de Operacion";
+            this.TipoOperacion.Name = "TipoOperacion";
+            this.TipoOperacion.ReadOnly = true;
+            this.TipoOperacion.Width = 120;
+            // 
+            // OperacionOferta
+            // 
+            this.OperacionOferta.HeaderText = "Oferta hecha";
+            this.OperacionOferta.Name = "OperacionOferta";
+            this.OperacionOferta.ReadOnly = true;
+            this.OperacionOferta.Width = 94;
+            // 
+            // OperacionCantidad
+            // 
+            this.OperacionCantidad.HeaderText = "Cantidad";
+            this.OperacionCantidad.Name = "OperacionCantidad";
+            this.OperacionCantidad.ReadOnly = true;
+            this.OperacionCantidad.Width = 74;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 62;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 62;
+            // 
+            // Comision
+            // 
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            this.Comision.Width = 74;
             // 
             // FacturarPublicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 456);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBox_Numero);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_fecha);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.button_Volver);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_comisiones);
+            this.Controls.Add(this.textBox_montoTotal);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
@@ -387,12 +516,25 @@
         private System.Windows.Forms.TextBox textBox_NombreTitular;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_montoTotal;
+        private System.Windows.Forms.TextBox textBox_comisiones;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Limpiar;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_fecha;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox_Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoOperacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPublicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoOperacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OperacionOferta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OperacionCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
     }
 }
