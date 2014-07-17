@@ -12,7 +12,20 @@ namespace FrbaCommerce.Facturar_Publicaciones
 {
     public partial class FacturarPublicaciones : Form
     {
-        
+        public bool comprobarDatosCompletos(String formaDePago, String numeroTarjeta, String nombreTarjeta, String titular, String codigoSeguridad)
+        {
+            if (formaDePago == "" ||
+                (formaDePago == "Tarjeta" && (nombreTarjeta == "" || titular == "" || codigoSeguridad =="" || numeroTarjeta == ""))
+                )
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
 
         public FacturarPublicaciones()
         {
@@ -34,6 +47,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             textBox_numeroTarjeta.Clear();
             textBox_montoTotal.Clear();
             textBox_comisiones.Clear();
+            textBox1.Clear();
 
             textBox_montoTotal.Enabled = false;
             textBox_comisiones.Enabled = true;
@@ -100,7 +114,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             String pCantidad = textBox_cantidadARendir.Text;
             Int32 pCantidadConvertida = Convert.ToInt32(pCantidad);
 
-            if (pCantidad.All(char.IsDigit) && pCantidadConvertida < 10)
+            if (pCantidad.All(char.IsDigit) && pCantidadConvertida < 10 && pCantidad != "")
             {
                 SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion2)
@@ -235,6 +249,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
+
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
@@ -270,19 +285,19 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 String pNumeroDeTarjeta = null;
                 if (textBox_numeroTarjeta.Text == "")
                 {
-                pNumeroDeTarjeta = textBox_numeroTarjeta.Text;
+                    pNumeroDeTarjeta = textBox_numeroTarjeta.Text;
                 }
-             
+
                 String pNombreTitular = null;
-                if(textBox_NombreTitular.Text =="")
+                if (textBox_NombreTitular.Text == "")
                 {
-                pNombreTitular = textBox_NombreTitular.Text;
+                    pNombreTitular = textBox_NombreTitular.Text;
                 }
 
                 String pCodigoSeguridad = null;
                 if (textBox_CodigoSeguridad.Text == "")
                 {
-                pCodigoSeguridad = textBox_CodigoSeguridad.Text;
+                    pCodigoSeguridad = textBox_CodigoSeguridad.Text;
                 }
 
                 String pNumeroFactura = null;
@@ -295,45 +310,76 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 pComisiones = textBox_comisiones.Text;
 
                 String pFecha = textBox_fecha.Text;
+
+
+
+
                 //falta ver que hacer con fac_operacion
                 SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Faturacion(fac_codigo,fac_operacion,fac_forma_pago,FAC_NOMBRE_TARJETA,FAC_NUMERO_TARJETA,FAC_TITULAR_TARJETA,FAC_CODIGO_TARJETA,fac_fecha) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}'.'{7}')",
-                                                            pNumeroFactura,11,pFormaDePago,pNombreTarjeta,pNumeroDeTarjeta,pNombreTitular,pCodigoSeguridad,pFecha), Conexion);
+                                                            pNumeroFactura, 11, pFormaDePago, pNombreTarjeta, pNumeroDeTarjeta, pNombreTitular, pCodigoSeguridad, pFecha), Conexion);
                 int retorno = InsertarRol.ExecuteNonQuery();
 
 
+                bool comprobarDatosCompletos = this.comprobarDatosCompletos(pFormaDePago, pNumeroDeTarjeta, pNombreTarjeta, pNombreTitular, pCodigoSeguridad);
+                const string resumen = "";
 
-
-                SqlCommand InsertarItem = new SqlCommand("INSERT INTO LOS_JUS.item(ite_factura,ite_monto,ite_cantidad) Values (@codigoFactura,@monto,@cantidad)", Conexion);
-
-                //SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
-
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                if (comprobarDatosCompletos)
                 {
-                    InsertarItem.Parameters.Clear();
 
-                    //InsertarFuncionalidadesXRol.Parameters.Clear();
-                    InsertarItem.Parameters.AddWithValue("@codigoFactura", pNumeroFactura);
-                    InsertarItem.Parameters.AddWithValue("@monto", Convert.ToString(row.Cells["Precio"].Value));
-                    InsertarItem.Parameters.AddWithValue("@cantidad", Convert.ToString(row.Cells["OperacionCantidad"].Value));
 
-                    int resultado1 = InsertarItem.ExecuteNonQuery();
+                    SqlCommand InsertarItem = new SqlCommand("INSERT INTO LOS_JUS.item(ite_factura,ite_monto,ite_cantidad) Values (@codigoFactura,@monto,@cantidad)", Conexion);
 
+                    //SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
+
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        InsertarItem.Parameters.Clear();
+
+                        //InsertarFuncionalidadesXRol.Parameters.Clear();
+                        InsertarItem.Parameters.AddWithValue("@codigoFactura", pNumeroFactura);
+                        InsertarItem.Parameters.AddWithValue("@monto", Convert.ToString(row.Cells["Precio"].Value));
+                        InsertarItem.Parameters.AddWithValue("@cantidad", Convert.ToString(row.Cells["OperacionCantidad"].Value));
+
+                        int resultado1 = InsertarItem.ExecuteNonQuery();
+
+                    }
+
+
+                    string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
+                    MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                    textBox_cantidadARendir.Clear();
+                    textBox_CodigoSeguridad.Clear();
+                    textBox_NombreTitular.Clear();
+                    textBox_numeroTarjeta.Clear();
+                    textBox_montoTotal.Clear();
+                    textBox_comisiones.Clear();
+                    textBox1.Clear();
+
+                    textBox_montoTotal.Enabled = false;
+                    textBox_comisiones.Enabled = true;
+
+                    dataGridView1.Rows.Clear();
+
+                    radioButton_Efectivo.Checked = false;
+                    radioButton_Tarjeta.Checked = false;
+
+                    radioButton_AMEX.Checked = false;
+                    radioButton_MASTERCARD.Checked = false;
+                    radioButton_VISA.Checked = false;
+
+                    groupBox_tarjeta.Enabled = false;
                 }
+                else
+                {
+                    if (comprobarDatosCompletos == false)
+                    {
+                        const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
 
-
-
-                //                FAC_NUMERO numeric(18,0),
-                //FAC_OPERACION integer,
-                //FAC_FORMA_PAGO nvarchar(255),
-                //FAC_NOMBRE_TARJETA VARCHAR (10) DEFAULT '',
-                //FAC_NUMERO_TARJETA VARCHAR (20) DEFAULT '',
-                //FAC_TITULAR_TARJETA VARCHAR (50) DEFAULT '',
-                //FAC_CODIGO_TARJETA VARCHAR (10) DEFAULT '',
-                //FAC_TOTAL numeric(18,2),
-                //FAC_FECHA datetime,
-                //FAC_ELIMINADO integer DEFAULT 0,
-
+                        MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 

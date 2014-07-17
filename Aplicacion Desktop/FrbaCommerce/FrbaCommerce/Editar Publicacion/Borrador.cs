@@ -72,13 +72,15 @@ namespace FrbaCommerce.Editar_Publicacion
                 if (dataGridView2.RowCount != 0)
                 {
                     int i = e.RowIndex;
-                    using (var form = new Editar_Publicacion.ModificarActiva())
+                    using (var form = new Editar_Publicacion.ModificarBorradorCompra())
                     {
-
-                        form.descripcionSeleccionada = dataGridView2[2, i].Value.ToString();
-                        form.cantidadSeleccionada = dataGridView2[7, i].Value.ToString();
-                        form.publicacionCodigoSeleccionado = dataGridView2[0, i].Value.ToString();
-
+                        form.pDescripcionSeleccionada = dataGridView2[2, i].Value.ToString();
+                        form.pPrecioSeleccionado = dataGridView2[3, i].Value.ToString();
+                        form.pFechaInicioSeleccionda = dataGridView2[4, i].Value.ToString();
+                        form.pFechaFinSeleccionada = dataGridView2[5, i].Value.ToString();
+                        form.pHabilitarPreguntasSeleccionado = dataGridView2[6, i].Value.ToString();
+                        form.pCantidadSeleccionada = dataGridView2[7, i].Value.ToString();
+                        form.pPublicacionCodigo = dataGridView2[0, i].Value.ToString();
 
                         //veo si en la ventana calificacion se guardo el valor y luego elimino esta fila de la tabla
                         var result = form.ShowDialog();

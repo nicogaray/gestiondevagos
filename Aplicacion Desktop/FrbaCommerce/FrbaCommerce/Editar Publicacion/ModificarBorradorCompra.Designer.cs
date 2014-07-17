@@ -67,6 +67,7 @@
             this.button_Guardar.TabIndex = 7;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Limpiar
             // 
@@ -77,6 +78,7 @@
             this.button_Limpiar.TabIndex = 6;
             this.button_Limpiar.Text = "Limpiar";
             this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             // 
             // groupBox1
             // 
@@ -367,6 +369,7 @@
             this.Name = "ModificarBorradorCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Publicacion Compra";
+            this.Load += new System.EventHandler(this.ModificarBorradorCompra_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

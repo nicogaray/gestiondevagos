@@ -292,5 +292,10 @@ namespace FrbaCommerce.Generar_Publicacion
 
 
         }
+
+        private void Compra_Inmediata_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

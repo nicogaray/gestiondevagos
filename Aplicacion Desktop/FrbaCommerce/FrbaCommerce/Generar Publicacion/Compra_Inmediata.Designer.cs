@@ -358,6 +358,7 @@
             this.MaximizeBox = false;
             this.Name = "Compra_Inmediata";
             this.Text = "Compra Inmediata";
+            this.Load += new System.EventHandler(this.Compra_Inmediata_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
