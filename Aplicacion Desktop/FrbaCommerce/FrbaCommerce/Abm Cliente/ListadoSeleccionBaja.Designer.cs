@@ -52,6 +52,7 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_baja)).BeginInit();
             this.groupBox_Filtro.SuspendLayout();
@@ -74,6 +75,7 @@
             this.Telefono,
             this.Direccion,
             this.CodigoPostal,
+            this.Cuil,
             this.Eliminar});
             this.dataGridView_baja.Location = new System.Drawing.Point(6, 144);
             this.dataGridView_baja.Name = "dataGridView_baja";
@@ -287,6 +289,13 @@
             this.CodigoPostal.ReadOnly = true;
             this.CodigoPostal.Width = 97;
             // 
+            // Cuil
+            // 
+            this.Cuil.HeaderText = "Cuil";
+            this.Cuil.Name = "Cuil";
+            this.Cuil.ReadOnly = true;
+            this.Cuil.Width = 49;
+            // 
             // Eliminar
             // 
             this.Eliminar.HeaderText = "Eliminar";
@@ -345,6 +354,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPostal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cuil;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

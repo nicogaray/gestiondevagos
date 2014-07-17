@@ -95,12 +95,12 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlCommand cmd = null;
                 if (pDocumentoConvertido == -1)
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null) WHERE CLI_HABILITADO != 0",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL,CLI_CUIL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null) WHERE CLI_HABILITADO != 0",
                                                                    pNombre, pApellido, pEmail, pTipo), Conexion);
                 }
                 else
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}') WHERE CLI_HABILITADO != 0",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL,CLI_CUIL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}') WHERE CLI_HABILITADO != 0",
                                                                       pNombre, pApellido, pEmail, pTipo, pDocumentoConvertido), Conexion);
                 }
 
@@ -125,8 +125,9 @@ namespace FrbaCommerce.Abm_Cliente
                     Decimal pColumna7 = reader.GetDecimal(7);//CLI_TELEFONO
                     String pColumna8 = reader.GetString(8);//CLI_DIRECCION
                     String pColumna9 = reader.GetString(9);//CLI_COD_POSTAL
+                    String pColumna10 = reader.GetString(10);//CLI_CUIL
 
-                    dataGridView_baja.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4, pColumna5, pColumna6, pColumna7, pColumna8, pColumna9);
+                    dataGridView_baja.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4, pColumna5, pColumna6, pColumna7, pColumna8, pColumna9, pColumna10);
 
 
 
@@ -138,7 +139,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void dataGridView_baja_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 11)
             {
                 if (dataGridView_baja.RowCount != 0)
                 {
@@ -147,6 +148,7 @@ namespace FrbaCommerce.Abm_Cliente
                     {
 
                         String fecha1 = dataGridView_baja[5, i].Value.ToString();
+                        baja.cuilSeleccionado = dataGridView_baja[10, i].Value.ToString();
                         baja.fechaSeleccionada = Convert.ToDateTime(fecha1);
                         baja.mailSeleccionado = dataGridView_baja[6, i].Value.ToString(); 
                         String id = dataGridView_baja[0, i].Value.ToString();

@@ -137,6 +137,7 @@ namespace FrbaCommerce.Listado_Estadistico
             String pAnio = null;
             pAnio = Convert.ToString(numericUpDown_Anio.Value);
             int pVisibilidad = -1;
+
             if (comboBox_Visibilidad.SelectedIndex == 0)
             {
                 pVisibilidad = 10002;
@@ -220,7 +221,7 @@ namespace FrbaCommerce.Listado_Estadistico
 
                         while (reader.Read())
                         {
-                            Int32 pColumna0 = reader.GetInt32(0);//PUB_COUNT
+                            Decimal pColumna0 = reader.GetDecimal(0);//PUB_COUNT
                             Int32 pColumna1 = reader.GetInt32(1);//EMP_ID
                             String pColumna2 = reader.GetString(2);//EMP_RAZON_SOCIAL
                             String pColumna3 = reader.GetString(3);//EMP_CUIT

@@ -74,14 +74,14 @@ namespace FrbaCommerce.Calificar_Vendedor
                  {
                      if (pEscribaAqui == "")
                      {
-                         SqlCommand InsertarCalificacion1 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_codigo, cal_operacion,cal_detalle,cal_estrellas) Values ('{0}','{1}','{2}','{3}')",
-                                                                     4, pOperacionCodigo, pDescripcion, pCalificacion), Conexion);
+                         SqlCommand InsertarCalificacion1 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_operacion,cal_detalle,cal_estrellas,cal_tipo) Values ('{0}','{1}','{2}','{3}')",
+                                                                     pOperacionCodigo, pDescripcion, pCalificacion,'E'), Conexion);
                          int retorno2 = InsertarCalificacion1.ExecuteNonQuery();
                      }
                      if (pEscribaAqui != "")
                      {
-                         SqlCommand InsertarCalificacion2 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_codigo, cal_operacion,cal_detalle,cal_estrellas) Values ('{0}','{1}','{2}','{3}')",
-                                               5,pOperacionCodigo, pEscribaAqui, pCalificacion), Conexion);
+                         SqlCommand InsertarCalificacion2 = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Calificacion(cal_operacion,cal_detalle,cal_estrellas,cal_tipo) Values ('{0}','{1}','{2}','{3}')",
+                                               5,pOperacionCodigo, pEscribaAqui, pCalificacion,'E'), Conexion);
                          int retorno3 = InsertarCalificacion2.ExecuteNonQuery();
 
                      }

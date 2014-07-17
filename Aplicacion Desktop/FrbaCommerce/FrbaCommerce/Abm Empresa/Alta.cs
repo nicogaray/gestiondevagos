@@ -156,9 +156,58 @@ namespace FrbaCommerce.Abm_Empresa
 
 
             Int32 pId = 0;
-            
+            //Defino variables y convierto datos
+            Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+            bool cuitOriginal = false;
+            bool telefonoOriginal = false;
+            bool razonSocialOrigianal = false;
 
-            //int pTelefonoConvertido = Convert.ToInt32(telefono);
+            //Veo que el cuil, el telefono y el tipo y numero de documento sean unicos
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand comprobarCuit = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_cuit = '{0}'", pCuit), Conexion);
+
+                SqlDataReader reader = comprobarCuit.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    cuitOriginal = false;
+                }
+                else
+                {
+                    cuitOriginal = true;
+                }
+                reader.Close();
+
+                SqlCommand comprobarTelefono = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_telefono = '{0}'", pTelefonoConvertido), Conexion);
+
+                SqlDataReader reader2 = comprobarTelefono.ExecuteReader();
+                if (reader2.HasRows)
+                {
+                    telefonoOriginal = false;
+                }
+                else
+                {
+                    telefonoOriginal = true;
+                }
+                reader2.Close();
+
+                SqlCommand comprobarRazonSocial = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_razon_social = '{0}'", pRazonSocial), Conexion);
+
+                SqlDataReader reader3 = comprobarRazonSocial.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    razonSocialOrigianal = false;
+                }
+                else
+                {
+                    razonSocialOrigianal = true;
+                }
+                reader3.Close();
+
+
+            }
+
 
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
@@ -166,20 +215,18 @@ namespace FrbaCommerce.Abm_Empresa
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pRazonSocial, pCuit, pNombreContacto, pTelefono, pDireccion, pCodigoPostal, pMail, pUsuario, pUsername, pIdUsuario);
             const string resumen = "";
 
-            if (comprobarTipos && comprobarDatosCompletos)
+            if (comprobarTipos && comprobarDatosCompletos && cuitOriginal && razonSocialOrigianal && telefonoOriginal)
             {
-                //Defino variables y convierto datos
-                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
 
                 //inserto los datos en la DB
-                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
-                using (Conexion)
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion2)
                 {
                     // veo si el usuario es nuevo y en ese caso, inserto un nuevo usuario. Obtengo el id de ese usuario creado
                     if (pUsuario == "Nuevo")
                     {
 
-                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion);
+                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion2);
 
                         SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
                         while (reader.Read())
@@ -191,14 +238,14 @@ namespace FrbaCommerce.Abm_Empresa
                         reader.Close();
                         try
                         {
-                            SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')", pId, pId), Conexion);
+                            SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')", pId, pId), Conexion2);
                             int retorno = InsertarUsuario.ExecuteNonQuery();
 
                             String pRetorno = Convert.ToString(retorno);
 
 
                             SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Empresa(emp_id,emp_razon_social,emp_cuit,emp_contacto,emp_fecha_creacion,emp_mail,emp_telefono,emp_direccion,emp_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",
-                                                pId, pRazonSocial, pCuit,pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                                                pId, pRazonSocial, pCuit,pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion2);
                             int retorno2 = InsertarCliente.ExecuteNonQuery();
                         }
                         catch { MessageBox.Show("Algunos datos ingresados ya se encuentran repetidos en la base de datos", resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk); };
@@ -210,7 +257,7 @@ namespace FrbaCommerce.Abm_Empresa
                         pId = Convert.ToInt32(textBox_IdUsuario.Text);
 
                         SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.EMPRESAemp_id,emp_razon_social,emp_cuit,emp_contacto,emp_fecha_creacion,emp_mail,emp_telefono,emp_direccion,emp_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",
-                        pId, pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                        pId, pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion2);
 
 
                     }
@@ -248,12 +295,34 @@ namespace FrbaCommerce.Abm_Empresa
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
+                if (comprobarTipos == false)
                 {
                     const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                if (cuitOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un Cuit que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (telefonoOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un telefono que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (razonSocialOrigianal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado una Razon Social ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            
 
             }
 

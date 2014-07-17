@@ -26,7 +26,8 @@ namespace FrbaCommerce.Abm_Cliente
         public String direccionSeleccionada = "";
         public String codigoPostalSeleccionado = "";
         public String telefonoSeleccionado;
-        
+        public String cuilSeleccionado = "";
+
         public Baja()
         {
             InitializeComponent();
@@ -91,30 +92,30 @@ namespace FrbaCommerce.Abm_Cliente
         private void Baja_Load(object sender, EventArgs e)
         {
             //imprimo en pantalla los valores seleccionados
-
+            textBox_Cuil.Text = cuilSeleccionado;
             textBox_Nombre.Text = nombreSeleccionado;
             textBox_Apellido.Text = apellidoSeleccionado;
 
             // selecciono el radio button correcto
             if (tipoDocumentoSeleccionado == "CI")
             {
-                radioButton_Ci.Select();
+                radioButton_Ci.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "DNI")
             {
-                radioButton_Dni.Select();
+                radioButton_Dni.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "LC")
             {
-                radioButton_Lc.Select();
+                radioButton_Lc.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "LE")
             {
-                radioButton_Le.Select();
+                radioButton_Le.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "PAS")
             {
-                radioButton_Pas.Select();
+                radioButton_Pas.Checked = true;
             }
 
             textBox_Documento.Text = Convert.ToString(documentoSeleccionado);
@@ -124,7 +125,7 @@ namespace FrbaCommerce.Abm_Cliente
             textBox_Mail.Text = mailSeleccionado;
             dateTimePicker_FechaNacimiento.Value = fechaSeleccionada;
 
-            
+            textBox_Cuil.Enabled = false;
             textBox_Nombre.Enabled = false;
             textBox_Nombre.Enabled = false;
             textBox_Apellido.Enabled = false;

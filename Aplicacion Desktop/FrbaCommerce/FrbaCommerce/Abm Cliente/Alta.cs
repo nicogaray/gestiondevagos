@@ -18,7 +18,7 @@ namespace FrbaCommerce.Abm_Cliente
             return (telefono.All(char.IsDigit) && documento.All(char.IsDigit));
         }
 
-        public bool comprobarDatosCompletos(String nombre, String apellido, String tipoDocumento, String documento, String telefono, String direccion, String codigoPostal, String mail,String usuario, String username, String id)
+        public bool comprobarDatosCompletos(String nombre, String apellido, String tipoDocumento, String documento, String telefono, String direccion, String codigoPostal, String mail,String usuario, String username, String id, String cuil)
         {
             if (nombre == "" ||
                 apellido == "" ||
@@ -29,7 +29,8 @@ namespace FrbaCommerce.Abm_Cliente
                 codigoPostal == "" ||
                 mail == "" ||
                 usuario == "" ||
-                (usuario == "Existente" && id == ""))
+                (usuario == "Existente" && id == "") ||
+                cuil == "")
                                      
             {
                 return false;
@@ -119,7 +120,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+            textBox_Cuil.Clear();
             textBox_Apellido.Clear();
             textBox_CodigoPostal.Clear();
             textBox_Direccion.Clear();
@@ -162,6 +163,7 @@ namespace FrbaCommerce.Abm_Cliente
            
             
             //Recibo los datos ingresados por el usuario
+            String pCuil = textBox_Cuil.Text;
             String pNombre = textBox_Nombre.Text;
             String pApellido = textBox_Apellido.Text;
             String pDocumento = textBox_Documento.Text;
@@ -208,31 +210,80 @@ namespace FrbaCommerce.Abm_Cliente
             String pIdUsuario = textBox_IdUsuario.Text;
 
             Int32 pId = 0;
-            
-            
+           
+             //Defino variables y convierto datos
+            Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+            Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
+
+            bool cuilOriginal = false;
+            bool telefonoOriginal = false;
+            bool documentoOrigianal = false;
+
+            //Veo que el cuil, el telefono y el tipo y numero de documento sean unicos
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand comprobarCuil = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_cuil = '{0}'",pCuil), Conexion);
+
+                SqlDataReader reader = comprobarCuil.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    cuilOriginal = false;
+                }
+                else
+                {
+                    cuilOriginal = true;
+                }
+                reader.Close();
+
+                SqlCommand comprobarTelefono = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_telefono = '{0}'", pTelefonoConvertido), Conexion);
+
+                SqlDataReader reader2 = comprobarTelefono.ExecuteReader();
+                if (reader2.HasRows)
+                {
+                    telefonoOriginal = false;
+                }
+                else
+                {
+                    telefonoOriginal = true;
+                }
+                reader2.Close();
+
+                SqlCommand comprobarDocumento = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_dni = '{0}' and cli_tipo_dni = '{1}'", pDocumentoConvertido,pTipo), Conexion);
+
+                SqlDataReader reader3 = comprobarDocumento.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    documentoOrigianal = false;
+                }
+                else
+                {
+                    documentoOrigianal = true;
+                }
+                reader3.Close();
 
 
+             }
+
+            
      //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarTipos = this.comprobarTipos(pTelefono,pDocumento);
-            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pApellido, pTipo, pDocumento, pTelefono, pDireccion, pCodigoPostal, pMail, pUsuario,pUsername,pIdUsuario);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pApellido, pTipo, pDocumento, pTelefono, pDireccion, pCodigoPostal, pMail, pUsuario,pUsername,pIdUsuario,pCuil);
             const string resumen = "";
         
-           if(comprobarTipos && comprobarDatosCompletos)           
+           if(comprobarTipos && comprobarDatosCompletos && cuilOriginal && telefonoOriginal && documentoOrigianal)           
             {
-               //Defino variables y convierto datos
-                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
-                Int32 pDocumentoConvertido = Convert.ToInt32(pDocumento);
                
 
                 //inserto los datos en la DB
-                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
-                using (Conexion)
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion2)
                 {
                     // veo si el usuario es nuevo y en ese caso, inserto un nuevo usuario. Obtengo el id de ese usuario creado
                     if (pUsuario == "Nuevo")
                     {
 
-                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion);
+                        SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 usu_id FROM LOS_JUS.usuario ORDER BY usu_id desc"), Conexion2);
 
                         SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
                         while (reader.Read())
@@ -244,14 +295,14 @@ namespace FrbaCommerce.Abm_Cliente
                         reader.Close();
                         try
                         {
-                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')",pId,pId), Conexion);
+                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')",pId,pId), Conexion2);
                         int retorno = InsertarUsuario.ExecuteNonQuery();
 
                         String pRetorno = Convert.ToString(retorno);
 
                      
-                            SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                                                pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                            SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal,cli_cuil) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                                                pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,pCuil), Conexion2);
                             int retorno2 = InsertarCliente.ExecuteNonQuery();}
                         catch { MessageBox.Show("Algunos datos ingresados ya se encuentran repetidos en la base de datos", resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk); };
 
@@ -261,14 +312,16 @@ namespace FrbaCommerce.Abm_Cliente
                     {
                         pId = Convert.ToInt32(textBox_IdUsuario.Text);
 
-                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-                        pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion);
+                        SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal,cli_cuil) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                                                                                                                pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,pCuil), Conexion2);
 
 
                     }
 
                     string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                     MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                    textBox_Cuil.Clear();
                     textBox_Apellido.Clear();
                     textBox_CodigoPostal.Clear();
                     textBox_Direccion.Clear();
@@ -305,13 +358,33 @@ namespace FrbaCommerce.Abm_Cliente
 
                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
-               else 
+               if (comprobarTipos == false) 
                {
                    const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
 
                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
-               
+               if (cuilOriginal == false)
+               {
+                   const string mensaje_Rechazo = "Ha ingresado un Cuil que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                   MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+               }
+               if (telefonoOriginal == false)
+               {
+                   const string mensaje_Rechazo = "Ha ingresado un telefono que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                   MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+               }
+               if (documentoOrigianal == false)
+               {
+                   const string mensaje_Rechazo = "Ha ingresado un tipo y numero de documento que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                   MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+               }
             }
 
           

@@ -24,6 +24,7 @@ namespace FrbaCommerce.Abm_Cliente
         public String mailSeleccionado = "";
         public String direccionSeleccionada = "";
         public String codigoPostalSeleccionado = "";
+        public String cuilSeleccionado = "";
         public String telefonoSeleccionado;
 
 
@@ -59,6 +60,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
+            textBox_Cuil.Clear();
 
             textBox_Apellido.Clear();
             textBox_CodigoPostal.Clear();
@@ -82,6 +84,7 @@ namespace FrbaCommerce.Abm_Cliente
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             //Recibo los datos ingresados por el usuario
+            String pCuil = textBox_Cuil.Text;
             String pNombre = textBox_Nombre.Text;
             String pApellido = textBox_Apellido.Text;
             String pDocumento = textBox_Documento.Text;
@@ -114,9 +117,57 @@ namespace FrbaCommerce.Abm_Cliente
                 pTipo = radioButton_Pas.Text;
             }
 
+            //Defino variables y convierto datos
+            Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+            Int64 pDocumentoConvertido = Convert.ToInt64(pDocumento);
+            bool cuilOriginal = false;
+            bool telefonoOriginal = false;
+            bool documentoOrigianal = false;
+            //Veo que el cuil, el telefono y el tipo y numero de documento sean unicos
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand comprobarCuil = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_cuil = '{0}' and cli_id <> '{1}'", pCuil,idSeleccionado), Conexion);
+
+                SqlDataReader reader = comprobarCuil.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    cuilOriginal = false;
+                }
+                else
+                {
+                    cuilOriginal = true;
+                }
+                reader.Close();
+
+                SqlCommand comprobarTelefono = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_telefono = '{0}' and cli_id <> '{1}'", pTelefonoConvertido,idSeleccionado), Conexion);
+
+                SqlDataReader reader2 = comprobarTelefono.ExecuteReader();
+                if (reader2.HasRows)
+                {
+                    telefonoOriginal = false;
+                }
+                else
+                {
+                    telefonoOriginal = true;
+                }
+                reader2.Close();
+
+                SqlCommand comprobarDocumento = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_dni = '{0}' and cli_tipo_dni = '{1}' and cli_id <> '{2}'", pDocumentoConvertido, pTipo,idSeleccionado), Conexion);
+
+                SqlDataReader reader3 = comprobarDocumento.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    documentoOrigianal = false;
+                }
+                else
+                {
+                    documentoOrigianal = true;
+                }
+                reader3.Close();
 
 
-
+            }
 
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
@@ -124,20 +175,17 @@ namespace FrbaCommerce.Abm_Cliente
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pApellido, pTipo, pDocumento, pTelefono, pDireccion, pCodigoPostal, pMail);
             const string resumen = "";
 
-            if (comprobarTipos && comprobarDatosCompletos)
+            if (comprobarTipos && comprobarDatosCompletos && cuilOriginal && telefonoOriginal && documentoOrigianal)
             {
-                //Defino variables y convierto datos
-                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
-                Int64 pDocumentoConvertido = Convert.ToInt64(pDocumento);
 
 
                 //inserto los datos en la DB
-                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
                     {
 
                         SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.Cliente SET cli_nombre ='{0}',cli_apellido ='{1}',cli_dni='{2}',cli_tipo_dni='{3}',cli_fecha_nacimiento='{4}',cli_mail='{5}',cli_telefono='{6}',cli_direccion='{7}',cli_cod_postal='{8}' WHERE cli_id = '{9}'",
-                        pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,idSeleccionado), Conexion);
+                        pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,idSeleccionado), Conexion2);
                         int resultado = InsertarCliente.ExecuteNonQuery();
                     }
 
@@ -171,11 +219,32 @@ namespace FrbaCommerce.Abm_Cliente
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
+                if (comprobarTipos == false)
                 {
                     const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (cuilOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un Cuil que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (telefonoOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un telefono que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (documentoOrigianal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un tipo y numero de documento que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
 
             }
@@ -278,27 +347,28 @@ namespace FrbaCommerce.Abm_Cliente
 
             textBox_Nombre.Text = nombreSeleccionado;
             textBox_Apellido.Text = apellidoSeleccionado;
+            textBox_Cuil.Text = cuilSeleccionado;
 
             // selecciono el radio button correcto
             if (tipoDocumentoSeleccionado == "CI")
             {
-                radioButton_Ci.Select();
+                radioButton_Ci.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "DNI")
             {
-                radioButton_Dni.Select();
+                radioButton_Dni.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "LC")
             {
-                radioButton_Lc.Select();
+                radioButton_Lc.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "LE")
             {
-                radioButton_Le.Select();
+                radioButton_Le.Checked = true;
             }
             if (tipoDocumentoSeleccionado == "PAS")
             {
-                radioButton_Pas.Select();
+                radioButton_Pas.Checked = true;
             }
 
             textBox_Documento.Text = Convert.ToString(documentoSeleccionado);

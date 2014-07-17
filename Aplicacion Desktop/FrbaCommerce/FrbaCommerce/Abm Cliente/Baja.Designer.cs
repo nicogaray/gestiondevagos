@@ -55,6 +55,8 @@
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.button_Borrar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
+            this.textBox_Cuil = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +81,8 @@
             // 
             // paner_Alta
             // 
+            this.paner_Alta.Controls.Add(this.textBox_Cuil);
+            this.paner_Alta.Controls.Add(this.label1);
             this.paner_Alta.Controls.Add(this.dateTimePicker_FechaNacimiento);
             this.paner_Alta.Controls.Add(this.textBox_Mail);
             this.paner_Alta.Controls.Add(this.textBox_CodigoPostal);
@@ -105,7 +109,7 @@
             this.paner_Alta.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.paner_Alta.Location = new System.Drawing.Point(12, 7);
             this.paner_Alta.Name = "paner_Alta";
-            this.paner_Alta.Size = new System.Drawing.Size(388, 278);
+            this.paner_Alta.Size = new System.Drawing.Size(388, 284);
             this.paner_Alta.TabIndex = 12;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
@@ -113,7 +117,7 @@
             // 
             // dateTimePicker_FechaNacimiento
             // 
-            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(133, 234);
+            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(133, 257);
             this.dateTimePicker_FechaNacimiento.Name = "dateTimePicker_FechaNacimiento";
             this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(232, 20);
             this.dateTimePicker_FechaNacimiento.TabIndex = 22;
@@ -252,7 +256,7 @@
             this.label_FechaNacimiento.AutoSize = true;
             this.label_FechaNacimiento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_FechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_FechaNacimiento.Location = new System.Drawing.Point(23, 234);
+            this.label_FechaNacimiento.Location = new System.Drawing.Point(23, 261);
             this.label_FechaNacimiento.Name = "label_FechaNacimiento";
             this.label_FechaNacimiento.Size = new System.Drawing.Size(106, 13);
             this.label_FechaNacimiento.TabIndex = 9;
@@ -398,6 +402,25 @@
             this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
             this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
             // 
+            // textBox_Cuil
+            // 
+            this.textBox_Cuil.Location = new System.Drawing.Point(133, 231);
+            this.textBox_Cuil.MaxLength = 50;
+            this.textBox_Cuil.Name = "textBox_Cuil";
+            this.textBox_Cuil.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Cuil.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(103, 234);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Cuil";
+            // 
             // Baja
             // 
             this.AcceptButton = this.button_Borrar;
@@ -450,5 +473,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
         private System.Windows.Forms.Button button_Borrar;
         private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.TextBox textBox_Cuil;
+        private System.Windows.Forms.Label label1;
     }
 }

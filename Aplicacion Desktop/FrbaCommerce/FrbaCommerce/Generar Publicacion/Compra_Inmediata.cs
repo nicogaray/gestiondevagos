@@ -150,23 +150,22 @@ namespace FrbaCommerce.Generar_Publicacion
                     {
                        Decimal pPublicacionCodigo = -1;
 
-                        SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT top 1 pub_codigo FROM LOS_JUS.publicacion ORDER BY pub_codigo desc"), Conexion);
-
-                        SqlDataReader reader = ObtenerPublicacionCodigo.ExecuteReader();
-                        while (reader.Read())
-                        {
-                           Decimal pIdAnterior = reader.GetDecimal(0);
-                           pPublicacionCodigo = pIdAnterior + 1;
-
-                        }
-                        reader.Close();
-
-
-
-                            
-                                SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(PUB_CODIGO,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", 
-                                                                                pPublicacionCodigo,35,pDescripcion,pPrecioConvertido,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
+                         
+                                SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", 
+                                                                                35,pDescripcion,pPrecioConvertido,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
                                 int retorno = InsertarPublicacion.ExecuteNonQuery();
+
+                                SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT top 1 pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);
+
+                                SqlDataReader reader = ObtenerPublicacionCodigo.ExecuteReader();
+                                while (reader.Read())
+                                {
+                                    pPublicacionCodigo = reader.GetDecimal(0);
+
+                                }
+                                reader.Close();
+
+
 
 
                                 SqlCommand InsertarCompra = new SqlCommand(string.Format("INSERT INTO LOS_JUS.COMPRA(COM_CODIGO,COM_PUBLICACION,COM_STOCK) Values ('{0}','{1}','{2}')", 

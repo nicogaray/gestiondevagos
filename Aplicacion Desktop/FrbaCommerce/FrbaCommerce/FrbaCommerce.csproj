@@ -243,6 +243,24 @@
     <Compile Include="Comprar-Ofertar\Comprar.Designer.cs">
       <DependentUpon>Comprar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editar Publicacion\ModificarBorradorSubasta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificarBorradorSubasta.Designer.cs">
+      <DependentUpon>ModificarBorradorSubasta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificarBorradorCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificarBorradorCompra.Designer.cs">
+      <DependentUpon>ModificarBorradorCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificarActiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificarActiva.Designer.cs">
+      <DependentUpon>ModificarActiva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editar Publicacion\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,6 +477,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\ModificarActiva.resx">
+      <DependentUpon>ModificarActiva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\ModificarBorradorCompra.resx">
+      <DependentUpon>ModificarBorradorCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\ModificarBorradorSubasta.resx">
+      <DependentUpon>ModificarBorradorSubasta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar Publicaciones\FacturarPublicaciones.resx">
       <DependentUpon>FacturarPublicaciones.cs</DependentUpon>

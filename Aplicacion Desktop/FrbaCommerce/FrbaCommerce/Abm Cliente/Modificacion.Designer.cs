@@ -57,6 +57,8 @@
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
+            this.textBox_Cuil = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +108,8 @@
             // 
             // paner_Alta
             // 
+            this.paner_Alta.Controls.Add(this.textBox_Cuil);
+            this.paner_Alta.Controls.Add(this.label1);
             this.paner_Alta.Controls.Add(this.dateTimePicker_FechaNacimiento);
             this.paner_Alta.Controls.Add(this.textBox_Mail);
             this.paner_Alta.Controls.Add(this.textBox_CodigoPostal);
@@ -132,14 +136,14 @@
             this.paner_Alta.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.paner_Alta.Location = new System.Drawing.Point(12, 7);
             this.paner_Alta.Name = "paner_Alta";
-            this.paner_Alta.Size = new System.Drawing.Size(358, 257);
+            this.paner_Alta.Size = new System.Drawing.Size(358, 284);
             this.paner_Alta.TabIndex = 12;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
             // 
             // dateTimePicker_FechaNacimiento
             // 
-            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(117, 229);
+            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(117, 253);
             this.dateTimePicker_FechaNacimiento.Name = "dateTimePicker_FechaNacimiento";
             this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(231, 20);
             this.dateTimePicker_FechaNacimiento.TabIndex = 21;
@@ -272,7 +276,7 @@
             this.label_FechaNacimiento.AutoSize = true;
             this.label_FechaNacimiento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_FechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_FechaNacimiento.Location = new System.Drawing.Point(7, 231);
+            this.label_FechaNacimiento.Location = new System.Drawing.Point(7, 259);
             this.label_FechaNacimiento.Name = "label_FechaNacimiento";
             this.label_FechaNacimiento.Size = new System.Drawing.Size(106, 13);
             this.label_FechaNacimiento.TabIndex = 9;
@@ -402,6 +406,25 @@
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox_Cuil
+            // 
+            this.textBox_Cuil.Location = new System.Drawing.Point(117, 228);
+            this.textBox_Cuil.MaxLength = 50;
+            this.textBox_Cuil.Name = "textBox_Cuil";
+            this.textBox_Cuil.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Cuil.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(87, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Cuil";
+            // 
             // Modificacion
             // 
             this.AcceptButton = this.button_Guardar;
@@ -459,6 +482,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaNacimiento;
         private System.Windows.Forms.Button button_Cancelar;
         private System.Windows.Forms.Button button_Volver;
+        private System.Windows.Forms.TextBox textBox_Cuil;
+        private System.Windows.Forms.Label label1;
 
 
     }

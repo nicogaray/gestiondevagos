@@ -97,12 +97,12 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlCommand cmd = null;
                 if (pDocumentoConvertido == -1)
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null) WHERE CLI_HABILITADO != 0",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL,cli_cuil From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}',null) WHERE CLI_HABILITADO != 0",
                                                                    pNombre, pApellido, pEmail, pTipo), Conexion);
                 }
                 else
                 {
-                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}') WHERE CLI_HABILITADO != 0",
+                    cmd = new SqlCommand(string.Format("SELECT CLI_ID,CLI_NOMBRE,CLI_APELLIDO,CLI_DNI,CLI_TIPO_DNI,CLI_FECHA_NACIMIENTO,CLI_MAIL,CLI_TELEFONO,CLI_DIRECCION,CLI_COD_POSTAL,cli_cuil From LOS_JUS.buscarClientes('{0}','{1}','{2}','{3}','{4}') WHERE CLI_HABILITADO != 0",
                                                                       pNombre, pApellido, pEmail, pTipo,pDocumentoConvertido), Conexion);
                 }
 
@@ -127,8 +127,9 @@ namespace FrbaCommerce.Abm_Cliente
                             Decimal pColumna7 = reader.GetDecimal(7);//CLI_TELEFONO
                             String pColumna8 = reader.GetString(8);//CLI_DIRECCION
                             String pColumna9 = reader.GetString(9);//CLI_COD_POSTAL
+                            String pColumna10 = reader.GetString(10);//cli_cuil
 
-                            dataGridView_Modificacion.Rows.Add(pColumna0,pColumna1,pColumna2,pColumna3,pColumna4,pColumna5,pColumna6,pColumna7,pColumna8,pColumna9);
+                            dataGridView_Modificacion.Rows.Add(pColumna0,pColumna1,pColumna2,pColumna3,pColumna4,pColumna5,pColumna6,pColumna7,pColumna8,pColumna9,pColumna10);
      
                 }
 
@@ -138,13 +139,14 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void dataGridView_Modificacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            if (e.ColumnIndex == 11)
             {
                 if (dataGridView_Modificacion.RowCount != 0)
                 {
                     int i = e.RowIndex;
 
                     Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
+                    modificacion.cuilSeleccionado = dataGridView_Modificacion[10, i].Value.ToString();
                     modificacion.idSeleccionado = Convert.ToInt32(dataGridView_Modificacion[0, i].Value.ToString());
                     modificacion.nombreSeleccionado = dataGridView_Modificacion[1, i].Value.ToString();
                     modificacion.apellidoSeleccionado = dataGridView_Modificacion[2, i].Value.ToString();

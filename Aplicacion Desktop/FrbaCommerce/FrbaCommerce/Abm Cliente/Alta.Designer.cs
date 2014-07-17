@@ -64,6 +64,8 @@
             this.textBox_Username = new System.Windows.Forms.TextBox();
             this.label_IdUsuario = new System.Windows.Forms.Label();
             this.label_Username = new System.Windows.Forms.Label();
+            this.textBox_Cuil = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.paner_Alta.SuspendLayout();
             this.groupBox_SeleccionarUsuario.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +85,8 @@
             // 
             // paner_Alta
             // 
+            this.paner_Alta.Controls.Add(this.textBox_Cuil);
+            this.paner_Alta.Controls.Add(this.label1);
             this.paner_Alta.Controls.Add(this.dateTimePicker_FechaNacimiento);
             this.paner_Alta.Controls.Add(this.textBox_Mail);
             this.paner_Alta.Controls.Add(this.textBox_CodigoPostal);
@@ -109,14 +113,14 @@
             this.paner_Alta.ForeColor = System.Drawing.SystemColors.ControlText;
             this.paner_Alta.Location = new System.Drawing.Point(12, 12);
             this.paner_Alta.Name = "paner_Alta";
-            this.paner_Alta.Size = new System.Drawing.Size(363, 246);
+            this.paner_Alta.Size = new System.Drawing.Size(363, 265);
             this.paner_Alta.TabIndex = 6;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
             // 
             // dateTimePicker_FechaNacimiento
             // 
-            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(120, 219);
+            this.dateTimePicker_FechaNacimiento.Location = new System.Drawing.Point(120, 239);
             this.dateTimePicker_FechaNacimiento.Name = "dateTimePicker_FechaNacimiento";
             this.dateTimePicker_FechaNacimiento.Size = new System.Drawing.Size(232, 20);
             this.dateTimePicker_FechaNacimiento.TabIndex = 21;
@@ -252,7 +256,7 @@
             this.label_FechaNacimiento.AutoSize = true;
             this.label_FechaNacimiento.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_FechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_FechaNacimiento.Location = new System.Drawing.Point(10, 222);
+            this.label_FechaNacimiento.Location = new System.Drawing.Point(10, 242);
             this.label_FechaNacimiento.Name = "label_FechaNacimiento";
             this.label_FechaNacimiento.Size = new System.Drawing.Size(106, 13);
             this.label_FechaNacimiento.TabIndex = 9;
@@ -391,7 +395,7 @@
             // 
             this.radioButton_UsuarioNuevo.AutoSize = true;
             this.radioButton_UsuarioNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton_UsuarioNuevo.Location = new System.Drawing.Point(132, 263);
+            this.radioButton_UsuarioNuevo.Location = new System.Drawing.Point(132, 278);
             this.radioButton_UsuarioNuevo.Name = "radioButton_UsuarioNuevo";
             this.radioButton_UsuarioNuevo.Size = new System.Drawing.Size(94, 17);
             this.radioButton_UsuarioNuevo.TabIndex = 22;
@@ -404,7 +408,7 @@
             // 
             this.radioButton_UsuarioExistente.AutoSize = true;
             this.radioButton_UsuarioExistente.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButton_UsuarioExistente.Location = new System.Drawing.Point(232, 264);
+            this.radioButton_UsuarioExistente.Location = new System.Drawing.Point(232, 279);
             this.radioButton_UsuarioExistente.Name = "radioButton_UsuarioExistente";
             this.radioButton_UsuarioExistente.Size = new System.Drawing.Size(106, 17);
             this.radioButton_UsuarioExistente.TabIndex = 23;
@@ -429,7 +433,7 @@
             this.label_CrearComo.AutoSize = true;
             this.label_CrearComo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_CrearComo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_CrearComo.Location = new System.Drawing.Point(62, 265);
+            this.label_CrearComo.Location = new System.Drawing.Point(62, 280);
             this.label_CrearComo.Name = "label_CrearComo";
             this.label_CrearComo.Size = new System.Drawing.Size(64, 13);
             this.label_CrearComo.TabIndex = 25;
@@ -488,6 +492,25 @@
             this.label_Username.Size = new System.Drawing.Size(55, 13);
             this.label_Username.TabIndex = 27;
             this.label_Username.Text = "Username";
+            // 
+            // textBox_Cuil
+            // 
+            this.textBox_Cuil.Location = new System.Drawing.Point(120, 217);
+            this.textBox_Cuil.MaxLength = 50;
+            this.textBox_Cuil.Name = "textBox_Cuil";
+            this.textBox_Cuil.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Cuil.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(90, 220);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Cuil";
             // 
             // Alta
             // 
@@ -557,5 +580,7 @@
         private System.Windows.Forms.Label label_IdUsuario;
         private System.Windows.Forms.Label label_Username;
         private System.Windows.Forms.Label label_CrearComo;
+        private System.Windows.Forms.TextBox textBox_Cuil;
+        private System.Windows.Forms.Label label1;
     }
 }

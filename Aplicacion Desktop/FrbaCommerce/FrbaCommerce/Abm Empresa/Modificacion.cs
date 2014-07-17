@@ -65,25 +65,72 @@ namespace FrbaCommerce.Abm_Empresa
             String pMail = textBox_Mail.Text;
             String pFecha = dateTimePicker_FechaNacimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
-            //int pTelefonoConvertido = Convert.ToInt32(telefono);
+            Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
+            bool cuitOriginal = false;
+            bool telefonoOriginal = false;
+            bool razonSocialOrigianal = false;
 
+            //Veo que el cuil, el telefono y el tipo y numero de documento sean unicos
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand comprobarCuit = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_cuit = '{0}' and emp_id <> '{1}'", pCuit,idSeleccionado), Conexion);
+
+                SqlDataReader reader = comprobarCuit.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    cuitOriginal = false;
+                }
+                else
+                {
+                    cuitOriginal = true;
+                }
+                reader.Close();
+
+                SqlCommand comprobarTelefono = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_telefono = '{0}' and emp_id <> '{1}'", pTelefonoConvertido,idSeleccionado), Conexion);
+
+                SqlDataReader reader2 = comprobarTelefono.ExecuteReader();
+                if (reader2.HasRows)
+                {
+                    telefonoOriginal = false;
+                }
+                else
+                {
+                    telefonoOriginal = true;
+                }
+                reader2.Close();
+
+                SqlCommand comprobarRazonSocial = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_razon_social = '{0}' and emp_id <> '{1}'", pRazonSocial,idSeleccionado), Conexion);
+
+                SqlDataReader reader3 = comprobarRazonSocial.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    razonSocialOrigianal = false;
+                }
+                else
+                {
+                    razonSocialOrigianal = true;
+                }
+                reader3.Close();
+
+
+            }
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarTipos = this.comprobarTipos(pTelefono);
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pRazonSocial, pCuit, pNombreContacto, pTelefono, pDireccion, pCodigoPostal, pMail);
             const string resumen = "";
 
-            if (comprobarTipos && comprobarDatosCompletos)
+            if (comprobarTipos && comprobarDatosCompletos && cuitOriginal && razonSocialOrigianal && telefonoOriginal)
             {
-                Int64 pTelefonoConvertido = Convert.ToInt64(pTelefono);
 
                 //inserto los datos en la DB
-                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
-                using (Conexion)
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion2)
                 {
 
                     SqlCommand InsertarCliente = new SqlCommand(string.Format("UPDATE LOS_JUS.EMPRESA SET emp_id ='{0}',emp_razon_social ='{1}',emp_cuit='{2}',emp_contacto='{3}',emp_fecha_creacion='{4}',emp_mail='{5}',emp_telefono='{6}',emp_direccion='{7}',emp_cod_postal='{8}' WHERE emp_id = '{9}'",
-                    idSeleccionado,pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal, idSeleccionado), Conexion);
+                    idSeleccionado,pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal, idSeleccionado), Conexion2);
                     int resultado = InsertarCliente.ExecuteNonQuery();
                 }
 
@@ -111,11 +158,32 @@ namespace FrbaCommerce.Abm_Empresa
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
+                if (comprobarTipos == false)
                 {
                     const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (cuitOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un Cuit que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (telefonoOriginal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado un telefono que ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (razonSocialOrigianal == false)
+                {
+                    const string mensaje_Rechazo = "Ha ingresado una Razon Social ya se encuentra en la base de datos.\nLos datos no pudieron ser guardados.";
+
+                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
 
 
