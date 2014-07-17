@@ -212,7 +212,7 @@ namespace FrbaCommerce.Abm_Cliente
             
 
 
-    //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
+     //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarTipos = this.comprobarTipos(pTelefono,pDocumento);
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pApellido, pTipo, pDocumento, pTelefono, pDireccion, pCodigoPostal, pMail, pUsuario,pUsername,pIdUsuario);
             const string resumen = "";

@@ -115,6 +115,7 @@
             this.textBox_RolAsignado.Name = "textBox_RolAsignado";
             this.textBox_RolAsignado.Size = new System.Drawing.Size(147, 20);
             this.textBox_RolAsignado.TabIndex = 16;
+            this.textBox_RolAsignado.TextChanged += new System.EventHandler(this.textBox_RolAsignado_TextChanged);
             this.textBox_RolAsignado.MouseLeave += new System.EventHandler(this.textBox_RolAsignado_MouseLeave);
             this.textBox_RolAsignado.MouseEnter += new System.EventHandler(this.textBox_RolAsignado_MouseEnter);
             // 
@@ -156,7 +157,7 @@
             // 
             // textBox_Password
             // 
-            this.textBox_Password.Location = new System.Drawing.Point(91, 77);
+            this.textBox_Password.Location = new System.Drawing.Point(91, 80);
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(232, 20);
             this.textBox_Password.TabIndex = 14;

@@ -206,5 +206,10 @@ namespace FrbaCommerce.Registro_de_Usuario
           
         }
 
+        private void textBox_RolAsignado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
