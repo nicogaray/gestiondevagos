@@ -100,9 +100,10 @@ namespace FrbaCommerce.Abm_Visibilidad
                         pColumna4 = 0;
                     }
 
-                    dataGridView2.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna4, pColumna3);
+                    dataGridView1.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna4, pColumna3);
 
                 }
+                textBox_Nombre.Clear();
 
 
             }
@@ -112,31 +113,31 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
              if (e.ColumnIndex == 5)
             {
-                if (dataGridView2.RowCount != 0)
+                if (dataGridView1.RowCount != 0)
                 {
                     int i = e.RowIndex;
 
-                    string precio = dataGridView2[4, i].Value.ToString();
+                    string precio = dataGridView1[4, i].Value.ToString();
 
                     string[] parts1 = precio.Split(','); 
                     string precioEntero = int.Parse(parts1[0]).ToString();
                     string precioDecimal = int.Parse(parts1[1]).ToString();
 
-                    string porcentaje = dataGridView2[3, i].Value.ToString();
+                    string porcentaje = dataGridView1[3, i].Value.ToString();
                     string[] parts2 = porcentaje.Split(',');
                     string porcentajeEntero = parts2[0];
                     string porcentajeDecimal = parts2[1];
                     
                     Abm_Visibilidad.Baja modificacion = new Abm_Visibilidad.Baja();
-                    modificacion.nombreSeleccionado = dataGridView2[1, i].Value.ToString();
-                    modificacion.codigoVisualizacionSeleccionada = dataGridView2[0, i].Value.ToString();
+                    modificacion.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
+                    modificacion.codigoVisualizacionSeleccionada = dataGridView1[0, i].Value.ToString();
                     modificacion.precioSeleccionado = precioEntero;
                     modificacion.porcentajeSeleccionado = porcentajeEntero;
                     modificacion.decimalPrecioSeleccionado = precioDecimal;
                     modificacion.decimalPorcentajeSeleccionado = porcentajeDecimal;
                     modificacion.Show();
 
-                    dataGridView2.Rows.Clear();
+                    dataGridView1.Rows.Clear();
 
                 }
             }
@@ -144,7 +145,36 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 5)
+            {
+                if (dataGridView1.RowCount != 0)
+                {
+                    int i = e.RowIndex;
 
+                    string precio = dataGridView1[4, i].Value.ToString();
+
+                    string[] parts1 = precio.Split(',');
+                    string precioEntero = int.Parse(parts1[0]).ToString();
+                    string precioDecimal = int.Parse(parts1[1]).ToString();
+
+                    string porcentaje = dataGridView1[3, i].Value.ToString();
+                    string[] parts2 = porcentaje.Split(',');
+                    string porcentajeEntero = parts2[0];
+                    string porcentajeDecimal = parts2[1];
+
+                    Abm_Visibilidad.Baja modificacion = new Abm_Visibilidad.Baja();
+                    modificacion.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
+                    modificacion.codigoVisualizacionSeleccionada = dataGridView1[0, i].Value.ToString();
+                    modificacion.precioSeleccionado = precioEntero;
+                    modificacion.porcentajeSeleccionado = porcentajeEntero;
+                    modificacion.decimalPrecioSeleccionado = precioDecimal;
+                    modificacion.decimalPorcentajeSeleccionado = porcentajeDecimal;
+                    modificacion.Show();
+
+                    dataGridView1.Rows.Clear();
+
+                }
+            }
         }
         }
     }
