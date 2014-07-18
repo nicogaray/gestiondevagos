@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
@@ -44,6 +45,8 @@ namespace FrbaCommerce.Comprar_Ofertar
            String oferta = textBox_Oferta.Text;
            decimal ofertaConvertida=0;
             decimal valorConvertido=0;
+            String fecha = DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss");
+
 
 
             if (oferta.All(char.IsDigit) && oferta != "")
@@ -54,6 +57,26 @@ namespace FrbaCommerce.Comprar_Ofertar
 
            if (oferta.All(char.IsDigit) && oferta != "" && ofertaConvertida >= valorConvertido)
            {
+
+               //CORREGIR INSERSIONES
+               SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+               using (Conexion)
+               {
+
+                   //FALTA INGRESAR EL ID DE CLIENTE DE LA SESION
+                   string sql = string.Format("Insert into LOS_JUS.operacion(OPE_PUBLICACION,OPE_TIPO,OPE_CLIENTE,OPE_OFERTA,OPE_CANTIDAD,OPE_FECHA) values({0},'{1}',{2},{3},null,'{4}')"
+                                                                               , codigoPublicacionSeleccionada, 'C', 2, oferta, fecha);
+                   SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
+
+                   int retorno = InsertarRol.ExecuteNonQuery();
+
+                   string sql2 = string.Format("Update LOS_JUS.compra set com_stock = '{0}' where com_publicacion = '{1}'"
+                                                           , stockFinal, codigoPublicacionSeleccionada);
+                   SqlCommand UpdateStock = new SqlCommand(sql2, Conexion);
+                   int retorno2 = UpdateStock.ExecuteNonQuery();
+
+
+               }
 
 
 
