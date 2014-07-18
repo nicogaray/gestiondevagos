@@ -50,7 +50,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             textBox1.Clear();
 
             textBox_montoTotal.Enabled = false;
-            textBox_comisiones.Enabled = true;
+            textBox_comisiones.Enabled = false;
 
             dataGridView1.Rows.Clear();
 
@@ -296,7 +296,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             {
                 //inicializo variables con los datos seleccionados
 
-                String pFormaDePago = null;
+                String pFormaDePago = "";
                 if (radioButton_Efectivo.Checked)
                 {
                     pFormaDePago = "Efectivo";
@@ -305,6 +305,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 {
                     pFormaDePago = "Tarjeta";
                 }
+              
 
                 String pNombreTarjeta = null;
 
@@ -361,8 +362,10 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                 bool comprobarDatosCompletos = this.comprobarDatosCompletos(pFormaDePago, pNumeroDeTarjeta, pNombreTarjeta, pNombreTitular, pCodigoSeguridad);
                 const string resumen = "";
+                String filasTabla =  dataGridView1.Rows.Count.ToString();
+                Int32 cantidadFilas = Convert.ToInt32(filasTabla);
 
-                if (comprobarDatosCompletos)
+                if (comprobarDatosCompletos && cantidadFilas > 0)
                 {
                     SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.FaCturacion(FAC_NUMERO,fac_forma_pago,FAC_NOMBRE_TARJETA,FAC_NUMERO_TARJETA,FAC_TITULAR_TARJETA,FAC_CODIGO_TARJETA,fac_total,fac_fecha) Values ({0},'{1}','{2}','{3}','{4}','{5}',{6},'{7}')",
                                                                                                         pNumeroFactura, pFormaDePago, pNombreTarjeta, pNumeroDeTarjeta, pNombreTitular, pCodigoSeguridad, pMontoFINALFINAL, pFecha), Conexion);
@@ -380,7 +383,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
     //FAC_CODIGO_TARJETA VARCHAR (10) DEFAULT '',
     //FAC_TOTAL numeric(18,2),
     //FAC_FECHA datetime,
-
+                    
 
 
                     foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -430,6 +433,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
                         const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
 
                         MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+
+                        MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
                 }
             }
