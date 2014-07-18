@@ -650,7 +650,7 @@ CREATE TABLE LOS_JUS.SUBASTA (
  
 GO
 
----------TRIGGER ELIMINAR VISUALIZACION
+---------TRIGGER ELIMINAR VISUALIZACION ------
 
 IF EXISTS 
 (SELECT * FROM sys.objects 
@@ -671,12 +671,69 @@ BEGIN
 	if (@estado=1)
 	BEGIN	
 	update LOS_JUS.PUBLICACION set pub_ELIMINADO =1 where PUB_CODIGO IN
-	(SELECT p.PUB_CODIGO FROM LOS_JUS.PUBLICACION p
+	(SELECT PUB_CODIGO FROM LOS_JUS.PUBLICACION p
 		JOIN LOS_JUS.PUBLICACIONxVISUALIZACION pv on pv.pubvis_publicacion=p.pub_codigo
 		WHERE pv.pubvis_visualizacion=@codigo)
 	END
 END
 GO
+
+------- TRIGGER PUBLICACIONES AUMENTAR GRATIS ----------
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Pub_Gratis]'))
+DROP TRIGGER LOS_JUS.TRG_Pub_Gratis
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Pub_Gratis ON LOS_JUS.publicacionxvisualizacion
+AFTER insert
+AS 
+declare
+@empresa integer,
+@codigo integer,
+@estado integer
+BEGIN
+	select @codigo=pubvis_publicacion,@estado=pubvis_visualizacion from inserted
+	if (@estado=10002)		
+	BEGIN	
+	select @empresa=p.pub_empresa from LOS_JUS.publicacion p
+	where p.pub_codigo=@codigo
+	
+	update LOS_JUS.EMPRESA set emp_publicidades_gratis = emp_publicidades_gratis + 1  where emp_id=@empresa
+	END
+END
+GO
+
+
+--------- TRIGGER PUBLICACIONES DISMINURI GRATIS-------------
+
+
+
+CREATE TRIGGER TRG_DescuentaPubli_Gratis ON LOS_JUS.publicacion
+FOR UPDATE
+AS 
+declare
+@empresa integer,
+@codigo integer,
+@estado integer,
+@visualizacion integer
+if update(pub_eliminado)
+BEGIN
+	select @codigo=pub_codigo,@estado=pub_eliminado, @empresa=pub_empresa from inserted
+	if (@estado=1)
+	BEGIN
+	select @visualizacion= pv.pubvis_visualizacion from LOS_JUS.publicacionxvisualizacion pv
+	where pv.pubvis_publicacion = @codigo
+	
+	if @visualizacion=10002
+	BEGIN		
+	update LOS_JUS.EMPRESA set emp_publicidades_gratis = emp_publicidades_gratis -1  where emp_id=@empresa
+	END
+	END
+END
+GO
+
 
  
 -------- INSERTS ROLES ------------
