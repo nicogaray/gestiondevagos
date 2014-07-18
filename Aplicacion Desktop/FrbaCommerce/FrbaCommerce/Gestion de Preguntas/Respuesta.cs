@@ -54,7 +54,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             String pRespuesta = textBox_Respuesta.Text;
-            String pFecha = textBox_Fecha.Text;
+            String pFecha = DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss");
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pRespuesta);

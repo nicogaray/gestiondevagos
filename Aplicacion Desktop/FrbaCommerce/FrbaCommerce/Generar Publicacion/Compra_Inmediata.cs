@@ -151,11 +151,11 @@ namespace FrbaCommerce.Generar_Publicacion
                        Decimal pPublicacionCodigo = -1;
 
                          
-                                SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", 
-                                                                                35,pDescripcion,pPrecioConvertido,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
+                                SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}',{2},'{3}','{4}','{5}','{6}')", 
+                                                                                39,pDescripcion,pPrecioConvertido,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
                                 int retorno = InsertarPublicacion.ExecuteNonQuery();
 
-                                SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT top 1 pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);
+                                SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);
 
                                 SqlDataReader reader = ObtenerPublicacionCodigo.ExecuteReader();
                                 while (reader.Read())
@@ -168,12 +168,12 @@ namespace FrbaCommerce.Generar_Publicacion
 
 
 
-                                SqlCommand InsertarCompra = new SqlCommand(string.Format("INSERT INTO LOS_JUS.COMPRA(COM_CODIGO,COM_PUBLICACION,COM_STOCK) Values ('{0}','{1}','{2}')", 
+                                SqlCommand InsertarCompra = new SqlCommand(string.Format("INSERT INTO LOS_JUS.COMPRA(COM_CODIGO,COM_PUBLICACION,COM_STOCK) Values ({0},{1},{2})", 
                                                                                 pPublicacionCodigo,pPublicacionCodigo,pCantidadConvertida), Conexion);
                                 int retorno2 = InsertarCompra.ExecuteNonQuery();
 
 
-                                SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION(PUBVIS_PUBLICACION,PUBVIS_VISUALIZACION) Values ('{0}','{1}')", 
+                                SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.PUBLICACIONxVISUALIZACION(PUBVIS_PUBLICACION,PUBVIS_VISUALIZACION) Values ({0},{1})", 
                                                                                 pPublicacionCodigo,pVisibilidadCodigo), Conexion);
                                 int retorno3 = InsertarVisualizacionXPublicacion.ExecuteNonQuery();
                         
@@ -199,7 +199,7 @@ namespace FrbaCommerce.Generar_Publicacion
                                         reader2.Close();
 
                                     
-                                    SqlCommand InsertarRubro = new SqlCommand(string.Format("INSERT INTO LOS_JUS.RUBROxPUBLICACION(RUBPUB_RUBRO,RUBPUB_PUBLICACION) Values ('{0}','{1}')", 
+                                    SqlCommand InsertarRubro = new SqlCommand(string.Format("INSERT INTO LOS_JUS.RUBROxPUBLICACION(RUBPUB_RUBRO,RUBPUB_PUBLICACION) Values ({0},{1})", 
                                                                                 pRubroCodigo,pPublicacionCodigo), Conexion);
                                     retorno4 = InsertarRubro.ExecuteNonQuery();
 

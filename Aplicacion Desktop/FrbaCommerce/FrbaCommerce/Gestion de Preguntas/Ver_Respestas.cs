@@ -33,7 +33,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                 //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 52165955
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT pre_fecha_RESPUESTA,pre_pregunta,pre_respuesta From LOS_JUS.verRespuestas('{0}')",
-                                                                  52165955), Conexion);
+                                                                  2), Conexion);
 
 
 

@@ -50,7 +50,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                 //IMPORTANTE: FALTA OBTENER EL ID DE LA EMPRESA DE LA SESION, USO EJEMPLO DE PRUEBA: 1
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT PRE_CODIGO,PRE_PUBLICACION, PRE_CLIENTE, PRE_PREGUNTA From LOS_JUS.buscarPreguntasSinResponder('{0}')",
-                                                                  29), Conexion);
+                                                                  39), Conexion);
 
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -70,7 +70,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                     Int32 pColumna0 = reader.GetInt32(0);//PRE_CODIGO
                     Decimal pColumna1 = reader.GetDecimal(1);//PRE_PUBLICACION
                     Int32 pColumna2 = reader.GetInt32(2);//PRE_CLIENTE
-                    Int32 pColumna3 = reader.GetInt32(3);//PRE_PREGUNTA
+                    String pColumna3 = reader.GetString(3);//PRE_PREGUNTA
 
 
                     dataGridView1.Rows.Add(pColumna0, pColumna1,pColumna2,pColumna3);
@@ -84,7 +84,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2)
+            if (e.ColumnIndex == 4)
             {
                 if (dataGridView1.RowCount != 0)
                 {
