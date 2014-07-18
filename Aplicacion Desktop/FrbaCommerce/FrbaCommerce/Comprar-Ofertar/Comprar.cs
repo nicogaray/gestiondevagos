@@ -172,8 +172,39 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 0)
+            {
+                if (dataGridView1.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+                    using (var ofertar = new Comprar_Ofertar.HacerCompra())
+                    {
+                        ofertar.stockDisponibleSeleccionado = dataGridView1[12, i].Value.ToString();
+                        ofertar.codigoPublicacionSeleccionada = dataGridView1[1, i].Value.ToString();
+                        ofertar.valorInicialSeleccionado =dataGridView1[4, i].Value.ToString();
+                        ofertar.habilitacionPreguntas = dataGridView1[8, i].Value.ToString();
+                        ofertar.idEmpresaSeleccionado = dataGridView1[2, i].Value.ToString();
+                        var result = ofertar.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
 
+                            ofertar.Show();
+                            bool val = ofertar.ReturnId;
+                            if (val)
+                            {
+                                dataGridView1.Rows.RemoveAt(i);
+                            }
+                            else
+                            {
+                            }
+                        }
+                    }
+
+
+                }
+            }
         }
+        
 
     }
 }

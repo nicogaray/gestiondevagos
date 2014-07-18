@@ -231,6 +231,12 @@
     <Compile Include="Calificar Vendedor\Calificacion.Designer.cs">
       <DependentUpon>Calificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\HacerCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\HacerCompra.Designer.cs">
+      <DependentUpon>HacerCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\HacerOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,6 +475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calificar Vendedor\ListaOperacionesSeleccion.resx">
       <DependentUpon>ListaOperacionesSeleccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\HacerCompra.resx">
+      <DependentUpon>HacerCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\HacerOferta.resx">
       <DependentUpon>HacerOferta.cs</DependentUpon>
