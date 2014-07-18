@@ -32,7 +32,7 @@ namespace FrbaCommerce.Abm_Rol
             InitializeComponent();
         }
 
-          private void button_Limpiar_Click(object sender, EventArgs e)
+        private void button_Limpiar_Click(object sender, EventArgs e)
         {
             textBox_Nombre.Clear();
             dataGridView_ListaFuncionalidades.Rows.Clear();
@@ -42,7 +42,7 @@ namespace FrbaCommerce.Abm_Rol
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)
         {
             label_Informacion.Text = "Especifique el rol";
-                    }
+        }
 
         private void button_Guardar_MouseEnter(object sender, EventArgs e)
         {
@@ -151,7 +151,7 @@ namespace FrbaCommerce.Abm_Rol
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
+
 
         }
 
@@ -190,10 +190,10 @@ namespace FrbaCommerce.Abm_Rol
                     String pColumna1 = reader.GetString(1);
 
 
-                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0,pColumna1);
+                    dataGridView_ListaFuncionalidades.Rows.Add(pColumna0, pColumna1);
                 }
-                
-                
+
+
             }
         }
 
@@ -229,8 +229,8 @@ namespace FrbaCommerce.Abm_Rol
 
         private void button_Agregar_Click(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void dataGridView_ListaFuncionalidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -249,30 +249,40 @@ namespace FrbaCommerce.Abm_Rol
                             form.descripcionSeleccionada = dataGridView_ListaFuncionalidades[1, i].Value.ToString();
                         }
 
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        bool val = form.ReturnId;
-                        string funcionalidad = form.ReturnFunc;
-                        string descripcion = form.ReturnDesc;
-
-                        if (val)
+                        var result = form.ShowDialog();
+                        if (result == DialogResult.OK)
                         {
-                            dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
-                        }
-                        if (val != true)
-                        {
-                            dataGridView_ListaFuncionalidades[0,i].Value = funcionalidad;
-                            dataGridView_ListaFuncionalidades[1,i].Value = descripcion;
-                            //dataGridView_ListaFuncionalidades.Refresh();
+                            bool val = form.ReturnId;
+                            string funcionalidad = form.ReturnFunc;
+                            string descripcion = form.ReturnDesc;
 
+                            if (val)
+                            {
+                                dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+                            }
+                            if (val != true)
+                            {
+                                dataGridView_ListaFuncionalidades[0, i].Value = funcionalidad;
+                                dataGridView_ListaFuncionalidades[1, i].Value = descripcion;
+                                //dataGridView_ListaFuncionalidades.Refresh();
+
+                            }
                         }
                     }
-                }
-            
+
                     //dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
                 }
-               
+
+            }
+
+            if (e.ColumnIndex == 3)
+            {
+                if (dataGridView_ListaFuncionalidades.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+                    dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+                }
+
             }
         }
     }

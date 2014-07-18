@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_InfTexto = new System.Windows.Forms.Label();
             this.label_Informacion = new System.Windows.Forms.Label();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
+            this.label_ListadoFuncionalidades = new System.Windows.Forms.Label();
             this.dataGridView_ListaFuncionalidades = new System.Windows.Forms.DataGridView();
             this.label_Nombre = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
@@ -43,7 +44,7 @@
             this.Funcionalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label_ListadoFuncionalidades = new System.Windows.Forms.Label();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.paner_Alta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ListaFuncionalidades)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +83,17 @@
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Rol";
             // 
+            // label_ListadoFuncionalidades
+            // 
+            this.label_ListadoFuncionalidades.AutoSize = true;
+            this.label_ListadoFuncionalidades.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_ListadoFuncionalidades.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_ListadoFuncionalidades.Location = new System.Drawing.Point(53, 50);
+            this.label_ListadoFuncionalidades.Name = "label_ListadoFuncionalidades";
+            this.label_ListadoFuncionalidades.Size = new System.Drawing.Size(133, 13);
+            this.label_ListadoFuncionalidades.TabIndex = 4;
+            this.label_ListadoFuncionalidades.Text = "Listado de funcionalidades";
+            // 
             // dataGridView_ListaFuncionalidades
             // 
             this.dataGridView_ListaFuncionalidades.AllowUserToAddRows = false;
@@ -91,7 +103,8 @@
             this.dataGridView_ListaFuncionalidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Funcionalidad,
             this.Descripcion,
-            this.Modificar});
+            this.Modificar,
+            this.Eliminar});
             this.dataGridView_ListaFuncionalidades.GridColor = System.Drawing.SystemColors.ControlText;
             this.dataGridView_ListaFuncionalidades.Location = new System.Drawing.Point(6, 74);
             this.dataGridView_ListaFuncionalidades.Name = "dataGridView_ListaFuncionalidades";
@@ -166,8 +179,8 @@
             // Funcionalidad
             // 
             this.Funcionalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.Funcionalidad.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.Funcionalidad.DefaultCellStyle = dataGridViewCellStyle1;
             this.Funcionalidad.HeaderText = "Funcionalidad";
             this.Funcionalidad.Name = "Funcionalidad";
             this.Funcionalidad.ReadOnly = true;
@@ -175,18 +188,18 @@
             // Descripcion
             // 
             this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Descripcion.DefaultCellStyle = dataGridViewCellStyle2;
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
             // 
             // Modificar
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.NullValue = "Eliminar Fila";
-            this.Modificar.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "Eliminar Fila";
+            this.Modificar.DefaultCellStyle = dataGridViewCellStyle3;
             this.Modificar.HeaderText = "Modificar";
             this.Modificar.Name = "Modificar";
             this.Modificar.ReadOnly = true;
@@ -195,16 +208,13 @@
             this.Modificar.Text = "Modificar";
             this.Modificar.UseColumnTextForButtonValue = true;
             // 
-            // label_ListadoFuncionalidades
+            // Eliminar
             // 
-            this.label_ListadoFuncionalidades.AutoSize = true;
-            this.label_ListadoFuncionalidades.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_ListadoFuncionalidades.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_ListadoFuncionalidades.Location = new System.Drawing.Point(53, 50);
-            this.label_ListadoFuncionalidades.Name = "label_ListadoFuncionalidades";
-            this.label_ListadoFuncionalidades.Size = new System.Drawing.Size(133, 13);
-            this.label_ListadoFuncionalidades.TabIndex = 4;
-            this.label_ListadoFuncionalidades.Text = "Listado de funcionalidades";
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseColumnTextForButtonValue = true;
             // 
             // Modificacion
             // 
@@ -245,9 +255,10 @@
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.Label label_ListadoFuncionalidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn Funcionalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewButtonColumn Modificar;
-        private System.Windows.Forms.Label label_ListadoFuncionalidades;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

@@ -182,6 +182,7 @@ namespace FrbaCommerce.ABM_Rol
                 {
                     int i = e.RowIndex;
                     dataGridView_ListaFuncionalidades.Rows.RemoveAt(i);
+
                 }
 
             }
