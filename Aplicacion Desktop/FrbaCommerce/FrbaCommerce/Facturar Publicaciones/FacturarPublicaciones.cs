@@ -77,6 +77,10 @@ namespace FrbaCommerce.Facturar_Publicaciones
             DateTime hoy = DateTime.Now;
             textBox_fecha.Enabled = false;
             textBox_fecha.Text = Convert.ToString(hoy);
+            textBox_montoTotal.Enabled = false;
+            textBox_Numero.Enabled = false;
+            textBox_comisiones.Enabled = false;
+            textBox1.Enabled = false;
 
 
             
@@ -111,6 +115,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private void button_Aceptar_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
+
             String pCantidad = textBox_cantidadARendir.Text;
             Int32 pCantidadConvertida = Convert.ToInt32(pCantidad);
 
@@ -150,14 +156,35 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                     SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
                     int contar = 0;
-                    while (reader.Read() && contar <= pCantidadConvertida)
+                    while (reader.Read() && contar < pCantidadConvertida)
                     {
                         Int32 pColumna0 = reader.GetInt32(0);//ope_codigo
                         Decimal pColumna1 = reader.GetDecimal(1);//ope_publicacion
                         String pColumna2 = reader.GetString(2);//pub_descripcion
                         String pColumna3 = reader.GetString(3);//ope_tipo
-                        Decimal pColumna4 = reader.GetDecimal(4);//ope_oferta
-                        Decimal pColumna5 = reader.GetDecimal(5);//ope_cantidad
+
+                        Decimal pColumna4; 
+
+                        if (reader.IsDBNull(4) == false)
+                        {
+                            pColumna4 = reader.GetDecimal(4);//ope_oferta
+                        }
+                        else
+                        {
+                            pColumna4 = decimal.Zero;
+                        }
+
+                        Decimal pColumna5;
+
+                        if (reader.IsDBNull(5) == false)
+                        {
+                            pColumna5 = reader.GetDecimal(5);//ope_cantidad
+                        }
+                        else
+                        {
+                            pColumna5 = decimal.Zero;
+                        }
+
                         DateTime pColumna6 = reader.GetDateTime(6);//ope_fecha
                         
                         contar++;
@@ -165,58 +192,70 @@ namespace FrbaCommerce.Facturar_Publicaciones
                         //calculo monto total como la suma de los precios de las publicaciones individuales si es COMPRA
                         if (pColumna3 == "C")
                         {
-                            SqlCommand ObtenerMontoDelItem = new SqlCommand(string.Format("SELECT pub_precio FROM LOS_JUS.publicacion where pub_codigo='{0}'", pColumna1), Conexion2);
-
-                            SqlDataReader reader2 = ObtenerMontoDelItem.ExecuteReader();
-                            while (reader2.Read())
+                            SqlConnection Conexion3 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                            using (Conexion3)
                             {
-                                precioPublicacion = (reader2.GetDecimal(0)) * pColumna4;
+                                SqlCommand ObtenerMontoDelItem = new SqlCommand(string.Format("SELECT pub_precio FROM LOS_JUS.publicacion where pub_codigo='{0}'", pColumna1), Conexion3);
+
+                                SqlDataReader reader3 = ObtenerMontoDelItem.ExecuteReader();
+                                while (reader3.Read())
+                                {
+                                    precioPublicacion = (reader3.GetDecimal(0)) * pColumna4;
+                                }
+                                reader3.Close();
+
+                                pMontoTotal = pMontoTotal + precioPublicacion;
                             }
-                            reader2.Close();
-
-                            pMontoTotal = pMontoTotal + precioPublicacion;
-
                         }
                         if (pColumna3 == "S")
                         {
-
-                            SqlCommand ObtenerMontoDelItem = new SqlCommand(string.Format("SELECT ope_oferta FROM LOS_JUS.operacion where ope_codigo='{0}'", pColumna0), Conexion2);
-
-                            SqlDataReader reader2 = ObtenerMontoDelItem.ExecuteReader();
-                            while (reader2.Read())
+                            SqlConnection Conexion4 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                            using (Conexion4)
                             {
-                                precioPublicacion = reader2.GetDecimal(0);
+                                SqlCommand ObtenerMontoDelItem = new SqlCommand(string.Format("SELECT ope_oferta FROM LOS_JUS.operacion where ope_codigo='{0}'", pColumna0), Conexion4);
+
+                                SqlDataReader reader2 = ObtenerMontoDelItem.ExecuteReader();
+                                while (reader2.Read())
+                                {
+                                    precioPublicacion = reader2.GetDecimal(0);
+                                }
+                                reader2.Close();
+
+                                pMontoTotal = pMontoTotal + precioPublicacion;
                             }
-                            reader2.Close();
-
-                            pMontoTotal = pMontoTotal + precioPublicacion;
                         }
 
-                        reader.Close();
-
-                        SqlCommand ObtenerComision = new SqlCommand(string.Format("SELECT vis_precio,vis_porcentaje FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion join los_jus.PUBLICACION on pub_codigo=pubvis_publicacion where pub_codigo='{0}'", pColumna1), Conexion2);
-
-                        SqlDataReader reader3 = ObtenerComision.ExecuteReader();
-                        while (reader3.Read())
+                        //reader.Close();
+                        SqlConnection Conexion5 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                        using (Conexion5)
                         {
-                            comisionPrecio = reader3.GetDecimal(0);
-                            comisionPorcentaje = reader3.GetDecimal(1);
+                            SqlCommand ObtenerComision = new SqlCommand(string.Format("SELECT vis_precio,vis_porcentaje FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion join los_jus.PUBLICACION on pub_codigo=pubvis_publicacion where pub_codigo='{0}'", pColumna1), Conexion5);
+
+                            SqlDataReader reader8 = ObtenerComision.ExecuteReader();
+                            while (reader8.Read())
+                            {
+                                comisionPrecio = reader8.GetDecimal(0);
+                                comisionPorcentaje = reader8.GetDecimal(1);
+                            }
+
+                            reader8.Close();
                         }
 
-                        reader3.Close();
-
-                        //obtengo el numero de factura
-                        SqlCommand ObtenerNumeroFactura = new SqlCommand(string.Format("SELECT (top 1) fac_codigo FROM LOS_JUS.facturacion ORDER BY fac_codigo desc"), Conexion2);
-
-                        SqlDataReader reader4 = ObtenerNumeroFactura.ExecuteReader();
-                        while (reader4.Read())
+                        SqlConnection Conexion6 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                        using (Conexion6)
                         {
-                            Decimal numeroAnterior = reader4.GetDecimal(0);
-                            numeroFactura = numeroAnterior + 1;
-                        }
+                            //obtengo el numero de factura
+                            SqlCommand ObtenerNumeroFactura = new SqlCommand(string.Format("SELECT top 1 fac_NUMERO FROM LOS_JUS.facturacion ORDER BY fac_NUMERO desc"), Conexion6);
 
-                        reader4.Close();
-                        
+                            SqlDataReader reader4 = ObtenerNumeroFactura.ExecuteReader();
+                            while (reader4.Read())
+                            {
+                                Decimal numeroAnterior = reader4.GetDecimal(0);
+                                numeroFactura = numeroAnterior + 1;
+                            }
+
+                            reader4.Close();
+                        }
                         porcentajeVenta = porcentajeVenta + (precioPublicacion * comisionPorcentaje);
 
                         //TODO: ANTES DE LLENAR LA COMISION TOTAL, CONSULTAR SI ES GRATIS (10 PUBLICACIONES DEL MISMO TIPO) CON FUNCION, LE MANDO ID_EMPRESA, ID_VISUALIZACION. si devuelve 0 cobras, si devuelve 1 es gratis.
@@ -285,19 +324,19 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 }
 
                 String pNumeroDeTarjeta = null;
-                if (textBox_numeroTarjeta.Text == "")
+                if (textBox_numeroTarjeta.Text != "")
                 {
                     pNumeroDeTarjeta = textBox_numeroTarjeta.Text;
                 }
 
                 String pNombreTitular = null;
-                if (textBox_NombreTitular.Text == "")
+                if (textBox_NombreTitular.Text != "")
                 {
                     pNombreTitular = textBox_NombreTitular.Text;
                 }
 
                 String pCodigoSeguridad = null;
-                if (textBox_CodigoSeguridad.Text == "")
+                if (textBox_CodigoSeguridad.Text != "")
                 {
                     pCodigoSeguridad = textBox_CodigoSeguridad.Text;
                 }
@@ -308,18 +347,16 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 String pMontoAPagar = null;
                 pMontoAPagar = textBox_montoTotal.Text;
 
+                String pMontoFINALFINAL = pMontoAPagar;
+
+                if (pMontoAPagar.Contains(','))
+                {
+                    pMontoFINALFINAL = pMontoAPagar.Replace(',', '.');
+                }
                 String pComisiones = null;
                 pComisiones = textBox_comisiones.Text;
 
-                String pFecha = textBox_fecha.Text;
-
-
-
-
-                //falta ver que hacer con fac_operacion
-                SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Faturacion(fac_codigo,fac_operacion,fac_forma_pago,FAC_NOMBRE_TARJETA,FAC_NUMERO_TARJETA,FAC_TITULAR_TARJETA,FAC_CODIGO_TARJETA,fac_fecha) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}'.'{7}')",
-                                                            pNumeroFactura, 11, pFormaDePago, pNombreTarjeta, pNumeroDeTarjeta, pNombreTitular, pCodigoSeguridad, pFecha), Conexion);
-                int retorno = InsertarRol.ExecuteNonQuery();
+                String pFecha = DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss");
 
 
                 bool comprobarDatosCompletos = this.comprobarDatosCompletos(pFormaDePago, pNumeroDeTarjeta, pNombreTarjeta, pNombreTitular, pCodigoSeguridad);
@@ -327,11 +364,23 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                 if (comprobarDatosCompletos)
                 {
+                    SqlCommand InsertarRol = new SqlCommand(string.Format("INSERT INTO LOS_JUS.FaCturacion(FAC_NUMERO,fac_forma_pago,FAC_NOMBRE_TARJETA,FAC_NUMERO_TARJETA,FAC_TITULAR_TARJETA,FAC_CODIGO_TARJETA,fac_total,fac_fecha) Values ({0},'{1}','{2}','{3}','{4}','{5}',{6},'{7}')",
+                                                                                                        pNumeroFactura, pFormaDePago, pNombreTarjeta, pNumeroDeTarjeta, pNombreTitular, pCodigoSeguridad, pMontoFINALFINAL, pFecha), Conexion);
+                    int retorno = InsertarRol.ExecuteNonQuery();
 
 
-                    SqlCommand InsertarItem = new SqlCommand("INSERT INTO LOS_JUS.item(ite_factura,ite_monto,ite_cantidad) Values (@codigoFactura,@monto,@cantidad)", Conexion);
 
-                    //SqlCommand InsertarFuncionalidadesXRol = new SqlCommand("INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES(ROLFUN_ROL,ROLFUN_FUNCIONALIDADES) Values (@nombre,@funcionalidad)", Conexion);
+                    SqlCommand InsertarItem = new SqlCommand("INSERT INTO LOS_JUS.item(ite_factura,ite_operacion,ite_monto,ite_cantidad) Values (@codigoFactura,@operacion,@monto,@cantidad)", Conexion);
+
+    //FAC_NUMERO numeric(18,0),
+    //FAC_FORMA_PAGO nvarchar(255),
+    //FAC_NOMBRE_TARJETA VARCHAR (10) DEFAULT '',
+    //FAC_NUMERO_TARJETA VARCHAR (20) DEFAULT '',
+    //FAC_TITULAR_TARJETA VARCHAR (50) DEFAULT '',
+    //FAC_CODIGO_TARJETA VARCHAR (10) DEFAULT '',
+    //FAC_TOTAL numeric(18,2),
+    //FAC_FECHA datetime,
+
 
 
                     foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -340,8 +389,9 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                         //InsertarFuncionalidadesXRol.Parameters.Clear();
                         InsertarItem.Parameters.AddWithValue("@codigoFactura", pNumeroFactura);
-                        InsertarItem.Parameters.AddWithValue("@monto", Convert.ToString(row.Cells["Precio"].Value));
-                        InsertarItem.Parameters.AddWithValue("@cantidad", Convert.ToString(row.Cells["OperacionCantidad"].Value));
+                        InsertarItem.Parameters.AddWithValue("@monto", Convert.ToDecimal(row.Cells["Precio"].Value));
+                        InsertarItem.Parameters.AddWithValue("@cantidad", Convert.ToDecimal(row.Cells["OperacionCantidad"].Value));
+                        InsertarItem.Parameters.AddWithValue("@operacion", Convert.ToDecimal(row.Cells["CodigoOperacion"].Value));
 
                         int resultado1 = InsertarItem.ExecuteNonQuery();
 

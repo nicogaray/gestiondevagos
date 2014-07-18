@@ -31,6 +31,15 @@
             this.button_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CodigoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OperacionOferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OperacionCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox_cantidadARendir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -60,15 +69,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_Numero = new System.Windows.Forms.TextBox();
-            this.CodigoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OperacionOferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OperacionCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -88,7 +88,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 41);
+            this.groupBox1.Location = new System.Drawing.Point(12, 72);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(615, 155);
             this.groupBox1.TabIndex = 1;
@@ -116,6 +116,69 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // CodigoOperacion
+            // 
+            this.CodigoOperacion.HeaderText = "Codigo de Operacion";
+            this.CodigoOperacion.Name = "CodigoOperacion";
+            this.CodigoOperacion.ReadOnly = true;
+            this.CodigoOperacion.Width = 132;
+            // 
+            // CodigoPublicacion
+            // 
+            this.CodigoPublicacion.HeaderText = "Codigo de Publicacion";
+            this.CodigoPublicacion.Name = "CodigoPublicacion";
+            this.CodigoPublicacion.ReadOnly = true;
+            this.CodigoPublicacion.Width = 138;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 88;
+            // 
+            // TipoOperacion
+            // 
+            this.TipoOperacion.HeaderText = "Tipo de Operacion";
+            this.TipoOperacion.Name = "TipoOperacion";
+            this.TipoOperacion.ReadOnly = true;
+            this.TipoOperacion.Width = 120;
+            // 
+            // OperacionOferta
+            // 
+            this.OperacionOferta.HeaderText = "Oferta hecha";
+            this.OperacionOferta.Name = "OperacionOferta";
+            this.OperacionOferta.ReadOnly = true;
+            this.OperacionOferta.Width = 94;
+            // 
+            // OperacionCantidad
+            // 
+            this.OperacionCantidad.HeaderText = "Cantidad";
+            this.OperacionCantidad.Name = "OperacionCantidad";
+            this.OperacionCantidad.ReadOnly = true;
+            this.OperacionCantidad.Width = 74;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 62;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 62;
+            // 
+            // Comision
+            // 
+            this.Comision.HeaderText = "Comision";
+            this.Comision.Name = "Comision";
+            this.Comision.ReadOnly = true;
+            this.Comision.Width = 74;
+            // 
             // textBox_cantidadARendir
             // 
             this.textBox_cantidadARendir.Location = new System.Drawing.Point(175, 15);
@@ -140,7 +203,7 @@
             this.groupBox2.Controls.Add(this.radioButton_Tarjeta);
             this.groupBox2.Controls.Add(this.radioButton_Efectivo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 207);
+            this.groupBox2.Location = new System.Drawing.Point(12, 233);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(453, 197);
             this.groupBox2.TabIndex = 4;
@@ -282,7 +345,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(492, 252);
+            this.label6.Location = new System.Drawing.Point(492, 278);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 4;
@@ -291,7 +354,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(516, 300);
+            this.label7.Location = new System.Drawing.Point(516, 326);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 5;
@@ -299,21 +362,21 @@
             // 
             // textBox_montoTotal
             // 
-            this.textBox_montoTotal.Location = new System.Drawing.Point(495, 268);
+            this.textBox_montoTotal.Location = new System.Drawing.Point(495, 294);
             this.textBox_montoTotal.Name = "textBox_montoTotal";
             this.textBox_montoTotal.Size = new System.Drawing.Size(100, 20);
             this.textBox_montoTotal.TabIndex = 6;
             // 
             // textBox_comisiones
             // 
-            this.textBox_comisiones.Location = new System.Drawing.Point(495, 316);
+            this.textBox_comisiones.Location = new System.Drawing.Point(495, 342);
             this.textBox_comisiones.Name = "textBox_comisiones";
             this.textBox_comisiones.Size = new System.Drawing.Size(100, 20);
             this.textBox_comisiones.TabIndex = 7;
             // 
             // button_Volver
             // 
-            this.button_Volver.Location = new System.Drawing.Point(552, 421);
+            this.button_Volver.Location = new System.Drawing.Point(552, 447);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
             this.button_Volver.TabIndex = 8;
@@ -323,7 +386,7 @@
             // 
             // button_Guardar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(390, 421);
+            this.button_Guardar.Location = new System.Drawing.Point(390, 447);
             this.button_Guardar.Name = "button_Guardar";
             this.button_Guardar.Size = new System.Drawing.Size(75, 23);
             this.button_Guardar.TabIndex = 9;
@@ -333,7 +396,7 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(471, 421);
+            this.button_Limpiar.Location = new System.Drawing.Point(471, 447);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.button_Limpiar.TabIndex = 10;
@@ -343,15 +406,15 @@
             // 
             // textBox_fecha
             // 
-            this.textBox_fecha.Location = new System.Drawing.Point(552, 15);
+            this.textBox_fecha.Location = new System.Drawing.Point(435, 46);
             this.textBox_fecha.Name = "textBox_fecha";
-            this.textBox_fecha.Size = new System.Drawing.Size(75, 20);
+            this.textBox_fecha.Size = new System.Drawing.Size(186, 20);
             this.textBox_fecha.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(509, 18);
+            this.label8.Location = new System.Drawing.Point(392, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 7;
@@ -359,7 +422,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(495, 368);
+            this.textBox1.Location = new System.Drawing.Point(495, 394);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 13;
@@ -368,7 +431,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(491, 352);
+            this.label9.Location = new System.Drawing.Point(491, 378);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 13);
             this.label9.TabIndex = 12;
@@ -377,7 +440,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(412, 18);
+            this.label10.Location = new System.Drawing.Point(385, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 14;
@@ -385,79 +448,16 @@
             // 
             // textBox_Numero
             // 
-            this.textBox_Numero.Location = new System.Drawing.Point(462, 15);
+            this.textBox_Numero.Location = new System.Drawing.Point(435, 20);
             this.textBox_Numero.Name = "textBox_Numero";
-            this.textBox_Numero.Size = new System.Drawing.Size(41, 20);
+            this.textBox_Numero.Size = new System.Drawing.Size(52, 20);
             this.textBox_Numero.TabIndex = 15;
-            // 
-            // CodigoOperacion
-            // 
-            this.CodigoOperacion.HeaderText = "Codigo de Operacion";
-            this.CodigoOperacion.Name = "CodigoOperacion";
-            this.CodigoOperacion.ReadOnly = true;
-            this.CodigoOperacion.Width = 132;
-            // 
-            // CodigoPublicacion
-            // 
-            this.CodigoPublicacion.HeaderText = "Codigo de Publicacion";
-            this.CodigoPublicacion.Name = "CodigoPublicacion";
-            this.CodigoPublicacion.ReadOnly = true;
-            this.CodigoPublicacion.Width = 138;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 88;
-            // 
-            // TipoOperacion
-            // 
-            this.TipoOperacion.HeaderText = "Tipo de Operacion";
-            this.TipoOperacion.Name = "TipoOperacion";
-            this.TipoOperacion.ReadOnly = true;
-            this.TipoOperacion.Width = 120;
-            // 
-            // OperacionOferta
-            // 
-            this.OperacionOferta.HeaderText = "Oferta hecha";
-            this.OperacionOferta.Name = "OperacionOferta";
-            this.OperacionOferta.ReadOnly = true;
-            this.OperacionOferta.Width = 94;
-            // 
-            // OperacionCantidad
-            // 
-            this.OperacionCantidad.HeaderText = "Cantidad";
-            this.OperacionCantidad.Name = "OperacionCantidad";
-            this.OperacionCantidad.ReadOnly = true;
-            this.OperacionCantidad.Width = 74;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 62;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 62;
-            // 
-            // Comision
-            // 
-            this.Comision.HeaderText = "Comision";
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
-            this.Comision.Width = 74;
             // 
             // FacturarPublicaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 456);
+            this.ClientSize = new System.Drawing.Size(639, 482);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox_Numero);
             this.Controls.Add(this.textBox1);

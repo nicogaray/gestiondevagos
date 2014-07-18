@@ -54,13 +54,13 @@ namespace FrbaCommerce.Abm_Visibilidad
                 }
                 while (reader.Read())
                 {
-                    String pColumna1;
                     String pColumna2;
                     Decimal pColumna3;
                     Decimal pColumna4;
 
                     Decimal pColumna0 = reader.GetDecimal(0); //VIS_CODIGO
-                    
+                    String pColumna1;
+
                     if (reader.IsDBNull(1) == false)
                     {
                         pColumna1 = reader.GetString(1);//VIS_NOMBRE

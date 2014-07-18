@@ -18,9 +18,10 @@ namespace FrbaCommerce.Base_de_Datos
 
         public static SqlConnection ObternerConexion()
         {
-            SqlConnection Con = new SqlConnection(ObtenerCadenaConexion());
+            SqlConnection Con = new SqlConnection("Data Source=LOCALHOST\\SQLSERVER2008;Initial Catalog=GD1C2014;Persist Security Info=True;User ID=gd;Password=gd2014;MultipleActiveResultSets=true;");
             Con.Open();
             return Con;
+
         }
 
     }
