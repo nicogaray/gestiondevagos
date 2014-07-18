@@ -49,7 +49,7 @@ namespace FrbaCommerce.Menu
                  }
                  else
                  {
-                     SqlCommand FuncionalidadesAdministrador = new SqlCommand(string.Format("SELECT fun_funcionalidad FROM LOS_JUS.funcionalidades join los_jus.ROLxFUNCIONALIDADES on ROLFUN_FUNCIONALIDADES = fun_funcionalidad where rolfun_rol = 'Cliente' and fun_funcionalidad = 'REGISTRO USUARIO'"), Conexion2);
+                     SqlCommand FuncionalidadesAdministrador = new SqlCommand(string.Format("SELECT fun_funcionalidad FROM LOS_JUS.funcionalidades join los_jus.ROLxFUNCIONALIDADES on ROLFUN_FUNCIONALIDADES = fun_funcionalidad where rolfun_rol = 'Cliente' and fun_funcionalidad <> 'REGISTRO USUARIO'"), Conexion2);
                      SqlDataReader reader2 = FuncionalidadesAdministrador.ExecuteReader();
 
                      while (reader2.Read())

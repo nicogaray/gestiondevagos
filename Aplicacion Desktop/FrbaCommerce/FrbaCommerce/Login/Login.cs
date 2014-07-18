@@ -16,8 +16,7 @@ namespace FrbaCommerce.Login
         public Login()
         {
             InitializeComponent();
-
-
+            
         }
         
         public string Password { get; set; }

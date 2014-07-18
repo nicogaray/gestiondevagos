@@ -6,11 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Registro_de_Usuario
 {
     public partial class Modificacion : Form
     {
+                public string Password { get; set; }
+
+        private string hashPassword(string password)
+        {
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] hash = SHA256.Create().ComputeHash(data);
+
+            return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+        }
+
         public bool comprobarDatosCompletos(String usuario, String contrasenia)
         {
             if (usuario == "" ||
@@ -44,13 +56,40 @@ namespace FrbaCommerce.Registro_de_Usuario
             String pPassword = textBox_Password.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
-            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pUsername, pPassword);
+            bool comprobarDatosCompletos = this.comprobarDatosCompletos(pUsername,pPassword);
             const string resumen = "";
 
             if (comprobarDatosCompletos)
             {
+               String hashDePasswor = hashPassword(pPassword);
+               SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+               using (Conexion2)
+               {
+                   Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+                SqlDataReader reader = ObtenerIdSesion.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+
+                }
+                   
+                   SqlCommand InsertarSesion = new SqlCommand(string.Format("UPDATE LOS_JUS.USUARIO SET USU_USERNAME='{0}',USU_PASSWORD = '{1}' WHERE USU_ID='{2}'", pUsername,hashDePasswor,id), Conexion2);
+                   int retorno = InsertarSesion.ExecuteNonQuery();
+
+                   SqlCommand InsertarSesion2 = new SqlCommand(string.Format("UPDATE LOS_JUS.SESION SET SES_PRIMERA_VEZ=0 WHERE SES_ID='{0}'", id), Conexion2);
+                   int retorno2 = InsertarSesion2.ExecuteNonQuery();
+
+
+               }
+
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                textBox_Password.Clear();
+                textBox_Username.Clear();
             }
             else
             {
@@ -61,6 +100,9 @@ namespace FrbaCommerce.Registro_de_Usuario
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+        
+    
 
         }
 
@@ -190,6 +232,7 @@ namespace FrbaCommerce.Registro_de_Usuario
             {
                 Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
                 modificacion.desdeModificacionUsuario = true;
+                
                 modificacion.Show();
             }
             else

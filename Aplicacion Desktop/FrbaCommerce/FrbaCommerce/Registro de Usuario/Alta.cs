@@ -62,10 +62,35 @@ namespace FrbaCommerce.Registro_de_Usuario
 
             if (comprobarDatosCompletos)
             {
+               String hashDePasswor = hashPassword(pPassword);
+               SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+               using (Conexion2)
+               {
+                   Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+                SqlDataReader reader = ObtenerIdSesion.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+
+                }
+                   
+                   SqlCommand InsertarSesion = new SqlCommand(string.Format("UPDATE LOS_JUS.USUARIO SET USU_USERNAME='{0}',USU_PASSWORD = '{1}' WHERE USU_ID='{2}'", pUsername,hashDePasswor,id), Conexion2);
+                   int retorno = InsertarSesion.ExecuteNonQuery();
+
+                   SqlCommand InsertarSesion2 = new SqlCommand(string.Format("UPDATE LOS_JUS.SESION SET SES_PRIMERA_VEZ=0 WHERE SES_ID='{0}'", id), Conexion2);
+                   int retorno2 = InsertarSesion2.ExecuteNonQuery();
+
+
+               }
 
 
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                textBox_Password.Clear();
+                textBox_Username.Clear();
             }
             else
             {
