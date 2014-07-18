@@ -259,7 +259,7 @@ namespace FrbaCommerce.Abm_Empresa
                         SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.EMPRESAemp_id,emp_razon_social,emp_cuit,emp_contacto,emp_fecha_creacion,emp_mail,emp_telefono,emp_direccion,emp_cod_postal) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')",
                         pId, pRazonSocial, pCuit, pNombreContacto, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal), Conexion2);
 
-
+                        int retorno6 = InsertarCliente.ExecuteNonQuery();
                     }
 
                     string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";

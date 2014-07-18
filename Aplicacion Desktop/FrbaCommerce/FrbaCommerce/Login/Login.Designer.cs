@@ -68,6 +68,7 @@
             // 
             this.textBox_Contrasenia.Location = new System.Drawing.Point(114, 116);
             this.textBox_Contrasenia.Name = "textBox_Contrasenia";
+            this.textBox_Contrasenia.PasswordChar = '*';
             this.textBox_Contrasenia.Size = new System.Drawing.Size(201, 20);
             this.textBox_Contrasenia.TabIndex = 3;
             this.textBox_Contrasenia.TextChanged += new System.EventHandler(this.textBox2_TextChanged);

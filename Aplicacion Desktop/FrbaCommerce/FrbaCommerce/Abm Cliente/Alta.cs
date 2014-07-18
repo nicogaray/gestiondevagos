@@ -314,7 +314,7 @@ namespace FrbaCommerce.Abm_Cliente
 
                         SqlCommand InsertarCliente = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Cliente(cli_id, cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal,cli_cuil) Values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
                                                                                                                 pId, pNombre, pApellido, pDocumentoConvertido, pTipo, pFecha, pMail, pTelefonoConvertido, pDireccion, pCodigoPostal,pCuil), Conexion2);
-
+                        int retorno6 = InsertarCliente.ExecuteNonQuery();
 
                     }
 

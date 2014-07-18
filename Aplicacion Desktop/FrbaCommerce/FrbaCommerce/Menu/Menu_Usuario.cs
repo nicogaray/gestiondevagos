@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Menu
 {
@@ -18,20 +19,83 @@ namespace FrbaCommerce.Menu
 
         private void Menu_Usuario_Load(object sender, EventArgs e)
         {
+            button_Administrador.Hide();
+            button_Cliente.Hide();
+            button_Empresa.Hide();
+
+            Int32 id = 0;
+            Int32 idCliente = 0;
+            Int32 idEmpresa = 0;
+ SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+ using (Conexion2)
+ {
+     SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+     SqlDataReader reader = ObtenerIdSesion.ExecuteReader();
+
+     while (reader.Read())
+     {
+         if (reader.IsDBNull(0) == false)
+         {
+
+             id = reader.GetInt32(0);//VIS_PORCENTAJE
+         }
+         else
+         {
+             id = 0;
+         }
+         
+     }
+
+     SqlCommand ObtenerRolCliente = new SqlCommand(string.Format("SELECT cli_id FROM LOS_JUS.cliente where cli_id= '{0}' and cli_eliminado = 0", id), Conexion2);
+     SqlDataReader reader2 = ObtenerRolCliente.ExecuteReader();
+
+     while (reader2.Read())
+     {
+         if (reader2.IsDBNull(0) == false)
+         {
+
+             idCliente = reader2.GetInt32(0);
+         }
+         else
+         {
+             idCliente = 0;
+         }
+     }
+
+     SqlCommand ObtenerRolEmpresa = new SqlCommand(string.Format("SELECT emp_id FROM LOS_JUS.empresa where emp_id= '{0}' and emp_eliminado = 0", id), Conexion2);
+     SqlDataReader reader3 = ObtenerRolEmpresa.ExecuteReader();
+
+     while (reader3.Read())
+     {
+         if (reader3.IsDBNull(0) == false)
+         {
+
+             idEmpresa = reader3.GetInt32(0);
+         }
+         else
+         {
+             idEmpresa = 0;
+         }
+     }
+
+
+ }
+
             // falta consultar a la base si el usuario es administrador
-            if (true)
+            if (id == 1)
             {
                 button_Administrador.Visible = true;
+
             }
 
             // falta consultar a la base si el usuario es cliente
-            if (true)
+            if (idCliente != 0)
             {
                 button_Cliente.Visible = true;
             }
 
             // falta consultar a la base si el usuario es empresa
-            if (true)
+            if (idEmpresa != 0)
             {
                 button_Empresa.Visible = true;
             }
