@@ -51,6 +51,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox_filtro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -307,6 +308,8 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccionar});
             this.dataGridView1.Location = new System.Drawing.Point(12, 319);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(752, 147);
@@ -333,6 +336,14 @@
             this.groupBox1.Size = new System.Drawing.Size(751, 178);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Comprar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Text = "Comprar";
+            this.Seleccionar.UseColumnTextForButtonValue = true;
+            this.Seleccionar.Width = 52;
             // 
             // Comprar
             // 
@@ -384,5 +395,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewButtonColumn Seleccionar;
     }
 }

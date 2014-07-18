@@ -43,7 +43,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             }
 
-           
+
 
             int maximo_x_pagina = 40;//cargar por default
             p = new Comprar_Ofertar.Paginar(sql, "DataMember1", maximo_x_pagina);
@@ -130,6 +130,38 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         }
 
-        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                if (dataGridView1.RowCount != 0)
+                {
+                    int i = e.RowIndex;
+                    using (var ofertar = new Comprar_Ofertar.HacerOferta())
+                    {
+                        ofertar.codigoPublicacionSeleccionada = dataGridView1[1, i].Value.ToString();
+                        ofertar.valorInicialSeleccionado =dataGridView1[4, i].Value.ToString();
+                        ofertar.habilitacionPreguntas = dataGridView1[8, i].Value.ToString();
+
+                        var result = ofertar.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                            ofertar.Show();
+                            bool val = ofertar.ReturnId;
+                            if (val)
+                            {
+                                dataGridView1.Rows.RemoveAt(i);
+                            }
+                            else
+                            {
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
     }
 }

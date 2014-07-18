@@ -51,6 +51,7 @@
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_Buscar = new System.Windows.Forms.Button();
+            this.prueba = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox_filtro.SuspendLayout();
@@ -218,10 +219,13 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.prueba});
             this.dataGridView1.Location = new System.Drawing.Point(12, 319);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(752, 147);
             this.dataGridView1.TabIndex = 37;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox_filtro
             // 
@@ -332,6 +336,14 @@
             this.button_Buscar.UseVisualStyleBackColor = true;
             this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
             // 
+            // prueba
+            // 
+            this.prueba.HeaderText = "Ofertar";
+            this.prueba.Name = "prueba";
+            this.prueba.Text = "Ofertar";
+            this.prueba.UseColumnTextForButtonValue = true;
+            this.prueba.Width = 45;
+            // 
             // Ofertar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +392,7 @@
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.Button button_Buscar;
+        private System.Windows.Forms.DataGridViewButtonColumn prueba;
 
     }
 }
