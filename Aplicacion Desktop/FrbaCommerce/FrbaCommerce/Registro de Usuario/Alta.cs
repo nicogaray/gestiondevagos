@@ -6,11 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Registro_de_Usuario
 {
     public partial class Alta : Form
     {
+        public string Password { get; set; }
+
+        private string hashPassword(string password)
+        {
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(password);
+            byte[] hash = SHA256.Create().ComputeHash(data);
+
+            return BitConverter.ToString(hash).Replace("-", string.Empty).ToLower();
+        }
+
         public bool comprobarDatosCompletos(String usuario, String contrasenia)
         {
             if (usuario == "" ||
@@ -50,6 +62,8 @@ namespace FrbaCommerce.Registro_de_Usuario
 
             if (comprobarDatosCompletos)
             {
+
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }

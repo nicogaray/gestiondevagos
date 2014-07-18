@@ -123,6 +123,13 @@ namespace FrbaCommerce.Login
                     SqlCommand ReinicioContador = new SqlCommand(string.Format("UPDATE LOS_JUS.USUARIO SET USU_INTENTOS = 0 WHERE USU_USERNAME = '{0}'", pUsername), Conexion2);
                     int retorno3 = ReinicioContador.ExecuteNonQuery();
 
+                    if (hashPasswordIngresado == "8623f73bbb01f6c2eb02a97f652301f6a59a1be8c75da5266bc3475c9e1e569d")
+                    {
+
+                        SqlCommand PrimerIngreso = new SqlCommand(string.Format("UPDATE LOS_JUS.sesion SET SES_PRIMERA_VEZ= 1 WHERE ses_USERNAME = '{0}'", pUsername), Conexion2);
+                        int retorno4 = PrimerIngreso.ExecuteNonQuery();
+
+                    }
                     string mensaje_Aceptacion = "Bienvenido a FRBA-Commerce";
                     MessageBox.Show(mensaje_Aceptacion, "Acceso permitido", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 

@@ -35,6 +35,9 @@
             this.button_ModificacionUsuario = new System.Windows.Forms.Button();
             this.button_RegistroUsuario = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button_Aceptar = new System.Windows.Forms.Button();
+            this.comboBox_funcionalidades = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Volver
@@ -50,7 +53,7 @@
             // 
             // button_Publicar
             // 
-            this.button_Publicar.Location = new System.Drawing.Point(72, 58);
+            this.button_Publicar.Location = new System.Drawing.Point(317, 58);
             this.button_Publicar.Name = "button_Publicar";
             this.button_Publicar.Size = new System.Drawing.Size(310, 40);
             this.button_Publicar.TabIndex = 1;
@@ -60,7 +63,7 @@
             // 
             // button_ResponderPregunta
             // 
-            this.button_ResponderPregunta.Location = new System.Drawing.Point(72, 147);
+            this.button_ResponderPregunta.Location = new System.Drawing.Point(301, 147);
             this.button_ResponderPregunta.Name = "button_ResponderPregunta";
             this.button_ResponderPregunta.Size = new System.Drawing.Size(310, 40);
             this.button_ResponderPregunta.TabIndex = 2;
@@ -70,7 +73,7 @@
             // 
             // button_HistorialEmpresa
             // 
-            this.button_HistorialEmpresa.Location = new System.Drawing.Point(72, 193);
+            this.button_HistorialEmpresa.Location = new System.Drawing.Point(367, 193);
             this.button_HistorialEmpresa.Name = "button_HistorialEmpresa";
             this.button_HistorialEmpresa.Size = new System.Drawing.Size(310, 40);
             this.button_HistorialEmpresa.TabIndex = 3;
@@ -80,7 +83,7 @@
             // 
             // button_ModificacionUsuario
             // 
-            this.button_ModificacionUsuario.Location = new System.Drawing.Point(72, 12);
+            this.button_ModificacionUsuario.Location = new System.Drawing.Point(381, -5);
             this.button_ModificacionUsuario.Name = "button_ModificacionUsuario";
             this.button_ModificacionUsuario.Size = new System.Drawing.Size(310, 40);
             this.button_ModificacionUsuario.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             // button_RegistroUsuario
             // 
-            this.button_RegistroUsuario.Location = new System.Drawing.Point(72, 12);
+            this.button_RegistroUsuario.Location = new System.Drawing.Point(367, 12);
             this.button_RegistroUsuario.Name = "button_RegistroUsuario";
             this.button_RegistroUsuario.Size = new System.Drawing.Size(310, 40);
             this.button_RegistroUsuario.TabIndex = 5;
@@ -100,7 +103,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(72, 104);
+            this.button1.Location = new System.Drawing.Point(326, 101);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(310, 40);
             this.button1.TabIndex = 6;
@@ -108,12 +111,45 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // button_Aceptar
+            // 
+            this.button_Aceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_Aceptar.Location = new System.Drawing.Point(139, 126);
+            this.button_Aceptar.Name = "button_Aceptar";
+            this.button_Aceptar.Size = new System.Drawing.Size(75, 23);
+            this.button_Aceptar.TabIndex = 15;
+            this.button_Aceptar.Text = "Aceptar";
+            this.button_Aceptar.UseVisualStyleBackColor = true;
+            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
+            // 
+            // comboBox_funcionalidades
+            // 
+            this.comboBox_funcionalidades.FormattingEnabled = true;
+            this.comboBox_funcionalidades.Location = new System.Drawing.Point(12, 48);
+            this.comboBox_funcionalidades.Name = "comboBox_funcionalidades";
+            this.comboBox_funcionalidades.Size = new System.Drawing.Size(279, 21);
+            this.comboBox_funcionalidades.TabIndex = 14;
+            // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.Location = new System.Drawing.Point(220, 126);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Volver";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Menu_Empresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(454, 277);
+            this.Controls.Add(this.button_Aceptar);
+            this.Controls.Add(this.comboBox_funcionalidades);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_ModificacionUsuario);
             this.Controls.Add(this.button_HistorialEmpresa);
@@ -140,5 +176,8 @@
         private System.Windows.Forms.Button button_ModificacionUsuario;
         private System.Windows.Forms.Button button_RegistroUsuario;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_Aceptar;
+        private System.Windows.Forms.ComboBox comboBox_funcionalidades;
+        private System.Windows.Forms.Button button2;
     }
 }
