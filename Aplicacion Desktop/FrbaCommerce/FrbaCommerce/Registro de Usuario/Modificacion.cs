@@ -228,20 +228,145 @@ namespace FrbaCommerce.Registro_de_Usuario
 
         private void button_IrA_Click(object sender, EventArgs e)
         {
+
+
             if (cliente)
             {
-                Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
-                modificacion.desdeModificacionUsuario = true;
-                
-                modificacion.Show();
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion2)
+                {
+
+                    Int32 id = 0;
+                    Int32 id2 = 0;
+                    String nombre = null;
+                    String apellido = null;
+                    Decimal dni = 0;
+                    String tipo = null;
+                    DateTime fecha = DateTime.Now;
+                    String mail = null;
+                    Decimal telefono = 0;
+                    String direccion = null;
+                    String codpostal = null;
+                    String cuil = null;
+
+                    SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+                    SqlDataReader reader2 = ObtenerIdSesion.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        id = reader2.GetInt32(0);
+
+                    }
+                    reader2.Close();
+
+                    SqlCommand ObtenerCliente = new SqlCommand(string.Format("SELECT cli_id,cli_nombre,cli_apellido,cli_dni,cli_tipo_dni,cli_fecha_nacimiento,cli_mail,cli_telefono,cli_direccion,cli_cod_postal,cli_cuil FROM LOS_JUS.cliente where cli_id = '{0}'", id), Conexion2);
+                    SqlDataReader reader = ObtenerCliente.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        id2 = reader.GetInt32(0); //CLI_ID
+                        nombre = reader.GetString(1);//CLI_NOMBRE
+                        apellido = reader.GetString(2);//CLI_APELLIDO
+                        dni = reader.GetDecimal(3);//CLI_DNI
+                        tipo = reader.GetString(4);//CLI_TIPO_DNI
+                        fecha = reader.GetDateTime(5);//CLI_FECHA
+                        mail = reader.GetString(6);//CLI_MAIL
+                        telefono = reader.GetDecimal(7);//CLI_TELEFONO
+                        direccion = reader.GetString(8);//CLI_DIRECCION
+                        codpostal = reader.GetString(9);//CLI_COD_POSTAL
+                        cuil = reader.GetString(10);//cli_cuil
+
+                    }
+                    reader.Close();
+
+
+
+
+                    Abm_Cliente.Modificacion modificacion = new Abm_Cliente.Modificacion();
+                    modificacion.desdeModificacionUsuario = true;
+
+                    modificacion.cuilSeleccionado = cuil;
+                    modificacion.idSeleccionado = id;
+                    modificacion.nombreSeleccionado = nombre;
+                    modificacion.apellidoSeleccionado = apellido;
+                    modificacion.documentoSeleccionado = Convert.ToString(dni);
+                    modificacion.tipoDocumentoSeleccionado = tipo;
+                    modificacion.fechaSeleccionada = fecha;
+                    modificacion.mailSeleccionado = mail;
+                    modificacion.telefonoSeleccionado = Convert.ToString(telefono);
+                    modificacion.direccionSeleccionada = direccion;
+                    modificacion.codigoPostalSeleccionado = codpostal;
+
+
+                    modificacion.Show();
+                }
             }
             else
             {
-                Abm_Empresa.Modificacion modificacion = new Abm_Empresa.Modificacion();
-                modificacion.desdeModificacionUsuario = true;
-                modificacion.Show();
+
+                SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion2)
+                {
+                    Int32 id = 0;
+                    Int32 id2 = 0;
+                    String razonsocial = null;
+                    String cuit = null;
+                    String contacto = null;
+                    DateTime fecha = DateTime.Now;
+                    String mail = null;
+                    Decimal telefono = 0;
+                    String direccion = null;
+                    String codpostal = null;
+
+                    SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+                    SqlDataReader reader2 = ObtenerIdSesion.ExecuteReader();
+
+                    while (reader2.Read())
+                    {
+                        id = reader2.GetInt32(0);
+
+                    }
+                    reader2.Close();
+
+                    SqlCommand ObtenerCliente = new SqlCommand(string.Format("SELECT EMP_ID,EMP_RAZON_SOCIAL,EMP_CUIT,EMP_CONTACTO,EMP_FECHA_CREACION,EMP_MAIL,EMP_TELEFONO,EMP_DIRECCION,EMP_COD_POSTAL From LOS_JUS.empresa where emp_id = '{0}'", id), Conexion2);
+                    SqlDataReader reader = ObtenerCliente.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        id2 = reader.GetInt32(0); //EMP_ID
+                        razonsocial = reader.GetString(1);//EMP_RAZON_SOCIAL
+                        cuit = reader.GetString(2);//EMP_CUIT
+                        contacto = reader.GetString(3);//EMP_CONTACTO
+                        fecha = reader.GetDateTime(4);//EMP_FECHA_CREACION
+                        mail = reader.GetString(5);//EMP_MAIL
+                        telefono = reader.GetDecimal(6);//EMP_TELEFONO
+                        direccion = reader.GetString(7);//EMP_DIRECCION
+                        codpostal = reader.GetString(8);//EMP_COD_POSTAL
+
+
+                    }
+                    reader.Close();
+
+
+
+                    Abm_Empresa.Modificacion modificar = new Abm_Empresa.Modificacion();
+                    modificar.desdeModificacionUsuario = true;
+                    modificar.idSeleccionado = id;
+                    modificar.razonSocialSeleccionada = razonsocial;
+                    modificar.cuitSeleccionado = cuit;
+                    modificar.contactoSeleccionado = contacto;
+                    modificar.telefonoSeleccionado = Convert.ToString(telefono);
+                    modificar.direccionSeleccionada = direccion;
+                    modificar.codigoPostalSeleccionado = codpostal;
+                    modificar.mailSeleccionado = mail;
+                    modificar.fechaCreacionSeleccionada = fecha;
+                    modificar.codigoPostalSeleccionado = codpostal;
+
+
+                    modificar.Show();
+                }
+
             }
-        
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

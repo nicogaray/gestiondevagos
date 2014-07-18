@@ -158,6 +158,7 @@ namespace FrbaCommerce.Abm_Cliente
                     modificacion.telefonoSeleccionado = dataGridView_Modificacion[7, i].Value.ToString();
                     modificacion.direccionSeleccionada = dataGridView_Modificacion[8, i].Value.ToString();
                     modificacion.codigoPostalSeleccionado = dataGridView_Modificacion[9, i].Value.ToString();
+                   
                     modificacion.Show();
 
                     dataGridView_Modificacion.Rows.Clear();
