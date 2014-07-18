@@ -219,6 +219,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
                         
                         porcentajeVenta = porcentajeVenta + (precioPublicacion * comisionPorcentaje);
 
+                        //TODO: ANTES DE LLENAR LA COMISION TOTAL, CONSULTAR SI ES GRATIS (10 PUBLICACIONES DEL MISMO TIPO) CON FUNCION, LE MANDO ID_EMPRESA, ID_VISUALIZACION. si devuelve 0 cobras, si devuelve 1 es gratis.
+  
                         pComisiones = pComisiones + comisionPrecio;
 
                         textBox_Numero.Text = Convert.ToString(numeroFactura);

@@ -231,6 +231,7 @@
     <Compile Include="Calificar Vendedor\Calificacion.Designer.cs">
       <DependentUpon>Calificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\Paginar.cs" />
     <Compile Include="Comprar-Ofertar\Ofertar.cs">
       <SubType>Form</SubType>
     </Compile>

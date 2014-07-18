@@ -35,5 +35,10 @@ namespace FrbaCommerce.Comprar_Ofertar
             menu_cliente.Show();
             this.Close();
         }
+
+        private void Ofertar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
