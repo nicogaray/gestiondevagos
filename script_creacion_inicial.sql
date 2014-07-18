@@ -51,6 +51,13 @@ DROP PROCEDURE LOS_JUS.MIGRAR_FACTURAS
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
+	WHERE id = object_id('LOS_JUS.RUBROxPUBLICACION') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1
+)
+ALTER TABLE LOS_JUS.SESION DROP CONSTRAINT SES_ID
+;
+
+IF EXISTS (
+	SELECT * FROM dbo.sysobjects 
 	WHERE id = object_id('LOS_JUS.ROLxFUNCIONALIDADES') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1
 )
 ALTER TABLE LOS_JUS.ROLxFUNCIONALIDADES DROP CONSTRAINT ROLFUN_ROL
@@ -207,6 +214,13 @@ GO
 
 IF EXISTS (
 	SELECT * FROM dbo.sysobjects 
+	WHERE id = object_id('LOS_JUS.SESION') AND  OBJECTPROPERTY(id, 'IsUserTable') = 1
+)
+DROP TABLE LOS_JUS.SESION
+;
+
+IF EXISTS (
+	SELECT * FROM dbo.sysobjects 
 	WHERE id = object_id('LOS_JUS.ROLxUSUARIO') AND  OBJECTPROPERTY(id, 'IsUserTable') = 1
 )
 DROP TABLE LOS_JUS.ROLxUSUARIO
@@ -352,12 +366,14 @@ IF EXISTS ( SELECT  *
                 WHERE   name = 'LOS_JUS' ) 
     EXEC('DROP SCHEMA [LOS_JUS]');
 GO
-*/
+
 IF NOT EXISTS ( SELECT  *
                 FROM    sys.schemas
                 WHERE   name = 'LOS_JUS' ) 
     EXEC('CREATE SCHEMA [LOS_JUS] AUTHORIZATION [gd]');
-GO
+ GO
+ 
+ */
 --###########################################################################
 --###########################################################################
 -- CREACION DE TABLAS 
@@ -644,6 +660,18 @@ CREATE TABLE LOS_JUS.SUBASTA (
 	SUB_ELIMINADO integer DEFAULT 0,
 	primary key (SUB_CODIGO),
 	foreign key (SUB_PUBLICACION) references LOS_JUS.PUBLICACION
+)
+;
+
+-----------TABLA sesion-----------
+
+
+CREATE TABLE LOS_JUS.SESION ( 
+	SES_CODIGO integer identity(1,1),
+	SES_USERNAME varchar(50),
+	SES_ID integer,
+	primary key (SES_CODIGO),
+	foreign key (SES_ID) references LOS_JUS.USUARIO
 )
 ;
 
