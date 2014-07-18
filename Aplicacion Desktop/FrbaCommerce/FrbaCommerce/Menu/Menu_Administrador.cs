@@ -122,7 +122,7 @@ namespace FrbaCommerce.Menu
                 Abm_Visibilidad.Form_Base form_base = new Abm_Visibilidad.Form_Base();
                 form_base.Show();
             }
-            if (comboBox_funcionalidades.SelectedIndex == 0)
+            if (comboBox_funcionalidades.SelectedIndex == 5)
             {
                 this.Hide();
                 Listado_Estadistico.ListadoEstadistico listado = new Listado_Estadistico.ListadoEstadistico();

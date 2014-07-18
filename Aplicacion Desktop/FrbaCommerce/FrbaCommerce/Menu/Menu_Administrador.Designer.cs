@@ -36,7 +36,7 @@
             // button_Volver
             // 
             this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Volver.Location = new System.Drawing.Point(144, 122);
+            this.button_Volver.Location = new System.Drawing.Point(225, 122);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
             this.button_Volver.TabIndex = 0;
@@ -55,7 +55,7 @@
             // button_Aceptar
             // 
             this.button_Aceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Aceptar.Location = new System.Drawing.Point(225, 122);
+            this.button_Aceptar.Location = new System.Drawing.Point(144, 122);
             this.button_Aceptar.Name = "button_Aceptar";
             this.button_Aceptar.Size = new System.Drawing.Size(75, 23);
             this.button_Aceptar.TabIndex = 9;
