@@ -33,9 +33,9 @@
             this.checkedListBox_Rubro = new System.Windows.Forms.CheckedListBox();
             this.label_Descripcion = new System.Windows.Forms.Label();
             this.label_Rubro = new System.Windows.Forms.Label();
-            this.button_Buscar = new System.Windows.Forms.Button();
-            this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
+            this.button_Limpiar = new System.Windows.Forms.Button();
+            this.button_Buscar = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -134,25 +134,6 @@
             this.label_Rubro.TabIndex = 0;
             this.label_Rubro.Text = "Rubro";
             // 
-            // button_Buscar
-            // 
-            this.button_Buscar.Location = new System.Drawing.Point(510, 86);
-            this.button_Buscar.Name = "button_Buscar";
-            this.button_Buscar.Size = new System.Drawing.Size(75, 23);
-            this.button_Buscar.TabIndex = 12;
-            this.button_Buscar.Text = "Buscar";
-            this.button_Buscar.UseVisualStyleBackColor = true;
-            this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
-            // 
-            // button_Limpiar
-            // 
-            this.button_Limpiar.Location = new System.Drawing.Point(591, 86);
-            this.button_Limpiar.Name = "button_Limpiar";
-            this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
-            this.button_Limpiar.TabIndex = 11;
-            this.button_Limpiar.Text = "Limpiar";
-            this.button_Limpiar.UseVisualStyleBackColor = true;
-            // 
             // button_Volver
             // 
             this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -162,6 +143,27 @@
             this.button_Volver.TabIndex = 20;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            // 
+            // button_Limpiar
+            // 
+            this.button_Limpiar.Location = new System.Drawing.Point(591, 86);
+            this.button_Limpiar.Name = "button_Limpiar";
+            this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
+            this.button_Limpiar.TabIndex = 11;
+            this.button_Limpiar.Text = "Limpiar";
+            this.button_Limpiar.UseVisualStyleBackColor = true;
+            this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
+            // 
+            // button_Buscar
+            // 
+            this.button_Buscar.Location = new System.Drawing.Point(510, 86);
+            this.button_Buscar.Name = "button_Buscar";
+            this.button_Buscar.Size = new System.Drawing.Size(75, 23);
+            this.button_Buscar.TabIndex = 12;
+            this.button_Buscar.Text = "Buscar";
+            this.button_Buscar.UseVisualStyleBackColor = true;
+            this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
             // 
             // button5
             // 
@@ -309,6 +311,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(752, 147);
             this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox1
             // 

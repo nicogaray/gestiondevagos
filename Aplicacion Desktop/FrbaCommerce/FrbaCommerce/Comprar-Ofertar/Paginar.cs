@@ -36,15 +36,24 @@ namespace FrbaCommerce.Comprar_Ofertar
             DataTable auxiliar;
 
             SqlConnection connection = new SqlConnection(ps_cadena);
+
             this._adapter = new SqlDataAdapter(s_query, connection);
+            //String @rubro = "Industrias y Oficinas";
+            //String @desc = "pepe";
+            
             this._datos = new DataSet();
             auxiliar = new DataTable();
 
             connection.Open();
+
+         
+
             this._adapter.Fill(_datos, _inicio, _tope, _datamember);
             _adapter.Fill(auxiliar);
             connection.Close();
             this._cantidadRegistros = auxiliar.Rows.Count;
+
+           
 
             asignarTope();
 

@@ -69,16 +69,36 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
+            String desc = textBox_Descripcion.Text;
+            String rubro = null;
+            rubro = checkedListBox_Rubro.SelectedItem.ToString();
+            string sql = null;
+
+            if (textBox_Descripcion.Text == "")
+            {
+                sql = string.Format("SELECT * FROM LOS_JUS.publicacionesComprasActivas(null,null,'{1}') ORDER BY VIS_CODIGO ASC", desc, rubro);
+            }
+            else
+            {
+                sql = string.Format("SELECT * FROM LOS_JUS.publicacionesComprasActivas(null,'{0}','{1}') ORDER BY VIS_CODIGO ASC", desc, rubro);
+
+            }
+
             int maximo_x_pagina = 40;//cargar por default
-            p = new Comprar_Ofertar.Paginar("SELECT * FROM LOS_JUS.publicacionesComprasActivas(null) ORDER BY VIS_CODIGO ASC", "DataMember1", maximo_x_pagina);
+            p = new Comprar_Ofertar.Paginar(sql, "DataMember1", maximo_x_pagina);
             dataGridView1.DataSource = p.cargar();
             dataGridView1.DataMember = "datamember1";
+
+
             maskedTextBox4.Enabled = true;
             button3.Enabled = true;
             button5.Enabled = true;
             button1.Enabled = true;
             button2.Enabled = true;
             button4.Enabled = true;
+
+
+            actualizar();
 
 
             actualizar();
@@ -126,6 +146,31 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
 
         private void groupBox_filtro_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            Menu.Menu_Cliente cliente = new Menu.Menu_Cliente();
+            cliente.Show();
+            this.Close();
+        }
+
+        private void button_Limpiar_Click(object sender, EventArgs e)
+        {
+            int i;
+            int s = checkedListBox_Rubro.Items.Count;
+            for (i = 0; i < s; i++)
+            {
+                checkedListBox_Rubro.SetItemChecked(i, false);
+            }
+            checkedListBox_Rubro.ClearSelected();
+
+            textBox_Descripcion.Clear();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
