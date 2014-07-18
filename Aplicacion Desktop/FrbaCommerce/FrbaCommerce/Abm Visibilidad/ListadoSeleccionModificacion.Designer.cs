@@ -38,14 +38,6 @@
             this.button_Buscar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.groupBox_Filtro = new System.Windows.Forms.GroupBox();
-            this.textBox_decimalPrecio = new System.Windows.Forms.TextBox();
-            this.textBox_decimalPorcentaje = new System.Windows.Forms.TextBox();
-            this.textBox_Porcentaje = new System.Windows.Forms.TextBox();
-            this.label_PorcentajeVenta = new System.Windows.Forms.Label();
-            this.textBox1_precio = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_PrecioPublicitar = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.label_Nombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -64,9 +56,9 @@
             this.PrecioPublicitar,
             this.PorcentajePublicitar,
             this.Modificar});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 144);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 97);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(498, 165);
+            this.dataGridView1.Size = new System.Drawing.Size(498, 212);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -115,7 +107,7 @@
             // 
             // button_Buscar
             // 
-            this.button_Buscar.Location = new System.Drawing.Point(429, 115);
+            this.button_Buscar.Location = new System.Drawing.Point(426, 68);
             this.button_Buscar.Name = "button_Buscar";
             this.button_Buscar.Size = new System.Drawing.Size(75, 23);
             this.button_Buscar.TabIndex = 10;
@@ -125,7 +117,7 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(6, 115);
+            this.button_Limpiar.Location = new System.Drawing.Point(12, 68);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.button_Limpiar.TabIndex = 13;
@@ -135,102 +127,18 @@
             // 
             // groupBox_Filtro
             // 
-            this.groupBox_Filtro.Controls.Add(this.textBox_decimalPrecio);
-            this.groupBox_Filtro.Controls.Add(this.textBox_decimalPorcentaje);
-            this.groupBox_Filtro.Controls.Add(this.textBox_Porcentaje);
-            this.groupBox_Filtro.Controls.Add(this.label_PorcentajeVenta);
-            this.groupBox_Filtro.Controls.Add(this.textBox1_precio);
-            this.groupBox_Filtro.Controls.Add(this.label1);
-            this.groupBox_Filtro.Controls.Add(this.label_PrecioPublicitar);
-            this.groupBox_Filtro.Controls.Add(this.label2);
             this.groupBox_Filtro.Controls.Add(this.textBox_Nombre);
             this.groupBox_Filtro.Controls.Add(this.label_Nombre);
             this.groupBox_Filtro.Location = new System.Drawing.Point(3, 5);
             this.groupBox_Filtro.Name = "groupBox_Filtro";
-            this.groupBox_Filtro.Size = new System.Drawing.Size(507, 104);
+            this.groupBox_Filtro.Size = new System.Drawing.Size(507, 57);
             this.groupBox_Filtro.TabIndex = 8;
             this.groupBox_Filtro.TabStop = false;
             this.groupBox_Filtro.Text = "Filtros de busqueda";
             // 
-            // textBox_decimalPrecio
-            // 
-            this.textBox_decimalPrecio.Location = new System.Drawing.Point(302, 47);
-            this.textBox_decimalPrecio.MaxLength = 2;
-            this.textBox_decimalPrecio.Name = "textBox_decimalPrecio";
-            this.textBox_decimalPrecio.Size = new System.Drawing.Size(44, 20);
-            this.textBox_decimalPrecio.TabIndex = 21;
-            // 
-            // textBox_decimalPorcentaje
-            // 
-            this.textBox_decimalPorcentaje.Location = new System.Drawing.Point(302, 73);
-            this.textBox_decimalPorcentaje.MaxLength = 2;
-            this.textBox_decimalPorcentaje.Name = "textBox_decimalPorcentaje";
-            this.textBox_decimalPorcentaje.Size = new System.Drawing.Size(44, 20);
-            this.textBox_decimalPorcentaje.TabIndex = 20;
-            // 
-            // textBox_Porcentaje
-            // 
-            this.textBox_Porcentaje.Location = new System.Drawing.Point(196, 73);
-            this.textBox_Porcentaje.MaxLength = 16;
-            this.textBox_Porcentaje.Name = "textBox_Porcentaje";
-            this.textBox_Porcentaje.Size = new System.Drawing.Size(100, 20);
-            this.textBox_Porcentaje.TabIndex = 19;
-            // 
-            // label_PorcentajeVenta
-            // 
-            this.label_PorcentajeVenta.AutoSize = true;
-            this.label_PorcentajeVenta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_PorcentajeVenta.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_PorcentajeVenta.Location = new System.Drawing.Point(78, 76);
-            this.label_PorcentajeVenta.Name = "label_PorcentajeVenta";
-            this.label_PorcentajeVenta.Size = new System.Drawing.Size(114, 13);
-            this.label_PorcentajeVenta.TabIndex = 15;
-            this.label_PorcentajeVenta.Text = "Porcentaje de la venta";
-            // 
-            // textBox1_precio
-            // 
-            this.textBox1_precio.Location = new System.Drawing.Point(196, 47);
-            this.textBox1_precio.MaxLength = 16;
-            this.textBox1_precio.Name = "textBox1_precio";
-            this.textBox1_precio.Size = new System.Drawing.Size(100, 20);
-            this.textBox1_precio.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(293, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 20);
-            this.label1.TabIndex = 22;
-            this.label1.Text = ",";
-            // 
-            // label_PrecioPublicitar
-            // 
-            this.label_PrecioPublicitar.AutoSize = true;
-            this.label_PrecioPublicitar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_PrecioPublicitar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_PrecioPublicitar.Location = new System.Drawing.Point(92, 50);
-            this.label_PrecioPublicitar.Name = "label_PrecioPublicitar";
-            this.label_PrecioPublicitar.Size = new System.Drawing.Size(100, 13);
-            this.label_PrecioPublicitar.TabIndex = 14;
-            this.label_PrecioPublicitar.Text = "Precio por publicitar";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(293, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 20);
-            this.label2.TabIndex = 23;
-            this.label2.Text = ",";
-            // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(196, 21);
+            this.textBox_Nombre.Location = new System.Drawing.Point(162, 21);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
             this.textBox_Nombre.TabIndex = 0;
@@ -240,7 +148,7 @@
             this.label_Nombre.AutoSize = true;
             this.label_Nombre.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_Nombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Nombre.Location = new System.Drawing.Point(146, 24);
+            this.label_Nombre.Location = new System.Drawing.Point(112, 24);
             this.label_Nombre.Name = "label_Nombre";
             this.label_Nombre.Size = new System.Drawing.Size(44, 13);
             this.label_Nombre.TabIndex = 1;
@@ -275,16 +183,8 @@
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.GroupBox groupBox_Filtro;
-        private System.Windows.Forms.Label label_PorcentajeVenta;
-        private System.Windows.Forms.Label label_PrecioPublicitar;
         private System.Windows.Forms.TextBox textBox_Nombre;
         private System.Windows.Forms.Label label_Nombre;
-        private System.Windows.Forms.TextBox textBox_decimalPrecio;
-        private System.Windows.Forms.TextBox textBox_decimalPorcentaje;
-        private System.Windows.Forms.TextBox textBox_Porcentaje;
-        private System.Windows.Forms.TextBox textBox1_precio;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;

@@ -12,18 +12,13 @@ namespace FrbaCommerce.Abm_Visibilidad
 {
     public partial class ListadoSeleccionModificacion : Form
     {
-        public bool comprobarTipos(String precioPublicitar, String porcentajeVenta, String decimalPrecio, String decimalPorcentaje)
-        {
-            return (precioPublicitar.All(char.IsDigit) && porcentajeVenta.All(char.IsDigit) && decimalPrecio.All(char.IsDigit) && decimalPorcentaje.All(char.IsDigit));
-
-        }
 
         public ListadoSeleccionModificacion()
         {
             InitializeComponent();
         }
 
-
+             
 
         private void button_Limpiar_Click_1(object sender, EventArgs e)
         {
@@ -37,113 +32,78 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button_Buscar_Click(object sender, EventArgs e)
         {
-            String pDecimalPorcentaje = "00";
-            pDecimalPorcentaje = textBox_decimalPorcentaje.Text;
-
-            String pDecimalPrecio = "00";
-            pDecimalPrecio = textBox_decimalPrecio.Text;
-
-            String pPorcentaje = "0";
-            if (textBox_Porcentaje.Text != "")
-            {
-                pPorcentaje = textBox_Porcentaje.Text;
-            }
-
-            String pPrecio = "0";
-            if (textBox1_precio.Text != "")
-            {
-                pPrecio = textBox1_precio.Text;
-            }
-
-            String pPorcentajeFinal = pPorcentaje + ',' + pDecimalPorcentaje;
-            String pPrecioFinal = pPrecio + ',' + pDecimalPrecio;
 
             String pNombre = null;
             pNombre = textBox_Nombre.Text;
 
-            bool comprobarTipos = this.comprobarTipos(pPrecio, pPorcentaje, pDecimalPrecio, pDecimalPorcentaje);
-            const string resumen = "";
-
-            if (comprobarTipos)
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
             {
-                Decimal pPrecioConvertido = 0;
+                SqlCommand cmd = null;
 
-                //if (pPrecio != "0")
-                //{
-                    pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
-                //}
+                cmd = new SqlCommand(string.Format("SELECT VIS_CODIGO,VIS_NOMBRE,VIS_DESCRIPCION,VIS_PRECIO,VIS_PORCENTAJE From LOS_JUS.buscarVisibilidad('{0}',null,null)",
+                                                               pNombre), Conexion);
 
-                Decimal pPorcentajeConvertido = 0;
-
-                //if (pPorcentaje != "0")
-                //{
-                    pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
-
-               // }
-
-
-                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
-                using (Conexion)
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    SqlCommand cmd = null;
-                    if (pPrecioConvertido == 0 && pPorcentajeConvertido != 0)
-                    {
-                        cmd = new SqlCommand(string.Format("SELECT VIS_CODIGO,VIS_NOMBRE,VIS_DESCRIPCION,VIS_PRECIO,VIS_PORCENTAJE From LOS_JUS.buscarVisibilidad('{0}',null,'{1}')",
-                                                                       pNombre, pPorcentajeConvertido), Conexion);
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen datos que coincidan con los filtros de busqueda seleccionados", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                while (reader.Read())
+                {
+                    String pColumna1;
+                    String pColumna2;
+                    Decimal pColumna3;
+                    Decimal pColumna4;
 
-                    if (pPrecioConvertido != 0 && pPorcentajeConvertido == 0)
+                    Decimal pColumna0 = reader.GetDecimal(0); //VIS_CODIGO
+                    
+                    if (reader.IsDBNull(1) == false)
                     {
-                        cmd = new SqlCommand(string.Format("SELECT VIS_CODIGO,VIS_NOMBRE,VIS_DESCRIPCION,VIS_PRECIO,VIS_PORCENTAJE From LOS_JUS.buscarVisibilidad('{0}','{1}',null)",
-                                                                       pNombre, pPrecioConvertido), Conexion);
-                    }
-                    if (pPrecioConvertido == 0 && pPorcentajeConvertido == 0)
-                    {
-                        cmd = new SqlCommand(string.Format("SELECT VIS_CODIGO,VIS_NOMBRE,VIS_DESCRIPCION,VIS_PRECIO,VIS_PORCENTAJE From LOS_JUS.buscarVisibilidad('{0}',null,null)",
-                                                                       pNombre), Conexion);
+                        pColumna1 = reader.GetString(1);//VIS_NOMBRE
                     }
                     else
                     {
-                        cmd = new SqlCommand(string.Format("SELECT VIS_CODIGO,VIS_NOMBRE, VIS_DESCRIPCION, VIS_PRECIO,VIS_PORCENTAJE From LOS_JUS.buscarVisibilidad('{0}','{1}','{2}')",
-                                                                       pNombre, pPrecioConvertido, pPorcentajeConvertido), Conexion);
+                        pColumna1 = string.Empty;
                     }
 
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    if (reader.IsDBNull(2) == false)
                     {
+                        pColumna2 = reader.GetString(2);//VIS_NOMBRE
                     }
                     else
                     {
-                        MessageBox.Show("No existen datos que coincidan con los filtros de busqueda seleccionados", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pColumna2 = string.Empty;
                     }
-                    while (reader.Read())
+
+                    if (reader.IsDBNull(3) == false)
+                    {
+                        pColumna3 = reader.GetDecimal(3);//VIS_PRECIO
+                    }
+                    else
+                    {
+                        pColumna3 = 0;
+                    }
+
+                    if (reader.IsDBNull(4) == false)
                     {
 
-                        Decimal pColumna0 = reader.GetDecimal(0); //VIS_CODIGO
-                        String pColumna1 = reader.GetString(1);//VIS_NOMBRE
-                        String pColumna2 = reader.GetString(2);//VIS_DESCRIPCION
-                        Decimal pColumna3 = reader.GetDecimal(3);//VIS_PRECIO
-                        Decimal pColumna4 = reader.GetDecimal(4);//VIS_PORCENTAJE
-
-                        dataGridView1.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3,pColumna4);
-
+                        pColumna4 = reader.GetDecimal(4);//VIS_PORCENTAJE
+                    }
+                    else
+                    {
+                        pColumna4 = 0;
                     }
 
+                    dataGridView1.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4);
+
                 }
 
-            }
-            else
-            {
-                if (comprobarTipos == false)
-                {
-                    const string mensaje_Rechazo = "Error de tipos en los datos ingresados.\nLos datos no pudieron ser guardados.";
-
-                    MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
 
             }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,6 +115,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                     int i = e.RowIndex;
 
                     string precio = dataGridView1[3, i].Value.ToString();
+
                     string[] parts1 = precio.Split(','); 
                     string precioEntero = int.Parse(parts1[0]).ToString();
                     string precioDecimal = int.Parse(parts1[1]).ToString();
@@ -166,6 +127,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                     
                     Abm_Visibilidad.Modificacion modificacion = new Abm_Visibilidad.Modificacion();
                     modificacion.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
+                    modificacion.codigoVisualizacionSeleccionada = dataGridView1[0, i].Value.ToString();
                     modificacion.precioSeleccionado = precioEntero;
                     modificacion.porcentajeSeleccionado = porcentajeEntero;
                     modificacion.decimalPrecioSeleccionado = precioDecimal;

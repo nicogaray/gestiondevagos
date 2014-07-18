@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Visibilidad
 {
@@ -17,6 +18,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         public String porcentajeSeleccionado = "";
         public String decimalPrecioSeleccionado = "";
         public String decimalPorcentajeSeleccionado = "";
+        public String codigoVisualizacionSeleccionada = "";
 
 
         public bool comprobarTipos(String precioPublicitar, String porcentajeVenta, String decimalPrecio, String decimalPorcentaje)
@@ -60,7 +62,8 @@ namespace FrbaCommerce.Abm_Visibilidad
 
 
             String pNombre = textBox_Nombre.Text;
-            String pDescripcion = textBox_Descripcion.Text;
+            String pDescripcion = null;
+            pDescripcion = textBox_Descripcion.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
             bool comprobarTipos = this.comprobarTipos(pPrecio, pPorcentaje, pDecimalPrecio, pDecimalPorcentaje);
@@ -73,7 +76,17 @@ namespace FrbaCommerce.Abm_Visibilidad
 
                 Decimal pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
                 Decimal pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
+                Decimal pCodigo = Convert.ToDecimal(codigoVisualizacionSeleccionada);
 
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                                {
+
+                                    SqlCommand InsertarRol = new SqlCommand(string.Format("UPDATE LOS_JUS.Visualizacion SET vis_nombre= '{0}',vis_precio= '{1}',vis_porcentaje= '{2}',vis_descripcion= '{3}' WHERE VIS_CODIGO = '{4}'"
+                                                                                                        , pNombre, pPrecioConvertido, pPorcentajeConvertido, pDescripcion, pCodigo), Conexion);
+                                    int retorno = InsertarRol.ExecuteNonQuery();
+
+                                }
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }

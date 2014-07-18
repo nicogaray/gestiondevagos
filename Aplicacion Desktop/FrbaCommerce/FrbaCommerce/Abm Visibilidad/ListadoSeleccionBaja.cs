@@ -18,8 +18,6 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
-            textBox_PorcentajeVenta.Clear();
-            textBox_PrecioPublicitar.Clear();
             textBox_RazonSocial.Clear();
 
         }
