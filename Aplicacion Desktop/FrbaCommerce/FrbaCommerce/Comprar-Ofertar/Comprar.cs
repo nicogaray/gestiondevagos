@@ -73,6 +73,13 @@ namespace FrbaCommerce.Comprar_Ofertar
             p = new Comprar_Ofertar.Paginar("SELECT * FROM LOS_JUS.publicacionesComprasActivas(null) ORDER BY VIS_CODIGO ASC", "DataMember1", maximo_x_pagina);
             dataGridView1.DataSource = p.cargar();
             dataGridView1.DataMember = "datamember1";
+            maskedTextBox4.Enabled = true;
+            button3.Enabled = true;
+            button5.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            button4.Enabled = true;
+
 
             actualizar();
         }
@@ -100,6 +107,27 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             p.ultimaPagina();
             actualizar();
+        }
+
+        private void Comprar_Load(object sender, EventArgs e)
+        {
+            maskedTextBox4.Enabled = false;
+            button3.Enabled = false;
+            button3.Enabled = false;
+            button5.Enabled = false;
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button4.Enabled = false;
+        }
+
+        private void maskedTextBox4_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void groupBox_filtro_Enter(object sender, EventArgs e)
+        {
+
         }
 
     }
