@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox_Pregunta = new System.Windows.Forms.TextBox();
             this.label_Pregunta = new System.Windows.Forms.Label();
@@ -38,35 +36,14 @@
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(585, 152);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Publicacion";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(573, 127);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox_Pregunta);
             this.groupBox2.Controls.Add(this.label_Pregunta);
-            this.groupBox2.Location = new System.Drawing.Point(12, 170);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(585, 92);
             this.groupBox2.TabIndex = 1;
@@ -99,7 +76,7 @@
             // 
             this.label_Informacion.AutoSize = true;
             this.label_Informacion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label_Informacion.Location = new System.Drawing.Point(83, 289);
+            this.label_Informacion.Location = new System.Drawing.Point(83, 110);
             this.label_Informacion.Name = "label_Informacion";
             this.label_Informacion.Size = new System.Drawing.Size(0, 13);
             this.label_Informacion.TabIndex = 2;
@@ -108,7 +85,7 @@
             // 
             this.label_Inf.AutoSize = true;
             this.label_Inf.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label_Inf.Location = new System.Drawing.Point(15, 289);
+            this.label_Inf.Location = new System.Drawing.Point(15, 110);
             this.label_Inf.Name = "label_Inf";
             this.label_Inf.Size = new System.Drawing.Size(62, 13);
             this.label_Inf.TabIndex = 3;
@@ -116,7 +93,7 @@
             // 
             // button_Guardar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(360, 289);
+            this.button_Guardar.Location = new System.Drawing.Point(360, 110);
             this.button_Guardar.Name = "button_Guardar";
             this.button_Guardar.Size = new System.Drawing.Size(75, 23);
             this.button_Guardar.TabIndex = 2;
@@ -126,7 +103,7 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(441, 289);
+            this.button_Limpiar.Location = new System.Drawing.Point(441, 110);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.button_Limpiar.TabIndex = 3;
@@ -137,7 +114,7 @@
             // button_Volver
             // 
             this.button_Volver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_Volver.Location = new System.Drawing.Point(522, 289);
+            this.button_Volver.Location = new System.Drawing.Point(522, 110);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
             this.button_Volver.TabIndex = 4;
@@ -151,19 +128,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
-            this.ClientSize = new System.Drawing.Size(609, 324);
+            this.ClientSize = new System.Drawing.Size(609, 155);
             this.Controls.Add(this.label_Inf);
             this.Controls.Add(this.label_Informacion);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Hacer_Preguntas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hacer preguntas";
             this.Load += new System.EventHandler(this.Hacer_Preguntas_Load);
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -173,8 +150,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label_Inf;
         private System.Windows.Forms.Label label_Informacion;

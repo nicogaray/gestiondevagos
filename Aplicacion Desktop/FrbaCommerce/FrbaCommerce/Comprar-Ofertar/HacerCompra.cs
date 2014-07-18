@@ -158,6 +158,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void button_Ir_Click(object sender, EventArgs e)
         {
             Gestion_de_Preguntas.Hacer_Preguntas preguntar = new Gestion_de_Preguntas.Hacer_Preguntas();
+            preguntar.publicacion = codigoPublicacionSeleccionada;
             preguntar.Show();
         }
     }

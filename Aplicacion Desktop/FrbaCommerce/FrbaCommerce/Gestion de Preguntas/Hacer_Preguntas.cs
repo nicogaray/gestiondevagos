@@ -6,11 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class Hacer_Preguntas : Form
     {
+        public String publicacion;
+
         public bool comprobarDatosCompletos(String pregunta)
         {
             if (pregunta == "")
@@ -56,14 +59,27 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
             if (comprobarDatosCompletos)
             {
+                                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                                using (Conexion)
+                                {
+
+                                    //FALTA INGRESAR EL ID DE CLIENTE DE LA SESION
+                                    string sql = string.Format("Insert into LOS_JUS.pregunta(PRE_PUBLICACION,PRE_CLIENTE,PRE_PREGUNTA,PRE_RESPUESTA,PRE_FECHA_RESPUESTA) values({0},{1},'{2}',null,null)"
+                                                                                                , publicacion, 2, pPregunta);
+                                    SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
+
+                                        int retorno = InsertarRol.ExecuteNonQuery();
+                                }
+
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                textBox_Pregunta.Clear();
             }
             else
             {
                 if (comprobarDatosCompletos == false)
                 {
-                    const string mensaje_Rechazo = "Hay campos vacios, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
+                    const string mensaje_Rechazo = "El campo Pregunta esta vacio, debe ingresar todos los datos requeridos.\nLos datos no pudieron ser guardados.";
 
                     MessageBox.Show(mensaje_Rechazo, resumen, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -73,7 +89,6 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void button_Volver_Click(object sender, EventArgs e)
         {
-            //esta funcionalidad deberia volver a la pantalla "Comprar" O "Ofertar" de la que salio
             this.Close();
 
         }

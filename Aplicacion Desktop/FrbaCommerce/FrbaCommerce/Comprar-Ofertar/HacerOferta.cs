@@ -70,10 +70,10 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                    int retorno = InsertarRol.ExecuteNonQuery();
 
-                   string sql2 = string.Format("Update LOS_JUS.compra set com_stock = '{0}' where com_publicacion = '{1}'"
-                                                           , stockFinal, codigoPublicacionSeleccionada);
-                   SqlCommand UpdateStock = new SqlCommand(sql2, Conexion);
-                   int retorno2 = UpdateStock.ExecuteNonQuery();
+                   //string sql2 = string.Format("Update LOS_JUS.compra set com_stock = '{0}' where com_publicacion = '{1}'"
+                   //                                        , stockFinal, codigoPublicacionSeleccionada);
+                   //SqlCommand UpdateStock = new SqlCommand(sql2, Conexion);
+                   //int retorno2 = UpdateStock.ExecuteNonQuery();
 
 
                }
