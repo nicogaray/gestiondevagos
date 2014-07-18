@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Abm_Visibilidad
 {
@@ -51,26 +52,55 @@ namespace FrbaCommerce.Abm_Visibilidad
             String pPrecio = "0";
             pPrecio = textBox1_precio.Text;
 
-            String pPorcentajeFinal = pPorcentaje +','+ pDecimalPorcentaje;
-            String pPrecioFinal = pPrecio + ',' + pDecimalPrecio;
+            String pPorcentajeFinal = pPorcentaje + '.' + pDecimalPorcentaje;
+            String pPrecioFinal = pPrecio + '.' + pDecimalPrecio;
 
-            
+
             String pNombre = textBox_Nombre.Text;
-            String pDescripcion = textBox_Descripcion.Text;
+            String pDescripcion = null;
+            pDescripcion = textBox_Descripcion.Text;
 
             //Muestro mensaje de aceptacion o rechazo, y el tipo de error ocurrido
-            bool comprobarTipos = this.comprobarTipos(pPrecio,pPorcentaje,pDecimalPrecio,pDecimalPorcentaje);
+            bool comprobarTipos = this.comprobarTipos(pPrecio, pPorcentaje, pDecimalPrecio, pDecimalPorcentaje);
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pNombre, pPrecio, pPorcentaje);
             const string resumen = "";
 
+
             if (comprobarTipos && comprobarDatosCompletos)
             {
+                Decimal pId = 0;
+                  SqlConnection Conexion2 = Base_de_Datos.BD_Conexion.ObternerConexion();
+                  using (Conexion2)
+                  {
+                      SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT top 1 VIS_CODIGO FROM LOS_JUS.VISUALIZACION ORDER BY VIS_CODIGO desc"), Conexion2);
 
-                Decimal pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
-                Decimal pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
-                               
+                      SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
+                      while (reader.Read())
+                      {
+                          Decimal pIdAnterior = reader.GetDecimal(0);
+                          pId = pIdAnterior + 1;
+
+                      }
+                      reader.Close();
+                  }
+
+                SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+                using (Conexion)
+                {
+                    string sql = string.Format("Insert into LOS_JUS.Visualizacion(VIS_CODIGO,vis_nombre,vis_precio,vis_porcentaje,vis_descripcion) values('{0}','{1}','{2}','{3}','{4}')",pId, pNombre, pPrecioFinal, pPorcentajeFinal, pDescripcion);
+
+
+                    SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
+
+                    
+                    int retorno = InsertarRol.ExecuteNonQuery();
+
+                }
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                this.Close();
+                
             }
             else
             {
@@ -88,6 +118,8 @@ namespace FrbaCommerce.Abm_Visibilidad
                 }
 
             }
+
+            
 
           
 

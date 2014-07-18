@@ -57,8 +57,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             String pPrecio = "0";
             pPrecio = textBox1_precio.Text;
 
-            String pPorcentajeFinal = pPorcentaje + ',' + pDecimalPorcentaje;
-            String pPrecioFinal = pPrecio + ',' + pDecimalPrecio;
+            String pPorcentajeFinal = pPorcentaje + '.' + pDecimalPorcentaje;
+            String pPrecioFinal = pPrecio + '.' + pDecimalPrecio;
 
 
             String pNombre = textBox_Nombre.Text;
@@ -74,21 +74,29 @@ namespace FrbaCommerce.Abm_Visibilidad
             if (comprobarTipos && comprobarDatosCompletos)
             {
 
-                Decimal pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
-                Decimal pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
+                //Decimal pPrecioConvertido = Convert.ToDecimal(pPrecioFinal);
+                //Decimal pPorcentajeConvertido = Convert.ToDecimal(pPorcentajeFinal);
                 Decimal pCodigo = Convert.ToDecimal(codigoVisualizacionSeleccionada);
 
                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                 using (Conexion)
-                                {
+                {
+                    string sql = string.Format("UPDATE LOS_JUS.Visualizacion SET vis_nombre= '{0}',vis_precio= {1},vis_porcentaje= {2},vis_descripcion= '{3}' WHERE VIS_CODIGO = {4}", pNombre, pPrecioFinal, pPorcentajeFinal, pDescripcion, pCodigo);
 
-                                    SqlCommand InsertarRol = new SqlCommand(string.Format("UPDATE LOS_JUS.Visualizacion SET vis_nombre= '{0}',vis_precio= '{1}',vis_porcentaje= '{2}',vis_descripcion= '{3}' WHERE VIS_CODIGO = '{4}'"
-                                                                                                        , pNombre, pPrecioConvertido, pPorcentajeConvertido, pDescripcion, pCodigo), Conexion);
-                                    int retorno = InsertarRol.ExecuteNonQuery();
 
-                                }
+                    SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
+                      //SqlCommand InsertarRol = new SqlCommand(string.Format("UPDATE LOS_JUS.Visualizacion SET vis_nombre= '{0}',vis_precio= '{1}',vis_porcentaje= '{2}',vis_descripcion= '{3}' WHERE VIS_CODIGO = '{4}'"
+                  //                                                                    , pNombre, pPrecioConvertido, pPorcentajeConvertido, pDescripcion, pCodigo), Conexion);
+
+                    
+                    int retorno = InsertarRol.ExecuteNonQuery();
+
+                }
                 string mensaje_Aceptacion = "Los datos han sigo guardados con éxito";
                 MessageBox.Show(mensaje_Aceptacion, resumen, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                this.Close();
+                
             }
             else
             {
@@ -122,8 +130,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            Abm_Visibilidad.ListadoSeleccionModificacion listado_modificacion = new Abm_Visibilidad.ListadoSeleccionModificacion();
-            listado_modificacion.Show();
+           
         }
 
         private void textBox_Nombre_MouseEnter(object sender, EventArgs e)

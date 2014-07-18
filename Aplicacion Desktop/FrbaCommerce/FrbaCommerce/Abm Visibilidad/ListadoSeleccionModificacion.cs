@@ -98,7 +98,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                         pColumna4 = 0;
                     }
 
-                    dataGridView1.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4);
+                    dataGridView1.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna4, pColumna3);
 
                 }
 
@@ -114,16 +114,16 @@ namespace FrbaCommerce.Abm_Visibilidad
                 {
                     int i = e.RowIndex;
 
-                    string precio = dataGridView1[3, i].Value.ToString();
+                    string precio = dataGridView1[4, i].Value.ToString();
 
                     string[] parts1 = precio.Split(','); 
                     string precioEntero = int.Parse(parts1[0]).ToString();
                     string precioDecimal = int.Parse(parts1[1]).ToString();
 
-                    string porcentaje = dataGridView1[4, i].Value.ToString();
+                    string porcentaje = dataGridView1[3, i].Value.ToString();
                     string[] parts2 = porcentaje.Split(',');
-                    string porcentajeEntero = int.Parse(parts2[0]).ToString();
-                    string porcentajeDecimal = int.Parse(parts2[1]).ToString();
+                    string porcentajeEntero = parts2[0];
+                    string porcentajeDecimal = parts2[1];
                     
                     Abm_Visibilidad.Modificacion modificacion = new Abm_Visibilidad.Modificacion();
                     modificacion.nombreSeleccionado = dataGridView1[1, i].Value.ToString();
@@ -133,6 +133,8 @@ namespace FrbaCommerce.Abm_Visibilidad
                     modificacion.decimalPrecioSeleccionado = precioDecimal;
                     modificacion.decimalPorcentajeSeleccionado = porcentajeDecimal;
                     modificacion.Show();
+
+                    dataGridView1.Rows.Clear();
 
                 }
             }

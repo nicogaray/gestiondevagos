@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_Buscar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.groupBox_Filtro = new System.Windows.Forms.GroupBox();
-            this.textBox_RazonSocial = new System.Windows.Forms.TextBox();
+            this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.label_Nombre = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioPublicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PorcentajePublicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox_Filtro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 95);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(498, 214);
-            this.dataGridView1.TabIndex = 11;
             // 
             // button_Buscar
             // 
@@ -54,6 +52,7 @@
             this.button_Buscar.TabIndex = 10;
             this.button_Buscar.Text = "Buscar";
             this.button_Buscar.UseVisualStyleBackColor = true;
+            this.button_Buscar.Click += new System.EventHandler(this.button_Buscar_Click);
             // 
             // button_Limpiar
             // 
@@ -68,7 +67,7 @@
             // 
             // groupBox_Filtro
             // 
-            this.groupBox_Filtro.Controls.Add(this.textBox_RazonSocial);
+            this.groupBox_Filtro.Controls.Add(this.textBox_Nombre);
             this.groupBox_Filtro.Controls.Add(this.label_Nombre);
             this.groupBox_Filtro.Location = new System.Drawing.Point(3, 5);
             this.groupBox_Filtro.Name = "groupBox_Filtro";
@@ -77,12 +76,12 @@
             this.groupBox_Filtro.TabStop = false;
             this.groupBox_Filtro.Text = "Filtros de busqueda";
             // 
-            // textBox_RazonSocial
+            // textBox_Nombre
             // 
-            this.textBox_RazonSocial.Location = new System.Drawing.Point(162, 21);
-            this.textBox_RazonSocial.Name = "textBox_RazonSocial";
-            this.textBox_RazonSocial.Size = new System.Drawing.Size(232, 20);
-            this.textBox_RazonSocial.TabIndex = 0;
+            this.textBox_Nombre.Location = new System.Drawing.Point(162, 21);
+            this.textBox_Nombre.Name = "textBox_Nombre";
+            this.textBox_Nombre.Size = new System.Drawing.Size(232, 20);
+            this.textBox_Nombre.TabIndex = 0;
             // 
             // label_Nombre
             // 
@@ -95,12 +94,73 @@
             this.label_Nombre.TabIndex = 1;
             this.label_Nombre.Text = "Nombre";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Nombre,
+            this.Descripcion,
+            this.PrecioPublicitar,
+            this.PorcentajePublicitar,
+            this.Modificar});
+            this.dataGridView2.Location = new System.Drawing.Point(7, 97);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(498, 212);
+            this.dataGridView2.TabIndex = 12;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 65;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 69;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 88;
+            // 
+            // PrecioPublicitar
+            // 
+            this.PrecioPublicitar.HeaderText = "Precio por publicitar";
+            this.PrecioPublicitar.Name = "PrecioPublicitar";
+            this.PrecioPublicitar.ReadOnly = true;
+            this.PrecioPublicitar.Width = 125;
+            // 
+            // PorcentajePublicitar
+            // 
+            this.PorcentajePublicitar.HeaderText = "Porcentaje por Publicitar ";
+            this.PorcentajePublicitar.Name = "PorcentajePublicitar";
+            this.PorcentajePublicitar.ReadOnly = true;
+            this.PorcentajePublicitar.Width = 150;
+            // 
+            // Modificar
+            // 
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.Name = "Modificar";
+            this.Modificar.Text = "Modificar";
+            this.Modificar.UseColumnTextForButtonValue = true;
+            this.Modificar.Width = 56;
+            // 
             // ListadoSeleccionBaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 315);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button_Buscar);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.groupBox_Filtro);
@@ -110,20 +170,27 @@
             this.Name = "ListadoSeleccionBaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ListadoSeleccionBaja_Load);
             this.groupBox_Filtro.ResumeLayout(false);
             this.groupBox_Filtro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_Buscar;
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.GroupBox groupBox_Filtro;
-        private System.Windows.Forms.TextBox textBox_RazonSocial;
+        private System.Windows.Forms.TextBox textBox_Nombre;
         private System.Windows.Forms.Label label_Nombre;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioPublicitar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PorcentajePublicitar;
+        private System.Windows.Forms.DataGridViewButtonColumn Modificar;
     }
 }
