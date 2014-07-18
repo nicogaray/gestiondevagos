@@ -99,7 +99,7 @@ namespace FrbaCommerce.Editar_Publicacion
                     int i = e.RowIndex;
 
                     String convertirCodigo = dataGridView2[9, i].Value.ToString();
-                    if (convertirCodigo == null) 
+                    if (convertirCodigo == "0") 
                     {
                     using (var form = new Editar_Publicacion.ModificarBorradorCompra())
                     {
@@ -128,7 +128,6 @@ namespace FrbaCommerce.Editar_Publicacion
                     }
                     }
                     else
-
                     {
 
                     using (var form = new Editar_Publicacion.ModificarBorradorSubasta())

@@ -56,7 +56,27 @@ namespace FrbaCommerce.Editar_Publicacion
         {
             textBox_descripcion.Text = pDescripcionSeleccionada;
             textBox_cantidad.Text = pCantidadSeleccionada;
-            textBox_precio.Text = pPrecioSeleccionado;
+
+
+            string i1;
+            string i2;
+
+            if (pPrecioSeleccionado.Contains(','))
+            {
+                string[] parts = pPrecioSeleccionado.Split(',');
+                i1 = parts[0];
+                i2 = parts[1];
+
+                textBox_precio.Text = i1;
+                textBox_decimal.Text = i2;
+            }
+            else
+            {
+                textBox_precio.Text = pPrecioSeleccionado;
+                textBox_decimal.Text = "00";
+            }
+
+            
             radioButton_Borrador.Checked = true;
             radioButton_Activa.Checked = false;
             radioButton_Pausada.Checked = false;
@@ -104,7 +124,7 @@ namespace FrbaCommerce.Editar_Publicacion
                     }
                     reader.Close();
 
-                    SqlCommand ObtenerVisibilidadPublicacion = new SqlCommand(string.Format("SELECT vis_nombre FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion where pubvis_publicacion=", pPublicacionCodigoSeleccionado), Conexion);
+                    SqlCommand ObtenerVisibilidadPublicacion = new SqlCommand(string.Format("SELECT vis_nombre FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion where pubvis_publicacion='{0}'", pPublicacionCodigoSeleccionado), Conexion);
 
                     SqlDataReader reader2 = ObtenerVisibilidadPublicacion.ExecuteReader();
                     while (reader2.Read())
@@ -144,6 +164,17 @@ namespace FrbaCommerce.Editar_Publicacion
             String pDescripcion = textBox_descripcion.Text;
             String pCantidad = textBox_cantidad.Text;
             String pPrecio = textBox_precio.Text;
+            if (pPrecio == "")
+            {
+                pPrecio = "0";
+            }
+            String pDecimal = textBox_decimal.Text;
+            if (pDecimal == "")
+            {
+                pDecimal = "0";
+            }
+            String precioCompleto = pPrecio + '.' + pDecimal;
+      
             String pFechaInicio = dateTimePicker_FechaInicio.Value.ToString("yyyy-MM-dd HH:mm:ss");
             String pFechaVencimiento = dateTimePicker_FechaVencimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
             String pVisibilidadNombre = null;
@@ -242,17 +273,17 @@ namespace FrbaCommerce.Editar_Publicacion
 
 
                     SqlCommand InsertarPublicacion = new SqlCommand(string.Format("update LOS_JUS.publicacion SET pub_descripcion = '{0}',pub_precio = '{1}',pub_fecha_inicio = '{2}',pub_fecha_fin = '{3}',pub_estado = '{4}',pub_habilitacion_preguntas = '{5}' WHERE PUB_CODIGO = '{6}'",
-                                                                    pDescripcion, pPrecioConvertido, pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas, pPublicacionCodigoSeleccionado), Conexion);
+                                                                    pDescripcion, precioCompleto, pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas, pPublicacionCodigoSeleccionado), Conexion);
                     int retorno = InsertarPublicacion.ExecuteNonQuery();
 
 
-                    SqlCommand InsertarCompra = new SqlCommand(string.Format("UPDATE LOS_JUS.COMPRA SET COM_CODIGO= '{0}',COM_PUBLICACION '{1}',COM_STOCK = '{2}' WHERE PUB_CODIGO = '{3}'",
+                    SqlCommand InsertarCompra = new SqlCommand(string.Format("UPDATE LOS_JUS.COMPRA SET COM_CODIGO= '{0}',COM_PUBLICACION = '{1}',COM_STOCK = '{2}' WHERE com_publicacion = '{3}'",
                                                                     pPublicacionCodigoSeleccionado, pPublicacionCodigoSeleccionado, pCantidadConvertida, pPublicacionCodigoSeleccionado), Conexion);
                     int retorno2 = InsertarCompra.ExecuteNonQuery();
 
 
-                    SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.PUBLICACIONxVISUALIZACION SET PUBVIS_PUBLICACION = '{0}', PUBVIS_VISUALIZACION = '{1}' WHERE PUB_CODIGO = '{2}'",
-                                                                    pPublicacionCodigoSeleccionado, pVisibilidadCodigo), Conexion);
+                    SqlCommand InsertarVisualizacionXPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.PUBLICACIONxVISUALIZACION SET PUBVIS_PUBLICACION = '{0}', PUBVIS_VISUALIZACION = '{1}' WHERE pubvis_publicacion = '{2}'",
+                                                                    pPublicacionCodigoSeleccionado, pVisibilidadCodigo,pPublicacionCodigoSeleccionado), Conexion);
                     int retorno3 = InsertarVisualizacionXPublicacion.ExecuteNonQuery();
 
                     SqlCommand ObtenerRubroCodigo = null;
@@ -351,6 +382,7 @@ namespace FrbaCommerce.Editar_Publicacion
             
             textBox_descripcion.Clear();
             textBox_cantidad.Clear();
+            textBox_decimal.Clear();
             textBox_precio.Clear();
             comboBox_Visibilidad.Text = "";
 

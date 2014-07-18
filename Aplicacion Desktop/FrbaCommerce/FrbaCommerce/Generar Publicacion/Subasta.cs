@@ -66,8 +66,7 @@ namespace FrbaCommerce.Generar_Publicacion
             String pEstadoPublicacion = "";
             Int32 pPermitirPreguntas = -1;
 
-            String pValorFinal = pValorEntero + ',' + pValorDecimal;
-            Decimal pValorFinalConvertido = Convert.ToDecimal(pValorFinal);
+            String pValorFinal = pValorEntero + '.' + pValorDecimal;
 
 
             if (comboBox_Visibilidad.SelectedIndex == 0)
@@ -161,8 +160,8 @@ namespace FrbaCommerce.Generar_Publicacion
 
 
 
-                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
-                                                                    35, pDescripcion,pValorFinal , pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas), Conexion);
+                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ({0},'{1}',{2},'{3}','{4}','{5}','{6}')",
+                                                                    39, pDescripcion,pValorFinal, pFechaInicio, pFechaVencimiento, pEstadoPublicacion, pPermitirPreguntas), Conexion);
                     int retorno = InsertarPublicacion.ExecuteNonQuery();
 
 

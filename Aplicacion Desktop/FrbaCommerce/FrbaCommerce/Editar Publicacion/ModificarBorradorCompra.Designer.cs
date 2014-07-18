@@ -46,7 +46,6 @@
             this.label_Visibilidad = new System.Windows.Forms.Label();
             this.checkedListBox_Rubro = new System.Windows.Forms.CheckedListBox();
             this.label_Rubro = new System.Windows.Forms.Label();
-            this.textBox_precio = new System.Windows.Forms.TextBox();
             this.label_Precio = new System.Windows.Forms.Label();
             this.dateTimePicker_FechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.textBox_cantidad = new System.Windows.Forms.TextBox();
@@ -54,6 +53,9 @@
             this.textBox_descripcion = new System.Windows.Forms.TextBox();
             this.label_Descripcion = new System.Windows.Forms.Label();
             this.button_Cancelar = new System.Windows.Forms.Button();
+            this.textBox_decimal = new System.Windows.Forms.TextBox();
+            this.textBox_precio = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +84,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox_decimal);
             this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.textBox_precio);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dateTimePicker_FechaInicio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label_FechaVencimiento);
@@ -94,7 +99,6 @@
             this.groupBox1.Controls.Add(this.label_Visibilidad);
             this.groupBox1.Controls.Add(this.checkedListBox_Rubro);
             this.groupBox1.Controls.Add(this.label_Rubro);
-            this.groupBox1.Controls.Add(this.textBox_precio);
             this.groupBox1.Controls.Add(this.label_Precio);
             this.groupBox1.Controls.Add(this.dateTimePicker_FechaVencimiento);
             this.groupBox1.Controls.Add(this.textBox_cantidad);
@@ -287,14 +291,6 @@
             this.label_Rubro.TabIndex = 9;
             this.label_Rubro.Text = "Rubro";
             // 
-            // textBox_precio
-            // 
-            this.textBox_precio.Location = new System.Drawing.Point(187, 71);
-            this.textBox_precio.MaxLength = 18;
-            this.textBox_precio.Name = "textBox_precio";
-            this.textBox_precio.Size = new System.Drawing.Size(65, 20);
-            this.textBox_precio.TabIndex = 8;
-            // 
             // label_Precio
             // 
             this.label_Precio.AutoSize = true;
@@ -355,6 +351,33 @@
             this.button_Cancelar.Text = "Cancelar";
             this.button_Cancelar.UseVisualStyleBackColor = true;
             // 
+            // textBox_decimal
+            // 
+            this.textBox_decimal.Location = new System.Drawing.Point(261, 71);
+            this.textBox_decimal.MaxLength = 2;
+            this.textBox_decimal.Name = "textBox_decimal";
+            this.textBox_decimal.Size = new System.Drawing.Size(40, 20);
+            this.textBox_decimal.TabIndex = 30;
+            // 
+            // textBox_precio
+            // 
+            this.textBox_precio.Location = new System.Drawing.Point(187, 71);
+            this.textBox_precio.MaxLength = 16;
+            this.textBox_precio.Name = "textBox_precio";
+            this.textBox_precio.Size = new System.Drawing.Size(65, 20);
+            this.textBox_precio.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(249, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 20);
+            this.label3.TabIndex = 31;
+            this.label3.Text = ",";
+            // 
             // ModificarBorradorCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,7 +421,6 @@
         private System.Windows.Forms.Label label_Visibilidad;
         private System.Windows.Forms.CheckedListBox checkedListBox_Rubro;
         private System.Windows.Forms.Label label_Rubro;
-        private System.Windows.Forms.TextBox textBox_precio;
         private System.Windows.Forms.Label label_Precio;
         private System.Windows.Forms.DateTimePicker dateTimePicker_FechaVencimiento;
         private System.Windows.Forms.TextBox textBox_cantidad;
@@ -406,5 +428,8 @@
         private System.Windows.Forms.TextBox textBox_descripcion;
         private System.Windows.Forms.Label label_Descripcion;
         private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.TextBox textBox_decimal;
+        private System.Windows.Forms.TextBox textBox_precio;
+        private System.Windows.Forms.Label label3;
     }
 }

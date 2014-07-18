@@ -13,9 +13,9 @@ namespace FrbaCommerce.Generar_Publicacion
     public partial class Compra_Inmediata : Form
     {
       
-        public bool comprobarTipos(String precio,String cantidad)
+        public bool comprobarTipos(String precio,String cantidad, String decimales)
         {
-            return (precio.All(char.IsDigit) && cantidad.All(char.IsDigit));
+            return (precio.All(char.IsDigit) && cantidad.All(char.IsDigit) && decimales.All(char.IsDigit));
         }
 
         public bool comprobarDatosCompletos(String descripcion, String precio, String cantidad, String visibilidad ,String estadoPublicacion, Int32 peritirPreguntas)
@@ -51,7 +51,22 @@ namespace FrbaCommerce.Generar_Publicacion
         {
             String pDescripcion = textBox_descripcion.Text;
             String pCantidad = textBox_cantidad.Text;
-            String pPrecio = textBox_precio.Text;
+            String pValorEntero = textBox_ValorInicialEntero.Text;
+            if (pValorEntero == "")
+            {
+                pValorEntero = "0";
+            }
+
+            String pValorDecimal = textBox_ValorInicialDecimal.Text;
+
+            if (pValorDecimal == "")
+            {
+                pValorDecimal = "0";
+            }
+  
+            
+            
+            
             String pFechaInicio = dateTimePicker_FechaInicio.Value.ToString("yyyy-MM-dd HH:mm:ss");
             String pFechaVencimiento = dateTimePicker_FechaVencimiento.Value.ToString("yyyy-MM-dd HH:mm:ss");
             String pVisibilidadNombre = null;
@@ -87,7 +102,10 @@ namespace FrbaCommerce.Generar_Publicacion
                 pVisibilidadNombre = "Gratis";
                 pVisibilidadCodigo = 10006;
             }
-            
+
+              String pPrecio = pValorEntero + '.' + pValorDecimal;
+
+
             if(checkedListBox_Rubro.CheckedItems.Count != 0)
             {
                 for(int x = 0; x <= checkedListBox_Rubro.CheckedItems.Count - 1 ; x++)
@@ -124,7 +142,7 @@ namespace FrbaCommerce.Generar_Publicacion
             } 
 
             DateTime hoy = DateTime.Today;
-            bool comprobarTipos = this.comprobarTipos(pPrecio,pCantidad);
+            bool comprobarTipos = this.comprobarTipos(pValorEntero,pCantidad,pValorDecimal);
             bool comprobarDatosCompletos = this.comprobarDatosCompletos(pDescripcion,pPrecio,pCantidad,pVisibilidadNombre,pEstadoPublicacion,pPermitirPreguntas);
             const string resumen = "";
 
@@ -140,7 +158,6 @@ namespace FrbaCommerce.Generar_Publicacion
                 if (comprobarTipos && comprobarDatosCompletos && comprobarFechas)
                 {
                     //Defino variables y convierto datos
-                    Int64 pPrecioConvertido = Convert.ToInt64(pPrecio);
                     Int32 pCantidadConvertida = Convert.ToInt32(pCantidad);
 
 
@@ -152,7 +169,7 @@ namespace FrbaCommerce.Generar_Publicacion
 
                          
                                 SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}',{2},'{3}','{4}','{5}','{6}')", 
-                                                                                39,pDescripcion,pPrecioConvertido,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
+                                                                                39,pDescripcion,pPrecio,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
                                 int retorno = InsertarPublicacion.ExecuteNonQuery();
 
                                 SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);
@@ -177,6 +194,8 @@ namespace FrbaCommerce.Generar_Publicacion
                                                                                 pPublicacionCodigo,pVisibilidadCodigo), Conexion);
                                 int retorno3 = InsertarVisualizacionXPublicacion.ExecuteNonQuery();
                         
+
+
                         SqlCommand ObtenerRubroCodigo = null;
                         SqlDataReader reader2 = null; 
                         int retorno4 = -1;
@@ -194,14 +213,14 @@ namespace FrbaCommerce.Generar_Publicacion
                                         while (reader2.Read())
                                         {
                                             pRubroCodigo = reader2.GetInt32(0);
-                                            
+
                                         }
                                         reader2.Close();
-
                                     
                                     SqlCommand InsertarRubro = new SqlCommand(string.Format("INSERT INTO LOS_JUS.RUBROxPUBLICACION(RUBPUB_RUBRO,RUBPUB_PUBLICACION) Values ({0},{1})", 
                                                                                 pRubroCodigo,pPublicacionCodigo), Conexion);
                                     retorno4 = InsertarRubro.ExecuteNonQuery();
+                                      
 
                                 
                                 }
@@ -214,7 +233,8 @@ namespace FrbaCommerce.Generar_Publicacion
 
                         textBox_descripcion.Clear();
                         textBox_cantidad.Clear();
-                        textBox_precio.Clear();
+                        textBox_ValorInicialDecimal.Clear();
+                        textBox_ValorInicialEntero.Clear();
                         comboBox_Visibilidad.Text = "";
 
                         DateTime fecha = DateTime.Now;
@@ -229,9 +249,9 @@ namespace FrbaCommerce.Generar_Publicacion
 
                         checkedListBox_Rubro.ClearSelected();
 
-
-
                     }
+
+                   
                
                 }
                 else
@@ -275,7 +295,8 @@ namespace FrbaCommerce.Generar_Publicacion
         {
             textBox_descripcion.Clear();
             textBox_cantidad.Clear();
-            textBox_precio.Clear();
+            textBox_ValorInicialDecimal.Clear();
+            textBox_ValorInicialEntero.Clear();
             comboBox_Visibilidad.Text = "";
 
             DateTime fecha = DateTime.Now;
