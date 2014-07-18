@@ -43,8 +43,6 @@ namespace FrbaCommerce.Editar_Publicacion
                             {
                             }
                         }
-                        Editar_Publicacion.ModificarActiva activa = new Editar_Publicacion.ModificarActiva();
-                        activa.Show();
 
                     }
                 }

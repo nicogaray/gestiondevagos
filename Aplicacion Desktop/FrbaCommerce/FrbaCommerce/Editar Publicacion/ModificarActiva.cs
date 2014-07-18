@@ -91,18 +91,15 @@ namespace FrbaCommerce.Editar_Publicacion
                 {
 
 
-                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.publicacion SET pub_descripcion='{0}',pub_estado='{1}' WHERE '{2}'",
+                    SqlCommand InsertarPublicacion = new SqlCommand(string.Format("UPDATE LOS_JUS.publicacion SET pub_descripcion='{0}',pub_estado='{1}' WHERE pub_codigo = {2}",
                                                                     pDescripcion, pEstadoPublicacion,publicacionCodigoSeleccionado ), Conexion);
                     int retorno = InsertarPublicacion.ExecuteNonQuery();
 
 
-                    SqlCommand InsertarCompra = new SqlCommand(string.Format("UPDATE LOS_JUS.compra SET com_stock='{0}' WHERE  com_publicacion = '{2}'",
+                    SqlCommand InsertarCompra = new SqlCommand(string.Format("UPDATE LOS_JUS.compra SET com_stock={0} WHERE  com_publicacion = {1}",
                                                                     pCantidad,publicacionCodigoSeleccionado ), Conexion);
                     int retorno2 = InsertarCompra.ExecuteNonQuery();
 
-                      this.ReturnId = true;
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
 
 
                     }
@@ -118,6 +115,11 @@ namespace FrbaCommerce.Editar_Publicacion
                     radioButton_Borrador.Checked = false;
                     radioButton_Pausada.Checked = false;
                     radioButton_Finalizada.Checked = false;
+
+                    this.ReturnId = true;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+
 
                 }
         

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_Volver = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.PublicacionCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpresaCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,15 +42,6 @@
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button_Volver
-            // 
-            this.button_Volver.Location = new System.Drawing.Point(416, 270);
-            this.button_Volver.Name = "button_Volver";
-            this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 3;
-            this.button_Volver.Text = "Volver";
-            this.button_Volver.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -72,7 +62,7 @@
             this.Modificar});
             this.dataGridView2.Location = new System.Drawing.Point(12, 12);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(479, 252);
+            this.dataGridView2.Size = new System.Drawing.Size(479, 281);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -160,7 +150,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 305);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.button_Volver);
             this.Name = "Borrador";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Borrador_Load);
@@ -171,7 +160,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn PublicacionCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpresaCodigo;
