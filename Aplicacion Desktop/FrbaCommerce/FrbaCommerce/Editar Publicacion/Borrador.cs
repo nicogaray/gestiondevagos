@@ -30,8 +30,8 @@ namespace FrbaCommerce.Editar_Publicacion
 
                 //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 52165955
                 SqlCommand cmd = null;
-                cmd = new SqlCommand(string.Format("SELECT pub_codigo,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_habilitacion_preguntas,com_stock,sub_cant_lote,sub_codigo From LOS_JUS.publicacionesActivas('{0}')",
-                                                                  52165955), Conexion);
+                cmd = new SqlCommand(string.Format("SELECT pub_codigo,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_habilitacion_preguntas,com_stock,SUB_CANT_POR_LOTE,sub_codigo From LOS_JUS.publicacionesBorrador({0})",
+                                                                  39), Conexion);
 
 
 
@@ -49,15 +49,40 @@ namespace FrbaCommerce.Editar_Publicacion
                 while (reader.Read())
                 {
                     Decimal pColumna0 = reader.GetDecimal(0);//pub_codigo
-                    DateTime pColumna1 = reader.GetDateTime(1);//pub_empresa
+                    Int32 pColumna1 = reader.GetInt32(1);//pub_empresa
                     String pColumna2 = reader.GetString(2);//pub_descripcion
-                    String pColumna3 = reader.GetString(3);//pub_precio
+                    Decimal pColumna3 = reader.GetDecimal(3);//pub_precio
                     DateTime pColumna4 = reader.GetDateTime(4);//pub_fecha_inicio
                     DateTime pColumna5 = reader.GetDateTime(5);//pub_fecha_fin
                     Int32 pColumna6 = reader.GetInt32(6);//pub_habilitacion_preguntas
-                    Decimal pColumna7 = reader.GetDecimal(7);//com_stock
-                    Decimal pColumna8 = reader.GetDecimal(8);//sub_cant_lote                
-                    Decimal pColumna9 = reader.GetDecimal(9);//sub_codigo                
+                    
+                    Decimal pColumna7;
+                    if (reader.IsDBNull(7) == false)
+                    {
+                        pColumna7 = reader.GetDecimal(7);//com_stock
+                    }
+                    else
+                    {
+                        pColumna7 = Decimal.Zero;
+                    }
+                    Decimal pColumna8;
+                    if (reader.IsDBNull(8) == false)
+                    {
+                        pColumna8 = reader.GetDecimal(8);//sub_cant_lote
+                    }
+                    else
+                    {
+                        pColumna8 = Decimal.Zero;
+                    }
+                    Decimal pColumna9;
+                    if (reader.IsDBNull(8) == false)
+                    {
+                        pColumna9 = reader.GetDecimal(9);//sub_codigo
+                    }
+                    else
+                    {
+                        pColumna9 = Decimal.Zero;
+                    } 
 
 
                     dataGridView2.Rows.Add(pColumna0, pColumna1, pColumna2, pColumna3, pColumna4, pColumna5, pColumna6, pColumna7, pColumna8,pColumna9);

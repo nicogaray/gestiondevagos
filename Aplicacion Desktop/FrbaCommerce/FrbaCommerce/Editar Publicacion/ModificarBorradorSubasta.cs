@@ -56,9 +56,12 @@ namespace FrbaCommerce.Editar_Publicacion
             textBox_descripcion.Text = pDescripcionSeleccionada;
             textBox_cantidad.Text = pCantidadSeleccionada;
 
-            string[] parts = pPrecioSeleccionado.Split('.');
-            string i1 = parts[0];
-            string i2 = parts[1];
+            string i1 = 0;
+            string i2 = 0;
+
+            string[] parts = pPrecioSeleccionado.Split(',');
+            i1 = parts[0];
+            i2 = parts[1];
             
             textBox_precio.Text = i1;
             textBox_decimal.Text = i2;

@@ -150,6 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 305);
             this.Controls.Add(this.dataGridView2);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Borrador";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Borrador_Load);
