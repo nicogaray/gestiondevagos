@@ -46,11 +46,22 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
+                         Int32 id = 0;
 
-                //IMPORTANTE: FALTA OBTENER EL ID DE LA EMPRESA DE LA SESION, USO EJEMPLO DE PRUEBA: 1
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
+
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT PRE_CODIGO,PRE_PUBLICACION, PRE_CLIENTE, PRE_PREGUNTA From LOS_JUS.buscarPreguntasSinResponder('{0}')",
-                                                                  39), Conexion);
+                                                                  id), Conexion);
 
 
                 SqlDataReader reader = cmd.ExecuteReader();

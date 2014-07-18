@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.dataGridView_Respuesta1 = new System.Windows.Forms.DataGridView();
+            this.CodigoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_Consultas = new System.Windows.Forms.GroupBox();
             this.comboBox_operaciones = new System.Windows.Forms.ComboBox();
             this.label_OperacionesRealizadas = new System.Windows.Forms.Label();
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_HacerConsulta = new System.Windows.Forms.Button();
-            this.CodigoOperacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView_Respuesta2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +77,41 @@
             this.dataGridView_Respuesta1.Size = new System.Drawing.Size(614, 236);
             this.dataGridView_Respuesta1.TabIndex = 3;
             this.dataGridView_Respuesta1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_ResultadoCompra_CellContentClick);
+            // 
+            // CodigoOperacion
+            // 
+            this.CodigoOperacion.HeaderText = "Codigo Operacion";
+            this.CodigoOperacion.Name = "CodigoOperacion";
+            this.CodigoOperacion.ReadOnly = true;
+            this.CodigoOperacion.Width = 117;
+            // 
+            // CodigoPublicacion
+            // 
+            this.CodigoPublicacion.HeaderText = "Codigo Publicacion";
+            this.CodigoPublicacion.Name = "CodigoPublicacion";
+            this.CodigoPublicacion.ReadOnly = true;
+            this.CodigoPublicacion.Width = 123;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 88;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Width = 53;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 62;
             // 
             // groupBox_Consultas
             // 
@@ -138,41 +173,6 @@
             this.button_HacerConsulta.Text = "Hacer consulta";
             this.button_HacerConsulta.UseVisualStyleBackColor = true;
             this.button_HacerConsulta.Click += new System.EventHandler(this.button_HacerConsulta_Click_1);
-            // 
-            // CodigoOperacion
-            // 
-            this.CodigoOperacion.HeaderText = "Codigo Operacion";
-            this.CodigoOperacion.Name = "CodigoOperacion";
-            this.CodigoOperacion.ReadOnly = true;
-            this.CodigoOperacion.Width = 117;
-            // 
-            // CodigoPublicacion
-            // 
-            this.CodigoPublicacion.HeaderText = "Codigo Publicacion";
-            this.CodigoPublicacion.Name = "CodigoPublicacion";
-            this.CodigoPublicacion.ReadOnly = true;
-            this.CodigoPublicacion.Width = 123;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 88;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Width = 53;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 62;
             // 
             // dataGridView_Respuesta2
             // 
@@ -249,6 +249,7 @@
             this.dataGridView_Respuesta3.Name = "dataGridView_Respuesta3";
             this.dataGridView_Respuesta3.Size = new System.Drawing.Size(614, 236);
             this.dataGridView_Respuesta3.TabIndex = 5;
+            this.dataGridView_Respuesta3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Respuesta3_CellContentClick);
             // 
             // dataGridViewTextBoxColumn6
             // 

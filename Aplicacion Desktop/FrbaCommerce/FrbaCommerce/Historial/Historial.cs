@@ -143,9 +143,20 @@ namespace FrbaCommerce.Historial_Cliente
 
                     if (comboBox_operaciones.SelectedIndex == 0)
                     {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 2
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,OPE_PUBLICACION,PUB_DESCRIPCION,OPE_TIPO,OPE_FECHA From LOS_JUS.buscarHistorialCompraCliente('{0}')",
-                                                                  2), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -176,9 +187,20 @@ namespace FrbaCommerce.Historial_Cliente
                     }
                     if (comboBox_operaciones.SelectedIndex == 1)
                     {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 2
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,OPE_PUBLICACION,PUB_DESCRIPCION,OPE_TIPO,OPE_FECHA,GANADOR From LOS_JUS.buscarHistorialOfertaCliente('{0}')",
-                                                                  2), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -210,10 +232,22 @@ namespace FrbaCommerce.Historial_Cliente
 
                     }
                     if (comboBox_operaciones.SelectedIndex == 2)
-                    {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 2
+                    {         Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
+
+                        
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,PUB_CODIGO,PUB_DESCRIPCION,CAL_ESTRELLAS,CAL_DETALLE From LOS_JUS.buscarHistorialCalificacionesCliente('{0}','Recibidas')",
-                                                                  2), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -251,9 +285,21 @@ namespace FrbaCommerce.Historial_Cliente
 
                     if (comboBox_operaciones.SelectedIndex == 0)
                     {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 35
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
+                        
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,OPE_PUBLICACION,PUB_DESCRIPCION,OPE_TIPO,OPE_FECHA From LOS_JUS.buscarHistorialCompraEmpresa('{0}')",
-                                                                  35), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -284,9 +330,20 @@ namespace FrbaCommerce.Historial_Cliente
                     }
                     if (comboBox_operaciones.SelectedIndex == 1)
                     {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 35
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,OPE_PUBLICACION,PUB_DESCRIPCION,OPE_TIPO,OPE_FECHA,GANADOR From LOS_JUS.buscarHistorialOfertaEmpresa('{0}')",
-                                                                  35), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -319,9 +376,21 @@ namespace FrbaCommerce.Historial_Cliente
                     }
                     if (comboBox_operaciones.SelectedIndex == 2)
                     {
-                        //RECIBE COMO PARAMETRO EL ID DEL USUARIO DE LA SESION.EJEMPLO DE PRUEBA, ID = 2
+
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
+                reader4.Close();
                         cmd = new SqlCommand(string.Format("SELECT OPE_CODIGO,PUB_CODIGO,PUB_DESCRIPCION,CAL_ESTRELLAS,CAL_DETALLE From LOS_JUS.buscarHistorialCalificacionesCliente('{0}','Recibidas')",
-                                                                  2), Conexion);
+                                                                  id), Conexion);
 
 
 
@@ -361,6 +430,11 @@ namespace FrbaCommerce.Historial_Cliente
         }
 
         private void dataGridView_ResultadoCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView_Respuesta3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

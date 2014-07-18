@@ -27,11 +27,23 @@ namespace FrbaCommerce.Editar_Publicacion
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
+                         Int32 id = 0;
 
-                //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 52165955
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader2 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    id = reader2.GetInt32(0);
+
+                }
+
+                reader2.Close();
+
+                
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT pub_codigo,pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_habilitacion_preguntas,com_stock,SUB_CANT_POR_LOTE,sub_codigo From LOS_JUS.publicacionesBorrador({0})",
-                                                                  39), Conexion);
+                                                                  id), Conexion);
 
 
 

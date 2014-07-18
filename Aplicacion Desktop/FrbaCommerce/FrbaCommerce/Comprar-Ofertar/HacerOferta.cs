@@ -63,9 +63,18 @@ namespace FrbaCommerce.Comprar_Ofertar
                using (Conexion)
                {
 
-                   //FALTA INGRESAR EL ID DE CLIENTE DE LA SESION
+                   Int32 id = 0;
+
+                   SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                   SqlDataReader reader = ObtenerIdSesion.ExecuteReader();
+
+                   while (reader.Read())
+                   {
+                       id = reader.GetInt32(0);
+
+                   }
                    string sql = string.Format("Insert into LOS_JUS.operacion(OPE_PUBLICACION,OPE_TIPO,OPE_CLIENTE,OPE_OFERTA,OPE_CANTIDAD,OPE_FECHA) values({0},'{1}',{2},{3},null,'{4}')"
-                                                                               , codigoPublicacionSeleccionada, 'C', 2, oferta, fecha);
+                                                                               , codigoPublicacionSeleccionada, 'C', id, oferta, fecha);
                    SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
 
                    int retorno = InsertarRol.ExecuteNonQuery();

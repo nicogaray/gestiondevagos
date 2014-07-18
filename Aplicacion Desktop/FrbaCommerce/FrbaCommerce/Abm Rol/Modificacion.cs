@@ -285,5 +285,11 @@ namespace FrbaCommerce.Abm_Rol
 
             }
         }
+
+        private void button_Habilitar_Click(object sender, EventArgs e)
+        {
+            Abm_Rol.HabilitarRol rol = new Abm_Rol.HabilitarRol();
+            rol.Show();
+        }
     }
 }

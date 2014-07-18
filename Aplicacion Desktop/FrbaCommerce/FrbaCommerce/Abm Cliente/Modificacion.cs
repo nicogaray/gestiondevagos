@@ -337,9 +337,12 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 button_Cancelar.Hide();
                 button_Volver.Show();
+                button_Habilitar.Hide();
+
             }
             else
             {
+                
                 button_Volver.Hide();
             }
 
@@ -432,6 +435,12 @@ namespace FrbaCommerce.Abm_Cliente
                 Menu.Menu_Cliente menu_administrador = new Menu.Menu_Cliente();
                 menu_administrador.Show();
             }
+        }
+
+        private void button_Habilitar_Click(object sender, EventArgs e)
+        {
+            Abm_Cliente.HabilitarCliente cli = new Abm_Cliente.HabilitarCliente();
+            cli.Show();
         }
     }
 }

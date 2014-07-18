@@ -62,10 +62,21 @@ namespace FrbaCommerce.Gestion_de_Preguntas
                                 SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
                                 using (Conexion)
                                 {
+                                             Int32 id = 0;
 
-                                    //FALTA INGRESAR EL ID DE CLIENTE DE LA SESION
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader = ObtenerIdSesion.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+
+                }
+
+                reader.Close();
+                                    
                                     string sql = string.Format("Insert into LOS_JUS.pregunta(PRE_PUBLICACION,PRE_CLIENTE,PRE_PREGUNTA,PRE_RESPUESTA,PRE_FECHA_RESPUESTA) values({0},{1},'{2}',null,null)"
-                                                                                                , publicacion, 2, pPregunta);
+                                                                                                , publicacion,id, pPregunta);
                                     SqlCommand InsertarRol = new SqlCommand(sql, Conexion);
 
                                         int retorno = InsertarRol.ExecuteNonQuery();

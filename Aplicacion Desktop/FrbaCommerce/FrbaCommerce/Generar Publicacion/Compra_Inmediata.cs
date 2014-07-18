@@ -167,9 +167,22 @@ namespace FrbaCommerce.Generar_Publicacion
                     {
                        Decimal pPublicacionCodigo = -1;
 
+                                 Int32 id = 0;
+
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader5 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader5.Read())
+                {
+                    id = reader5.GetInt32(0);
+
+                }
+
+                reader5.Close();
+
                          
                                 SqlCommand InsertarPublicacion = new SqlCommand(string.Format("INSERT INTO LOS_JUS.publicacion(pub_empresa,pub_descripcion,pub_precio,pub_fecha_inicio,pub_fecha_fin,pub_estado,pub_habilitacion_preguntas) Values ('{0}','{1}',{2},'{3}','{4}','{5}','{6}')", 
-                                                                                39,pDescripcion,pPrecio,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
+                                                                                id,pDescripcion,pPrecio,pFechaInicio,pFechaVencimiento,pEstadoPublicacion,pPermitirPreguntas), Conexion);
                                 int retorno = InsertarPublicacion.ExecuteNonQuery();
 
                                 SqlCommand ObtenerPublicacionCodigo = new SqlCommand(string.Format("SELECT pub_codigo FROM LOS_JUS.publicacion WHERE PUB_DESCRIPCION = '{0}'", pDescripcion), Conexion);

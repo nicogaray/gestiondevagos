@@ -150,9 +150,20 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
 
                     Decimal numeroFactura = 0;
+                             Int32 id = 0;
+                    Decimal codVisualizacion = 0;
+                 SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion2);
+                SqlDataReader reader5 = ObtenerIdSesion.ExecuteReader();
 
-                    //falta id de usuario
-                    SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT ope_codigo,ope_publicacion,pub_descripcion,ope_tipo,ope_oferta,ope_cantidad,ope_fecha FROM LOS_JUS.operacionesSinPagar('{0}')", 2), Conexion2);
+                while (reader5.Read())
+                {
+                    id = reader5.GetInt32(0);
+
+                }
+
+                reader5.Close();
+
+                    SqlCommand ObtenerIdUsuario = new SqlCommand(string.Format("SELECT ope_codigo,ope_publicacion,pub_descripcion,ope_tipo,ope_oferta,ope_cantidad,ope_fecha FROM LOS_JUS.operacionesSinPagar('{0}')", id), Conexion2);
 
                     SqlDataReader reader = ObtenerIdUsuario.ExecuteReader();
                     int contar = 0;
@@ -229,13 +240,14 @@ namespace FrbaCommerce.Facturar_Publicaciones
                         SqlConnection Conexion5 = Base_de_Datos.BD_Conexion.ObternerConexion();
                         using (Conexion5)
                         {
-                            SqlCommand ObtenerComision = new SqlCommand(string.Format("SELECT vis_precio,vis_porcentaje FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion join los_jus.PUBLICACION on pub_codigo=pubvis_publicacion where pub_codigo='{0}'", pColumna1), Conexion5);
+                            SqlCommand ObtenerComision = new SqlCommand(string.Format("SELECT vis_codigo, vis_precio,vis_porcentaje FROM LOS_JUS.visualizacion join los_jus.PUBLICACIONxVISUALIZACION on vis_codigo = pubvis_visualizacion join los_jus.PUBLICACION on pub_codigo=pubvis_publicacion where pub_codigo='{0}'", pColumna1), Conexion5);
 
                             SqlDataReader reader8 = ObtenerComision.ExecuteReader();
                             while (reader8.Read())
                             {
-                                comisionPrecio = reader8.GetDecimal(0);
-                                comisionPorcentaje = reader8.GetDecimal(1);
+                                codVisualizacion = reader8.GetDecimal(0);
+                                comisionPrecio = reader8.GetDecimal(1);
+                                comisionPorcentaje = reader8.GetDecimal(2);
                             }
 
                             reader8.Close();
@@ -258,8 +270,27 @@ namespace FrbaCommerce.Facturar_Publicaciones
                         }
                         porcentajeVenta = porcentajeVenta + (precioPublicacion * comisionPorcentaje);
 
+                                 Int32 gratis = 0;
+
+                     SqlCommand CalcularPublicacionGratis = new SqlCommand(string.Format("SELECT * FROM LOS_JUS.publicacionGratis('{0}','{1}')",id,codVisualizacion), Conexion2);
+                    SqlDataReader reader9 = ObtenerIdSesion.ExecuteReader();
+
+                        while (reader9.Read())
+                        {
+                        gratis = reader9.GetInt32(0);
+
+                     }
+
+		                reader9.Close();
+
+
+
                         //TODO: ANTES DE LLENAR LA COMISION TOTAL, CONSULTAR SI ES GRATIS (10 PUBLICACIONES DEL MISMO TIPO) CON FUNCION, LE MANDO ID_EMPRESA, ID_VISUALIZACION. si devuelve 0 cobras, si devuelve 1 es gratis.
-  
+
+                        if (gratis == 0)
+                        {
+                            comisionPrecio = 0;
+                        }
                         pComisiones = pComisiones + comisionPrecio;
 
                         textBox_Numero.Text = Convert.ToString(numeroFactura);

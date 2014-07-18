@@ -39,11 +39,22 @@ namespace FrbaCommerce.Calificar_Vendedor
             SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
             using (Conexion)
             {
+                Int32 id = 0;
+
+                SqlCommand ObtenerIdSesion = new SqlCommand(string.Format("SELECT ses_id FROM LOS_JUS.sesion"), Conexion);
+                SqlDataReader reader4 = ObtenerIdSesion.ExecuteReader();
+
+                while (reader4.Read())
+                {
+                    id = reader4.GetInt32(0);
+
+                }
+
 
                 //IMPORTANTE: FALTA OBTENER EL ID DEL CLIENTE DE LA SESION, USO EJEMPLO DE PRUEBA: 2
                 SqlCommand cmd = null;
                 cmd = new SqlCommand(string.Format("SELECT emp_razon_social,emp_cuit,emp_contacto,emp_mail,ope_codigo,ope_tipo,ope_fecha From LOS_JUS.buscarVendedores('{0}')",
-                                                                  2), Conexion);
+                                                                  id), Conexion);
 
 
                 SqlDataReader reader = cmd.ExecuteReader();

@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abm Cliente\HabilitarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\HabilitarCliente.Designer.cs">
+      <DependentUpon>HabilitarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Cliente\SeleccionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,12 @@
     </Compile>
     <Compile Include="Abm Rol\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Rol\HabilitarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rol\HabilitarRol.Designer.cs">
+      <DependentUpon>HabilitarRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\ModificarFuncionalidad.cs">
       <SubType>Form</SubType>
@@ -298,11 +310,6 @@
     <Compile Include="Facturar Publicaciones\FacturarPublicaciones.Designer.cs">
       <DependentUpon>FacturarPublicaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="GD1C2014DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GD1C2014DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Generar Publicacion\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +396,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Abm Cliente\HabilitarCliente.resx">
+      <DependentUpon>HabilitarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\SeleccionUsuario.resx">
       <DependentUpon>SeleccionUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -430,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\SeleccionUsuario.resx">
       <DependentUpon>SeleccionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rol\HabilitarRol.resx">
+      <DependentUpon>HabilitarRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ModificarFuncionalidad.resx">
       <DependentUpon>ModificarFuncionalidad.cs</DependentUpon>
@@ -594,17 +607,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="GD1C2014DataSet.xsc">
-      <DependentUpon>GD1C2014DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="GD1C2014DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GD1C2014DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GD1C2014DataSet.xss">
-      <DependentUpon>GD1C2014DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payment_method_american_express_card-481.png" />

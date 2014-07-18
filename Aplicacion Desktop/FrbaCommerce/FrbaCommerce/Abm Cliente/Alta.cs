@@ -295,7 +295,7 @@ namespace FrbaCommerce.Abm_Cliente
                         reader.Close();
                         try
                         {
-                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')",pId,pId), Conexion2);
+                        SqlCommand InsertarUsuario = new SqlCommand(string.Format("INSERT INTO LOS_JUS.Usuario(USU_USERNAME,USU_PASSWORD) Values ('{0}','{1}')",pId,"8623f73bbb01f6c2eb02a97f652301f6a59a1be8c75da5266bc3475c9e1e569d"), Conexion2);
                         int retorno = InsertarUsuario.ExecuteNonQuery();
 
                         String pRetorno = Convert.ToString(retorno);

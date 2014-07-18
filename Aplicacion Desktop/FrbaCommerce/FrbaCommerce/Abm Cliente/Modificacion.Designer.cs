@@ -33,6 +33,8 @@
             this.label_Informacion = new System.Windows.Forms.Label();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.paner_Alta = new System.Windows.Forms.GroupBox();
+            this.textBox_Cuil = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_FechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.textBox_Mail = new System.Windows.Forms.TextBox();
             this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
@@ -57,8 +59,7 @@
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
-            this.textBox_Cuil = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button_Habilitar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,6 +141,25 @@
             this.paner_Alta.TabIndex = 12;
             this.paner_Alta.TabStop = false;
             this.paner_Alta.Text = "Datos del Cliente";
+            // 
+            // textBox_Cuil
+            // 
+            this.textBox_Cuil.Location = new System.Drawing.Point(117, 228);
+            this.textBox_Cuil.MaxLength = 50;
+            this.textBox_Cuil.Name = "textBox_Cuil";
+            this.textBox_Cuil.Size = new System.Drawing.Size(129, 20);
+            this.textBox_Cuil.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(87, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Cuil";
             // 
             // dateTimePicker_FechaNacimiento
             // 
@@ -406,24 +426,16 @@
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox_Cuil
+            // button_Habilitar
             // 
-            this.textBox_Cuil.Location = new System.Drawing.Point(117, 228);
-            this.textBox_Cuil.MaxLength = 50;
-            this.textBox_Cuil.Name = "textBox_Cuil";
-            this.textBox_Cuil.Size = new System.Drawing.Size(129, 20);
-            this.textBox_Cuil.TabIndex = 25;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(87, 231);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Cuil";
+            this.button_Habilitar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Habilitar.Location = new System.Drawing.Point(413, 227);
+            this.button_Habilitar.Name = "button_Habilitar";
+            this.button_Habilitar.Size = new System.Drawing.Size(88, 39);
+            this.button_Habilitar.TabIndex = 19;
+            this.button_Habilitar.Text = "Habilitar Clientes";
+            this.button_Habilitar.UseVisualStyleBackColor = true;
+            this.button_Habilitar.Click += new System.EventHandler(this.button_Habilitar_Click);
             // 
             // Modificacion
             // 
@@ -432,6 +444,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(513, 315);
+            this.Controls.Add(this.button_Habilitar);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
@@ -484,6 +497,7 @@
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.TextBox textBox_Cuil;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button_Habilitar;
 
 
     }
