@@ -129,6 +129,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Respuesta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Responder";
             this.Load += new System.EventHandler(this.Respuesta_Load);
             this.groupBox_ResponderPreguntas.ResumeLayout(false);

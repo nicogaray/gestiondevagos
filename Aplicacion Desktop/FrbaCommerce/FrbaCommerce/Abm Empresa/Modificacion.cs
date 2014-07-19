@@ -301,6 +301,7 @@ namespace FrbaCommerce.Abm_Empresa
             {
                 button_Cancelar.Hide();
                 button_Volver.Show();
+                button_Habilitar.Hide();
             }
             else
             {
@@ -335,6 +336,12 @@ namespace FrbaCommerce.Abm_Empresa
             }
 
          
+        }
+
+        private void button_Habilitar_Click(object sender, EventArgs e)
+        {
+            Abm_Empresa.HabilitarEmpresas emp = new Abm_Empresa.HabilitarEmpresas();
+            emp.Show();
         }
     }
 }

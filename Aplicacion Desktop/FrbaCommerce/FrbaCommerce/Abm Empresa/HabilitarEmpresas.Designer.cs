@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.Abm_Cliente
+﻿namespace FrbaCommerce.Abm_Empresa
 {
-    partial class HabilitarCliente
+    partial class HabilitarEmpresas
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@
             this.button_Volver.Location = new System.Drawing.Point(313, 245);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 22;
+            this.button_Volver.TabIndex = 24;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
@@ -57,12 +57,12 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(376, 212);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Rol
             // 
-            this.Rol.HeaderText = "Cliente";
+            this.Rol.HeaderText = "Empresa";
             this.Rol.Name = "Rol";
             this.Rol.ReadOnly = true;
             // 
@@ -73,7 +73,7 @@
             this.Modificar.Text = "Habilitar";
             this.Modificar.UseColumnTextForButtonValue = true;
             // 
-            // HabilitarCliente
+            // HabilitarEmpresas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -82,10 +82,10 @@
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "HabilitarCliente";
+            this.Name = "HabilitarEmpresas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Habilitar Cliente";
-            this.Load += new System.EventHandler(this.HabilitarCliente_Load);
+            this.Text = "Habilitar empresas";
+            this.Load += new System.EventHandler(this.HabilitarEmpresas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

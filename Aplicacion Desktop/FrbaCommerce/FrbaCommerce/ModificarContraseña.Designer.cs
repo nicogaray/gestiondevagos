@@ -1,6 +1,6 @@
-﻿namespace FrbaCommerce.Abm_Cliente
+﻿namespace FrbaCommerce
 {
-    partial class HabilitarCliente
+    partial class ModificarContraseña
     {
         /// <summary>
         /// Required designer variable.
@@ -37,13 +37,12 @@
             // 
             // button_Volver
             // 
-            this.button_Volver.Location = new System.Drawing.Point(313, 245);
+            this.button_Volver.Location = new System.Drawing.Point(355, 261);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 22;
+            this.button_Volver.TabIndex = 24;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
-            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // dataGridView1
             // 
@@ -56,36 +55,36 @@
             this.Modificar});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(376, 212);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.Size = new System.Drawing.Size(418, 243);
+            this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Rol
             // 
-            this.Rol.HeaderText = "Cliente";
+            this.Rol.HeaderText = "Usuario";
             this.Rol.Name = "Rol";
             this.Rol.ReadOnly = true;
             // 
             // Modificar
             // 
-            this.Modificar.HeaderText = "Habilitar";
+            this.Modificar.HeaderText = "Modificar contraseña";
             this.Modificar.Name = "Modificar";
-            this.Modificar.Text = "Habilitar";
+            this.Modificar.Text = "Modificar";
             this.Modificar.UseColumnTextForButtonValue = true;
             // 
-            // HabilitarCliente
+            // ModificarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 280);
+            this.ClientSize = new System.Drawing.Size(442, 296);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "HabilitarCliente";
+            this.Name = "ModificarContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Habilitar Cliente";
-            this.Load += new System.EventHandler(this.HabilitarCliente_Load);
+            this.Text = "Modificar contraseña";
+            this.Load += new System.EventHandler(this.ModificarContraseña_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

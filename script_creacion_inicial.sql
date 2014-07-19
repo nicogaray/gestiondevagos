@@ -790,7 +790,9 @@ INSERT INTO LOS_JUS.FUNCIONALIDADES (FUN_FUNCIONALIDAD, FUN_DESCRIPCION) VALUES
 ('GENERAR PUBLICACION',''),
 ('EDITAR PUBLICACION',''),
 ('RESPONDER PREGUNTAS',''),
-('HISTORIAL DE LA EMPRESA','');
+('HISTORIAL DE LA EMPRESA',''),
+('MODIFICAR CONTRASEÑAS','')
+;
 GO
 
 INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES (ROLFUN_ROL, ROLFUN_FUNCIONALIDADES) VALUES 
@@ -800,6 +802,7 @@ INSERT INTO LOS_JUS.ROLxFUNCIONALIDADES (ROLFUN_ROL, ROLFUN_FUNCIONALIDADES) VAL
 ('Administrativo','ABM DE RUBRO'),
 ('Administrativo','ABM DE VISIBILIDAD'),
 ('Administrativo','LISTADOS ESTADISTICOS'),
+('Administrativo','MODIFICAR CONTRASEÑAS'),
 ('Cliente','REGISTRO USUARIO'),
 ('Cliente','MODIFICACION USUARIO'),
 ('Cliente','COMPRA'),
@@ -1891,6 +1894,435 @@ RETURN( SELECT CASE WHEN COUNT(*)%10 = 1 THEN 0 ELSE 0 END AS GRATIS
 		AND PUB.PUB_ELIMINADO = 0
 		AND PUB.PUB_ESTADO LIKE 'Activa'            
 )
+GO
+
+
+
+
+-------------------------
+---TRG SUMAR PUBLICACION GRATIS
+
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Pub_Gratis]'))
+DROP TRIGGER LOS_JUS.TRG_Pub_Gratis
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Pub_Gratis ON LOS_JUS.publicacionxvisualizacion
+AFTER insert
+AS 
+declare
+@empresa integer,
+@codigo integer,
+@estado integer
+BEGIN
+	select @codigo=pubvis_publicacion,@estado=pubvis_visualizacion from inserted
+	if (@estado=10002)		
+	BEGIN	
+	select @empresa=p.pub_empresa from LOS_JUS.publicacion p
+	where p.pub_codigo=@codigo
+	
+	update LOS_JUS.EMPRESA set emp_publicidades_gratis = emp_publicidades_gratis + 1  where emp_id=@empresa
+	END
+END
+GO
+
+
+-------------------------
+---TRG ELIMINAR VISUALIZACION
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Visualizacion]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Visualizacion
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Visualizacion ON LOS_JUS.VISUALIZACION
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(vis_eliminado)
+BEGIN
+	select @estado=vis_eliminado,@codigo =  vis_codigo  from inserted 
+	
+	if (@estado=1)
+	BEGIN	
+	update LOS_JUS.PUBLICACION set pub_ELIMINADO =1 where PUB_CODIGO IN
+	(SELECT PUB_CODIGO FROM LOS_JUS.PUBLICACION p
+		JOIN LOS_JUS.PUBLICACIONxVISUALIZACION pv on pv.pubvis_publicacion=p.pub_codigo
+		WHERE pv.pubvis_visualizacion=@codigo)
+	END
+END
+GO
+
+-------------------------
+---TRG DESCONTAR PUBLICACION GRATIS
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_DescuentaPubli_Gratis]'))
+DROP TRIGGER LOS_JUS.TRG_DescuentaPubli_Gratis
+GO
+
+
+CREATE TRIGGER TRG_DescuentaPubli_Gratis ON LOS_JUS.publicacion
+FOR UPDATE
+AS 
+declare
+@empresa integer,
+@codigo integer,
+@estado integer,
+@visualizacion integer
+if update(pub_eliminado)
+BEGIN
+	select @codigo=pub_codigo,@estado=pub_eliminado, @empresa=pub_empresa from inserted
+	if (@estado=1)
+	BEGIN
+	select @visualizacion= pv.pubvis_visualizacion from LOS_JUS.publicacionxvisualizacion pv
+	where pv.pubvis_publicacion = @codigo
+	
+	if @visualizacion=10002
+	BEGIN		
+	update LOS_JUS.EMPRESA set emp_publicidades_gratis = emp_publicidades_gratis -1  where emp_id=@empresa
+	END
+	END
+END
+GO
+
+
+
+
+-------------------------
+---TRG ELIMINAR RUBRO
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Rubro]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Rubro
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Rubro ON LOS_JUS.RUBRO
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(RUB_eliminado)
+BEGIN
+	select @estado=rub_eliminado,@codigo =  rub_codigo  from inserted 
+	
+	if (@estado=1)
+	BEGIN	
+	update LOS_JUS.PUBLICACION set pub_ELIMINADO =1 where PUB_CODIGO IN
+	(SELECT rp.RUBPUB_PUBLICACION FROM LOS_JUS.RUBROxPUBLICACION rp
+		WHERE rp.RUBPUB_RUBRO=@codigo)
+	END
+END
+GO
+
+
+
+
+
+
+-------------------------
+---TRG ELIMINAR EMPRESA
+
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Empresa]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Empresa
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Empresa ON LOS_JUS.EMPRESA
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(EMP_eliminado)
+BEGIN
+	select @estado = EMP_eliminado,@codigo = emp_id from inserted 
+	
+	if (@estado=1)
+	BEGIN	
+	update LOS_JUS.PUBLICACION set pub_ELIMINADO =1 where PUB_EMPRESA=@codigo
+	END
+END
+GO
+
+
+-------------------------
+---TRG ELIMINAR USUARIO
+
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Usuario]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Usuario
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Usuario ON LOS_JUS.USUARIO
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(usu_eliminado)
+BEGIN
+	select @estado = usu_eliminado,@codigo = usu_id from inserted 
+	
+	if (@estado=1)
+	BEGIN
+		if exists(select cli_id from LOS_JUS.cliente where cli_id=@codigo)
+		BEGIN	
+			update LOS_JUS.cliente set cli_ELIMINADO =1 where cli_id=@codigo
+		END
+		
+		if exists(select emp_id from LOS_JUS.empresa where emp_id=@codigo)
+		BEGIN	
+			update LOS_JUS.empresa set emp_ELIMINADO =1 where emp_id=@codigo
+		END
+	END
+END
+GO
+
+
+
+
+
+-------------------------
+---TRG ELIMINAR USUARIO
+
+
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Funcionalidad]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Funcionalidad
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Funcionalidad ON LOS_JUS.FUNCIONALIDADES
+FOR update
+AS 
+declare
+@estado integer,
+@codigo varchar(18)
+if UPDATE(fun_eliminado)
+BEGIN
+	select @estado = fun_eliminado,@codigo = fun_funcionalidad from inserted 
+	
+	if (@estado=1)
+	BEGIN
+		
+		update LOS_JUS.rol set rol_ELIMINADO =1 where rol_nombre in 
+		(select rolfun_rol from LOS_JUS.ROLxFUNCIONALIDADES where 
+		rolfun_id=@codigo)
+	END
+END
+GO
+
+
+
+----------------------------
+------- TRG ELIMINA FUNCIONALIDAD
+/*
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Funcionalidad]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Funcionalidad
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Funcionalidad ON LOS_JUS.FUNCIONALIDADES
+FOR update
+AS 
+declare
+@estado integer,
+@codigo varchar(15)
+if UPDATE(fun_eliminado)
+BEGIN
+	select @estado = fun_eliminado,@codigo = fun_funcionalidad from inserted 
+	
+	if (@estado=1)
+	BEGIN
+		
+		update LOS_JUS.rol set rol_ELIMINADO =1 where rol_nombre in 
+		(select rolfun_rol from LOS_JUS.ROLxFUNCIONALIDADES where 
+		rolfun_funcionalidades=@codigo)
+	END
+END
+GO
+
+*/
+
+
+----------------------------
+------- TRG ELIMINA CLIENTE
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Cliente]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Cliente
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Cliente ON LOS_JUS.CLIENTE
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(cli_eliminado)
+BEGIN
+	select @estado = cli_eliminado,@codigo = cli_id from inserted 
+	
+	if (@estado=1)
+	BEGIN
+		
+		update LOS_JUS.operacion set ope_ELIMINADO =1 where ope_cliente=@codigo
+	END
+END
+GO
+
+
+
+
+----------------------------
+------- TRG ELIMINA OPERACION
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Elim_Facturacion]'))
+DROP TRIGGER LOS_JUS.TRG_Elim_Facturacion
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Elim_Facturacion ON LOS_JUS.OPERACION
+FOR update
+AS 
+declare
+@estado integer,
+@codigo integer
+if UPDATE(OPE_eliminado)
+BEGIN
+	select @estado = ope_eliminado,@codigo = ope_codigo from inserted 
+	
+	if (@estado=1)
+	BEGIN
+		--if exists(select fac_operacion from LOS_JUS.facturacion where fac_operacion=@codigo)
+		--BEGIN
+	--		update LOS_JUS.facturacion set fac_ELIMINADO =1 where fac_operacion=@codigo
+--		END
+		if exists(select cal_operacion from LOS_JUS.CALIFICACION where cal_operacion=@codigo)
+		BEGIN
+			update LOS_JUS.calificacion set CAL_ELIMINADO =1 where CAL_operacion=@codigo
+		END
+	END
+END
+GO
+
+
+
+
+----------------------------
+------- TRG ACTUALIZA STOCK
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Act_Stock]'))
+DROP TRIGGER LOS_JUS.TRG_Act_Stock
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Act_Stock ON LOS_JUS.COMPRA
+FOR update
+AS 
+declare
+@estado numeric(18,0),
+@codigo numeric(18,0)
+if UPDATE(com_stock)
+BEGIN
+	select @estado = com_stock,@codigo = com_publicacion from inserted 
+	
+	if (@estado=0)
+	BEGIN
+		if exists(select pub_codigo from LOS_JUS.PUBLICACION where pub_codigo=@codigo)
+		BEGIN
+			update LOS_JUS.PUBLICACION set PUB_ESTADO='Finalizada' where pub_codigo=@codigo
+		END
+	END
+END
+GO
+
+
+
+----------------------------
+------- TRG ACTUALIZA PUBLI SIN CALIFICAR
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Act_PubliSinCal]'))
+DROP TRIGGER LOS_JUS.TRG_Act_PubliSinCal
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Act_PubliSinCal ON LOS_JUS.OPERACION
+AFTER insert
+AS 
+declare
+@codigo integer
+
+BEGIN
+	select @codigo = ope_cliente from inserted 
+	
+	BEGIN
+		if exists(select cli_id from LOS_JUS.cliente where cli_id=@codigo)
+		BEGIN
+			update LOS_JUS.CLIENTE set CLI_OPERACIONES_SIN_CALIFICAR=CLI_OPERACIONES_SIN_CALIFICAR+1 
+			where CLI_ID=@codigo
+		END
+	END
+END
+GO
+
+
+
+
+
+
+----------------------------
+------- TRG CANTIDAD DE PUBLICACIONES SIN RENDIR
+
+IF EXISTS 
+(SELECT * FROM sys.objects 
+WHERE object_id = OBJECT_ID('[LOS_JUS].[TRG_Cant_PubliSinRendir]'))
+DROP TRIGGER LOS_JUS.TRG_Cant_PubliSinRendir
+GO
+
+CREATE TRIGGER LOS_JUS.TRG_Cant_PubliSinRendir ON LOS_JUS.PUBLICACION
+AFTER insert
+AS 
+declare
+@empresa integer,
+@cantidad integer
+
+
+BEGIN
+	select @empresa=PUB_EMPRESA from inserted 
+	
+	BEGIN
+		select @cantidad=(COUNT (p.pub_codigo)) from LOS_JUS.publicacion p
+		where p.pub_empresa=@empresa and 
+		p.pub_codigo not in (select ope_publicacion from LOS_JUS.operacion)
+		
+		if (@cantidad>10)
+		BEGIN
+			update LOS_JUS.PUBLICACION set PUB_ESTADO= 'Pausado' 
+			where PUB_EMPRESA=@empresa
+			
+			update LOS_JUS.USUARIO set usu_habilitado=0
+			where USU_id=@empresa
+		END
+	END
+END
 GO
 
 --SELECT * FROM LOS_JUS.buscarClientes(NULL,NULL,NULL,'DNI',NULL);

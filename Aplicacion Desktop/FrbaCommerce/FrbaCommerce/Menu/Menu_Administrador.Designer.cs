@@ -51,6 +51,7 @@
             this.comboBox_funcionalidades.Name = "comboBox_funcionalidades";
             this.comboBox_funcionalidades.Size = new System.Drawing.Size(279, 21);
             this.comboBox_funcionalidades.TabIndex = 8;
+            this.comboBox_funcionalidades.SelectedIndexChanged += new System.EventHandler(this.comboBox_funcionalidades_SelectedIndexChanged);
             // 
             // button_Aceptar
             // 
@@ -76,7 +77,7 @@
             this.MaximizeBox = false;
             this.Name = "Menu_Administrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrador - Seleccione una funcionalidad";
+            this.Text = "Administrador ";
             this.Load += new System.EventHandler(this.Menu_Administrador_Load);
             this.ResumeLayout(false);
 

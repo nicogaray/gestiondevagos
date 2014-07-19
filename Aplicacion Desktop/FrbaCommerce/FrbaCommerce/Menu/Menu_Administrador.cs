@@ -128,7 +128,18 @@ namespace FrbaCommerce.Menu
                 Listado_Estadistico.ListadoEstadistico listado = new Listado_Estadistico.ListadoEstadistico();
                 listado.Show();
             }
+            if (comboBox_funcionalidades.SelectedIndex == 6)
+            {
+                this.Hide();
+                FrbaCommerce.ModificarContraseña mod = new FrbaCommerce.ModificarContraseña();
+                mod.Show();
+            }
             
+
+        }
+
+        private void comboBox_funcionalidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 

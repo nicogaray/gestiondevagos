@@ -246,7 +246,7 @@
             this.MaximizeBox = false;
             this.Name = "Modificacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
+            this.Text = " Modificar";
             this.Load += new System.EventHandler(this.Modificacion_Load);
             this.paner_Alta.ResumeLayout(false);
             this.paner_Alta.PerformLayout();

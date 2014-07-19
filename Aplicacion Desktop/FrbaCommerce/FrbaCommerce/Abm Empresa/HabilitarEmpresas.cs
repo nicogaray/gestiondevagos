@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using System.Data.SqlClient;
 
-namespace FrbaCommerce.Abm_Cliente
+
+namespace FrbaCommerce.Abm_Empresa
 {
-    public partial class HabilitarCliente : Form
+    public partial class HabilitarEmpresas : Form
     {
-        public HabilitarCliente()
+        public HabilitarEmpresas()
         {
             InitializeComponent();
         }
@@ -21,6 +23,30 @@ namespace FrbaCommerce.Abm_Cliente
         {
             this.Close();
 
+        }
+
+        private void HabilitarEmpresas_Load(object sender, EventArgs e)
+        {
+            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
+            using (Conexion)
+            {
+                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT usu_id  FROM LOS_JUS.usuario join los_jus.empresa on cli_id = emp_id where usu_eliminado <> 1 and usu_habilitado == 0"), Conexion);
+
+                SqlDataReader reader = ObtenerIds.ExecuteReader();
+                if (reader.HasRows == false)
+                {
+                    MessageBox.Show("No hay Empresas inhabilitados actualmente");
+                }
+
+                while (reader.Read())
+                {
+
+                    String pColumna0 = reader.GetString(0);
+
+
+                    dataGridView1.Rows.Add(pColumna0);
+                }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -58,30 +84,8 @@ namespace FrbaCommerce.Abm_Cliente
                 }
             }
         }
-
-        private void HabilitarCliente_Load(object sender, EventArgs e)
-        {
-            SqlConnection Conexion = Base_de_Datos.BD_Conexion.ObternerConexion();
-            using (Conexion)
-            {
-                SqlCommand ObtenerIds = new SqlCommand(string.Format("SELECT usu_id as 'Cliente' FROM LOS_JUS.usuario join los_jus.Cliente on cli_id = usu_id where usu_eliminado <> 1 and usu_habilitado == 0"), Conexion);
-
-                SqlDataReader reader = ObtenerIds.ExecuteReader();
-                if (reader.HasRows == false)
-                {
-                    MessageBox.Show("No hay Clientes inhabilitados actualmente");
-                }
-
-                while (reader.Read())
-                {
-
-                    String pColumna0 = reader.GetString(0);
-
-
-                    dataGridView1.Rows.Add(pColumna0);
-                }
-            }
         }
-        }
-    }
+        
+    
+}
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_Volver = new System.Windows.Forms.Button();
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button_Volver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +50,6 @@
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button_Volver
-            // 
-            this.button_Volver.Location = new System.Drawing.Point(313, 245);
-            this.button_Volver.Name = "button_Volver";
-            this.button_Volver.Size = new System.Drawing.Size(75, 23);
-            this.button_Volver.TabIndex = 20;
-            this.button_Volver.Text = "Volver";
-            this.button_Volver.UseVisualStyleBackColor = true;
-            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
-            // 
             // Rol
             // 
             this.Rol.HeaderText = "Rol";
@@ -73,6 +63,16 @@
             this.Modificar.Text = "Habilitar";
             this.Modificar.UseColumnTextForButtonValue = true;
             // 
+            // button_Volver
+            // 
+            this.button_Volver.Location = new System.Drawing.Point(313, 245);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(75, 23);
+            this.button_Volver.TabIndex = 20;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
+            // 
             // HabilitarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -80,7 +80,10 @@
             this.ClientSize = new System.Drawing.Size(400, 280);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "HabilitarRol";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Habilitar Rol";
             this.Load += new System.EventHandler(this.HabilitarRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

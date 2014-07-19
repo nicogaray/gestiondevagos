@@ -85,6 +85,9 @@ namespace FrbaCommerce.Menu
             if (id == 1)
             {
                 button_Administrador.Visible = true;
+                button_Cliente.Visible = true;
+                button_Empresa.Visible = true;
+
 
             }
 
@@ -129,6 +132,11 @@ namespace FrbaCommerce.Menu
             this.Hide();
             Login.Login login = new Login.Login();
             login.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -76,7 +76,7 @@
             this.MaximizeBox = false;
             this.Name = "Menu_Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cliente - Seleccione una funcionalidad";
+            this.Text = "Cliente ";
             this.Load += new System.EventHandler(this.Menu_Cliente_Load);
             this.ResumeLayout(false);
 

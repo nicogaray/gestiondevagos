@@ -339,6 +339,7 @@ namespace FrbaCommerce.Abm_Cliente
                 button_Volver.Show();
                 button_Habilitar.Hide();
 
+
             }
             else
             {

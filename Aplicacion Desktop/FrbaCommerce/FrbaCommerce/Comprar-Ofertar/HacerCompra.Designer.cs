@@ -281,7 +281,7 @@
             this.MaximizeBox = false;
             this.Name = "HacerCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Hacer compra";
             this.Load += new System.EventHandler(this.HacerCompra_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

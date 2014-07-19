@@ -116,6 +116,12 @@
     <Compile Include="Abm Empresa\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Empresa\HabilitarEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\HabilitarEmpresas.Designer.cs">
+      <DependentUpon>HabilitarEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Empresa\SeleccionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +316,18 @@
     <Compile Include="Facturar Publicaciones\FacturarPublicaciones.Designer.cs">
       <DependentUpon>FacturarPublicaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contraseña.Designer.cs">
+      <DependentUpon>Contraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarContraseña.Designer.cs">
+      <DependentUpon>ModificarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Publicacion\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -426,6 +444,9 @@
     <EmbeddedResource Include="Abm Empresa\Baja.resx">
       <DependentUpon>Baja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\HabilitarEmpresas.resx">
+      <DependentUpon>HabilitarEmpresas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +542,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar Publicaciones\FacturarPublicaciones.resx">
       <DependentUpon>FacturarPublicaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contraseña.resx">
+      <DependentUpon>Contraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarContraseña.resx">
+      <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Compra_Inmediata.resx">
       <DependentUpon>Compra_Inmediata.cs</DependentUpon>

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button_Ir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox_Oferta = new System.Windows.Forms.TextBox();
             this.textBox_ValorInicial = new System.Windows.Forms.TextBox();
             this.textBox_Fecha = new System.Windows.Forms.TextBox();
@@ -38,9 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_Aceptar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
-            this.button_Aceptar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -56,15 +56,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Preguntar";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(272, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Para hacer preguntas sobre esta publicacion seleccione";
-            // 
             // button_Ir
             // 
             this.button_Ir.Location = new System.Drawing.Point(320, 18);
@@ -74,6 +65,15 @@
             this.button_Ir.Text = "Preguntar";
             this.button_Ir.UseVisualStyleBackColor = true;
             this.button_Ir.Click += new System.EventHandler(this.button_Ir_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(272, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Para hacer preguntas sobre esta publicacion seleccione";
             // 
             // textBox_Oferta
             // 
@@ -141,6 +141,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ofertar";
             // 
+            // button_Aceptar
+            // 
+            this.button_Aceptar.Location = new System.Drawing.Point(313, 33);
+            this.button_Aceptar.Name = "button_Aceptar";
+            this.button_Aceptar.Size = new System.Drawing.Size(75, 23);
+            this.button_Aceptar.TabIndex = 7;
+            this.button_Aceptar.Text = "Aceptar";
+            this.button_Aceptar.UseVisualStyleBackColor = true;
+            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
+            // 
             // button_Limpiar
             // 
             this.button_Limpiar.Location = new System.Drawing.Point(313, 62);
@@ -161,16 +171,6 @@
             this.button_Cancelar.UseVisualStyleBackColor = true;
             this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
             // 
-            // button_Aceptar
-            // 
-            this.button_Aceptar.Location = new System.Drawing.Point(313, 33);
-            this.button_Aceptar.Name = "button_Aceptar";
-            this.button_Aceptar.Size = new System.Drawing.Size(75, 23);
-            this.button_Aceptar.TabIndex = 7;
-            this.button_Aceptar.Text = "Aceptar";
-            this.button_Aceptar.UseVisualStyleBackColor = true;
-            this.button_Aceptar.Click += new System.EventHandler(this.button_Aceptar_Click);
-            // 
             // HacerOferta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,7 +178,10 @@
             this.ClientSize = new System.Drawing.Size(460, 235);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "HacerOferta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ofertar";
             this.Load += new System.EventHandler(this.HacerOferta_Load);
             this.groupBox1.ResumeLayout(false);

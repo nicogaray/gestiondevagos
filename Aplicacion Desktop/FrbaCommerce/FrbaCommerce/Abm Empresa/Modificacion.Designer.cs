@@ -51,6 +51,7 @@
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
+            this.button_Habilitar = new System.Windows.Forms.Button();
             this.paner_Alta.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -309,6 +310,17 @@
             this.button_Cancelar.Click += new System.EventHandler(this.button_Cancelar_Click);
             this.button_Cancelar.MouseEnter += new System.EventHandler(this.button_Cancelar_MouseEnter);
             // 
+            // button_Habilitar
+            // 
+            this.button_Habilitar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button_Habilitar.Location = new System.Drawing.Point(413, 209);
+            this.button_Habilitar.Name = "button_Habilitar";
+            this.button_Habilitar.Size = new System.Drawing.Size(88, 39);
+            this.button_Habilitar.TabIndex = 25;
+            this.button_Habilitar.Text = "Habilitar Empresas";
+            this.button_Habilitar.UseVisualStyleBackColor = true;
+            this.button_Habilitar.Click += new System.EventHandler(this.button_Habilitar_Click);
+            // 
             // Modificacion
             // 
             this.AcceptButton = this.button_Guardar;
@@ -316,6 +328,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Volver;
             this.ClientSize = new System.Drawing.Size(513, 315);
+            this.Controls.Add(this.button_Habilitar);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
@@ -362,5 +375,6 @@
         private System.Windows.Forms.Button button_Limpiar;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_Cancelar;
+        private System.Windows.Forms.Button button_Habilitar;
     }
 }

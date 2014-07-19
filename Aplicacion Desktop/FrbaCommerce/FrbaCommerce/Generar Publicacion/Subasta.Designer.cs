@@ -379,6 +379,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "Subasta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Subasta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
