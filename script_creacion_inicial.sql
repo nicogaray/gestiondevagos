@@ -8,6 +8,22 @@
 USE [GD1C2014]
 GO
 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+------------------------------------------------------------------
+IF EXISTS ( SELECT  *
+                FROM    sys.schemas
+                WHERE   name = 'LOS_JUS' ) 
+    EXEC('DROP SCHEMA [LOS_JUS]');
+GO
+
+IF NOT EXISTS ( SELECT  *
+                FROM    sys.schemas
+                WHERE   name = 'LOS_JUS' ) 
+    EXEC('CREATE SCHEMA [LOS_JUS] AUTHORIZATION [gd]');
+ GO
+ 
+
 
 --###########################################################################
 --###########################################################################
@@ -360,20 +376,8 @@ DROP TABLE LOS_JUS.USUARIO
 ;
 
 GO
-/*
-IF EXISTS ( SELECT  *
-                FROM    sys.schemas
-                WHERE   name = 'LOS_JUS' ) 
-    EXEC('DROP SCHEMA [LOS_JUS]');
-GO
 
-IF NOT EXISTS ( SELECT  *
-                FROM    sys.schemas
-                WHERE   name = 'LOS_JUS' ) 
-    EXEC('CREATE SCHEMA [LOS_JUS] AUTHORIZATION [gd]');
- GO
  
- */
 --###########################################################################
 --###########################################################################
 -- CREACION DE TABLAS 
@@ -1182,6 +1186,7 @@ GO
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[LOS_JUS].[buscarEmpresas]'))
 DROP FUNCTION LOS_JUS.buscarEmpresas
 GO
+
 
 CREATE FUNCTION LOS_JUS.buscarEmpresas 
 (
